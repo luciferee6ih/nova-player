@@ -34,11 +34,11 @@
 
 ### Download
 
-Get the latest APK from the [Releases page](https://github.com/luciferee6ih/nova-player/releases/latest). One universal APK works on every Android phone (Android 10 or newer).
+Grab the latest APK from [Releases](https://github.com/luciferee6ih/nova-player/releases/latest). It's a single file that works on any phone running Android 10 or newer.
 
-### What it is
+### About
 
-NOVA Player plays the music files you already own:
+Just your own music files, no account, no ads, no internet needed. Here's what's inside:
 
 - Floating Liquid Glass navigation bar (classic style available in Settings)
 - Beat Glass: a glass visualizer that moves with the music (optional)
@@ -74,7 +74,7 @@ Release builds are signed with `android/key.properties` when present, otherwise 
 
 - Telegram: [@theluciferee](https://t.me/theluciferee)
 - Channel: [@theacproject](https://t.me/theacproject)
-- Bugs and ideas: [GitHub issues](https://github.com/luciferee6ih/nova-player/issues)
+- Found a bug or have an idea? Open an [issue](https://github.com/luciferee6ih/nova-player/issues)
 
 ---
 
@@ -84,11 +84,11 @@ Release builds are signed with `android/key.properties` when present, otherwise 
 
 ### دانلود
 
-آخرین نسخه‌ی APK را از [صفحه‌ی انتشارها](https://github.com/luciferee6ih/nova-player/releases/latest) دانلود کنید. یک فایل یونیورسال روی همه‌ی گوشی‌های اندرویدی (اندروید ۱۰ به بالا) نصب می‌شود.
+آخرین نسخه رو از [صفحه‌ی ریلیزها](https://github.com/luciferee6ih/nova-player/releases/latest) بگیر. یه فایل APK هست که روی همه‌ی گوشی‌های اندروید ۱۰ به بالا نصب می‌شه.
 
-### NOVA Player چیست؟
+### درباره‌ی NOVA
 
-NOVA Player فایل‌های موسیقی‌ای را که روی گوشی دارید پخش می‌کند:
+یه موزیک‌پلیر برای آهنگ‌های خود گوشیت؛ بدون اکانت، بدون تبلیغ و بدون نیاز به اینترنت. چیزهایی که داره:
 
 - نوار ناوبری شناور شیشه‌ای (Liquid Glass)؛ حالت کلاسیک هم در تنظیمات هست
 - Beat Glass: نمایشگر شیشه‌ای که با ریتم آهنگ حرکت می‌کند (اختیاری)
@@ -108,7 +108,7 @@ NOVA Player فایل‌های موسیقی‌ای را که روی گوشی دا
 
 - تلگرام: [‎@theluciferee](https://t.me/theluciferee)
 - کانال: [‎@theacproject](https://t.me/theacproject)
-- گزارش باگ و پیشنهاد: [GitHub issues](https://github.com/luciferee6ih/nova-player/issues)
+- باگ دیدی یا ایده داری؟ تو [Issues](https://github.com/luciferee6ih/nova-player/issues) بنویس
 
 </div>
 
