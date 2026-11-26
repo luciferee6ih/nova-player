@@ -213,13 +213,13 @@ class HomeSectionHeader extends StatelessWidget {
     required this.title,
     this.label,
     this.trailing,
-    this.padding = const EdgeInsets.fromLTRB(23, 36, 16, 16),
+    this.padding = const EdgeInsetsDirectional.fromSTEB(23, 36, 16, 16),
   });
 
   final String title;
   final String? label;
   final Widget? trailing;
-  final EdgeInsets padding;
+  final EdgeInsetsGeometry padding;
 
   @override
   Widget build(BuildContext context) {

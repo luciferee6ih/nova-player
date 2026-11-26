@@ -482,7 +482,7 @@ class _AndroidHomeTabState extends ConsumerState<AndroidHomeTab>
                 label: l10n.homePicksLabel,
                 title: l10n.homeForYou,
                 // Right under the hero when it is the first row.
-                padding: EdgeInsets.fromLTRB(
+                padding: EdgeInsetsDirectional.fromSTEB(
                   23,
                   visibleRows.isEmpty ? 0 : 36,
                   16,

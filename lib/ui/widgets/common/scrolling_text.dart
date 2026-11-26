@@ -72,7 +72,7 @@ class ScrollingText extends StatelessWidget {
                     key: ValueKey('$text|$travel'),
                     travel: travel,
                     child: Padding(
-                      padding: const EdgeInsets.only(right: _gap),
+                      padding: const EdgeInsetsDirectional.only(end: _gap),
                       child: Text(
                         text,
                         style: style,
@@ -144,22 +144,25 @@ class _OnePassMarqueeState extends State<_OnePassMarquee>
 
   @override
   Widget build(BuildContext context) {
+    // In RTL (Persian, Arabic) the text rests on the right and scrolls
+    // rightwards, mirroring the LTR marquee.
+    final rtl = Directionality.of(context) == TextDirection.rtl;
     return ClipRect(
       child: OverflowBox(
-        alignment: Alignment.centerLeft,
+        alignment: rtl ? Alignment.centerRight : Alignment.centerLeft,
         minWidth: 0,
         maxWidth: double.infinity,
         child: AnimatedBuilder(
           animation: _scroll,
           builder: (context, row) => Transform.translate(
-            offset: Offset(-_scroll.value * widget.travel, 0),
+            offset: Offset((rtl ? 1 : -1) * _scroll.value * widget.travel, 0),
             child: row,
           ),
           // The second copy lands exactly where the first began, so the
           // resting text looks the same as before the scroll.
           child: Row(
             mainAxisSize: MainAxisSize.min,
-            textDirection: TextDirection.ltr,
+            textDirection: rtl ? TextDirection.rtl : TextDirection.ltr,
             children: [widget.child, widget.child],
           ),
         ),

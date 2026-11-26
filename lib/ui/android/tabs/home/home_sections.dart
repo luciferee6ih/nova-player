@@ -114,7 +114,7 @@ extension _HomeTabSections on _AndroidHomeTabState {
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         physics: const NovaScrollPhysics(),
-        padding: const EdgeInsets.only(left: 25, right: 8),
+        padding: const EdgeInsetsDirectional.only(start: 25, end: 8),
         itemCount: columns,
         itemExtent: columnWidth,
         itemBuilder: (context, c) => Column(
