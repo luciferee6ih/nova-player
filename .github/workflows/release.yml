@@ -136,8 +136,10 @@ jobs:
 
       - name: Build Android Release APKs
         run: |
-          # One universal APK for phones; per-ABI and desktop builds come later.
+          # Universal APK plus a 64-bit ARM one (what nearly every phone,
+          # including the Redmi 12, runs). Desktop builds come later.
           flutter build apk --release --flavor github $DART_DEFINES
+          flutter build apk --release --flavor github --split-per-abi --target-platform android-arm64 $DART_DEFINES
 
       # The in-app updater matches APKs by "-<abi>-" in the name.
       - name: Rename and Prepare APKs
@@ -148,7 +150,7 @@ jobs:
           dir=build/app/outputs/flutter-apk
           mkdir -p "$out"
           ls -1 "$dir"/*.apk
-          for abi in universal; do
+          for abi in universal arm64-v8a; do
             if [ "$abi" = universal ]; then
               candidates="$dir/app-github-release.apk"
             else
