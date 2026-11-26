@@ -40,6 +40,11 @@ done
 sleep 5
 shot home; dump home
 
+# Short real-app video (home scroll, songs, player).
+adb shell screenrecord --bit-rate 6000000 --time-limit 90 /sdcard/demo.mp4 &
+REC=$!
+sleep 1
+
 # Home scroll: measure frames while flinging.
 adb shell dumpsys gfxinfo $PKG reset >/dev/null
 for i in 1 2 3 4 5 6; do adb shell input swipe 540 1900 540 500 250; sleep 0.6; done
@@ -51,3 +56,8 @@ tap_text "آهنگ‌ها" || tap_text "Songs"; sleep 3; shot songs; dump songs
 adb shell input tap 540 700; sleep 4; shot playing
 tap_text "Midnight" || adb shell input tap 540 2050; sleep 4; shot player; dump player
 adb shell dumpsys gfxinfo $PKG > shots/gfxinfo-all.txt
+
+sleep 4
+kill $REC 2>/dev/null; adb shell pkill -INT screenrecord 2>/dev/null || true
+sleep 3
+adb pull /sdcard/demo.mp4 shots/demo.mp4 >/dev/null 2>&1 || true
