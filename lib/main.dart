@@ -9,6 +9,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart' show GestureBinding;
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nova_player/core/services/haptics/app_haptics.dart';
 import 'package:nova_player/features/settings/presentation/widgets/tiles/theme/theme_settings_tiles.dart';
@@ -213,6 +214,24 @@ void main(List<String> args) async {
     if (AppAmbitReporter.mustStartBeforeUi) reporterInit,
   ]);
   final beforeRunApp = startup.elapsedMilliseconds;
+
+  if (Platform.isAndroid) {
+    // Draw under transparent system bars (Android 15+ forces this anyway);
+    // screens add their own top/bottom insets so nothing hides beneath them.
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.light,
+        statusBarBrightness: Brightness.dark,
+        systemNavigationBarColor: Colors.transparent,
+        systemNavigationBarDividerColor: Colors.transparent,
+        systemNavigationBarIconBrightness: Brightness.light,
+        systemNavigationBarContrastEnforced: false,
+        systemStatusBarContrastEnforced: false,
+      ),
+    );
+  }
 
   runApp(
     ProviderScope(

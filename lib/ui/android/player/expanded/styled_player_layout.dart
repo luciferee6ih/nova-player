@@ -223,6 +223,25 @@ class _StyledPlayerLayoutState extends ConsumerState<StyledPlayerLayout>
             else
               _linearArt(sx, s),
 
+            // Keep the clock and battery readable over bright artwork.
+            Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              height: MediaQuery.paddingOf(context).top + 28,
+              child: const IgnorePointer(
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [Color(0x99000000), Color(0x00000000)],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
             // Lyrics block, or the big title when the song has none.
             Positioned(
               left: 29 * sx,

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nova_player/core/providers/navigation_provider.dart';
 import 'package:nova_player/core/services/haptics/app_haptics.dart';
 import 'package:nova_player/core/theme/app_fonts.dart';
+import 'package:nova_player/features/settings/presentation/providers/settings_notifier.dart';
 import 'package:nova_player/features/settings/presentation/screens/account_view.dart'
     show headerProfilePhoto;
 
@@ -111,16 +112,16 @@ class RoundIconButton extends StatelessWidget {
 /// The app bar's fade over a list below a [LargeTabHeader]: it shows only
 /// once the list has scrolled, so rows at rest are never dimmed, and then
 /// softens the edge the rows scroll under.
-class TabHeaderFade extends StatefulWidget {
+class TabHeaderFade extends ConsumerStatefulWidget {
   final Widget child;
 
   const TabHeaderFade({super.key, required this.child});
 
   @override
-  State<TabHeaderFade> createState() => _TabHeaderFadeState();
+  ConsumerState<TabHeaderFade> createState() => _TabHeaderFadeState();
 }
 
-class _TabHeaderFadeState extends State<TabHeaderFade> {
+class _TabHeaderFadeState extends ConsumerState<TabHeaderFade> {
   final _scrolled = ValueNotifier(false);
 
   @override
@@ -139,6 +140,16 @@ class _TabHeaderFadeState extends State<TabHeaderFade> {
   @override
   Widget build(BuildContext context) {
     final surface = Theme.of(context).colorScheme.surface;
+    // Over an artwork-coloured background a surface-coloured fade shows up
+    // as a dark band under the header, so skip it there.
+    final tinted = ref.watch(
+      settingsProvider.select(
+        (s) => s.enableDynamicTheming || s.keepBackgroundGradient,
+      ),
+    );
+    if (tinted) {
+      return widget.child;
+    }
     return Stack(
       children: [
         NotificationListener<ScrollNotification>(
