@@ -42,6 +42,7 @@ jobs:
       # case); flutter pub get rejects it on Linux. Same fix as release.yml.
       - name: flutter pub get
         run: |
+        flutter precache
           dart pub get --enforce-lockfile
           find "${PUB_CACHE:-$HOME/.pub-cache}/hosted" \
             -path '*/appambit_sdk_flutter-*/android/src/main/kotlin/*/AppambitSdkFlutterPlugin.kt' |
