@@ -1,75 +1,115 @@
-# 3.14 is the minimum CMake the Flutter Windows tooling ships; raising it
-# breaks some app builds.
-cmake_minimum_required(VERSION 3.14)
-
 # Project-level configuration.
-set(PROJECT_NAME "mpv_audio_kit")
-project(${PROJECT_NAME} LANGUAGES CXX)
+cmake_minimum_required(VERSION 3.14)
+project(nova_player LANGUAGES CXX)
 
-# Newer CMake policies up to 3.25, without the deprecation warnings.
+# The name of the executable created for the application. Change this to change
+# the on-disk name of your application.
+set(BINARY_NAME "nova_player")
+
+# Explicitly opt in to modern CMake behaviors to avoid warnings with recent
+# versions of CMake.
 cmake_policy(VERSION 3.14...3.25)
 
-# Flutter derives the registrant name from PLUGIN_NAME; keep it.
-set(PLUGIN_NAME "mpv_audio_kit_plugin")
+# Define build configuration option.
+get_property(IS_MULTICONFIG GLOBAL PROPERTY GENERATOR_IS_MULTI_CONFIG)
+if(IS_MULTICONFIG)
+  set(CMAKE_CONFIGURATION_TYPES "Debug;Profile;Release"
+    CACHE STRING "" FORCE)
+else()
+  if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+    set(CMAKE_BUILD_TYPE "Debug" CACHE
+      STRING "Flutter build mode" FORCE)
+    set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS
+      "Debug" "Profile" "Release")
+  endif()
+endif()
+# Define settings for the Profile build mode.
+set(CMAKE_EXE_LINKER_FLAGS_PROFILE "${CMAKE_EXE_LINKER_FLAGS_RELEASE}")
+set(CMAKE_SHARED_LINKER_FLAGS_PROFILE "${CMAKE_SHARED_LINKER_FLAGS_RELEASE}")
+set(CMAKE_C_FLAGS_PROFILE "${CMAKE_C_FLAGS_RELEASE}")
+set(CMAKE_CXX_FLAGS_PROFILE "${CMAKE_CXX_FLAGS_RELEASE}")
 
-# The plugin sources.
-list(APPEND PLUGIN_SOURCES
-  "mpv_audio_kit_plugin.cpp"
-  "mpv_audio_kit_plugin.h"
-  "media_session_smtc.cpp"
-  "media_session_smtc.h"
-  "media_session_channel_win.cpp"
-  "media_session_channel_win.h"
-)
+# Use Unicode for all projects.
+add_definitions(-DUNICODE -D_UNICODE)
 
-# The plugin library, named after PLUGIN_NAME.
-add_library(${PLUGIN_NAME} SHARED
-  "include/mpv_audio_kit/mpv_audio_kit_plugin_c_api.h"
-  "mpv_audio_kit_plugin_c_api.cpp"
-  ${PLUGIN_SOURCES}
-)
+# Compilation settings that should be applied to most targets.
+#
+# Be cautious about adding new options here, as plugins use this function by
+# default. In most cases, you should add new options to specific targets instead
+# of modifying this function.
+function(APPLY_STANDARD_SETTINGS TARGET)
+  target_compile_features(${TARGET} PUBLIC cxx_std_17)
+  target_compile_options(${TARGET} PRIVATE /W4 /WX /wd"4100")
+  target_compile_options(${TARGET} PRIVATE /EHsc)
+  target_compile_definitions(${TARGET} PRIVATE "_HAS_EXCEPTIONS=0")
+  target_compile_definitions(${TARGET} PRIVATE "$<$<CONFIG:Debug>:_DEBUG>")
+endfunction()
 
-# The app's standard Flutter build settings.
-apply_standard_settings(${PLUGIN_NAME})
+# Flutter library and tool build rules.
+set(FLUTTER_MANAGED_DIR "${CMAKE_CURRENT_SOURCE_DIR}/flutter")
+add_subdirectory(${FLUTTER_MANAGED_DIR})
 
-# Symbols are hidden; only FLUTTER_PLUGIN_EXPORT ones are exported.
-set_target_properties(${PLUGIN_NAME} PROPERTIES
-  CXX_VISIBILITY_PRESET hidden)
-target_compile_definitions(${PLUGIN_NAME} PRIVATE FLUTTER_PLUGIN_IMPL)
+# Application build; see runner/CMakeLists.txt.
+add_subdirectory("runner")
 
-# C++/WinRT needs C++20 coroutines. Under the app template's C++17 it falls
-# back to <experimental/coroutine>, which MSVC 14.51 (Visual Studio 2026)
-# rejects with STL1011. The highest requested standard wins, so this lifts
-# only the plugin target.
-target_compile_features(${PLUGIN_NAME} PRIVATE cxx_std_20)
 
-# The public header, for the generated registrant.
-target_include_directories(${PLUGIN_NAME}
-  INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}/include"
-)
-# The multi engine rule of the media session, one header shared with the
-# Linux plugin. The package root is the parent of this directory, also
-# where an app's build reaches it (flutter/ephemeral/.plugin_symlinks).
-target_include_directories(${PLUGIN_NAME} PRIVATE
-  "${CMAKE_CURRENT_SOURCE_DIR}/../native_common"
-)
-target_link_libraries(${PLUGIN_NAME} PRIVATE flutter flutter_wrapper_plugin)
+# Generated plugin build rules, which manage building the plugins and adding
+# them to the application.
+include(flutter/generated_plugins.cmake)
 
-# C++/WinRT consumes SystemMediaTransportControls; link the WinRT umbrella
-# import library for RoActivateInstance / WindowsCreateString etc. The
-# C++/WinRT headers (winrt/Windows.Media.*) are header-only and ship with the
-# Windows SDK already on the MSVC include path — no NuGet, no extra toolchain.
-target_link_libraries(${PLUGIN_NAME} PRIVATE windowsapp)
+# permission_handler_windows still includes <experimental/coroutine>, which
+# Visual Studio 2026 rejects unless this is defined.
+if(TARGET permission_handler_windows_plugin)
+  target_compile_definitions(permission_handler_windows_plugin PRIVATE
+    _SILENCE_EXPERIMENTAL_COROUTINE_DEPRECATION_WARNINGS)
+endif()
 
-# shell32 provides SetCurrentProcessExplicitAppUserModelID, used to give the
-# process a stable AppUserModelID so the SystemMediaTransportControls card shows
-# a consistent source identity on unpackaged .exe builds.
-target_link_libraries(${PLUGIN_NAME} PRIVATE shell32)
 
-# shlwapi provides SHCreateMemStream and shcore
-# CreateRandomAccessStreamOverStream, which build the cover stream for the
-# SystemMediaTransportControls thumbnail.
-target_link_libraries(${PLUGIN_NAME} PRIVATE shlwapi shcore)
+# === Installation ===
+# Support files are copied into place next to the executable, so that it can
+# run in place. This is done instead of making a separate bundle (as on Linux)
+# so that building and running from within Visual Studio will work.
+set(BUILD_BUNDLE_DIR "$<TARGET_FILE_DIR:${BINARY_NAME}>")
+# Make the "install" step default, as it's required to run.
+set(CMAKE_VS_INCLUDE_INSTALL_TO_DEFAULT_BUILD 1)
+if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+  set(CMAKE_INSTALL_PREFIX "${BUILD_BUNDLE_DIR}" CACHE PATH "..." FORCE)
+endif()
 
-# libmpv is not built or bundled here: the package's build hook
-# (hook/build.dart) downloads it and Flutter bundles it as a code asset.
+set(INSTALL_BUNDLE_DATA_DIR "${CMAKE_INSTALL_PREFIX}/data")
+set(INSTALL_BUNDLE_LIB_DIR "${CMAKE_INSTALL_PREFIX}")
+
+install(TARGETS ${BINARY_NAME} RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}"
+  COMPONENT Runtime)
+
+install(FILES "${FLUTTER_ICU_DATA_FILE}" DESTINATION "${INSTALL_BUNDLE_DATA_DIR}"
+  COMPONENT Runtime)
+
+install(FILES "${FLUTTER_LIBRARY}" DESTINATION "${INSTALL_BUNDLE_LIB_DIR}"
+  COMPONENT Runtime)
+
+if(PLUGIN_BUNDLED_LIBRARIES)
+  install(FILES "${PLUGIN_BUNDLED_LIBRARIES}"
+    DESTINATION "${INSTALL_BUNDLE_LIB_DIR}"
+    COMPONENT Runtime)
+endif()
+
+# Copy the native assets provided by the build.dart from all packages.
+set(NATIVE_ASSETS_DIR "${PROJECT_BUILD_DIR}native_assets/windows/")
+install(DIRECTORY "${NATIVE_ASSETS_DIR}"
+   DESTINATION "${INSTALL_BUNDLE_LIB_DIR}"
+   COMPONENT Runtime)
+
+# Fully re-copy the assets directory on each build to avoid having stale files
+# from a previous install.
+set(FLUTTER_ASSET_DIR_NAME "flutter_assets")
+install(CODE "
+  file(REMOVE_RECURSE \"${INSTALL_BUNDLE_DATA_DIR}/${FLUTTER_ASSET_DIR_NAME}\")
+  " COMPONENT Runtime)
+install(DIRECTORY "${PROJECT_BUILD_DIR}/${FLUTTER_ASSET_DIR_NAME}"
+  DESTINATION "${INSTALL_BUNDLE_DATA_DIR}" COMPONENT Runtime)
+
+# Install the AOT library on non-Debug builds only.
+install(FILES "${AOT_LIBRARY}" DESTINATION "${INSTALL_BUNDLE_DATA_DIR}"
+  CONFIGURATIONS Profile;Release
+  COMPONENT Runtime)

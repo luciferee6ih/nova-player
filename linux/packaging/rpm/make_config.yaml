@@ -1,0 +1,24 @@
+display_name: NOVA Player
+name: nova_player
+version: 1.0.0~beta
+release: 1
+summary: A modern, high-fidelity music player for Linux.
+description: A modern, high-fidelity music player for Linux.
+license: GPL-3.0-or-later
+group: Applications/Multimedia
+url: https://github.com/luciferee6ih/nova-player
+vendor: luciferee6ih
+packager: luciferee6ih
+packagerEmail: luciferee6ih@users.noreply.github.com
+icon: assets/branding/linux_icon.png
+categories:
+  - AudioVideo
+  - Audio
+  - Music
+  - Player
+requires:
+  - gtk3
+  - vlc-libs
+  - mpv-libs
+  - /usr/bin/ffprobe
+  - /usr/bin/ffmpeg

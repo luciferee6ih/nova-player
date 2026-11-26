@@ -1,0 +1,217 @@
+import 'dart:io';
+import 'package:nova_player/ui/widgets/common/optimized_image.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:nova_player/features/library/domain/models/models.dart';
+import 'package:nova_player/features/settings/presentation/providers/settings_notifier.dart';
+import 'package:nova_player/core/utils/artwork_colors.dart';
+import 'package:nova_player/features/playback/presentation/providers/playback/playback_notifier.dart';
+
+part 'theme_provider.g.dart';
+
+class ThemeState {
+  final ColorScheme colorScheme;
+  final bool isDynamic;
+
+  ThemeState({required this.colorScheme, this.isDynamic = true});
+
+  ThemeState copyWith({ColorScheme? colorScheme, bool? isDynamic}) {
+    return ThemeState(
+      colorScheme: colorScheme ?? this.colorScheme,
+      isDynamic: isDynamic ?? this.isDynamic,
+    );
+  }
+}
+
+// Named 'AppTheme' (not 'Theme') to avoid colliding with Flutter's own
+// Theme widget - `name: 'theme'` keeps the generated provider as
+// `themeProvider`, matching every existing call site.
+@Riverpod(keepAlive: true, name: 'themeProvider')
+class AppTheme extends _$AppTheme {
+  late AppSettings _settings;
+  bool _isUpdating = false;
+
+  @override
+  ThemeState build() {
+    // Use read here to avoid the re-creation loop
+    _settings = ref.read(settingsProvider);
+
+    // Watch current song and update theme if dynamic theming or dynamic
+    // accent color is enabled
+    // Only the artwork matters here; listening to the whole playback state
+    // ran this on every position tick.
+    ref.listen(playbackProvider.select((s) => s.currentSong?.artPath), (
+      previous,
+      next,
+    ) {
+      final currentSettings = ref.read(settingsProvider);
+      if ((currentSettings.enableDynamicTheming ||
+              currentSettings.dynamicAccentColor) &&
+          next != previous) {
+        updateFromImage(next);
+      }
+    });
+
+    // Handle settings changes without re-creating the notifier
+    ref.listen(settingsProvider, (previous, next) {
+      updateSettings(next);
+    });
+
+    return ThemeState(
+      colorScheme: ColorScheme.fromSeed(
+        seedColor: _settings.accent,
+        primary: _settings.accent,
+        surface: _settings.darkTheme ? Colors.black : const Color(0xFF11110E),
+        surfaceContainer: _settings.darkTheme
+            ? const Color(0xFF0A0A0A)
+            : const Color(0xFF1E1E1E),
+        brightness: Brightness.dark,
+      ),
+    );
+  }
+
+  // Update internal settings reference when they change
+  void updateSettings(AppSettings newSettings) {
+    if (_isUpdating) return; // Prevent loop during dynamic update
+
+    final oldSettings = _settings;
+    _settings = newSettings;
+
+    // The vibrancy slider redraws the current colours in place.
+    if (oldSettings.accentVibrancyValue != newSettings.accentVibrancyValue) {
+      final fromArtwork =
+          newSettings.enableDynamicTheming || newSettings.dynamicAccentColor;
+      if (fromArtwork && _artworkColors != null) {
+        _applyArtworkColors();
+      } else {
+        _resetTheme();
+      }
+      return;
+    }
+
+    // Handle theme reset logic
+    if (!newSettings.enableDynamicTheming) {
+      if (oldSettings.enableDynamicTheming ||
+          oldSettings.darkTheme != newSettings.darkTheme ||
+          oldSettings.accentColor != newSettings.accentColor) {
+        _resetTheme();
+      } else if (!oldSettings.dynamicAccentColor &&
+          newSettings.dynamicAccentColor) {
+        final playback = ref.read(playbackProvider);
+        updateFromImage(playback.currentSong?.artPath);
+      }
+    } else {
+      if (!oldSettings.enableDynamicTheming) {
+        final playback = ref.read(playbackProvider);
+        updateFromImage(playback.currentSong?.artPath);
+      } else if (oldSettings.accentColor != newSettings.accentColor) {
+        final playback = ref.read(playbackProvider);
+        if (playback.currentSong == null) {
+          _resetTheme();
+        }
+      }
+    }
+  }
+
+  int _imageToken = 0;
+
+  /// Applied in one rebuild once the song-change motion (artwork slide,
+  /// ~320 ms) is over, so re-theming the whole app never lands on top of an
+  /// animation. Only the latest of several quick skips is applied.
+  static const Duration _applyAfter = Duration(milliseconds: 450);
+
+  Future<void> updateFromImage(String? imagePath) async {
+    if (imagePath == null) {
+      return;
+    }
+    final int token = ++_imageToken;
+    await Future<void>.delayed(_applyAfter);
+    if (token != _imageToken) return;
+
+    try {
+      _isUpdating = true;
+      if (!await artAvailable(imagePath)) {
+        _isUpdating = false;
+        return;
+      }
+
+      final ArtworkColors? colors = await ArtworkColors.fromProvider(
+        artImage(imagePath),
+      );
+      if (token != _imageToken) {
+        _isUpdating = false;
+        return;
+      }
+
+      if (colors != null) {
+        // Colors that are really in the artwork. Only lift them as far as
+        // needed to stay readable as accents on the black background, so a
+        // deep red stays red instead of washing out to pink.
+        final Color vibrantColor = readableOnDark(colors.primary);
+        final Color tertiaryColor = readableOnDark(colors.secondary);
+
+        _artworkColors = (vibrantColor, tertiaryColor);
+        _applyArtworkColors();
+
+        // PERSIST the color to database if enabled
+        if (_settings.saveDynamicColor || _settings.dynamicAccentColor) {
+          await ref
+              .read(settingsProvider.notifier)
+              .updateAccentColor(vibrantColor.toARGB32());
+        }
+      }
+    } catch (e) {
+      debugPrint('Error updating theme from image $imagePath: $e');
+    } finally {
+      _isUpdating = false;
+    }
+  }
+
+  /// The last artwork colours, as read (before the vibrancy boost), so a
+  /// vibrancy change can redraw them without reading the artwork again.
+  (Color, Color)? _artworkColors;
+
+  /// The artwork accent before the vibrancy boost (settings preview).
+  Color? get artworkAccent => _artworkColors?.$1;
+
+  void _applyArtworkColors() {
+    final colors = _artworkColors;
+    if (colors == null) return;
+    final primary = _settings.vibrantAccent(colors.$1);
+    state = state.copyWith(
+      colorScheme: ColorScheme.fromSeed(
+        seedColor: primary,
+        primary: primary,
+        onPrimary: Colors.white,
+        tertiary: _settings.vibrantAccent(colors.$2),
+        surface: _settings.darkTheme ? Colors.black : const Color(0xFF11110E),
+        surfaceContainer: _settings.darkTheme
+            ? const Color(0xFF0A0A0A)
+            : const Color(0xFF1E1E1E),
+        brightness: Brightness.dark,
+      ),
+    );
+  }
+
+  void _resetTheme() {
+    // darkTheme ON = OLED/Pure Black (#000000)
+    // darkTheme OFF = Premium Deep Black (#11110E)
+    final surfaceColor = _settings.darkTheme
+        ? Colors.black
+        : const Color(0xFF11110E);
+    final containerColor = _settings.darkTheme
+        ? const Color(0xFF0A0A0A)
+        : const Color(0xFF1E1E1E);
+
+    state = state.copyWith(
+      colorScheme: ColorScheme.fromSeed(
+        seedColor: _settings.accent,
+        primary: _settings.accent,
+        surface: surfaceColor,
+        surfaceContainer: containerColor,
+        brightness: Brightness.dark,
+      ),
+    );
+  }
+}

@@ -1,0 +1,1032 @@
+import 'dart:io';
+import 'package:flutter_displaymode/flutter_displaymode.dart';
+import 'package:isar_community/isar.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import '../../../../core/services/haptics/app_haptics.dart';
+import '../../../../core/services/screen_awake.dart';
+import '../../../../core/services/storage/db_service.dart';
+import '../../../../core/services/storage/local_json_store.dart';
+
+import '../../../library/data/services/artwork_downloader_service.dart';
+import '../../../../core/theme/app_fonts.dart';
+import '../../../../core/utils/ui_scale_steps.dart';
+import '../../../playback/presentation/widgets/lyrics/lyrics_scale.dart';
+import '../../domain/artwork_visualizer_style.dart';
+import '../../domain/quality_badge_style.dart';
+import '../../domain/progress_bar_style.dart';
+import '../../domain/app_defaults.dart';
+
+import 'package:flutter/painting.dart' show Color;
+import 'package:nova_player/core/utils/artwork_colors.dart' show boostChroma;
+import 'package:nova_player/core/utils/ui_utils.dart' show UiUtils;
+import '../../domain/home_order.dart' show withHomeRowIds;
+
+part 'settings_notifier.g.dart';
+
+/// The app accent as drawn: the saved colour made more vibrant by the
+/// "Accent Vibrancy" slider. Use [accent] wherever the accent is painted.
+extension AppAccent on AppSettings {
+  static const double defaultVibrancy = 1.0;
+
+  /// 0..1. Desktop has no slider, so it draws the saved colour as is.
+  double get accentVibrancyValue {
+    if (UiUtils.isDesktop) return 0;
+    final v = accentVibrancy;
+    return v == null || v.isNaN ? defaultVibrancy : v.clamp(0.0, 1.0);
+  }
+
+  Color get accent => vibrantAccent(Color(accentColor));
+
+  /// [base] boosted by this vibrancy (theme colours from the artwork).
+  Color vibrantAccent(Color base) {
+    final t = accentVibrancyValue;
+    final key = (base.toARGB32(), t);
+    if (key == _lastKey) return _last!;
+    _lastKey = key;
+    return _last = boostChroma(base, t);
+  }
+}
+
+/// Whether bottom sheets and popup sheets should render with frosted blur.
+///
+/// Also drives the scrolled page-header blur (HeaderBackdrop).
+///
+/// In the settings UI, either "Always Blur Sheets & Headers" or "Disable Blur Effects"
+/// is shown to the user at a time, depending on Dynamic Theming:
+/// - When Dynamic Theming is ON: blur follows `!disableBlur`.
+/// - When Dynamic Theming is OFF: blur follows `alwaysBlurSheets`.
+extension SheetBlur on AppSettings {
+  bool get sheetShouldBlur =>
+      enableDynamicTheming ? !disableBlur : alwaysBlurSheets;
+}
+
+// One-entry memo: the same accent is asked for by every tile in a build.
+(int, double)? _lastKey;
+Color? _last;
+
+@Riverpod(keepAlive: true)
+class Settings extends _$Settings {
+  late Future<void> initialization;
+
+  @override
+  AppSettings build() {
+    listenSelf((_, next) {
+      AppHaptics.enabled = !next.disableHaptics;
+      AppHaptics.strength = next.hapticStrength;
+    });
+    initialization = _loadSettings();
+    return AppSettings();
+  }
+
+  List<double> _createDefaultGains() =>
+      AppDefaults.createDefaultEqualizerGains();
+
+  Future<void> _loadSettings() async {
+    final settings = await DbService.isar.appSettings.get(0);
+    if (settings != null) {
+      bool needsSave = false;
+      // Recover folder settings from an existing library after older scans
+      // cleared or failed to persist the folder list.
+      if (settings.libraryFolders.isEmpty) {
+        final indexedSongs = await DbService.isar.songs.where().findAll();
+        final recoveredFolders =
+            indexedSongs
+                .map((song) => File(song.path).parent.path)
+                .where((path) => Directory(path).existsSync())
+                .toSet()
+                .toList()
+              ..sort();
+        if (recoveredFolders.isNotEmpty) {
+          settings.libraryFolders = recoveredFolders;
+          needsSave = true;
+        }
+      }
+      // Home redesign, once: the new ▶▶ avatar replaces the old default
+      // wordmark (a picked avatar stays), and the kept background gradient
+      // starts off. Both stay user-changeable in Settings afterwards.
+      if (!settings.homeRedesignV1) {
+        if (settings.selectedAvatarAsset == 'logo_full.svg') {
+          settings.selectedAvatarAsset = AppDefaults.selectedAvatarAsset;
+        }
+        settings.keepBackgroundGradient = AppDefaults.keepBackgroundGradient;
+        settings.homeRedesignV1 = true;
+        needsSave = true;
+      }
+      // Only run legacy defaults migration ONCE if settingsV3 is not yet set
+      if (!settings.settingsV3) {
+        if (settings.bgBrightness == 0.0) {
+          settings.bgBrightness = 0.5;
+        }
+        if (settings.bgOpacity == 0.0) {
+          settings.bgOpacity = 0.3;
+        }
+        if (!settings.showHomeArtists &&
+            !settings.showHomeAlbums &&
+            !settings.showHomeGenres) {
+          settings.showHomeArtists = true;
+          settings.showHomeAlbums = false;
+          settings.showHomeGenres = true;
+        }
+        if (settings.homeDarkness.isNaN || settings.homeDarkness == 0.0) {
+          settings.homeDarkness = 0.72;
+        }
+        if (settings.songsDarkness.isNaN || settings.songsDarkness == 0.0) {
+          settings.songsDarkness = 0.72;
+        }
+        if (settings.libraryDarkness.isNaN || settings.libraryDarkness == 0.0) {
+          settings.libraryDarkness = 0.72;
+        }
+        if (settings.musicDarkness.isNaN || settings.musicDarkness == 0.0) {
+          settings.musicDarkness = 0.62;
+        }
+        if (settings.lyricsDarkness.isNaN || settings.lyricsDarkness == 0.0) {
+          settings.lyricsDarkness = 0.55;
+        }
+        settings.showQualityBadge = true;
+        settings.enablePlayerGradient = true;
+        settings.enableLyricsGradient = true;
+        settings.settingsV2 = true;
+        settings.dynamicLyrics = false;
+        settings.blurredArtworkForLyrics = true;
+        settings.settingsV3 = true;
+        needsSave = true;
+      }
+      if (!settings.lyricsOffsetEarlierMigrated) {
+        // The offset used to mean positive = later. 0 and the old default
+        // (+200 later) are taken as untouched and get the new default
+        // (+200 earlier); anything else keeps its effect by flipping sign.
+        final int old = settings.lyricsOffsetMs;
+        settings.lyricsOffsetMs = old == 0 || old == 200
+            ? AppSettings.defaultLyricsOffsetMs
+            : -old;
+        settings.lyricsOffsetEarlierMigrated = true;
+        needsSave = true;
+      }
+      if (!settings.lyricsOffsetPerSongMigrated) {
+        // A song's offset used to be added on top of the offset for all
+        // songs; it is now the song's whole offset. Keep what each re-timed
+        // song sounded like.
+        final int base = settings.lyricsOffsetMs;
+        await DbService.isar.writeTxn(() async {
+          final retimed = await DbService.isar.songs
+              .filter()
+              .lyricsOffsetMsIsNotNull()
+              .findAll();
+          for (final song in retimed) {
+            song.lyricsOffsetMs = (base + song.lyricsOffsetMs!).clamp(
+              -5000,
+              5000,
+            );
+          }
+          await DbService.isar.songs.putAll(retimed);
+        });
+        settings.lyricsOffsetPerSongMigrated = true;
+        needsSave = true;
+      }
+      if (!settings.stackSansDefaultMigrated) {
+        final font = settings.customFontFamily;
+        if (font.isEmpty || font == 'Space Grotesk') {
+          settings.customFontFamily = AppFonts.stackSansText;
+        }
+        settings.stackSansDefaultMigrated = true;
+        needsSave = true;
+      }
+      if (!settings.activeLyricsIntensityDefaultMigrated) {
+        final double v = settings.activeLyricsIntensity;
+        if (v.isNaN || v == 0.0) settings.activeLyricsIntensity = 0.7;
+        settings.activeLyricsIntensityDefaultMigrated = true;
+        needsSave = true;
+      }
+      if (!settings.lyricsProviderWordSyncMigrated) {
+        if (settings.lyricsProvider == 'LRCLIB') {
+          settings.lyricsProvider = 'lrc.red';
+        }
+        settings.lyricsProviderWordSyncMigrated = true;
+        needsSave = true;
+      }
+      // Every lyrics service is on now; switch back on the ones that used to
+      // start off. One time, so a later deliberate switch-off sticks.
+      if (await LocalJsonStore.read('lyrics_all_on_v1') != true) {
+        const formerlyOff = {
+          'PAXSENIX',
+          'BINILYRICS',
+          'UNISON',
+          'BETTERLYRICS_QQ',
+          'YT_CAPTIONS',
+        };
+        settings.lyricsProvidersOff = [
+          for (final id in settings.lyricsProvidersOff)
+            if (!formerlyOff.contains(id.toUpperCase())) id,
+        ];
+        await LocalJsonStore.write('lyrics_all_on_v1', true);
+        needsSave = true;
+      }
+      if (settings.homeSectionOrder.isEmpty) {
+        settings.homeSectionOrder = [...AppSettings.defaultHomeSectionOrder];
+        needsSave = true;
+      } else if (!settings.homeSectionOrder.contains('recent')) {
+        // Migration: append the newly added Recent section to existing
+        // custom orderings instead of resetting the user's preference.
+        settings.homeSectionOrder = [...settings.homeSectionOrder, 'recent'];
+        needsSave = true;
+      }
+      if (!settings.homeSectionOrder.contains('playlists')) {
+        settings.homeSectionOrder = [...settings.homeSectionOrder, 'playlists'];
+        needsSave = true;
+      }
+      // Quick picks and the online rows joined the order (docs/online/27).
+      final withRows = withHomeRowIds(settings.homeSectionOrder);
+      if (withRows.length != settings.homeSectionOrder.length) {
+        settings.homeSectionOrder = withRows;
+        needsSave = true;
+      }
+      if (settings.globalEqualizerGains.length < 48) {
+        settings.globalEqualizerGains = _createDefaultGains();
+        needsSave = true;
+      }
+      if (needsSave) {
+        await DbService.isar.writeTxn(() async {
+          await DbService.isar.appSettings.put(settings);
+        });
+      }
+      state = settings;
+    } else {
+      // Initialize default settings
+      // Default to off on Android, but enabled on Linux
+      final defaultSettings = AppSettings()
+        ..lyricsProviderWordSyncMigrated = true
+        ..lyricsOffsetEarlierMigrated = true
+        ..stackSansDefaultMigrated = true
+        ..activeLyricsIntensityDefaultMigrated = true
+        ..enableDynamicTheming = !Platform.isAndroid
+        ..bgBrightness = AppDefaults.bgBrightness
+        ..bgOpacity = AppDefaults.bgOpacity
+        ..showHomeArtists = AppDefaults.showHomeArtists
+        ..showHomeAlbums = AppDefaults.showHomeAlbums
+        ..showHomeGenres = AppDefaults.showHomeGenres
+        ..showHomeRecent = AppDefaults.showHomeRecent
+        ..showHomePlaylists = AppDefaults.showHomePlaylists
+        ..homeSectionOrder = [...AppDefaults.defaultHomeSectionOrder]
+        ..homeDarkness = AppDefaults.homeDarkness
+        ..desktopBackgroundDarkness =
+            AppDefaults.defaultDesktopBackgroundDarkness
+        ..songsDarkness = AppDefaults.songsDarkness
+        ..libraryDarkness = AppDefaults.libraryDarkness
+        ..musicDarkness = AppDefaults.musicDarkness
+        ..lyricsDarkness = AppDefaults.lyricsDarkness
+        ..showQualityBadge = AppDefaults.showQualityBadge
+        ..enablePlayerGradient = AppDefaults.enablePlayerGradient
+        ..enableLyricsGradient = AppDefaults.enableLyricsGradient
+        ..settingsV2 = true
+        ..settingsV3 = true
+        ..homeRedesignV1 = true
+        ..dynamicLyrics = AppDefaults.dynamicLyrics
+        ..blurredArtworkForLyrics = AppDefaults.blurredArtworkForLyrics
+        ..showPerformanceOptimizer = AppDefaults.showPerformanceOptimizer
+        ..equalizerEnabled = AppDefaults.equalizerEnabled
+        ..enableAudioCache = AppDefaults.enableAudioCache
+        ..audioCacheSizeMB = AppDefaults.audioCacheSizeMB
+        ..audioCacheSecs = AppDefaults.audioCacheSecs
+        ..audioBackCacheSizeMB = AppDefaults.audioBackCacheSizeMB
+        ..persistQueue = AppDefaults.persistQueue
+        ..keepScreenAwake = AppDefaults.keepScreenAwake
+        ..forceHighRefreshRate = AppDefaults.forceHighRefreshRate
+        ..globalEqualizerGains = _createDefaultGains();
+      await DbService.isar.writeTxn(() async {
+        await DbService.isar.appSettings.put(defaultSettings);
+      });
+      state = defaultSettings;
+    }
+
+    ScreenAwake.setEnabled(state.keepScreenAwake ?? true);
+    if (Platform.isAndroid) {
+      try {
+        if (state.forceHighRefreshRate ?? true) {
+          await FlutterDisplayMode.setHighRefreshRate();
+        } else {
+          await FlutterDisplayMode.setPreferredMode(DisplayMode.auto);
+        }
+      } catch (_) {}
+    }
+
+    _updateActiveFont();
+
+    if (state.downloadArtwork && state.enableInternet) {
+      ArtworkDownloaderService().downloadAllMissingArtworks();
+    }
+  }
+
+  void _updateActiveFont([AppSettings? customState]) {
+    final activeState = customState ?? state;
+    AppFonts.activeFontFamily = activeState.useNewFont
+        ? (activeState.customFontFamily.isEmpty
+              ? AppDefaults.customFontFamily
+              : activeState.customFontFamily)
+        : 'Stack Sans Text';
+    AppFonts.appFontWeightDelta = activeState.useNewFont
+        ? activeState.customFontWeightDelta
+        : 0;
+    AppFonts.appLetterSpacingPercent = activeState.letterSpacingPercent.isNaN
+        ? AppDefaults.letterSpacingPercent
+        : activeState.letterSpacingPercent;
+    AppFonts.lyricsFontWeightDelta = activeState.useNewFontLyrics
+        ? activeState.customFontWeightLyricsDelta
+        : 0;
+  }
+
+  /// Clones [state], applies [mutate] to the clone, persists it, and makes
+  /// it the new state - the one "clone -> mutate -> Isar writeTxn -> state ="
+  /// sequence every `updateX` method below used to repeat by hand (~90
+  /// times, in two slightly different inline forms). [mutate] returns the
+  /// same clone it's given so call sites can use a cascade (`s..field =
+  /// value`) directly.
+  Future<void> _update(AppSettings Function(AppSettings clone) mutate) async {
+    final newState = mutate(_clone(state));
+    await DbService.isar.writeTxn(() async {
+      await DbService.isar.appSettings.put(newState);
+    });
+    state = newState;
+  }
+
+  /// Field-by-field copy of [AppSettings] - every field must be listed here
+  /// explicitly. Isar model objects aren't immutable/copyWith-friendly, so
+  /// this is what makes [_update] able to mutate a clone without touching
+  /// the live [state] object until the write succeeds. If a new field is
+  /// added to [AppSettings] and forgotten here, updates silently drop it -
+  /// the settings screens are the fastest way to notice (a new toggle that
+  /// never seems to persist).
+  AppSettings _clone(AppSettings s) {
+    return AppSettings()
+      ..id = s.id
+      ..libraryFolders = List.from(s.libraryFolders)
+      ..lastPlayedSongId = s.lastPlayedSongId
+      ..lastQueueSongIds = List.from(s.lastQueueSongIds)
+      ..lastQueueIndex = s.lastQueueIndex
+      ..volume = s.volume
+      ..lastPositionMs = s.lastPositionMs
+      ..shuffle = s.shuffle
+      ..repeatMode = s.repeatMode
+      ..language = s.language
+      ..enableDynamicTheming = s.enableDynamicTheming
+      ..darkTheme = s.darkTheme
+      ..saveDynamicColor = s.saveDynamicColor
+      ..dynamicLyrics = s.dynamicLyrics
+      ..accentColor = s.accentColor
+      ..audioFocus = s.audioFocus
+      ..audioFocusRequestOnPlay = s.audioFocusRequestOnPlay
+      ..audioFocusReleaseOnPause = s.audioFocusReleaseOnPause
+      ..audioFocusStopOnOtherSession = s.audioFocusStopOnOtherSession
+      ..audioFocusRestartOnGain = s.audioFocusRestartOnGain
+      ..disableSquiggle = s.disableSquiggle
+      ..disableAnimatedDuration = s.disableAnimatedDuration
+      ..progressBarThickness = s.progressBarThickness
+      ..progressWaveHeight = s.progressWaveHeight
+      ..progressWaveLength = s.progressWaveLength
+      ..progressWaveSpeed = s.progressWaveSpeed
+      ..progressThumbStyle = s.progressThumbStyle
+      ..progressThumbWidth = s.progressThumbWidth
+      ..progressThumbHeight = s.progressThumbHeight
+      ..progressThumbGap = s.progressThumbGap
+      ..progressInactiveOpacity = s.progressInactiveOpacity
+      ..progressWaveFromStart = s.progressWaveFromStart
+      ..progressFreezeWhenPaused = s.progressFreezeWhenPaused
+      ..progressGrowThumbOnDrag = s.progressGrowThumbOnDrag
+      ..artworkVisualizer = s.artworkVisualizer
+      ..artworkVisualizerIntensity = s.artworkVisualizerIntensity
+      ..artworkVisualizerColors = s.artworkVisualizerColors
+      ..artworkVisualizerSyncMs = s.artworkVisualizerSyncMs
+      ..disableBlur = s.disableBlur
+      ..alwaysBlurSheets = s.alwaysBlurSheets
+      ..frostedMusicBar = s.frostedMusicBar
+      ..frostedNavbar = s.frostedNavbar
+      ..statusBarBlur = s.statusBarBlur
+      ..playerDynamicBackground = s.playerDynamicBackground
+      ..enableInternet = s.enableInternet
+      ..downloadArtwork = s.downloadArtwork
+      ..includeSystemAndMessagingAudio = s.includeSystemAndMessagingAudio
+      ..keepBackgroundGradient = s.keepBackgroundGradient
+      ..showQualityBadge = s.showQualityBadge
+      ..qualityBadgeLook = s.qualityBadgeLook
+      ..qualityBadgeIcon = s.qualityBadgeIcon
+      ..qualityBadgeColors = s.qualityBadgeColors
+      ..qualityBadgeSeparator = s.qualityBadgeSeparator
+      ..qualityBadgeShape = s.qualityBadgeShape
+      ..qualityBadgeLayout = s.qualityBadgeLayout
+      ..qualityBadgeFields = s.qualityBadgeFields
+      ..enablePlayerGradient = s.enablePlayerGradient
+      ..animatePlayerGradient = s.animatePlayerGradient
+      ..segmentedUtilityButtons = s.segmentedUtilityButtons
+      ..playerLyricLine = s.playerLyricLine
+      ..accentVibrancy = s.accentVibrancy
+      ..playerLyricLineTransition = s.playerLyricLineTransition
+      ..playerStyle = s.playerStyle
+      ..playerStyleAccent = s.playerStyleAccent
+      ..cardBlackBackground = s.cardBlackBackground
+      ..cardAccentBackground = s.cardAccentBackground
+      ..cardAccentColors = s.cardAccentColors
+      ..playerStyleBlur = s.playerStyleBlur
+      ..showAlbumNextToArtist = s.showAlbumNextToArtist
+      ..showAlbumInQuickPicks = s.showAlbumInQuickPicks
+      ..disableHaptics = s.disableHaptics
+      ..hapticStrength = s.hapticStrength
+      ..animateBackgroundGradient = s.animateBackgroundGradient
+      ..settingsV2 = s.settingsV2
+      ..settingsV3 = s.settingsV3
+      ..homeRedesignV1 = s.homeRedesignV1
+      ..blurredArtworkForLyrics = s.blurredArtworkForLyrics
+      ..customBackgroundImagePath = s.customBackgroundImagePath
+      ..bgBrightness = s.bgBrightness
+      ..bgOpacity = s.bgOpacity
+      ..showHomeArtists = s.showHomeArtists
+      ..showHomeAlbums = s.showHomeAlbums
+      ..showHomeGenres = s.showHomeGenres
+      ..showHomeRecent = s.showHomeRecent
+      ..showHomePlaylists = s.showHomePlaylists
+      ..libraryPins = List<String>.from(s.libraryPins)
+      ..homeSectionOrder = List.from(
+        s.homeSectionOrder.isEmpty
+            ? AppSettings.defaultHomeSectionOrder
+            : s.homeSectionOrder,
+      )
+      ..enableSlideGesture = s.enableSlideGesture
+      ..stopOnTaskRemoved = s.stopOnTaskRemoved
+      ..persistQueue = s.persistQueue
+      ..keepSongProgress = s.keepSongProgress
+      ..fadePlayPauseStop = s.fadePlayPauseStop
+      ..playPauseStopFadeLength = s.playPauseStopFadeLength
+      ..resumeAfterCall = s.resumeAfterCall
+      ..pauseOnDuck = s.pauseOnDuck
+      ..resumeOnBluetoothConnect = s.resumeOnBluetoothConnect
+      ..resumeOnStart = s.resumeOnStart
+      ..permanentAudioFocusChange = s.permanentAudioFocusChange
+      ..dynamicColorActiveLyrics = s.dynamicColorActiveLyrics
+      ..activeLyricsIntensity = s.activeLyricsIntensity
+      ..inactiveLyricsOpacity = s.inactiveLyricsOpacity
+      ..lyricsNoLineGrouping = s.lyricsNoLineGrouping
+      ..lyricsOwnBackground = s.lyricsOwnBackground
+      ..enableLyricsGradient = s.enableLyricsGradient
+      ..ambientColorBackground = s.ambientColorBackground
+      ..lyricsAlignment = s.lyricsAlignment
+      ..dynamicAccentColor = s.dynamicAccentColor
+      ..sortStrategyIndex = s.sortStrategyIndex
+      ..sortAscending = s.sortAscending
+      ..albumSortOptionIndex = s.albumSortOptionIndex
+      ..artistSortOptionIndex = s.artistSortOptionIndex
+      ..genreSortOptionIndex = s.genreSortOptionIndex
+      ..collectionSortOptionIndex = s.collectionSortOptionIndex
+      ..artistGroupByAlbum = s.artistGroupByAlbum
+      ..homeDarkness = s.homeDarkness
+      ..desktopBackgroundDarkness = s.desktopBackgroundDarkness
+      ..songsDarkness = s.songsDarkness
+      ..libraryDarkness = s.libraryDarkness
+      ..musicDarkness = s.musicDarkness
+      ..lyricsDarkness = s.lyricsDarkness
+      ..selectedAvatarAsset = s.selectedAvatarAsset
+      ..userName = s.userName
+      ..userPhotoPath = s.userPhotoPath
+      ..showHeaderProfilePhoto = s.showHeaderProfilePhoto
+      ..avatarDynamicColor = s.avatarDynamicColor
+      ..showPerformanceOptimizer = s.showPerformanceOptimizer
+      ..useNewFont = s.useNewFont
+      ..customFontFamily = s.customFontFamily
+      ..customFontWeight = s.customFontWeight
+      ..customFontWeightDelta = s.customFontWeightDelta
+      ..letterSpacingPercent = s.letterSpacingPercent
+      ..useNewFontLyrics = s.useNewFontLyrics
+      ..customFontFamilyLyrics = s.customFontFamilyLyrics
+      ..customFontWeightLyrics = s.customFontWeightLyrics
+      ..customFontWeightLyricsDelta = s.customFontWeightLyricsDelta
+      ..activeLyricsFontWeightDelta = s.activeLyricsFontWeightDelta
+      ..equalizerEnabled = s.equalizerEnabled
+      ..globalEqualizerGains = List.from(
+        s.globalEqualizerGains.isEmpty
+            ? _createDefaultGains()
+            : s.globalEqualizerGains,
+      )
+      ..enableAudioCache = s.enableAudioCache
+      ..audioCacheSizeMB = s.audioCacheSizeMB
+      ..audioCacheSecs = s.audioCacheSecs
+      ..audioBackCacheSizeMB = s.audioBackCacheSizeMB
+      ..exclusiveHardwareMode = s.exclusiveHardwareMode
+      ..lyricsProvider = s.lyricsProvider
+      ..autoLyricsFallback = s.autoLyricsFallback
+      ..lyricsProviderOrder = List<String>.from(s.lyricsProviderOrder)
+      ..lyricsProvidersOff = List<String>.from(s.lyricsProvidersOff)
+      ..lyricsProviderWordSyncMigrated = s.lyricsProviderWordSyncMigrated
+      ..lyricsSyncStyle = s.lyricsSyncStyle
+      ..lyricsOffsetMs = s.lyricsOffsetMs
+      ..lyricsOffsetEarlierMigrated = s.lyricsOffsetEarlierMigrated
+      ..lyricsOffsetPerSongMigrated = s.lyricsOffsetPerSongMigrated
+      ..stackSansDefaultMigrated = s.stackSansDefaultMigrated
+      ..activeLyricsIntensityDefaultMigrated =
+          s.activeLyricsIntensityDefaultMigrated
+      ..equalizerGlobalMode = s.equalizerGlobalMode
+      ..firstTimeEqualizer = s.firstTimeEqualizer
+      ..lyricsGestureTutorialSeen = s.lyricsGestureTutorialSeen
+      ..desktopUiScale = s.desktopUiScale
+      ..lyricsFontScale = s.lyricsFontScale
+      ..keepScreenAwake = s.keepScreenAwake
+      ..forceHighRefreshRate = s.forceHighRefreshRate;
+  }
+
+  Future<void> updateLibraryFolders(List<String> folders) =>
+      _update((s) => s..libraryFolders = folders);
+
+  Future<void> updateLanguage(String lang) =>
+      _update((s) => s..language = lang);
+
+  Future<void> updateShuffle(bool shuffle) =>
+      _update((s) => s..shuffle = shuffle);
+
+  Future<void> updateRepeatMode(int mode) =>
+      _update((s) => s..repeatMode = mode);
+
+  Future<void> updateHomeSectionOrder(List<String> newOrder) =>
+      _update((s) => s..homeSectionOrder = newOrder);
+
+  Future<void> updateLibraryPins(List<String> pins) =>
+      _update((s) => s..libraryPins = List<String>.from(pins));
+
+  /// Pins [key] to the end of Library's pinned shortcuts, or unpins it.
+  Future<void> toggleLibraryPin(String key) => _update((s) {
+    final pins = List<String>.from(s.libraryPins);
+    if (!pins.remove(key)) pins.add(key);
+    return s..libraryPins = pins;
+  });
+
+  Future<void> updateIncludeSystemAndMessagingAudio(bool value) =>
+      _update((s) => s..includeSystemAndMessagingAudio = value);
+
+  Future<void> updateLyricsProviderOrder(List<String> order) =>
+      _update((s) => s..lyricsProviderOrder = List<String>.from(order));
+
+  /// Switches a lyrics service on or off for automatic lookups.
+  Future<void> setLyricsProviderEnabled(String id, bool enabled) => _update(
+    (s) => s
+      ..lyricsProvidersOff = [
+        ...s.lyricsProvidersOff.where((p) => p != id),
+        if (!enabled) id,
+      ],
+  );
+
+  Future<void> updateAutoLyricsFallback(bool value) =>
+      _update((s) => s..autoLyricsFallback = value);
+
+  Future<void> updateLyricsSyncStyle(String value) =>
+      _update((s) => s..lyricsSyncStyle = value);
+
+  // Lyrics background is one of: blurred artwork, ambient colour, or
+  // neither; turning one on turns the other off.
+  Future<void> updateBlurredArtworkForLyrics(bool value) => _update(
+    (s) => s
+      ..blurredArtworkForLyrics = value
+      ..ambientColorBackground = value ? false : s.ambientColorBackground,
+  );
+
+  Future<void> updateAmbientColorBackground(bool value) => _update(
+    (s) => s
+      ..ambientColorBackground = value
+      ..blurredArtworkForLyrics = value ? false : s.blurredArtworkForLyrics,
+  );
+
+  Future<void> updateShowQualityBadge(bool value) =>
+      _update((s) => s..showQualityBadge = value);
+
+  Future<void> updateSegmentedUtilityButtons(bool value) =>
+      _update((s) => s..segmentedUtilityButtons = value);
+
+  Future<void> updateAccentVibrancy(double value) =>
+      _update((s) => s..accentVibrancy = value);
+
+  Future<void> updatePlayerLyricLine(bool value) =>
+      _update((s) => s..playerLyricLine = value);
+
+  Future<void> updatePlayerLyricLineTransition(String value) =>
+      _update((s) => s..playerLyricLineTransition = value);
+
+  Future<void> updatePlayerStyle(String value) =>
+      _update((s) => s..playerStyle = value);
+
+  Future<void> updatePlayerStyleAccent(bool value) => _update(
+    (s) => s
+      ..playerStyleAccent = value
+      ..cardAccentColors = value,
+  );
+
+  Future<void> updateCardBlackBackground(bool value) =>
+      _update((s) => s..cardBlackBackground = value);
+
+  Future<void> updateCardAccentBackground(bool value) =>
+      _update((s) => s..cardAccentBackground = value);
+
+  Future<void> updateCardAccentColors(bool value) => _update(
+    (s) => s
+      ..cardAccentColors = value
+      ..playerStyleAccent = value,
+  );
+
+  Future<void> updatePlayerStyleBlur(bool value) =>
+      _update((s) => s..playerStyleBlur = value);
+
+  Future<void> updateShowAlbumNextToArtist(bool value) =>
+      _update((s) => s..showAlbumNextToArtist = value);
+
+  Future<void> updateShowAlbumInQuickPicks(bool value) =>
+      _update((s) => s..showAlbumInQuickPicks = value);
+
+  Future<void> updateHapticsEnabled(bool value) =>
+      _update((s) => s..disableHaptics = !value);
+
+  /// 0 = Low, 1 = Medium, 2 = High.
+  Future<void> updateHapticStrength(int value) =>
+      _update((s) => s..hapticStrength = value.clamp(0, 2));
+
+  Future<void> updateEnablePlayerGradient(bool value) => _update((s) {
+    s.enablePlayerGradient = value;
+    if (!value) {
+      s.keepBackgroundGradient = false;
+    }
+    return s;
+  });
+
+  Future<void> updateEnableLyricsGradient(bool value) =>
+      _update((s) => s..enableLyricsGradient = value);
+
+  Future<void> updateAnimatePlayerGradient(bool value) =>
+      _update((s) => s..animatePlayerGradient = value);
+
+  Future<void> updateAnimateBackgroundGradient(bool value) =>
+      _update((s) => s..animateBackgroundGradient = value);
+
+  Future<void> updateEnableSlideGesture(bool value) =>
+      _update((s) => s..enableSlideGesture = value);
+
+  Future<void> updateStopOnTaskRemoved(bool value) =>
+      _update((s) => s..stopOnTaskRemoved = value);
+
+  Future<void> updateFadePlayPauseStop(bool value) =>
+      _update((s) => s..fadePlayPauseStop = value);
+
+  Future<void> updatePlayPauseStopFadeLength(int value) =>
+      _update((s) => s..playPauseStopFadeLength = value);
+
+  Future<void> updateResumeAfterCall(bool value) =>
+      _update((s) => s..resumeAfterCall = value);
+
+  Future<void> updateResumeOnBluetoothConnect(bool value) =>
+      _update((s) => s..resumeOnBluetoothConnect = value);
+
+  Future<void> updateResumeOnStart(bool value) =>
+      _update((s) => s..resumeOnStart = value);
+
+  Future<void> updatePersistQueue(bool value) => _update((s) {
+    s.persistQueue = value;
+    if (!value) {
+      s.lastQueueSongIds = [];
+      s.lastQueueIndex = -1;
+      s.lastPlayedSongId = null;
+      s.lastPositionMs = 0;
+    }
+    return s;
+  });
+
+  Future<void> updateDownloadArtwork(bool enabled) async {
+    await _update((s) => s..downloadArtwork = enabled);
+
+    if (enabled && state.enableInternet) {
+      // Trigger full async scan to download all missing artworks
+      ArtworkDownloaderService().downloadAllMissingArtworks();
+    }
+  }
+
+  Future<void> updateKeepBackgroundGradient(bool value) =>
+      _update((s) => s..keepBackgroundGradient = value);
+
+  Future<void> updateShowHomeArtists(bool value) =>
+      _update((s) => s..showHomeArtists = value);
+
+  Future<void> updateShowHomeAlbums(bool value) =>
+      _update((s) => s..showHomeAlbums = value);
+
+  Future<void> updateShowHomeGenres(bool value) =>
+      _update((s) => s..showHomeGenres = value);
+
+  Future<void> updateShowHomeRecent(bool value) =>
+      _update((s) => s..showHomeRecent = value);
+
+  Future<void> updateShowHomePlaylists(bool value) =>
+      _update((s) => s..showHomePlaylists = value);
+
+  Future<void> updateDisableSquiggle(bool disabled) =>
+      _update((s) => s..disableSquiggle = disabled);
+
+  Future<void> updateDisableAnimatedDuration(bool disabled) =>
+      _update((s) => s..disableAnimatedDuration = disabled);
+
+  Future<void> updateProgressBarStyle(ProgressBarStyle style) =>
+      _update(style.applyTo);
+
+  /// Back to the look the bar had before it was customisable. The nullable
+  /// fields go back to null (= default) rather than to today's defaults, so
+  /// a future default tweak still reaches users who never changed them.
+  Future<void> resetProgressBarStyle() => _update(
+    (s) => s
+      ..disableSquiggle = false
+      ..progressBarThickness = null
+      ..progressWaveHeight = null
+      ..progressWaveLength = null
+      ..progressWaveSpeed = null
+      ..progressThumbStyle = null
+      ..progressThumbWidth = null
+      ..progressThumbHeight = null
+      ..progressThumbGap = null
+      ..progressInactiveOpacity = null
+      ..progressWaveFromStart = false
+      ..progressFreezeWhenPaused = false
+      ..progressGrowThumbOnDrag = false,
+  );
+
+  Future<void> updateArtworkVisualizer(ArtworkVisualizerType type) =>
+      _update((s) => s..artworkVisualizer = type.index);
+
+  Future<void> updateArtworkVisualizerIntensity(
+    ArtworkVisualizerIntensity intensity,
+  ) => _update((s) => s..artworkVisualizerIntensity = intensity.index);
+
+  Future<void> updateArtworkVisualizerColors(ArtworkVisualizerColors colors) =>
+      _update((s) => s..artworkVisualizerColors = colors.index);
+
+  Future<void> updateArtworkVisualizerSyncMs(int ms) =>
+      _update((s) => s..artworkVisualizerSyncMs = ms);
+
+  Future<void> updateQualityBadgeLook(QualityBadgeLook look) =>
+      _update((s) => s..qualityBadgeLook = look.index);
+
+  Future<void> updateQualityBadgeIcon(QualityBadgeIcon icon) =>
+      _update((s) => s..qualityBadgeIcon = icon.index);
+
+  Future<void> updateQualityBadgeColors(QualityBadgeColors colors) =>
+      _update((s) => s..qualityBadgeColors = colors.index);
+
+  Future<void> updateQualityBadgeSeparator(QualityBadgeSeparator separator) =>
+      _update((s) => s..qualityBadgeSeparator = separator.index);
+
+  Future<void> updateQualityBadgeShape(QualityBadgeShape shape) =>
+      _update((s) => s..qualityBadgeShape = shape.index);
+
+  Future<void> updateQualityBadgeLayout(QualityBadgeLayout layout) =>
+      _update((s) => s..qualityBadgeLayout = layout.index);
+
+  /// Turns one detail on or off. The last detail left on can't be turned
+  /// off, so the badge never ends up empty.
+  Future<void> updateQualityBadgeField(QualityBadgeField field, bool on) =>
+      _update((s) {
+        final int mask = QualityBadgeStyle.fromSettings(s).fields;
+        final int bit = 1 << field.index;
+        final int next = on ? mask | bit : mask & ~bit;
+        if (next != 0) s.qualityBadgeFields = next;
+        return s;
+      });
+
+  Future<void> updateDisableBlur(bool disabled) =>
+      _update((s) => s..disableBlur = disabled);
+
+  Future<void> updateKeepSongProgress(bool value) =>
+      _update((s) => s..keepSongProgress = value);
+
+  Future<void> updateAlwaysBlurSheets(bool value) =>
+      _update((s) => s..alwaysBlurSheets = value);
+
+  Future<void> updateFrostedMusicBar(bool value) =>
+      _update((s) => s..frostedMusicBar = value);
+
+  Future<void> updateFrostedNavbar(bool value) =>
+      _update((s) => s..frostedNavbar = value);
+
+  Future<void> updateStatusBarBlur(bool value) =>
+      _update((s) => s..statusBarBlur = value);
+
+  Future<void> updatePlayerDynamicBackground(bool value) =>
+      _update((s) => s..playerDynamicBackground = value);
+
+  Future<void> updateEnableInternet(bool enabled) =>
+      _update((s) => s..enableInternet = enabled);
+
+  Future<void> updateAudioFocus(bool enabled) =>
+      _update((s) => s..audioFocus = enabled);
+
+  Future<void> updateDynamicTheming(bool enabled) => _update((s) {
+    s.enableDynamicTheming = enabled;
+    if (!enabled) {
+      // If dynamic theming is disabled, ensure accent color resets to default Green (0xFF41C25E)
+      // if the current color is not one of the manual selection options.
+      const allowedColors = [
+        0xFF41C25E,
+        0xFFF7EAA6,
+        0xFF448AFF,
+      ]; // Green, Yellow, Blue Accent
+      if (!allowedColors.contains(s.accentColor)) {
+        s.accentColor = 0xFF41C25E;
+      }
+    }
+    return s;
+  });
+
+  Future<void> updateDarkTheme(bool enabled) =>
+      _update((s) => s..darkTheme = enabled);
+
+  Future<void> updateAccentColor(int color) =>
+      _update((s) => s..accentColor = color);
+
+  // Both run on every song change and nothing on screen shows them, so they
+  // save quietly like [updateLastPosition] - a state change here rebuilt the
+  // whole app (MaterialApp watches settings) on each skip.
+  Future<void> updateLastPlayedSong(int? songId) =>
+      _persistQuietly((s) => s.lastPlayedSongId = songId);
+
+  Future<void> updateLastQueueState(
+    List<int> queueIds,
+    int index,
+    int? lastSongId, {
+    int? positionMs,
+  }) => _persistQuietly(
+    (s) => s
+      ..lastQueueSongIds = queueIds
+      ..lastQueueIndex = index
+      ..lastPlayedSongId = lastSongId
+      ..lastPositionMs = positionMs ?? 0,
+  );
+
+  Future<void> _persistQuietly(void Function(AppSettings live) mutate) async {
+    final AppSettings current = state;
+    mutate(current);
+    await DbService.isar.writeTxn(() async {
+      await DbService.isar.appSettings.put(current);
+    });
+  }
+
+  /// Saves the resume position quietly. When [persist] is true, writes to
+  /// the database; when false, updates in memory without triggering a disk
+  /// write transaction.
+  Future<void> updateLastPosition(int positionMs, {bool persist = true}) async {
+    if (state.lastPositionMs == positionMs) return;
+    state.lastPositionMs = positionMs;
+    if (!persist) return;
+    final AppSettings current = state;
+    await DbService.isar.writeTxn(() async {
+      await DbService.isar.appSettings.put(current);
+    });
+  }
+
+  Future<void> updateVolume(double volume) =>
+      _update((s) => s..volume = volume);
+
+  Future<void> updateDynamicColorActiveLyrics(bool enabled) =>
+      _update((s) => s..dynamicColorActiveLyrics = enabled);
+
+  Future<void> updateActiveLyricsIntensity(double value) =>
+      _update((s) => s..activeLyricsIntensity = value);
+
+  Future<void> updateInactiveLyricsOpacity(double value) =>
+      _update((s) => s..inactiveLyricsOpacity = value);
+
+  Future<void> updateLyricsLineGrouping(bool enabled) =>
+      _update((s) => s..lyricsNoLineGrouping = !enabled);
+
+  Future<void> updateLyricsFollowPlayerBackground(bool enabled) =>
+      _update((s) => s..lyricsOwnBackground = !enabled);
+
+  Future<void> updateLyricsAlignment(String alignment) =>
+      _update((s) => s..lyricsAlignment = alignment);
+
+  Future<void> updateDesktopUiScale(double value) =>
+      _update((s) => s..desktopUiScale = UiScaleSteps.normalize(value));
+
+  Future<void> updateLyricsFontScale(double value) =>
+      _update((s) => s..lyricsFontScale = LyricsScale.normalize(value));
+
+  Future<void> updateDynamicAccentColor(bool enabled) =>
+      _update((s) => s..dynamicAccentColor = enabled);
+
+  Future<void> updateSortStrategy(int strategyIndex) =>
+      _update((s) => s..sortStrategyIndex = strategyIndex);
+
+  Future<void> updateSortAscending(bool ascending) =>
+      _update((s) => s..sortAscending = ascending);
+
+  Future<void> updateAlbumSortOptionIndex(int index) =>
+      _update((s) => s..albumSortOptionIndex = index);
+
+  Future<void> updateArtistSortOptionIndex(int index) =>
+      _update((s) => s..artistSortOptionIndex = index);
+
+  Future<void> updateGenreSortOptionIndex(int index) =>
+      _update((s) => s..genreSortOptionIndex = index);
+
+  Future<void> updateCollectionSortOptionIndex(int index) =>
+      _update((s) => s..collectionSortOptionIndex = index);
+
+  Future<void> updateArtistGroupByAlbum(bool value) =>
+      _update((s) => s..artistGroupByAlbum = value);
+
+  Future<void> updateHomeDarkness(double value) =>
+      _update((s) => s..homeDarkness = value);
+
+  Future<void> updateDesktopBackgroundDarkness(double value) =>
+      _update((s) => s..desktopBackgroundDarkness = value);
+
+  Future<void> updateSongsDarkness(double value) =>
+      _update((s) => s..songsDarkness = value);
+
+  Future<void> updateLibraryDarkness(double value) =>
+      _update((s) => s..libraryDarkness = value);
+
+  Future<void> updateMusicDarkness(double value) =>
+      _update((s) => s..musicDarkness = value);
+
+  Future<void> updateLyricsDarkness(double value) =>
+      _update((s) => s..lyricsDarkness = value);
+
+  Future<void> updateSelectedAvatar(String assetFileName) =>
+      _update((s) => s..selectedAvatarAsset = assetFileName);
+
+  Future<void> updateUserName(String value) =>
+      _update((s) => s..userName = value.trim());
+
+  Future<void> updateUserPhotoPath(String value) =>
+      _update((s) => s..userPhotoPath = value);
+
+  Future<void> updateHeaderProfilePhoto(bool show) =>
+      _update((s) => s..showHeaderProfilePhoto = show);
+
+  Future<void> updateAvatarDynamicColor(bool value) =>
+      _update((s) => s..avatarDynamicColor = value);
+
+  Future<void> updateUseNewFont(bool value) async {
+    await _update((s) => s..useNewFont = value);
+    _updateActiveFont();
+  }
+
+  Future<void> updateCustomFontFamily(String value) async {
+    await _update((s) => s..customFontFamily = value);
+    _updateActiveFont();
+  }
+
+  Future<void> updateCustomFontWeightDelta(int value) async {
+    await _update((s) => s..customFontWeightDelta = value);
+    _updateActiveFont();
+  }
+
+  Future<void> updateLetterSpacingPercent(double value) async {
+    await _update((s) => s..letterSpacingPercent = value);
+    _updateActiveFont();
+  }
+
+  Future<void> updateUseNewFontLyrics(bool value) async {
+    await _update((s) => s..useNewFontLyrics = value);
+    _updateActiveFont();
+  }
+
+  Future<void> updateCustomFontFamilyLyrics(String value) async {
+    await _update((s) => s..customFontFamilyLyrics = value);
+    _updateActiveFont();
+  }
+
+  Future<void> updateActiveLyricsFontWeightDelta(int value) async {
+    await _update((s) => s..activeLyricsFontWeightDelta = value);
+    _updateActiveFont();
+  }
+
+  Future<void> updateEqualizerEnabled(bool value) =>
+      _update((s) => s..equalizerEnabled = value);
+
+  Future<void> updateGlobalEqualizerGains(List<double> value) =>
+      _update((s) => s..globalEqualizerGains = value);
+
+  Future<void> updateEqualizerGlobalMode(bool value) =>
+      _update((s) => s..equalizerGlobalMode = value);
+
+  Future<void> updateFirstTimeEqualizer(bool value) =>
+      _update((s) => s..firstTimeEqualizer = value);
+
+  Future<void> updateLyricsGestureTutorialSeen(bool value) =>
+      _update((s) => s..lyricsGestureTutorialSeen = value);
+
+  Future<void> updateKeepScreenAwake(bool value) async {
+    ScreenAwake.setEnabled(value);
+    await _update((s) => s..keepScreenAwake = value);
+  }
+
+  Future<void> updateForceHighRefreshRate(bool value) async {
+    if (Platform.isAndroid) {
+      try {
+        if (value) {
+          await FlutterDisplayMode.setHighRefreshRate();
+        } else {
+          await FlutterDisplayMode.setPreferredMode(DisplayMode.auto);
+        }
+      } catch (_) {}
+    }
+    await _update((s) => s..forceHighRefreshRate = value);
+  }
+}

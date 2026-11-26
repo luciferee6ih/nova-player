@@ -1,0 +1,1945 @@
+{
+  "headerProfilePhoto": "Фото в верхних панелях",
+  "headerProfilePhotoDesc": "Показывать фото профиля на Главной, в Треках и Медиатеке вместо значка человека",
+  "customizeLibraryDesc": "Закрепляйте плейлисты или «Избранное» вверху медиатеки и перетаскивайте их в нужном порядке.",
+  "lyricsMenuSync": "Синхронизация",
+  "lyricsMenuSource": "Источник",
+  "lyricsMenuLook": "Внешний вид",
+  "lyricsMenuYourLyrics": "Ваши тексты",
+  "eqScopeAllSongs": "Все треки",
+  "eqScopeThisSong": "Этот трек",
+  "eqScopeAllNote": "Изменения применяются ко всем трекам без собственного эквалайзера.",
+  "eqScopeSongNote": "Изменения применяются к играющему треку.",
+  "eqUseAllSongsForThis": "Использовать «Все треки» для этого трека",
+  "eqCopyToAllSongs": "Скопировать этот звук во «Все треки»",
+  "eqPresetsLabel": "Пресеты",
+  "eqBands": "18 полос",
+  "eqTone": "Тембр",
+  "eqEffects": "Эффекты",
+  "eqSpeedPitch": "Скорость и высота",
+  "eqMore": "Ещё",
+  "eqLofiDesc": "Биткрашер и спад верхов",
+  "eqReverbDesc": "Небольшая студия",
+  "eqSurroundDesc": "Более широкая сцена",
+  "eqMonoDesc": "Оба уха слышат одно и то же",
+  "eqDeviceAudio": "Звук устройства",
+  "eqDeviceAudioDesc": "Форматы вывода и частоты дискретизации",
+  "eqRawFilterDesc": "Ваша цепочка фильтров FFmpeg",
+  "removeFromQueue": "Убрать из очереди",
+  "importLabel": "Импорт",
+  "restoreSettingsTitle": "Восстановить и настройки?",
+  "restoreSettingsDesc": "В этой копии есть настройки приложения: тема, плеер, эквалайзер и закрепления в медиатеке. Восстановление заменит текущие настройки.",
+  "restoreSettings": "Восстановить",
+  "keepMySettings": "Оставить мои",
+  "pinToLibrary": "Закрепить в медиатеке",
+  "unpinFromLibrary": "Открепить из медиатеки",
+  "pinned": "Закреплено",
+  "customizeLibrary": "Настроить медиатеку",
+  "lyricsFollowPlayerBackground": "Фон как в «Сейчас играет»",
+  "lyricsFollowPlayerBackgroundDesc": "Использовать тот же фон, что и на экране «Сейчас играет»",
+  "frostedMusicBar": "Матовая панель музыки",
+  "frostedMusicBarDesc": "Размытие только за панелью музыки",
+  "frostedNavbar": "Матовая панель навигации",
+  "frostedNavbarDesc": "Размытие только за панелью навигации",
+  "allSongsEyebrow": "Все",
+  "yourLibraryEyebrow": "Ваша",
+  "about": "О",
+  "aboutAndMaintainers": "О компании и сопровождающие",
+  "aboutApp": "О приложении",
+  "aboutNovaPlayer": "О NOVA PLAYER",
+  "accentColor": "Акцентный цвет",
+  "accentColorDesc": "Выбрать акцентный цвет темы вручную",
+  "acousticSpectralAnalysis": "АКУСТИЧЕСКИЙ И СПЕКТРАЛЬНЫЙ АНАЛИЗ",
+  "activeCallCannotPlay": "Воспроизведение заблокировано: Невозможно воспроизводить музыку во время активного вызова",
+  "adaptColorsArtwork": "Адаптируйте цвета приложения к обложке альбома",
+  "addedTo": "Добавлено в {name}",
+  "@addedTo": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "addedToQueue": "Добавлено в очередь",
+  "addFolder": "Добавить папку",
+  "addToFavorites": "Добавить в избранное",
+  "addSongsToPlaylistTitle": "Добавить песни",
+  "addSongsToPlaylistHint": "Чтобы добавить песню сюда, нажмите ⋮ у любой песни и выберите «Добавить в плейлисты».",
+  "addSongsToPlaylistHintDesktop": "Чтобы добавить песню сюда, щёлкните правой кнопкой по любой песне и выберите «Добавить в плейлисты».",
+  "addToPlaylists": "Добавить в плейлисты",
+  "addToQueue": "Добавить в очередь",
+  "album": "Альбом",
+  "albums": "Альбомы",
+  "albumsRowDesc": "Горизонтальная полка для альбомов",
+  "allFilesAccess": "ДОСТУП ВСЕМ ФАЙЛАМ (РЕКОМЕНДУЕТСЯ)",
+  "allSongs": "Все песни",
+  "appDetailsCreator": "Сведения о приложении, сведения об создателе и команде разработчиков.",
+  "appearance": "Внешний вид",
+  "appInfoPrivacy": "ИНФОРМАЦИЯ О ПРИЛОЖЕНИИ И КОНФИДЕНЦИАЛЬНОСТЬ",
+  "appTitle": "NOVA Player",
+  "artist": "Исполнитель",
+  "artists": "Художники",
+  "artistsRowDesc": "Горизонтальная полка художников",
+  "ascending": "По возрастанию",
+  "audioCrossfade": "Кроссфейд (плавный переход)",
+  "audioCrossfadeDesc": "Плавно накладывать треки друг на друга при смене песен",
+  "crossfadeDuration": "Длительность кроссфейда",
+  "crossfadeDurationDesc": "Длительность перекрывающегося перехода между песнями",
+  "smartTransitions": "Умные переходы",
+  "smartTransitionsDesc": "Выравнивает переходы по меткам, пропускает тишину и не обрывает слова песни",
+  "beatMixing": "Сведение по биту (Экспериментально)",
+  "beatMixingDesc": "Подстраивает темп и выравнивает доли для плавного DJ-микса",
+  "audioFocusDenied": "Воспроизведение приостановлено: система отказала в фокусировке звука",
+  "audioPlayback": "Аудио и воспроизведение",
+  "audioPlaybackDesc": "Настройки кроссфейда, пауз и затухания",
+  "autoCrossfadeDuration": "Длительность авто-кроссфейда",
+  "autoCrossfadeDurationDesc": "Время наложения при автоматическом переходе",
+  "backToMainView": "ВЕРНУТЬСЯ К ГЛАВНОМУ ВИДУ",
+  "cancel": "Отмена",
+  "categories": "Категории",
+  "center": "По центру",
+  "clear": "Очистить",
+  "clearQueue": "Очистить",
+  "connectDevice": "ПОДКЛЮЧИТЬ УСТРОЙСТВО",
+  "corePurpose": "Основная цель",
+  "corePurposeDesc": "NOVA Player — это высококачественный аудиоплеер, предназначенный для любителей музыки, которым нужен абсолютный контроль над своей локальной библиотекой, непрерывное воспроизведение и плавная синхронизированная прокрутка текстов песен.",
+  "create": "Создать",
+  "createPlaylist": "Создать плейлист",
+  "creatorAndMaintainer": "Создатель и сопровождающий",
+  "customAccentColor": "Пользовательский акцентный цвет",
+  "customizeColorsTheme": "Настройте цвета приложения, тему и фон текстов песен.",
+  "dateAdded": "Дата добавления",
+  "deepStorageScanProgress": "ВЫПОЛНЯЕТСЯ ГЛУБОКОЕ СКАНИРОВАНИЕ ХРАНЕНИЯ...",
+  "delete": "Удалить",
+  "deleteFile": "Удалить файл",
+  "deletePlaylist": "Удалить плейлист",
+  "deletePlaylistConfirm": "Вы уверены, что хотите удалить \"{name}\"?",
+  "@deletePlaylistConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteSong": "Удалить песню",
+  "deleteSongConfirm": "Вы уверены, что хотите удалить эту песню с диска?",
+  "descending": "По убыванию",
+  "designerAndMaintainer": "Дизайнер и сопровождающий",
+  "disableBlurEffects": "Отключить эффекты размытия",
+  "disableSquigglyProgressBar": "Отключить анимацию индикатора выполнения волнистой волны",
+  "downloadAudioDirectly": "СКАЧАТЬ АУДИО ПРЯМО",
+  "downloadingLyricsOffline": "Загрузка текстов для автономного использования...",
+  "downloadMissingArtwork": "Скачать недостающую иллюстрацию",
+  "downloadMissingArtworkDesc": "Автоматически загружать обложки песен в высоком разрешении из iTunes.",
+  "duration": "Длительность",
+  "dynamicAccentColor": "Динамический акцентный цвет",
+  "dynamicAccentColorDesc": "Обновлять только акцентный цвет на основе обложки альбома",
+  "dynamicBgOnlyLyrics": "Динамический фон только для текстов песен",
+  "dynamicColorActiveLyrics": "Динамическая цветная активная линия",
+  "dynamicColorActiveLyricsDesc": "Окрашивает текущую строку текста; если выключено, она остаётся белой",
+  "activeLyricsIntensity": "Яркость активной строки",
+  "activeLyricsIntensityDesc": "Насколько насыщенным цветом показывается текущая строка текста",
+  "activeLyricsIntensityPreviewInactive": "Неактивная строка",
+  "activeLyricsIntensityPreviewActive": "Активная строка",
+  "inactiveLyricsOpacity": "Непрозрачность неактивных строк",
+  "inactiveLyricsOpacityDesc": "Насколько плотными выглядят строки вокруг текущей; меньше — прозрачнее",
+  "lyricsLineGrouping": "Группировать слитные строки",
+  "lyricsLineGroupingDesc": "Показывать вместе две строки, спетые на одном дыхании, без прокрутки между ними",
+  "dynamicLyricsBg": "Динамические тексты песен BG",
+  "dynamicLyricsBgDesc": "Применять размытие обложки к экрану с текстом песен",
+  "dynamicTheming": "Динамическое оформление тем",
+  "emptyLibraryDesc": "Нам не удалось найти поддерживаемые музыкальные файлы в вашей медиатеке. Добавьте папки или запустите поисковое сканирование.",
+  "enableNetworkLyricsArt": "Включить использование сети для онлайн-текстов песен и иллюстраций исполнителей.",
+  "enablePlayerGradient": "Градиент музыкального экрана",
+  "enablePlayerGradientDesc": "Включите фон с радиальным акцентом на экране воспроизведения.",
+  "enableLyricsGradient": "Градиент экрана текстов песен",
+  "enableLyricsGradientDesc": "Включите фон с радиальным акцентом на экране текстов песен.",
+  "fadeDuration": "Длительность затухания",
+  "fadeDurationDesc": "Продолжительность эффекта затухания",
+  "fadeOnSeek": "Затухание при перемотке",
+  "fadeOnSeekDesc": "Плавно приглушать и восстанавливать громкость при поиске по треку",
+  "fadePlayPauseStop": "Плавное затухание воспроизведения/паузы/стопа",
+  "fadePlayPauseStopDesc": "Плавно изменять громкость при начале, приостановке или остановке воспроизведения",
+  "favorites": "Избранное",
+  "fileInformation": "Информация о файле",
+  "flatProgressBar": "Плоский индикатор выполнения",
+  "folders": "Папки",
+  "genre": "Жанр",
+  "genres": "Жанры",
+  "genresRowDesc": "Горизонтальная полка музыкальных жанров",
+  "goStart": "НАЧАТЬ",
+  "grant": "ГРАНТ",
+  "granted": "ПРЕДОСТАВЛЕНО",
+  "history": "История",
+  "home": "Главная",
+  "homeDarkness": "Темнота главного экрана",
+  "homeDarknessDesc": "Настройка яркости наложения фона на главном экране",
+  "homeDashboardSettings": "Настройки домашней панели",
+  "homeDashboardSettingsDesc": "Настройте горизонтальные строки на главном экране",
+  "internetMode": "Интернет-режим",
+  "keepBackgroundGradient": "Сохранять градиент фона",
+  "keepBackgroundGradientDesc": "Сохраняйте градиент фона на всех экранах приложений.",
+  "animatePlayerGradient": "Анимированный градиент",
+  "animatePlayerGradientDesc": "Плавно перемещает основной и третичный цвета с мягким зерном в такт музыке",
+  "animateBackgroundGradient": "Анимированный фон",
+  "animateBackgroundGradientDesc": "Использует анимированный градиент на фоне Главной, Песен и Библиотеки",
+  "language": "Язык",
+  "left": "Слева",
+  "library": "Библиотека",
+  "libraryDarkness": "Темнота экрана библиотеки",
+  "libraryDarknessDesc": "Отрегулируйте яркость наложения фона для экрана библиотеки.",
+  "libraryFoldersSync": "Папки, триггеры повторного сканирования, сброс базы данных и автономная синхронизация",
+  "librarySettings": "Настройки библиотеки",
+  "loadingMusicLibrary": "ЗАГРУЗКА МУЗЫКАЛЬНОЙ БИБЛИОТЕКИ",
+  "loadingMusicLibraryDesc": "Создание премиум-индексов, настройка аппаратных прослушивателей и оптимизация визуальных кешей.",
+  "loadingPhase1": "ОПРОС АУДИОХРАНЕНИЯ...",
+  "loadingPhase2": "ОБНОВЛЯЕМ МУЗЫКАЛЬНЫЙ ДВИГАТЕЛЬ...",
+  "loadingPhase3": "ИЗВЛЕЧЕНИЕ АКУСТИЧЕСКИХ ДАННЫХ...",
+  "loadingPhase4": "ОПТИМИЗАЦИЯ ВОСПРОИЗВЕДЕНИЯ ПАМЯТИ...",
+  "@@locale": "ru",
+  "lyrics": "Тексты песен",
+  "lyricsAlignment": "Выравнивание текстов",
+  "lyricsAlignmentDesc": "Выровняйте позиции текста для прокрутки текстов песен",
+  "lyricsDarkness": "Тексты песен Screen Darkness",
+  "lyricsDarknessDesc": "Отрегулируйте яркость наложения фона на экране «Тексты»",
+  "lyricsProvider": "Поставщик текстов",
+  "lyricsProviderDesc": "Онлайн-тексты из lrc.red, LyricsPlus, LRCLIB и других",
+  "maintainersAndDesigners": "Разработчики и дизайнеры",
+  "manageAudioFocus": "Управление аудиофокусом",
+  "manageAudioFocusDesc": "Запрашивать и реагировать на системные изменения аудиофокуса",
+  "manageAudioFocusTitle": "Управление аудиофокусом",
+  "manageLanguageAndFocus": "Управляйте языковыми настройками и состоянием фокуса звонящего",
+  "manualCrossfadeDuration": "Длительность ручного кроссфейда",
+  "manualCrossfadeDurationDesc": "Время наложения при ручном переключении",
+  "matchingLyrics": "СООТВЕТСТВУЮЩИЕ ТЕКСТЫ",
+  "metadataDetails": "Подробности метаданных",
+  "mostPlayed": "Популярные",
+  "musicAudioAccess": "ДОСТУП К МУЗЫКЕ И АУДИО",
+  "musicDarkness": "Музыкальный проигрыватель Тьма",
+  "musicDarknessDesc": "Настройка яркости наложения фона на экране музыкального проигрывателя",
+  "musicLibrary": "Музыкальная библиотека",
+  "muteOrPauseCalls": "Отключение звука или пауза во время звонков и других звуковых действий",
+  "newPlaylist": "Новый плейлист",
+  "newTitle": "Новое название",
+  "noAlbumsFound": "Альбомы не найдены",
+  "noArtistsFound": "Художники не найдены",
+  "noFavoritesYet": "Нет избранного",
+  "noHistoryYet": "История пуста",
+  "noLyrics": "Тексты песен не найдены",
+  "noMusicDetected": "МУЗЫКА НЕ ОБНАРУЖЕНА",
+  "noPlaylistsCreated": "Плейлисты еще не созданы.",
+  "noPlaylistsYet": "Нет плейлистов",
+  "noResultsFound": "Результаты не найдены",
+  "noSongsFound": "Песни не найдены",
+  "notificationAccess": "ДОСТУП К УВЕДОМЛЕНИЯМ",
+  "nowPlaying": "Сейчас играет",
+  "performanceOptimizerDashboard": "Панель оптимизации производительности",
+  "performanceOptimizerDashboardDesc": "Показывать оверлей со статистикой оптимизатора в реальном времени",
+  "permanentFocusChangePause": "Пауза при постоянной потере фокуса",
+  "permanentFocusChangePauseDesc": "Автоматически ставить на паузу при постоянной потере аудиофокуса",
+  "plainTimestamps": "Простые временные метки",
+  "scrollToEnd": "Прокрутить до конца",
+  "scrollToTop": "Прокрутить вверх",
+  "play": "Играть",
+  "playAll": "Воспроизвести все",
+  "playbackAudio": "Воспроизведение и язык",
+  "playlists": "Плейлисты",
+  "playNext": "Воспроизвести следующим",
+  "playQueue": "Играть в очередь",
+  "pressBackExit": "Нажмите назад еще раз, чтобы выйти",
+  "privacySafety": "Конфиденциальность и безопасность",
+  "privacySafetyDesc": "100% конфиденциальность и приоритетность в автономном режиме. Ваши треки, история воспроизведения, избранное и конфигурация остаются строго в защищенной базе данных Isar на вашем локальном устройстве. Мы не отслеживаем, не собираем и не передаем ваши данные об использовании или предпочтениях.",
+  "pureBlackOled": "Чистый черный (OLED)",
+  "pureBlackOledDesc": "Использовать абсолютно черный цвет для фона",
+  "queue": "Очередь",
+  "queueIsEmpty": "Очередь пуста",
+  "quickPicks": "Быстрый выбор",
+  "quickPicksRowDesc": "Ваша самая популярная сетка песен",
+  "readyToScan": "Готов к сканированию",
+  "recentlyAddedSongsRowDesc": "Список вашего последнего импорта",
+  "recentlyPlayed": "Недавние",
+  "recentPlayed": "Последние сыгранные",
+  "recentRowDesc": "Горизонтальная полка недавно воспроизведённых треков",
+  "removedFromPlaylist": "Удалено из плейлиста",
+  "removeFromFavorites": "Удалить из избранного",
+  "removeFromPlaylist": "Удалить из плейлиста",
+  "rename": "Переименовать",
+  "renameFile": "Переименовать файл",
+  "renamePlaylist": "Переименовать плейлист",
+  "changePlaylistCover": "Изменить обложку",
+  "removePlaylistCover": "Удалить обложку",
+  "renameSong": "Переименовать песню",
+  "reorderDashboardSections": "Изменение порядка разделов информационной панели",
+  "reorderDashboardSectionsDesc": "Перетащите, чтобы установить предпочтительный порядок панели мониторинга.",
+  "includeOtherDeviceAudioTitle": "Включить другое аудио устройства",
+  "includeOtherDeviceAudioDesc": "Сканировать рингтоны, уведомления, будильники и аудио WhatsApp и Telegram",
+  "rescanLibrary": "Повторное сканирование библиотеки",
+  "rescanStorage": "ПЕРЕСКАНИРОВАНИЕ ХРАНЕНИЯ",
+  "reset": "Сбросить",
+  "resetLibrary": "Сброс и повторное сканирование",
+  "resetLibraryConfirm": "Это очистит все песни, альбомы и исполнителей и выполнит полное повторное сканирование ваших папок.",
+  "resetLibraryConfirmNew": "Это удалит все песни из вашей библиотеки в приложении. Физические файлы на диске удалены не будут.",
+  "resetLibraryDesc": "Удалить все песни из вашей индексированной библиотеки",
+  "resumeAfterCallDesc": "Автоматически возобновлять проигрывание после завершения звонка",
+  "resumeAfterCallTitle": "Возобновлять после звонка",
+  "resumeOnStartDesc": "Автоматически возобновлять проигрывание при старте NOVA Player",
+  "resumeOnStartTitle": "Возобновлять при запуске",
+  "right": "Справа",
+  "scanCompleteSongsDetected": "СКАНИРОВАНИЕ ЗАВЕРШЕНО: ОБНАРУЖЕНО {count} ПЕСЕН!",
+  "@scanCompleteSongsDetected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "scanForMusic": "СКАНИРОВАНИЕ МУЗЫКИ",
+  "scanIndexLocalDesc": "Сканирование и индексирование локальных музыкальных файлов",
+  "scanLibrary": "Сканировать библиотеку",
+  "scanningInBackground": "Сканирование в фоновом режиме...",
+  "scanningLibrary": "Сканирование библиотеки...",
+  "scanningStorage": "СКАНИРОВАНИЕ ХРАНИЛИЩА...",
+  "scanningStorageDesc": "Обход деревьев каталогов для обнаружения аудиодорожек. Пожалуйста, подождите...",
+  "search": "Поиск",
+  "searchLibraryHint": "Поиск по всей вашей библиотеке",
+  "searchSongsHint": "Поиск песен",
+  "seekFadeDuration": "Длительность затухания при перемотке",
+  "seekFadeDurationDesc": "Продолжительность эффекта затухания при перемотке",
+  "selectAppLanguage": "Выберите язык приложения",
+  "selectCustomColor": "Выберите собственный цвет",
+  "selectCustomFolder": "ВЫБОР ПОЛЬЗОВАТЕЛЬСКОЙ ПАПКИ",
+  "selectFolderIndex": "Выбрать папку для сканирования аудиофайлов",
+  "selectSpecificFolder": "ВЫБЕРИТЕ КОНКРЕТНУЮ ПАПКУ",
+  "settings": "Настройки",
+  "share": "Поделиться",
+  "shareFile": "Поделиться файлом",
+  "showAlbumsRow": "Показать строку альбомов",
+  "showAlbumsRowDesc": "Отображение горизонтального списка альбомов на главном экране.",
+  "showArtistsRow": "Шоу «Ряд художников»",
+  "showArtistsRowDesc": "Отображение горизонтального списка исполнителей на главном экране.",
+  "showGenresRow": "Показать строку жанров",
+  "showGenresRowDesc": "Отображение горизонтального списка жанров на главном экране.",
+  "showLess": "Показать меньше",
+  "showMore": "Показать больше",
+  "segmentedUtilityButtons": "Сегментированные кнопки плеера",
+  "segmentedUtilityButtonsDesc": "Показывать перемешивание, повтор, очередь и текст песни как четыре плитки со значками в стиле кнопок воспроизведения",
+  "playerLyricLine": "Строка текста под обложкой",
+  "playerLyricLineDesc": "Показывать текущую строку текста под обложкой с синхронизацией по словам, как на экране текста",
+  "playerLyricLineTransition": "Анимация смены строки",
+  "lyricLineTransitionCube": "Куб",
+  "lyricLineTransitionRoll": "Прокрутка",
+  "lyricLineTransitionFlip": "Переворот",
+  "lyricLineTransitionBlur": "Размытие",
+  "accentVibrancy": "Насыщенность акцентного цвета",
+  "accentVibrancyDesc": "Делает акцентный цвет ярче, не меняя его светлоту",
+  "appearanceSettingsDesc": "Цвета, фоны, затемнение и шрифты",
+  "nowPlayingSettingsDesc": "Макет плеера, полоса прогресса, значок и строка текста",
+  "lyricsSettingsDesc": "Вид активной строки, фон и источники текстов",
+  "homeAndLibrary": "Главная и медиатека",
+  "homeAndLibraryDesc": "Ряды главной, вид медиатеки и папки",
+  "playbackAndAudio": "Воспроизведение и звук",
+  "playbackAudioSettingsDesc": "Эквалайзер, затухания, очередь и прерывания",
+  "general": "Общие",
+  "generalSettingsDesc": "Язык, вибрация, интернет и профиль",
+  "sectionPlayer": "Плеер",
+  "sectionSeekBarVisuals": "Полоса прогресса и эффекты",
+  "sectionTrackInfo": "О треке",
+  "sectionLyricLine": "Строка текста",
+  "sectionLook": "Вид",
+  "sectionBackground": "Фон",
+  "sectionSources": "Источники",
+  "sectionHomeRows": "Ряды главной",
+  "sectionDisplay": "Отображение",
+  "sectionFolders": "Папки и сканирование",
+  "sectionSound": "Звук",
+  "sectionInterruptions": "Прерывания",
+  "sectionApp": "Приложение",
+  "sectionInternet": "Интернет",
+  "showAlbumNextToArtist": "Показывать альбом рядом с исполнителем",
+  "showAlbumNextToArtistDesc": "Показывать «Исполнитель • Альбом» под названиями вместо одного исполнителя",
+  "showAlbumInQuickPicks": "Альбом в быстром выборе",
+  "showAlbumInQuickPicksDesc": "Показывать альбом и в быстром выборе на главной",
+  "reorderSongsHint": "Нажмите и удерживайте трек, затем перетащите, чтобы изменить порядок",
+  "qualityBadgeStyle": "Стиль значка качества",
+  "qualityBadgeStyleDesc": "Вид, значок, цвета и сведения значка качества звука",
+  "qualityBadgeLook": "Вид",
+  "qualityBadgeLookPill": "Заливка",
+  "qualityBadgeLookOutlined": "Контур",
+  "qualityBadgeLookText": "Текст",
+  "qualityBadgeIcon": "Значок",
+  "qualityBadgeColorsByQuality": "По качеству",
+  "qualityBadgeSeparator": "Разделитель",
+  "qualityBadgeDetails": "Сведения",
+  "qualityBadgeLevel": "Уровень качества",
+  "qualityBadgeLayout": "Содержимое",
+  "qualityBadgeLayoutName": "Только название",
+  "qualityBadgeShape": "Форма",
+  "qualityBadgeShapePill": "Капсула",
+  "qualityBadgeShapeRounded": "Скруглённая",
+  "qualityBadgeShapeSquare": "Квадратная",
+  "showQualityBadge": "Показать значок качества",
+  "showQualityBadgeDesc": "Отображение значка с информацией о качестве звука на экране воспроизведения",
+  "showPlaylistsRow": "Показывать ряд плейлистов",
+  "showPlaylistsRowDesc": "Показывать горизонтальный список плейлистов на главном экране",
+  "playlistsRowDesc": "Ваши плейлисты, недавно воспроизведённые первыми",
+  "showRecentRow": "Показать строку недавно воспроизведённых",
+  "showRecentRowDesc": "Отображение горизонтального списка недавно воспроизведённых треков на главном экране.",
+  "silenceBetweenTracksDesc": "Добавить паузу тишины между треками (0 мс для беспрерывного воспроизведения)",
+  "silenceBetweenTracksTitle": "Тишина между треками",
+  "songDeletedDbOnly": "Песня удалена из библиотеки (физический файл доступен только для чтения)",
+  "songDeletedSuccess": "Песня успешно удалена",
+  "songDeleteFailed": "Не удалось удалить песню",
+  "songDetails": "Подробности песни",
+  "songDetailsAndFrequency": "Подробности и частота песен",
+  "songRenamedDbOnly": "Песня переименована в библиотеке (физический файл доступен только для чтения)",
+  "songRenamedSuccess": "Песня успешно переименована",
+  "songRenameFailed": "Не удалось переименовать песню",
+  "songs": "Песни",
+  "songsDarkness": "Песни Экран Тьма",
+  "songsDarknessDesc": "Настройка яркости наложения фона на экране «Песни»",
+  "sortBy": "Сортировать по",
+  "sortOrder": "Порядок сортировки",
+  "sourceCode": "Исходный код",
+  "stopServiceOnAppDismissal": "Остановка службы при закрытии приложения",
+  "stopServiceOnAppDismissalDesc": "Останавливать фоновую службу и закрывать приложение при его смахивании",
+  "storagePermissionRequired": "Для сканирования памяти устройства необходимы разрешения на хранение.",
+  "syncLyricsOffline": "Синхронизировать тексты песен (офлайн)",
+  "systemDefault": "Системный по умолчанию",
+  "systemPermissionChecklist": "КОНТРОЛЬНЫЙ СПИСОК РАЗРЕШЕНИЙ СИСТЕМЫ",
+  "technicalInfoFrequency": "Техническая информация и частота",
+  "theme": "Тема",
+  "title": "Название",
+  "todayMixForYou": "Сегодня Микс для тебя",
+  "toggleFavorite": "Переключить избранное",
+  "topResult": "Лучший результат",
+  "transferMusicFiles": "ПЕРЕДАЧА МУЗЫКАЛЬНЫХ ФАЙЛОВ",
+  "turnOffBlursOptimize": "Отключите сильное размытие, чтобы оптимизировать производительность.",
+  "unknown": "Неизвестно",
+  "unknownAlbum": "Неизвестный альбом",
+  "unknownArtist": "Неизвестный исполнитель",
+  "updateLibraryIndexing": "Обновить индексацию файлов библиотеки",
+  "useAbsoluteBlackBg": "Используйте абсолютный черный цвет для фона.",
+  "useStaticTextTimestamps": "Используйте статический текст вместо движущейся анимации для продолжительности прогресса.",
+  "fluidPlayer": "Плавный плеер",
+  "fluidPlayerDesc": "Потяните мини-плеер вверх, чтобы превратить его в полноэкранный плеер",
+  "hapticFeedback": "Тактильный отклик",
+  "hapticFeedbackDesc": "Вибрация при нажатиях, переключениях и жестах",
+  "hapticStrength": "Сила",
+  "hapticStrengthLow": "Слабая",
+  "hapticStrengthMedium": "Средняя",
+  "hapticStrengthHigh": "Сильная",
+  "viewAll": "Посмотреть все",
+  "visitOfficialRepository": "Посетить официальный репозиторий на GitHub",
+  "welcomeAboutDesc": "NOVA Player — это музыкальная ОС нового поколения, созданная для автономного воспроизведения аудио премиум-класса. Особенности динамической генерации текстов в реальном времени, расширенное управление аудиосессиями с отключением звука при вызове, адаптивное фоновое оформление и поддержка многоформатной музыкальной библиотеки. Полностью оптимизирован для максимальной эффективности использования аккумулятора.",
+  "welcomeAllFilesDesc": "Настоятельно рекомендуется для профессионального сканирования для поиска песен в нестандартных каталогах (Загрузки, Telegram, пользовательские папки).",
+  "welcomeInstructionConnectDesc": "Подключите телефон или устройство к персональному компьютеру с помощью стандартного USB-кабеля для передачи данных.",
+  "welcomeInstructionDownloadDesc": "Альтернативно загрузите файлы напрямую с помощью веб-браузера или другой утилиты загрузки на самом устройстве.",
+  "welcomeInstructionTransferDesc": "Скопируйте свои автономные музыкальные файлы (поддерживает форматы .mp3, .flac, .m4a, .wav) непосредственно в стандартную папку «Музыка» или «Загрузка» вашего устройства.",
+  "welcomeMusicAudioDesc": "Требуется для обнаружения и воспроизведения стандартных автономных аудиодорожек в памяти вашего устройства.",
+  "welcomeNoSongsDesc": "Нам не удалось найти поддерживаемые аудиофайлы (MP3, FLAC, WAV, M4A, OGG) в памяти вашего устройства.",
+  "welcomeNotificationDesc": "Требуется для отображения элементов управления воспроизведением и виджетов активных уведомлений на системной панели.",
+  "welcomeScanningFoldersDesc": "Сканирование всех папок и подпапок на наличие аудиофайлов.",
+  "whyInternetUsed": "Почему используется Интернет",
+  "whyInternetUsedDesc": "• Тексты песен: загружает синхронизированные тексты из lrc.red, LyricsPlus, LRCLIB или выбранного провайдера. Для поиска отправляются только название, исполнитель, альбом и длительность трека. Личные данные, настройки и медиафайлы никогда не загружаются и не передаются.",
+  "whyPermissionsUsed": "Почему используются разрешения",
+  "whyPermissionsUsedDesc": "• Доступ к хранилищу/медиа: требуется для обнаружения, чтения и индексирования локальных аудиодорожек, хранящихся на вашем устройстве.\n• Уведомления: необходимы для отображения виджетов активного управления воспроизведением в строке состояния и системном ящике.",
+  "willPlayNext": "Будет воспроизведено следующим",
+  "year": "Год",
+  "activeFont": "Активный шрифт: {fontName}",
+  "activeLyricsFont": "Активный шрифт текста: {fontName}",
+  "currentWeight": "Текущая толщина",
+  "fontWeightAdjustment": "Регулировка толщины шрифта",
+  "giveStarOnGithub": "Поставить звезду на GitHub",
+  "lyricsFontFamily": "Семейство шрифтов текста",
+  "lyricsFontWeightAdjustment": "Регулировка толщины текста",
+  "persistQueueDesc": "Сохранять последнюю песню и очередь при перезапуске приложения",
+  "persistQueueTitle": "Сохранять последнюю очередь",
+  "selectFontFamily": "Выбрать семейство шрифтов",
+  "sortAlbumAsc": "Альбом (А-Я)",
+  "sortAlphabeticalAZ": "По алфавиту (А-Я)",
+  "sortAlphabeticalZA": "По алфавиту (Я-А)",
+  "sortArtistAsc": "Исполнитель (А-Я)",
+  "sortDefault": "По умолчанию",
+  "sortDuration": "Длительность",
+  "sortLeastSongs": "Меньше всего песен",
+  "sortMostSongs": "Больше всего песен",
+  "sortOldestAdded": "Сначала старые",
+  "sortRecentlyAdded": "Недавно добавленные",
+  "sortYearNewest": "Год (Новые)",
+  "sortYearOldest": "Год (Старые)",
+  "supportDevelopment": "Поддержать разработку",
+  "supportDevelopmentDesc": "NOVA Player на 100% бесплатен и имеет открытый исходный код. Если вам нравится им пользоваться, пожалуйста, поддержите создателя пожертвованием. Каждая поддержка помогает поддерживать проект активным!",
+  "supportProjectLove": "Поддержите проект и проявите симпатию!",
+  "supportPromptMessage": "Нравится NOVA Player? Помогите сохранить его бесплатным — поддержите нас на Ko-fi.",
+  "supportPromptAction": "Поддержать",
+  "supportUs": "Поддержать нас",
+  "supportUsDesc": "Помогите сохранить NOVA Player живым и открытым",
+  "useCustomFont": "Использовать свой шрифт",
+  "useCustomFontDesc": "Использовать Jost или другие шрифты. Иначе используется DM Sans.",
+  "useCustomFontLyrics": "Свой шрифт для текста песен",
+  "useCustomFontLyricsDesc": "Использовать свой шрифт и толщину для синхронизированных слов",
+  "audioFocusGetFocus": "Получить фокус",
+  "audioFocusGetFocusDesc": "Запрашивать аудиофокус в начале воспроизведения.",
+  "audioFocusReleaseFocus": "Освободить фокус",
+  "audioFocusReleaseFocusDesc": "Освобождать аудиофокус при паузе или остановке воспроизведения.",
+  "audioFocusStopOnOtherSession": "Останавливать музыку при другом музыкальном сеансе",
+  "audioFocusStopOnOtherSessionDesc": "Приостанавливать воспроизведение, когда другое приложение начинает воспроизводить звук.",
+  "audioFocusRestartOnGain": "Возобновлять музыку при получении фокуса",
+  "audioFocusRestartOnGainDesc": "Автоматически возобновлять воспроизведение при возврате аудиофокуса, только если воспроизведение было прервано из-за потери фокуса.",
+  "pauseOnDuckTitle": "Пауза при приглушении",
+  "pauseOnDuckDesc": "Ставить воспроизведение на паузу вместо снижения громкости, когда другое приложение воспроизводит кратковременный звук (например, уведомления, голосовую навигацию).",
+  "resumeOnBluetoothConnectTitle": "Возобновлять при подключении Bluetooth",
+  "resumeOnBluetoothConnectDesc": "Автоматически возобновлять воспроизведение при повторном подключении Bluetooth-устройства (наушников, автомобильной гарнитуры).",
+  "shuffleTitle": "Перемешивание",
+  "shuffleDisabledDesc": "Воспроизводить песни в исходном порядке очереди. При отключении перемешивания текущая песня продолжает играть, а оставшаяся очередь восстанавливается в исходном порядке без влияния на воспроизведение или его историю.",
+  "shuffleEnabledDesc": "Перемешивать оставшиеся песни, не затрагивая текущую. Сформированный порядок перемешивания остаётся неизменным, пока очередь не изменится или не будет запрошено новое перемешивание, что предотвращает повторение или пропуск треков.",
+  "shuffleSwitchingDesc": "Включение или выключение перемешивания никогда не перезапускает текущую песню. Меняется только порядок предстоящих треков — случайный при включении и восстановленный к исходному порядку очереди при выключении.",
+  "myAlbums": "Мои альбомы",
+  "featuredArtists": "Рекомендуемые исполнители",
+  "noSongPlaying": "Ничего не воспроизводится",
+  "nextLabel": "Далее",
+  "previousLabel": "Назад",
+  "resync": "Пересинхронизировать",
+  "equalizer": "Эквалайзер",
+  "presets": "ПРЕСЕТЫ",
+  "preAmpGain": "Усиление предусилителя",
+  "outputVolume": "Выходная громкость",
+  "customFilterHint": "Введите произвольные параметры аудиофильтра libavfilter напрямую (например, volume=3dB, aecho=0.8:0.88:60:0.4):",
+  "flowGlobalActions": "Порядок работы и глобальные действия",
+  "equalizerModeLabel": "Режим эквалайзера:",
+  "currentGainsAppliedGlobal": "Текущие значения применены как глобальные настройки по умолчанию.",
+  "applyToGlobal": "Применить глобально",
+  "songSpecificResetGlobal": "Настройки для этой песни сброшены до глобальных значений по умолчанию.",
+  "resetToGlobal": "Сбросить до глобальных",
+  "resetAllSongsEq": "Сбросить EQ для всех песен",
+  "resetAllSongsEqConfirm": "Вы уверены, что хотите удалить пользовательские настройки эквалайзера для всех песен в вашей библиотеке?",
+  "allSongsEqDataReset": "Все данные эквалайзера для отдельных песен сброшены.",
+  "resetAllSongsEqData": "Сбросить данные EQ для всех песен",
+  "equalizerTargetMode": "Режим применения эквалайзера",
+  "equalizerTargetModeDesc": "Выберите, как настройки эквалайзера применяются ко всей вашей музыкальной библиотеке.",
+  "globalMode": "Глобальный режим",
+  "globalModeDesc": "Применяет эффекты одинаково ко всем песням. Настройки эквалайзера остаются прежними при смене песни.",
+  "songSpecificMode": "Режим для отдельной песни",
+  "songSpecificModeDesc": "Сохраняет пользовательские настройки только для текущей песни. Следующая песня по умолчанию использует ровный/отключённый эквалайзер, если у неё нет собственного профиля.",
+  "viewDeviceAudioCapabilities": "Просмотреть аудиовозможности устройства",
+  "deviceAudioCapabilities": "Аудиовозможности устройства",
+  "noPlaybackActiveCapabilities": "Воспроизведение не активно, либо информация о возможностях недоступна.",
+  "changeLyricsProvider": "Изменить источник текстов песен",
+  "autoFallbackProviders": "Автоматические резервные источники",
+  "autoFallbackProvidersDesc": "Автоматически пробовать другие источники, если у основного нет текста песни",
+  "ambientColorBackground": "Фон с окружающим цветом",
+  "ambientColorBackgroundDesc": "Плавные, ненавязчивые градиенты, созданные на основе обложки песни",
+  "exportLyricsLrc": "Экспортировать текст песни (файл .lrc)",
+  "saveLyricsToDevice": "Сохранить текущий текст песни в память устройства",
+  "noLyricsToExport": "Нет текста песни для экспорта",
+  "useCustomLyricsLrc": "Использовать собственный текст песни (файл LRC)",
+  "selectLocalLrcFile": "Выберите локальный файл .lrc или .txt для этой песни",
+  "customLyricsAppliedSuccess": "Пользовательский текст песни успешно применён!",
+  "noRecentlyPlayedTracks": "Нет недавно воспроизведённых треков",
+  "close": "Закрыть",
+  "audioQualityAnalysis": "Анализ качества звука",
+  "audioQualityAnalysisDesc": "Выполнить углублённый спектральный анализ и анализ аудиоформата",
+  "audioStreamDetails": "Сведения об аудиопотоке",
+  "perChannelMetrics": "Показатели по каналам",
+  "sleepTimer": "Таймер сна",
+  "stopByTime": "ОСТАНОВКА ПО ВРЕМЕНИ",
+  "start": "Запустить",
+  "stopBySongCount": "ОСТАНОВКА ПО КОЛИЧЕСТВУ ПЕСЕН",
+  "cancelSleepTimer": "Отменить таймер сна",
+  "nowPlayingAllCaps": "СЕЙЧАС ИГРАЕТ",
+  "settingsAndBackups": "Настройки и резервные копии",
+  "managePreferencesLibraryData": "Управление настройками и данными библиотеки",
+  "logsClearedSuccess": "Журналы успешно очищены",
+  "editSongInfo": "Изменить информацию о песне",
+  "editAlbumInfo": "Изменить информацию об альбоме",
+  "editArtistPicture": "Изменить фото исполнителя",
+  "artistPictureUpdated": "Фото исполнителя обновлено",
+  "fetchArtistPictureOnline": "Загрузить из интернета",
+  "artistPictureNotFound": "Подходящее фото в интернете не найдено",
+  "tapFieldToEdit": "Нажмите на поле, чтобы изменить его",
+  "removeArtwork": "Удалить обложку",
+  "saveChangesBtn": "Сохранить изменения",
+  "enterFolderPathManually": "Ввести путь к папке вручную",
+  "folderPickerManualHint": "Если системный выбор каталога не открывается, введите или вставьте полный путь к каталогу ниже:",
+  "noSupportedSongsFoundFolder": "В выбранной папке не найдено поддерживаемых песен",
+  "add": "Добавить",
+  "folderPickerClosed": "Выбор папки закрыт",
+  "supportOnKofi": "Поддержать на Ko-fi",
+  "typeToSearchSettings": "Введите текст для поиска в настройках…",
+  "maintainersLabel": "Мейнтейнеры",
+  "personBehindNovaPlayer": "Человек, стоящий за NOVA Player",
+  "blurredArtworkForLyrics": "Размытая обложка для текста песни",
+  "blurredArtworkForLyricsDesc": "Показывать размытую обложку альбома как фон вместо динамического/статического градиента",
+  "lyricsFontWeight": "Насыщенность шрифта текста песни",
+  "openSourceLicenses": "Лицензии открытого исходного кода",
+  "openSourceLicensesDesc": "Сторонние библиотеки, используемые в этом приложении",
+  "done": "Готово",
+  "lyricsNotAvailable": "Текст песни недоступен.",
+  "approximatedSyncNoWordTimings": "Приблизительная синхронизация (без покадровой синхронизации слов)",
+  "lyricsSyncHelp": "Справка по синхронизации текста песни",
+  "simpleModeLabel": "Простой режим",
+  "advancedModeLabel": "Расширенный режим",
+  "tips": "Советы",
+  "gotIt": "Понятно",
+  "lyricsSyncStudio": "Студия синхронизации текста песни",
+  "lyricsTextLabel": "Текст песни",
+  "lyricsTextHelperDesc": "По одной строке на строку текста песни. Инструменты синхронизации ниже привязывают к этим строкам временные метки.",
+  "quickSync": "Быстрая синхронизация",
+  "autoAdvanceAfterStamping": "Автоматически переходить дальше после проставления метки",
+  "advancedSync": "Расширенная синхронизация",
+  "useCurrentTime": "Использовать текущее время",
+  "playbackAssist": "Помощник воспроизведения",
+  "timeShift": "Сдвиг по времени",
+  "timeShiftDesc": "Сдвигает все проставленные метки текста песни вместе вперёд или назад.",
+  "lyricsSaveLrcExplain": "При сохранении, если возможно, создаётся сопутствующий файл «.lrc» рядом с аудиофайлом песни, а также сохраняется в локальной базе данных плеера. Строки без временных меток будут интерполированы автоматически.",
+  "back": "Назад",
+  "appSettingsLabel": "Настройки приложения",
+  "exportBackupJson": "Экспортировать резервную копию (JSON)",
+  "importBackupJson": "Импортировать резервную копию (JSON)",
+  "exportDiagnosticsLogs": "Экспортировать диагностические журналы",
+  "clearDiagnosticsLogs": "Очистить диагностические журналы",
+  "lyricsPlainTextOrLrc": "Текст песни (обычный текст или LRC)",
+  "syncModeLine": "СТРОКА",
+  "syncModeWord": "СЛОВО",
+  "syncModeChar": "СИМВОЛ",
+  "enterManually": "Ввести вручную",
+  "rawFilterParametersHint": "Необработанные параметры фильтра...",
+  "searchSettingsHint": "Поиск по настройкам...",
+  "repeatTooltip": "Повтор",
+  "favoriteTooltip": "Избранное",
+  "instructionsTooltip": "Инструкция",
+  "pasteLyricsHint": "Вставьте или введите текст песни здесь",
+  "timestampMmSsHint": "Временная метка (mm:ss.xx)",
+  "nowLabel": "Сейчас",
+  "playlistNameHint": "Название плейлиста",
+  "songInfoUpdated": "Информация о песне обновлена!",
+  "albumInfoUpdated": "Информация об альбоме обновлена!",
+  "failedToSaveChanges": "Не удалось сохранить изменения.",
+  "sleepTimerStoppingIn": "Активно: остановка через {time}",
+  "sleepTimerStoppingAfter": "Активно: остановка после {time}",
+  "selectWhenToPause": "Выберите, когда приостановить воспроизведение музыки",
+  "alwaysBlurSheets": "Всегда размывать листы",
+  "alwaysBlurSheetsDesc": "Размывать всплывающие листы, даже если динамическое оформление выключено",
+  "statusBarBlur": "Размытие строки состояния",
+  "statusBarBlurDesc": "Размывать страницу под строкой состояния при прокрутке",
+  "artworkResetToDefault": "Обложка сброшена к стандартной",
+  "backupsAndLogs": "Резервные копии и журналы",
+  "backupsAndLogsDesc": "Экспорт, импорт и управление данными приложения",
+  "clearDiagnosticsLogsDesc": "Полностью удаляет файл диагностического журнала, хранящийся на этом устройстве. Это действие необратимо.",
+  "exportBackupJsonDesc": "Сохраняет ваши любимые песни и плейлисты в файл JSON, который можно сохранить или отправить. Больше ничего не включается.",
+  "exportDiagnosticsLogsDesc": "Отправляет файл диагностического журнала приложения для проверки при устранении неполадок.",
+  "importBackupJsonDesc": "Объединяет любимые песни и плейлисты из файла резервной копии с вашей библиотекой. Существующие данные никогда не перезаписываются и не удаляются.",
+  "importLyricsFile": "Импортировать файл текста песни",
+  "keepSongProgressDesc": "Запоминает позицию воспроизведения каждой песни отдельно. Переключитесь на другую песню на середине и вернитесь позже — даже после прослушивания других песен между этим — и воспроизведение продолжится с того места, где вы остановились, а не с начала.",
+  "keepSongProgressTitle": "Сохранять прогресс песни",
+  "lyricsNotAvailableHint": "Импортируйте файл .lrc или .txt, чтобы добавить текст к этой песне",
+  "nextUp": "Далее",
+  "noEmbeddedArtworkFound": "Встроенная обложка для этого альбома не найдена",
+  "resetArtworkToDefault": "Сбросить к стандартным",
+  "selectAvatars": "Выбрать аватар",
+  "selectAvatarsDesc": "Выберите аватар, отображаемый на главном экране",
+  "dynamicAvatarColor": "Динамический цвет аватара",
+  "dynamicAvatarColorDesc": "Согласовывает акцентный цвет аватара с текущей темой",
+  "enrichingSongs": "Обогащение {count} песен…",
+  "noListeningHistoryYet": "История прослушивания пока пуста",
+  "noListeningHistoryYetDesc": "Послушайте несколько песен, и здесь появится ваш личный отчёт — любимые песни, исполнители, альбомы и жанры.",
+  "novaAnalyze": "NOVA Analyze",
+  "totalPlays": "Всего прослушиваний",
+  "listeningTime": "Время прослушивания",
+  "currentStreakDays": "Текущая серия (дни)",
+  "longestStreakDays": "Самая длинная серия (дни)",
+  "analyzePlaysAndSongs": "Прослушиваний: {plays} • Песен: {songs}",
+  "dayPartMorningShort": "Утро",
+  "dayPartAfternoonShort": "День",
+  "dayPartEveningShort": "Вечер",
+  "dayPartNightShort": "Ночь",
+  "activityPattern": "Характер активности",
+  "whenYouListenMost": "Когда вы слушаете больше всего",
+  "genreBreakdown": "Распределение по жанрам",
+  "otherGenre": "Другое",
+  "topAlbums": "Топ альбомов",
+  "topArtists": "Топ исполнителей",
+  "topSongs": "Топ песен",
+  "playsCount": "{count, plural, one{{count} прослушивание} few{{count} прослушивания} many{{count} прослушиваний} other{{count} прослушивания}}",
+  "songsPlayedCount": "{count, plural, one{Прослушана {count} песня} few{Прослушано {count} песни} many{Прослушано {count} песен} other{Прослушано {count} песни}}",
+  "listeningTrend": "Динамика прослушивания",
+  "last30Days": "Последние 30 дней",
+  "errorWithDetails": "Ошибка: {error}",
+  "selectAll": "Выбрать все",
+  "playlist": "Плейлист",
+  "songsCount": "{count, plural, one{{count} песня} few{{count} песни} many{{count} песен} other{{count} песни}}",
+  "recentSearches": "Недавние запросы",
+  "lyricsSourceLocalFile": "Локальный файл",
+  "lyricsSourceEmbedded": "Встроенные метаданные",
+  "lyricsProvidedBy": "Текст предоставлен: {source}",
+  "failedToImportLyrics": "Не удалось импортировать текст: {error}",
+  "lyricsEditorLines": "Строки",
+  "lyricsEditorStamped": "С метками",
+  "lyricsEditorLineNumber": "Строка {number}",
+  "lyricsEditorEmptyLine": "(Пустая строка)",
+  "lyricsEditorNotStamped": "Метка ещё не поставлена",
+  "pause": "Пауза",
+  "lyricsEditorAddLineFirst": "Сначала добавьте хотя бы одну строку текста.",
+  "lyricsEditorSavedWithSidecar": "Текст сохранён в базе данных и рядом с файлом песни.",
+  "lyricsEditorSavedDbOnly": "Текст сохранён в базе данных плеера.",
+  "lyricsEditorSaveFailed": "Не удалось сохранить текст.",
+  "saving": "Сохранение...",
+  "saveLrc": "Сохранить LRC",
+  "lyricsEditorSelectedLine": "Выбрана строка {index} из {total}",
+  "lyricsEditorPickLine": "Выберите строку текста в списке ниже.",
+  "stampAndNext": "Отметить и далее",
+  "stampNow": "Отметить сейчас",
+  "lyricsEditorSimpleSteps": "1. Вставьте или введите по одной строке текста в каждую строку.\n2. Включите песню.\n3. Выберите текущую строку.\n4. Нажмите «Отметить и далее», когда услышите эту строку.\n5. Сохраните, когда закончите.",
+  "lyricsEditorAdvancedSteps": "1. Редактируйте метки времени каждой строки напрямую.\n2. Нажмите «Использовать текущее время», чтобы взять текущую позицию воспроизведения.\n3. Сдвигайте все отмеченные строки вместе с помощью элементов сдвига.\n4. Сохраните, чтобы создать итоговый файл `.lrc`.",
+  "lyricsEditorTipsText": "- Если некоторые строки не отмечены, движок Flick заполнит их время автоматически.\n- При сохранении файл по возможности записывается рядом с песней, иначе связанная копия хранится в базе данных.",
+  "fileNotFoundOrInaccessible": "Файл не найден или недоступен: {title}",
+  "playbackFailedCorrupted": "Ошибка воспроизведения: не удалось загрузить или воспроизвести «{title}». Убедитесь, что файл не повреждён.",
+  "shareSongText": "Послушай эту песню: {title}",
+  "shareSongsText": "Послушай эти песни ({count})",
+  "noSettingsFoundFor": "По запросу «{query}» настройки не найдены",
+  "chooseQuickAccentColors": "Выберите быстрый акцентный цвет",
+  "fontWeight": "Насыщенность шрифта",
+  "changeBaseFontWeight": "Изменить базовую насыщенность своего шрифта",
+  "lyricsFontWeightValue": "Насыщенность шрифта текста: {weight}",
+  "equalizerSearchDesc": "Настройка 18-полосного эквалайзера и аудиопресетов",
+  "stopServiceSearchDesc": "Останавливать воспроизведение и закрывать приложение при смахивании из недавних",
+  "scanNewFolderDesc": "Найти аудиофайлы в новой папке",
+  "includeOtherDeviceAudioShortDesc": "Рингтоны, уведомления и звуки мессенджеров",
+  "excludedFolders": "Исключённые папки",
+  "excludedFoldersSearchDesc": "Пропускать выбранные папки при сканировании",
+  "clearLibraryData": "Очистить данные библиотеки",
+  "novaPlayerVersion": "Версия NOVA Player",
+  "versionLabel": "Версия {version}",
+  "none": "Нет",
+  "foldersSkippedCount": "{count, plural, one{{count} папка пропускается при сканировании} few{{count} папки пропускаются при сканировании} many{{count} папок пропускаются при сканировании} other{{count} папки пропускаются при сканировании}}",
+  "excludedFoldersDesc": "Песни в этих папках пропускаются при сканировании, даже если они находятся внутри добавленной вами папки.",
+  "noExcludedFoldersYet": "Исключённых папок пока нет.",
+  "excludeAFolder": "Исключить папку",
+  "equalizerEnabled18Band": "Включён (18-полосный эквалайзер MPV)",
+  "disabled": "Выключен",
+  "noIndexedFoldersYet": "Проиндексированных папок пока нет",
+  "noIndexedFoldersYetDesc": "Используйте «Повторное сканирование библиотеки», чтобы найти папки в хранилище.",
+  "eqDynamicRangeCompressor": "Компрессор динамического диапазона",
+  "eqThreshold": "Порог",
+  "eqRatio": "Коэффициент",
+  "eqAttack": "Атака",
+  "eqRelease": "Восстановление",
+  "eqHeadphoneCrossfeedWidth": "Кроссфид и ширина для наушников",
+  "eqBinauralCrossfeed": "Бинауральный кроссфид",
+  "eqCrossfeedStrength": "Сила кроссфида",
+  "eqStereoWidening": "Расширение стереобазы",
+  "eqWideningFactor": "Коэффициент расширения",
+  "eqLoudnessNormalization": "Нормализация громкости",
+  "eqTargetLoudness": "Целевая громкость",
+  "eqToneShelving": "Полочные фильтры тембра (низкие / высокие)",
+  "eqBassShelf": "Полка низких частот",
+  "eqTrebleShelf": "Полка высоких частот",
+  "eqTempoPitchControls": "Темп и высота тона",
+  "eqPitchShift": "Сдвиг высоты тона",
+  "eqTempoSpeed": "Скорость темпа",
+  "eqVoiceSilenceControls": "Голос и тишина",
+  "eqSilenceTrimming": "Обрезка тишины",
+  "eqSilenceThreshold": "Порог тишины",
+  "eqSpeechEnhancementFilter": "Фильтр улучшения речи",
+  "eqHighpassCutoff": "Срез фильтра верхних частот",
+  "eqLowpassCutoff": "Срез фильтра нижних частот",
+  "eqRetroRoomEffects": "Ретро и эффекты помещения",
+  "eqLofiEffect": "Эффект lo-fi (8-битный кранчер)",
+  "eqStudioRoomReverb": "Студийная реверберация (эхо)",
+  "eqVirtualSurround": "Виртуальный объёмный звук 5.1",
+  "eqRawFilterConsole": "Консоль фильтров FFmpeg",
+  "eqSwitchToSliders": "Переключиться на ползунки",
+  "eqSwitchToGraph": "Переключиться на график",
+  "on": "Вкл",
+  "off": "Выкл",
+  "eqSongSpecificActive": "Активны настройки для этой песни",
+  "eqUsingGlobalDefault": "Используются глобальные настройки по умолчанию",
+  "eqInteractiveGraphHint": "ИНТЕРАКТИВНЫЙ ГРАФИК (ПЕРЕТАСКИВАЙТЕ ТОЧКИ ПО ВЕРТИКАЛИ)",
+  "eq18BandHint": "18-ПОЛОСНЫЙ ЭКВАЛАЙЗЕР (ПРОКРУЧИВАЙТЕ ПО ГОРИЗОНТАЛИ)",
+  "eqSongSpecific": "Для песни",
+  "eqGlobalDefault": "Глобально по умолчанию",
+  "eqEditScopeNote": "Изменения во время воспроизведения песни применяются только к ней. Чтобы задать глобальные настройки, редактируйте, когда ничего не играет, или используйте действие «Применить глобально».",
+  "presetFlat": "Ровный",
+  "presetBassBooster": "Усиление басов",
+  "presetTrebleBooster": "Усиление высоких",
+  "presetVocalBooster": "Усиление вокала",
+  "presetElectronic": "Электроника",
+  "presetRock": "Рок",
+  "presetPop": "Поп",
+  "presetJazz": "Джаз",
+  "save": "Сохранить",
+  "savePreset": "Сохранить пресет",
+  "presetName": "Название пресета",
+  "deletePreset": "Удалить пресет",
+  "deletePresetConfirm": "Удалить пресет «{name}»?",
+  "noLyricsSource": "Нет источника текста",
+  "lyricsSourceLabel": "Источник: {source}",
+  "lyricsSourceLocalSidecar": "Локальный файл рядом (.lrc)",
+  "lyricsSourceCustomFile": "Свой LRC-файл",
+  "lyricsSourceNotFoundOnline": "Не найдено в сети",
+  "lyricsProviderLocal": "Локально",
+  "checkingLocalLyrics": "Поиск локальных/встроенных текстов...",
+  "fetchingLyricsFrom": "Загрузка текста из {provider}...",
+  "loadedLocalLyrics": "Локальный/встроенный текст загружен!",
+  "noLocalLyricsFound": "Локальный или встроенный текст не найден",
+  "lyricsUpdatedFrom": "Текст обновлён из {provider}!",
+  "noLyricsFoundOn": "Текст не найден в {provider}",
+  "gestureTips": "Советы по текстам",
+  "gestureTipsDesc": "Жесты, синхронизация по словам, сдвиг и другое",
+  "exportLyrics": "Экспорт текста",
+  "lyricsExportedTo": "Текст экспортирован в: {path}",
+  "failedToExportLyrics": "Не удалось экспортировать текст: {error}",
+  "gestureTapLine": "Коснитесь строки",
+  "gestureTapLineDesc": "Перейти к этому месту текста.",
+  "gestureLongPressLine": "Долго нажмите на строку",
+  "gestureLongPressLineDesc": "Выберите строки, чтобы поделиться карточкой с текстом.",
+  "gesturePinch": "Сведите или разведите два пальца",
+  "gesturePinchDesc": "Измените размер текста по своему вкусу.",
+  "gestureSwipeDown": "Проведите вниз",
+  "gestureSwipeDownDesc": "Закрыть экран текста и вернуться к плееру.",
+  "lyricsGestures": "Советы по текстам",
+  "lyricsGesturesIntro": "Несколько возможностей этого экрана, которые не всегда очевидны:",
+  "linesSelected": "{count, plural, one{Выбрана {count} строка} few{Выбрано {count} строки} many{Выбрано {count} строк} other{Выбрано {count} строки}}",
+  "couldNotGenerateShareImage": "Не удалось создать изображение для отправки.",
+  "couldNotGenerateImage": "Не удалось создать изображение.",
+  "savedToGallery": "Сохранено в галерею.",
+  "galleryPermissionDenied": "Доступ к галерее запрещён.",
+  "couldNotSaveToGallery": "Не удалось сохранить изображение в галерею.",
+  "shareLyrics": "Поделиться текстом",
+  "backgroundColor": "Цвет фона",
+  "lyricsTextColor": "Цвет текста песни",
+  "saveToGallery": "Сохранить в галерею",
+  "preparing": "Подготовка...",
+  "trackTitle": "Название трека",
+  "composer": "Композитор",
+  "unknownGenre": "Неизвестный жанр",
+  "releaseYear": "Год выпуска",
+  "notAvailable": "Н/Д",
+  "recordLabel": "Лейбл",
+  "copyright": "Авторские права",
+  "encoder": "Кодировщик",
+  "fileName": "Имя файла",
+  "fileFormat": "Формат файла",
+  "fileSize": "Размер файла",
+  "absolutePath": "Полный путь",
+  "playCount": "Прослушивания",
+  "playCountTimes": "{count, plural, one{{count} раз} few{{count} раза} many{{count} раз} other{{count} раза}}",
+  "lastPlayed": "Последнее прослушивание",
+  "filePath": "Путь к файлу",
+  "rescan": "Пересканировать",
+  "codec": "Кодек",
+  "container": "Контейнер",
+  "sampleRate": "Частота дискретизации",
+  "bitDepth": "Разрядность",
+  "decodedFormat": "Декодированный формат",
+  "bitrate": "Битрейт",
+  "channels": "Каналы",
+  "nyquist": "Найквист",
+  "dynamicRange": "Динамический диапазон",
+  "peak": "Пик",
+  "truePeak": "Истинный пик",
+  "clipping": "Клиппинг",
+  "cutoff": "Срез",
+  "samples": "Сэмплы",
+  "channelShort": "К {channel}",
+  "noneClean": "Нет (чисто)",
+  "reanalyzingAudio": "Повторный анализ аудиопотока...",
+  "analyzingAudio": "Анализ аудиопотока...",
+  "sampleRateHz": "Частота дискретизации: {rate} Гц",
+  "nyquistKhz": "Найквист: {khz} кГц",
+  "qualityHiRes": "Hi-Res без потерь",
+  "qualityMono": "Моно",
+  "qualityStereo": "Стерео",
+  "qualitySignalPath": "Тракт сигнала",
+  "qualityStageSource": "Источник",
+  "qualityStageDecoder": "Декодер",
+  "qualityStageOutput": "Вывод",
+  "qualityStageDevice": "Устройство",
+  "qualityNativeEndToEnd": "Воспроизводится с исходной частотой дискретизации файла на всём пути",
+  "qualityResampledBy": "На выходе пересчитано с {from} на {to}",
+  "qualitySectionSource": "Исходный файл",
+  "qualitySectionEngine": "Движок воспроизведения",
+  "qualitySectionDevice": "Устройство вывода",
+  "qualitySectionPhone": "Этот телефон",
+  "qualityOutputFormat": "Формат вывода",
+  "qualityOutputRate": "Частота вывода",
+  "qualityOutputChannels": "Каналы вывода",
+  "qualityLiveBitrate": "Текущий битрейт",
+  "qualityGapless": "Воспроизведение без пауз",
+  "qualityReplayGain": "ReplayGain",
+  "qualityReplayGainTrack": "Трек",
+  "qualityReplayGainAlbum": "Альбом",
+  "qualitySpeed": "Скорость",
+  "qualityDeviceName": "Название",
+  "qualityDeviceType": "Тип",
+  "qualityDeviceSpeaker": "Динамик телефона",
+  "qualityDeviceWired": "Проводные наушники",
+  "qualityDeviceBluetooth": "Bluetooth",
+  "qualityDeviceUsb": "USB-аудио",
+  "qualityDeviceHdmi": "HDMI",
+  "qualityDeviceHearingAid": "Слуховой аппарат",
+  "qualityDeviceDock": "Док-станция",
+  "qualitySupportedRates": "Поддерживаемые частоты",
+  "qualityAnyRate": "Любая",
+  "qualityMaxBitDepth": "Макс. разрядность",
+  "qualityMaxChannels": "Макс. каналов",
+  "qualityBitPerfect": "Режим bit-perfect",
+  "qualitySupported": "Поддерживается",
+  "qualityNotSupported": "Не поддерживается",
+  "qualitySpatialAudio": "Пространственный звук",
+  "qualityDeviceNote": "Android не сообщает приложениям, куда направлен звук плеера; это устройство, на которое обычно идёт музыка.",
+  "qualityPhoneModel": "Модель",
+  "qualityAndroidVersion": "Версия Android",
+  "qualityMixerRate": "Частота микшера",
+  "qualityMixerBuffer": "Буфер микшера",
+  "qualityLowLatency": "Звук с низкой задержкой",
+  "qualityProAudio": "Pro Audio",
+  "qualityDeviceUnavailable": "Сведения об устройстве доступны только на Android.",
+  "qualityLossless": "Без потерь",
+  "qualityHigh": "Высокое качество",
+  "qualityStandard": "Стандартное качество",
+  "qualityAudio": "Аудио",
+  "addCustomFolder": "Добавить свою папку",
+  "addCustomFolderDesc": "Если ваша музыка лежит в папке с другим названием или на SD-карте, добавьте её напрямую.",
+  "welcomeStep": "ШАГ {step}: {title}",
+  "includeOtherDeviceAudioAlarmsDesc": "Рингтоны, уведомления, будильники и звуки мессенджеров",
+  "version": "Версия",
+  "noIndexedFoldersDesktopDesc": "Используйте «Повторное сканирование библиотеки», чтобы найти папки хранилища",
+  "playedLabel": "Прослушано",
+  "minutesShort": "{count, plural, one{{count} мин} few{{count} мин} many{{count} мин} other{{count} мин}}",
+  "minuteChip": "{count} мин",
+  "songsCountTitle": "{count, plural, one{{count} песня} few{{count} песни} many{{count} песен} other{{count} песни}}",
+  "songsLeft": "{count, plural, one{Осталась {count} песня} few{Осталось {count} песни} many{Осталось {count} песен} other{Осталось {count} песни}}",
+  "sleepTimerWithRemaining": "Таймер сна ({remaining})",
+  "trackInfoSection": "О ТРЕКЕ",
+  "detailsSection": "ПОДРОБНОСТИ",
+  "lyricsSection": "ТЕКСТ",
+  "editLyricsHint": "Введите обычный текст или синхронизированный текст в формате LRC [00:00.00]...",
+  "addedSongsCount": "{count, plural, one{Добавлена {count} песня} few{Добавлено {count} песни} many{Добавлено {count} песен} other{Добавлено {count} песни}}",
+  "chooseInternalStorageFolder": "Выберите папку во внутренней памяти или на SD-карте этого устройства.",
+  "appCrashedTitle": "Сбой NOVA Player",
+  "appCrashedDesc": "При запуске произошла непредвиденная ошибка. Создан диагностический отчёт.",
+  "appCrashedDetails": "Ошибка при инициализации базы данных или служб приложения. Это может случиться, если доступ к хранилищу ограничен или файлы базы данных повреждены.",
+  "crashReportSaved": "Диагностический отчёт сохранён в папке поддержки приложения.",
+  "shareLog": "Отправить журнал",
+  "restartApp": "Перезапустить приложение",
+  "updateAvailableOnPlay": "В Google Play доступна новая версия.",
+  "updateAvailableOnGithub": "Версия {version} доступна на GitHub.",
+  "updateAvailable": "Доступно обновление",
+  "updateAvailableTitle": "Доступно обновление!",
+  "visit": "ОТКРЫТЬ",
+  "updateDownloaded": "Обновление загружено",
+  "restartToInstallUpdate": "Перезапустите NOVA Player, чтобы установить его.",
+  "restart": "ПЕРЕЗАПУСК",
+  "backupImportedSummary": "Резервная копия импортирована: объединено избранного — {favorites}, статистики прослушиваний — {stats}, синхронизировано плейлистов — {playlists}",
+  "backupExportFailed": "Не удалось экспортировать резервную копию: внутренняя ошибка при сохранении файла.",
+  "backupImportFailed": "Не удалось импортировать резервную копию: файл не читается или имеет неверный формат.",
+  "stereo": "Стерео",
+  "mono": "Моно",
+  "progressBarStyle": "Стиль полосы прогресса",
+  "progressBarStyleDesc": "Волна, толщина, ползунок и другое",
+  "progressBarPreview": "Предпросмотр",
+  "progressWave": "Волна",
+  "progressWaveDesc": "Показывать проигранную часть полосы движущейся волной",
+  "progressWaveHeight": "Высота волны",
+  "progressWaveLength": "Длина волны",
+  "progressWaveLengthDesc": "Расстояние между соседними волнами",
+  "progressWaveSpeed": "Скорость волны",
+  "progressWaveFromStart": "Волна с самого начала",
+  "progressWaveFromStartDesc": "Показывать волну сразу, а не после начала трека",
+  "progressKeepWavePaused": "Сохранять волну на паузе",
+  "progressKeepWavePausedDesc": "Останавливать волну, а не выпрямлять её",
+  "progressBarThickness": "Толщина полосы",
+  "progressThumb": "Ползунок",
+  "progressThumbPill": "Капсула",
+  "progressThumbRound": "Круглый",
+  "progressThumbWidth": "Ширина ползунка",
+  "progressThumbHeight": "Высота ползунка",
+  "progressThumbSize": "Размер ползунка",
+  "progressThumbGap": "Отступ вокруг ползунка",
+  "progressTrackOpacity": "Непрозрачность непроигранной части",
+  "progressGrowThumb": "Увеличивать ползунок при перетаскивании",
+  "resetToDefaults": "Сбросить по умолчанию",
+  "artworkVisualizer": "Визуализация на обложке",
+  "artworkVisualizerDesc": "Эффект на обложке текущего трека, реагирующий на музыку",
+  "visualizerEffect": "Эффект",
+  "visualizerAura": "Сияние ауры",
+  "visualizerRing": "Кольцо спектра",
+  "visualizerWave": "Волна снизу",
+  "visualizerBars": "Столбики",
+  "visualizerBreathing": "Дыхание",
+  "visualizerIntensity": "Интенсивность",
+  "visualizerSubtle": "Слабая",
+  "visualizerNormal": "Обычная",
+  "visualizerStrong": "Сильная",
+  "visualizerColors": "Цвета",
+  "visualizerColorsArtwork": "Обложка",
+  "visualizerColorsTheme": "Тема",
+  "visualizerColorsWhite": "Белый",
+  "progressTrack": "Дорожка",
+  "visualizerSync": "Синхронизация со звуком",
+  "visualizerSyncDesc": "Задерживает эффект, чтобы он совпадал с тем, что вы слышите. Увеличьте для Bluetooth-наушников.",
+  "visualizerSyncHint": "Включите трек, чтобы настроить на слух",
+  "lyricsHighlightStyle": "Стиль подсветки",
+  "lyricsStyleLine": "Строка",
+  "lyricsStyleWord": "По словам",
+  "lyricsStyleCharacter": "По буквам",
+  "lyricsWordSynced": "Синхронизация по словам",
+  "lyricsLineSynced": "Синхронизация по строкам",
+  "findWordSyncedLyrics": "Найти текст с синхронизацией по словам",
+  "searchingWordSyncedLyrics": "Поиск на lrc.red и LyricsPlus…",
+  "wordSyncedLyricsLoaded": "Текст с синхронизацией по словам загружен",
+  "noWordSyncedLyricsFound": "Текст с синхронизацией по словам для этой песни не найден",
+  "lyricsNotSynced": "Без синхронизации",
+  "findSyncedLyrics": "Найти синхронный текст",
+  "searchingSyncedLyrics": "Поиск синхронного текста…",
+  "syncedLyricsLoaded": "Синхронный текст загружен",
+  "noSyncedLyricsFound": "Синхронный текст для этой песни не найден",
+  "tipFindSyncedDesc": "Если у текста нет таймингов, ищет версию, которая идёт за песней.",
+  "lyricsTiming": "Тайминг текста",
+  "lyricsTimingDesc": "Положительное значение показывает текст раньше, отрицательное — позже. Если текст опережает песню (часто при Bluetooth), уменьшите значение. Сохраняется только для этой песни.",
+  "lyricsTimingEarlier": "Раньше",
+  "lyricsTimingLater": "Позже",
+  "lyricsTimingReset": "Сбросить",
+  "themeGroupColors": "Цвета",
+  "themeGroupBlurBackgrounds": "Размытие и фоны",
+  "themeGroupDarkness": "Затемнение",
+  "themeGroupFonts": "Шрифты",
+  "themeGroupProfile": "Профиль",
+  "lyricsTipsGestures": "Жесты",
+  "lyricsTipsMenu": "В меню ⋮",
+  "gestureScroll": "Листайте свободно",
+  "gestureScrollDesc": "Автопрокрутка приостанавливается, пока вы листаете. Нажмите «Пересинхронизировать», чтобы вернуться.",
+  "tipFindWordSyncDesc": "Загружает тайминг по словам с lrc.red и LyricsPlus.",
+  "tipHighlightStyleDesc": "Строка, по словам или по буквам — для текстов с синхронизацией по словам.",
+  "tipLyricsTimingDesc": "Сдвиньте текст раньше или позже — удобно с Bluetooth.",
+  "tipChangeProviderDesc": "Неверный текст или его нет? Попробуйте другой источник.",
+  "tipOwnLyrics": "Свои тексты",
+  "tipOwnLyricsDesc": "Загрузите файл .lrc или экспортируйте этот текст на устройство.",
+  "lyricsSources": "Источники текстов",
+  "creditLrcRedDesc": "Тексты с синхронизацией по словам (провайдер по умолчанию)",
+  "creditLyricsPlusDesc": "Тексты с синхронизацией по словам · сервер с открытым кодом от ibratabian17 (Apache-2.0), размещён binimum",
+  "creditLrclibDesc": "Тексты с построчной синхронизацией · свободная открытая база текстов",
+  "creditMusicBrainzDesc": "Находит ISRC каждой песни, чтобы lrc.red мог её сопоставить · открытая музыкальная база (данные CC0)",
+  "creditAmLyricsDesc": "Вдохновил нашу синхронизацию по словам · от binimum (MPL-2.0)",
+  "lyricsCopyrightNote": "Тексты песен принадлежат их исполнителям и правообладателям. NOVA Player загружает их только для личного просмотра и хранит на вашем устройстве.",
+  "clearLyricsCache": "Очистить кэш текстов",
+  "clearLyricsCacheDesc": "Загруженные тексты хранятся, пока вы их не очистите. Ваши файлы и выбранные .lrc остаются.",
+  "clearLyricsCacheConfirm": "Удалить все загруженные тексты? При следующем воспроизведении песни снова найдут их в сети.",
+  "lyricsCacheCleared": "Кэш текстов очищен",
+  "analyzeYourTopSong": "Ваш трек № 1",
+  "analyzeHighlights": "Главное",
+  "analyzePeakTime": "Пиковое время",
+  "analyzeBusiestDay": "Самый активный день",
+  "analyzeTopGenre": "Любимый жанр",
+  "analyzeLibraryExplored": "Изучено в медиатеке",
+  "analyzeSongsOfTotal": "{played} из {total} треков",
+  "analyzeCurrentStreak": "Текущая серия",
+  "analyzeLongestStreak": "Самая длинная серия",
+  "daysCount": "{count, plural, one{{count} день} few{{count} дня} many{{count} дней} other{{count} дня}}",
+  "durationHoursMinutes": "{hours} ч {minutes} мин",
+  "durationMinutesOnly": "{minutes} мин",
+  "analyzeAvgPerDay": "В среднем {avg} в день",
+  "dayPartMorning": "Утро",
+  "dayPartAfternoon": "День",
+  "dayPartEvening": "Вечер",
+  "dayPartNight": "Ночь",
+  "updateNow": "Обновить",
+  "updateLater": "Позже",
+  "updateInstall": "Установить",
+  "retry": "Повторить",
+  "updateWhatsNew": "Что нового",
+  "updateDownloading": "Загрузка обновления",
+  "updateVerifying": "Проверка загрузки…",
+  "updateWaitingForInstaller": "Ожидание установщика…",
+  "updateReadyToInstall": "Загружено и готово к установке.",
+  "updateErrorNetwork": "Не удалось загрузить. Проверьте подключение и повторите попытку.",
+  "updateErrorChecksum": "Загруженный файл повреждён. Повторите попытку.",
+  "updateErrorStorage": "Недостаточно свободного места для обновления.",
+  "updateErrorInstall": "Не удалось установить обновление.",
+  "checkForUpdates": "Проверить обновления",
+  "updateUpToDate": "У вас последняя версия.",
+  "updateCheckFailed": "Не удалось проверить обновления.",
+  "updateAlreadyLatest": "Уже последняя версия",
+  "updateWhatChangedOn": "Что изменилось в {version}",
+  "updateInstallHere": "Установить здесь.",
+  "updateOpenInWeb": "Открыть в браузере",
+  "updateNoThanks": "Нет, спасибо",
+  "uiScale": "Масштаб интерфейса",
+  "uiScaleDesc": "Сделать всё в приложении меньше или больше",
+  "lyricsSize": "Размер текста песни",
+  "lyricsSizeDesc": "Размер текста на экране текста песни",
+  "lyricsSizeSmaller": "Текст меньше",
+  "lyricsSizeLarger": "Текст больше",
+  "lyricsOptions": "Параметры текста песни",
+  "lyricsFullscreen": "Текст на весь экран",
+  "lyricsExitFullscreen": "Выйти из полноэкранного режима",
+  "importM3uPlaylist": "Импорт плейлиста (M3U)",
+  "importM3uPlaylistDesc": "Создаёт плейлист из файла .m3u или .m3u8, сопоставляя его треки с песнями в вашей библиотеке.",
+  "m3uImportedSummary": "«{name}» импортирован: найдено {found} из {total} песен",
+  "m3uImportedMany": "Импортировано плейлистов: {playlists}; найдено {found} из {total} песен",
+  "m3uImportNoSongs": "Ни одна песня из этого плейлиста не найдена в вашей библиотеке.",
+  "m3uImportFailed": "Не удалось импортировать плейлист: файл не читается или не является плейлистом M3U.",
+  "mostFullyPlayed": "Чаще всего дослушанные",
+  "lyricsServices": "Сервисы текстов",
+  "lyricsServicesDesc": "Перетащите, чтобы задать порядок поиска текстов. Отключённые сервисы пропускаются.",
+  "creditWordSyncedDesc": "Тексты с синхронизацией по словам",
+  "creditMorpheDesc": "Образец для запросов к NetEase, KuGou, Musixmatch и Lyricify · GPL-3.0",
+  "searchFilterAll": "Все",
+  "noResultsFor": "Ничего не найдено по запросу «{query}»",
+  "searchTryDifferent": "Проверьте написание или попробуйте другое слово.",
+  "searchScopeHint": "Названия, исполнители, альбомы, тексты, плейлисты и жанры",
+  "selectedCount": "Выбрано: {count}",
+  "desktopWelcomeTagline": "Ваша офлайн-музыка в лучшем звучании.",
+  "desktopWelcomeGetStarted": "НАЧАТЬ",
+  "desktopWelcomeSetupTitle": "Настройте медиатеку",
+  "desktopWelcomeSetupDesc": "NOVA Player воспроизводит музыкальные файлы на этом компьютере. Начните с папки «Музыка» или выберите любую папку, где хранятся ваши песни.",
+  "desktopWelcomeMusicFolder": "Ваша папка «Музыка»",
+  "desktopWelcomeFolderReady": "Готово",
+  "desktopWelcomeFolderMissing": "Не найдена",
+  "desktopWelcomeScanMusicFolder": "Сканировать папку «Музыка»",
+  "desktopWelcomeChooseFolder": "Выбрать другую папку",
+  "desktopWelcomeFormats": "Поддерживает MP3, FLAC, M4A, WAV, OGG и другие",
+  "desktopWelcomeAddLater": "Добавить другие папки можно в любое время в настройках.",
+  "desktopWelcomeFeaturesLabel": "ЧТО ВНУТРИ",
+  "desktopWelcomeFeaturesTitle": "Создан для прослушивания",
+  "desktopWelcomeLyricsTitle": "Синхронные тексты",
+  "desktopWelcomeLyricsDesc": "Тексты с синхронизацией по строкам и словам, которые следуют за музыкой.",
+  "desktopWelcomeEqTitle": "Эквалайзер",
+  "desktopWelcomeEqDesc": "Настройте звук с помощью пресетов или своей кривой.",
+  "desktopWelcomeLibraryTitle": "Умная медиатека",
+  "desktopWelcomeLibraryDesc": "Альбомы, исполнители, жанры и папки, упорядоченные по вашим тегам.",
+  "desktopWelcomeNoAccountTitle": "Без аккаунта",
+  "desktopWelcomeNoAccountDesc": "Без входа и настройки. NOVA Player играет прямо из ваших файлов.",
+  "desktopWelcomeScanningFolder": "Поиск музыки в {folder}",
+  "desktopWelcomeNoSongsDesc": "В {folder} не найдено поддерживаемых аудиофайлов.",
+  "desktopWelcomeNoSongsTip": "Скопируйте музыкальные файлы в эту папку или выберите папку, где они уже лежат.",
+  "desktopWelcomeScanAgain": "Сканировать снова",
+  "desktopWelcomeFloatingTitle": "Плавающие тексты",
+  "desktopWelcomeFloatingDesc": "Тексты песен поверх других окон, пока вы работаете.",
+  "desktopWelcomeInsightsTitle": "Статистика прослушивания",
+  "desktopWelcomeInsightsDesc": "Любимые песни, исполнители и время прослушивания в NOVA Analyze.",
+  "groupByAlbum": "Группировать по альбомам",
+  "groupByAlbumDesc": "На страницах исполнителей показывать песни по альбомам",
+  "onlineMusic": "Онлайн-музыка",
+  "onlineSettingsDesc": "Стриминг, качество, кэш и рекомендации",
+  "onlineForYou": "Для вас",
+  "onlineDiscover": "Новое",
+  "onlineRefresh": "Обновить",
+  "onlineRefreshDesc": "Сбросить онлайн-подключение, если песни перестали загружаться",
+  "onlineRefreshed": "Онлайн-музыка обновлена",
+  "onlineLoadFailed": "Не удалось загрузить онлайн-музыку. Нажмите «Обновить», чтобы повторить попытку.",
+  "onlineNoResults": "Нет онлайн-результатов",
+  "onlineLoadMore": "Загрузить ещё",
+  "onlinePersonalizeTitle": "Настройте под себя",
+  "onlinePersonalizeBody": "Выберите любимые жанры и исполнителей для более точных рекомендаций.",
+  "onlineFollow": "Подписаться",
+  "onlineFollowing": "Вы подписаны",
+  "artistsForYou": "Исполнители для вас",
+  "tasteGenresTitle": "Что вы слушаете?",
+  "tasteArtistsTitle": "Выберите любимых исполнителей",
+  "tasteSearchArtists": "Поиск исполнителей",
+  "tasteSkip": "Пропустить",
+  "onlineEnabledDesc": "Поиск, стриминг и рекомендации из YouTube Music",
+  "onlineNeedsInternet": "Требуется Интернет-режим (Настройки > Общие)",
+  "onlineYourTaste": "Ваши вкусы",
+  "onlineYourTasteDesc": "Жанры и исполнители для рекомендаций",
+  "onlinePreferLocal": "Предпочитать локальные файлы",
+  "onlinePreferLocalDesc": "Воспроизводить собственную копию песни, если она есть",
+  "onlineStreaming": "Стриминг",
+  "onlineQualityWifi": "Качество по Wi-Fi",
+  "onlineQualityMobile": "Качество в мобильной сети",
+  "onlineQualityHigh": "Высокое",
+  "onlineQualityNormal": "Обычное",
+  "onlineQualityLow": "Низкое",
+  "onlinePreload": "Предзагрузка следующих песен",
+  "onlinePreloadDesc": "Заранее скачивать следующие песни, чтобы переключение было мгновенным и они играли офлайн",
+  "onlinePreloadMobile": "Предзагружать и в мобильной сети",
+  "onlineCache": "Кэш",
+  "onlineCachePlayed": "Сохранять прослушанные песни",
+  "onlineCachePlayedDesc": "Хранить песни из стриминга, чтобы повторное прослушивание работало офлайн без повторной загрузки",
+  "onlineCachePlayedMobile": "Сохранять и в мобильной сети",
+  "onlineCachePlayedMobileDesc": "При первом прослушивании расходует дополнительный мобильный трафик, чтобы сохранить песню для офлайн-повторов",
+  "onlineCacheLimit": "Лимит размера кэша",
+  "onlineCacheLimitDesc": "Сначала удаляются давно не прослушанные песни",
+  "onlineClearCache": "Очистить онлайн-кэш",
+  "onlineClearCacheDesc": "Только аудио; тексты сохраняются",
+  "onlineCacheUsed": "Занято: {size}",
+  "onlineSongSkipped": "Пропущено «{title}»: {reason}",
+  "onlinePlaybackStopped": "Онлайн-воспроизведение остановлено: {reason}",
+  "onlineDisclaimerTitle": "Включить онлайн-музыку?",
+  "onlineDisclaimerBody": "Онлайн-музыка воспроизводит и ищет песни напрямую в YouTube Music. Она использует сетевой трафик и зависит от стороннего сервиса, который может измениться или перестать работать в любой момент.",
+  "onlineTurnOn": "Включить",
+  "onlineNotNow": "Не сейчас",
+  "onlineStatusOn": "Онлайн-музыка: вкл.",
+  "onlineStatusLimited": "Онлайн-музыка: ограничено",
+  "onlineStatusOffline": "Онлайн-музыка: офлайн",
+  "notInterested": "Не интересно",
+  "notInterestedSongHidden": "Песня скрыта из рекомендаций",
+  "blockArtist": "Не рекомендовать {artist}",
+  "artistBlocked": "Исполнитель исключён из рекомендаций",
+  "detectedProfiles": "Найденные миксы по вкусу",
+  "detectedProfilesDesc": "Миксы, автоматически созданные на основе вашей медиатеки и привычек прослушивания",
+  "hiddenProfiles": "Скрытые миксы",
+  "hiddenSongs": "Скрытые песни",
+  "blockedArtists": "Заблокированные исполнители",
+  "noHiddenItems": "Нет скрытых песен или заблокированных исполнителей",
+  "undo": "Отменить",
+  "download": "Скачать",
+  "downloaded": "Скачано",
+  "downloadAll": "Скачать все",
+  "downloadingSong": "Скачивание «{title}»…",
+  "downloadQueued": "Песен в очереди на скачивание: {count}",
+  "downloadFolder": "Папка загрузок",
+  "downloadQuality": "Качество загрузки",
+  "onlineDownloads": "Загрузки",
+  "onlineCreditsTitle": "Онлайн-стриминг",
+  "creditYouTubeMusicDesc": "Песни, обложки и рекомендации предоставляются YouTube Music. NOVA Player не связан с YouTube или Google и не одобрен ими.",
+  "creditKodaDesc": "Его задокументированный дизайн и исправления для стриминга YouTube Music послужили ориентиром для этого (см. README в этой документации).",
+  "creditYtDlpDesc": "Используется на компьютере, если установлен, как запасной способ загрузки потоков. Unlicense.",
+  "wrongLyrics": "Неверный текст",
+  "wrongLyricsDesc": "Пропустить {provider} для этой песни и найти другой текст",
+  "noOtherLyricsFound": "Другой текст не найден",
+  "downloads": "Загрузки",
+  "accountTitle": "Аккаунт Google",
+  "accountSignedOutDesc": "Войдите, чтобы видеть свою медиатеку и миксы YouTube Music",
+  "accountSignedInAs": "Вы вошли как {name}",
+  "accountSignedIn": "Вход выполнен",
+  "accountSignInMicrog": "Войти через microG",
+  "accountSignInMicrogDesc": "Использовать аккаунт Google из GmsCore",
+  "accountSignInWeb": "Войти через Google",
+  "accountSignInWebDesc": "Собственная страница входа Google",
+  "accountPasteCookies": "Вставить cookies",
+  "accountPasteCookiesDesc": "Использовать сеанс браузера, в котором вы уже вошли",
+  "accountPasteHelp": "Откройте music.youtube.com в приватном окне браузера и войдите. В инструментах разработчика (вкладка «Сеть») скопируйте заголовок Cookie любого запроса к music.youtube.com, вставьте его сюда и закройте это окно.",
+  "accountCookieHeader": "Заголовок Cookie",
+  "accountNoSapisid": "В тексте нет cookie SAPISID. Скопируйте его из запроса к music.youtube.com после входа.",
+  "accountSignOut": "Выйти",
+  "accountSignOutDesc": "Забыть этот аккаунт на этом устройстве",
+  "accountExpired": "Сеанс истёк. Войдите снова.",
+  "accountSignInFailed": "Не удалось войти: {error}",
+  "accountRisk": "Вход в YouTube через стороннее приложение нарушает условия YouTube и может привести к проверке аккаунта. Безопаснее использовать дополнительный аккаунт. Песни в любом случае воспроизводятся без вашего аккаунта.",
+  "reorderHome": "Порядок на главной",
+  "reorderHomeDragHint": "Удерживайте и перетащите строку",
+  "reorderHomeHint": "Или удерживайте пустое место на главной 5 секунд, затем перетаскивайте строки.",
+  "onlineFeedRow": "Подборка онлайн",
+  "onlineFeedRowDesc": "Настроения и верхние онлайн-полки",
+  "onlineMoreRow": "Ещё онлайн",
+  "onlineMoreRowDesc": "Остальные онлайн-полки",
+  "artistsForYouRowDesc": "Онлайн-исполнители под ваш вкус",
+  "reorderMoveUp": "Переместить вверх",
+  "reorderMoveDown": "Переместить вниз",
+  "reorderRowA11yHint": "Дважды нажмите и удерживайте, чтобы переместить",
+  "bluetoothCodec": "Bluetooth Codec",
+  "qualityBlockersTitle": "Active Blockers",
+  "qualityTurnBlockersOff": "Turn these off",
+  "qualityTurnBlockersOn": "Turn these back on",
+  "eqMono": "Mono Audio (Single Earbud)",
+  "eqReplayGainTitle": "Volume Normalization (ReplayGain)",
+  "eqReplayGainPreamp": "Normalization Preamp",
+  "@hapticStrength": {
+    "description": "Label of the haptic strength slider under the Haptic feedback switch"
+  },
+  "@activeFont": {
+    "placeholders": {
+      "fontName": {
+        "type": "String"
+      }
+    }
+  },
+  "@activeLyricsFont": {
+    "placeholders": {
+      "fontName": {
+        "type": "String"
+      }
+    }
+  },
+  "@sleepTimerStoppingIn": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@sleepTimerStoppingAfter": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@enrichingSongs": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@analyzePlaysAndSongs": {
+    "placeholders": {
+      "plays": {
+        "type": "int"
+      },
+      "songs": {
+        "type": "int"
+      }
+    }
+  },
+  "@playsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@songsPlayedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@errorWithDetails": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@songsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@lyricsProvidedBy": {
+    "placeholders": {
+      "source": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToImportLyrics": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@lyricsEditorLineNumber": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "@lyricsEditorSelectedLine": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@fileNotFoundOrInaccessible": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "@playbackFailedCorrupted": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "@shareSongText": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "@shareSongsText": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@noSettingsFoundFor": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      }
+    }
+  },
+  "@lyricsFontWeightValue": {
+    "placeholders": {
+      "weight": {
+        "type": "int"
+      }
+    }
+  },
+  "@versionLabel": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@foldersSkippedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@deletePresetConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@lyricsSourceLabel": {
+    "placeholders": {
+      "source": {
+        "type": "String"
+      }
+    }
+  },
+  "@fetchingLyricsFrom": {
+    "placeholders": {
+      "provider": {
+        "type": "String"
+      }
+    }
+  },
+  "@lyricsUpdatedFrom": {
+    "placeholders": {
+      "provider": {
+        "type": "String"
+      }
+    }
+  },
+  "@noLyricsFoundOn": {
+    "placeholders": {
+      "provider": {
+        "type": "String"
+      }
+    }
+  },
+  "@lyricsExportedTo": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToExportLyrics": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@linesSelected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@playCountTimes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@channelShort": {
+    "placeholders": {
+      "channel": {
+        "type": "int"
+      }
+    }
+  },
+  "@sampleRateHz": {
+    "placeholders": {
+      "rate": {
+        "type": "int"
+      }
+    }
+  },
+  "@nyquistKhz": {
+    "placeholders": {
+      "khz": {
+        "type": "String"
+      }
+    }
+  },
+  "@qualityResampledBy": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "@welcomeStep": {
+    "placeholders": {
+      "step": {
+        "type": "String"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "@minutesShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@minuteChip": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@songsCountTitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@songsLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@sleepTimerWithRemaining": {
+    "placeholders": {
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@addedSongsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@updateAvailableOnGithub": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@backupImportedSummary": {
+    "placeholders": {
+      "favorites": {
+        "type": "int"
+      },
+      "stats": {
+        "type": "int"
+      },
+      "playlists": {
+        "type": "int"
+      }
+    }
+  },
+  "@analyzeSongsOfTotal": {
+    "placeholders": {
+      "played": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@daysCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@durationHoursMinutes": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@durationMinutesOnly": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@analyzeAvgPerDay": {
+    "placeholders": {
+      "avg": {
+        "type": "String"
+      }
+    }
+  },
+  "@m3uImportedSummary": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "found": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@m3uImportedMany": {
+    "placeholders": {
+      "playlists": {
+        "type": "int"
+      },
+      "found": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@noResultsFor": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      }
+    }
+  },
+  "@selectedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@desktopWelcomeScanningFolder": {
+    "placeholders": {
+      "folder": {
+        "type": "String"
+      }
+    }
+  },
+  "@desktopWelcomeNoSongsDesc": {
+    "placeholders": {
+      "folder": {
+        "type": "String"
+      }
+    }
+  },
+  "@onlineCacheUsed": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@onlineSongSkipped": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "@onlinePlaybackStopped": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "@blockArtist": {
+    "placeholders": {
+      "artist": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadingSong": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadQueued": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@wrongLyricsDesc": {
+    "placeholders": {
+      "provider": {
+        "type": "String"
+      }
+    }
+  },
+  "@accountSignedInAs": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@accountSignInFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "animatedArtworks": "Animated artworks",
+  "animatedArtworksDesc": "Motion album covers, playlist motion, and artist banners",
+  "animatedArtworksAlways": "Always",
+  "animatedArtworksWifiOnly": "Wi-Fi only",
+  "animatedArtworksNever": "Never",
+  "immersivePlayerBackground": "Immersive motion background",
+  "immersivePlayerBackgroundDesc": "Use motion artwork as full player backdrop",
+  "customArtworkServer": "Motion artwork server",
+  "customArtworkServerDesc": "Self-hosted m8tec server URL or direct Apple Music",
+  "animatedArtworkCacheLimit": "Motion artwork cache limit",
+  "clearAnimatedArtworkCache": "Clear motion artwork cache",
+  "animatedArtworkCacheCleared": "Motion artwork cache cleared",
+  "linkAnimatedArtwork": "Link animated artwork",
+  "linkAnimatedArtworkPrompt": "Enter Apple Music album or playlist URL",
+  "onlineRadioStation": "Radio station",
+  "onlineMixSongRadio": "Radio based on this song",
+  "onlineMixArtistRadio": "Artist radio",
+  "onlineMixPersonal": "Made for you",
+  "onlineMixPlaylistRadio": "Radio based on this playlist",
+  "onlineGuestPrivacyNote": "Guest mode uses a few of your most played song names to search YouTube Music. Nothing else leaves your phone.",
+  "onlineGuestQuickPicks": "Quick picks from your library",
+  "onlineGuestRadio": "Radio: based on {song}",
+  "@onlineGuestRadio": {
+    "placeholders": {
+      "song": {
+        "type": "String"
+      }
+    }
+  },
+  "onlineGuestBecause": "Because you listen to {artist}",
+  "@onlineGuestBecause": {
+    "placeholders": {
+      "artist": {
+        "type": "String"
+      }
+    }
+  },
+  "onlineGuestSimilar": "Similar to {artist}",
+  "@onlineGuestSimilar": {
+    "placeholders": {
+      "artist": {
+        "type": "String"
+      }
+    }
+  },
+  "onlineGuestMoreFrom": "More from {artist}",
+  "@onlineGuestMoreFrom": {
+    "placeholders": {
+      "artist": {
+        "type": "String"
+      }
+    }
+  },
+  "onlineGuestTrending": "Trending in {genre}",
+  "@onlineGuestTrending": {
+    "placeholders": {
+      "genre": {
+        "type": "String"
+      }
+    }
+  },
+  "onlineContentRegion": "Content region",
+  "onlineContentRegionDesc": "Changes charts, trending and suggestions. Song availability still depends on where you are.",
+  "onlineContentRegionAuto": "Auto ({country})",
+  "@onlineContentRegionAuto": {
+    "placeholders": {
+      "country": {
+        "type": "String"
+      }
+    }
+  },
+  "onlineContentRegionSearch": "Search country or region",
+  "ambientGlow": "Ambient glow",
+  "ambientGlowDesc": "Soft moving reflection of the cover around the player",
+  "headphoneCorrection": "Headphone correction",
+  "headphoneCorrectionDesc": "AutoEQ parametric headphone correction profiles",
+  "autoEqBass": "Bass",
+  "autoEqTilt": "Tilt",
+  "autoEqChooseHeadphones": "Choose headphones…",
+  "autoEqUseForDevice": "Use for this device",
+  "autoEqSavedDevices": "Saved devices",
+  "autoEqSearchHeadphones": "Search headphone models",
+  "autoEqDownloadIndex": "Download headphone profiles index",
+  "autoEqNoProfile": "None",
+  "autoEqSpeakerDisabled": "Disabled on phone speaker",
+  "autoEqForget": "Forget",
+  "autoEqCredit": "Profiles: AutoEQ by Jaakko Pasanen (MIT)",
+  "autoEqNoSavedDevices": "No saved devices",
+  "autoEqIndexDownloading": "Downloading index…",
+  "account": "Аккаунт",
+  "accountDefaultName": "Слушатель",
+  "accountEditName": "Ваше имя",
+  "accountEditNameDesc": "Отображается на экране вашего аккаунта",
+  "accountHello": "Привет,",
+  "accountNovaTag": "NOVA Player пользователя {name}",
+  "@accountNovaTag": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "accountNameHint": "Введите ваше имя",
+  "accountOpenSettings": "Открыть настройки",
+  "accountPhoto": "Фото профиля",
+  "accountPhotoDesc": "Выберите любое изображение с вашего устройства",
+  "accountPhotoRemove": "Удалить фото",
+  "accountProfile": "Профиль",
+  "accountSettings": "Настройки аккаунта",
+  "accountSettingsDesc": "Имя, аватар и привязанные аккаунты",
+  "accountTodayListening": "Время прослушивания сегодня",
+  "accountVersionAbout": "Версия и о приложении",
+  "accountViewStats": "Статистика",
+  "catAbout": "О приложении",
+  "catAboutDesc": "Информация о приложении, версия и авторы",
+  "catBehavior": "Поведение",
+  "catBehaviorDesc": "Жесты, тактильный отклик, язык",
+  "catMisc": "Разное",
+  "catMiscDesc": "Хранилище, тактильный отклик, резервное копирование и восстановление",
+  "catMusicManagement": "Управление музыкой",
+  "catMusicManagementDesc": "Загрузки, папки и библиотека",
+  "catNetwork": "Сеть и интернет",
+  "catNetworkDesc": "Интернет-режим, онлайн-музыка, источники текстов",
+  "catPlayerInterface": "Интерфейс плеера",
+  "catPlayerInterfaceDesc": "Тема, макет и визуальные стили",
+  "nowPlayingArtworkMotion": "Анимация обложки в плеере",
+  "nowPlayingArtworkMotionDesc": "Анимировать обложку альбома на экране плеера, если доступно",
+  "onlineSetupDoneTitle": "Всё готово",
+  "onlineSetupLastOneDesc": "Отключите то, что вам не нужно. Вы сможете изменить это позже в настройках.",
+  "onlineSetupLastOneTitle": "Последний шаг",
+  "onlineSetupNext": "ДАЛЕЕ",
+  "onlineSetupNoSongsTitle": "Музыка не найдена? Слушайте онлайн",
+  "onlineSetupSkip": "ПРОПУСТИТЬ",
+  "onlineSetupStreamInstead": "СЛУШАТЬ МУЗЫКУ ОНЛАЙН",
+  "onlineSetupTitle": "Слушать музыку онлайн?",
+  "onlineSetupYes": "ДА, ВКЛЮЧИТЬ",
+  "otherMenu": "Другое меню",
+  "playerDynamicBackground": "Динамический фон плеера",
+  "playerDynamicBackgroundDesc": "Использовать размытый фон обложки альбома только на экране плеера",
+  "playerStyle": "Стиль плеера",
+  "playerStyleAccent": "Использовать акцентный цвет",
+  "playerStyleAccentDesc": "Окрашивать активную строку текста и индикатор выполнения в акцентный цвет",
+  "playerStyleArc": "Дуга",
+  "playerStyleClassic": "Классический",
+  "playerStyleDesc": "Макет экрана плеера в портретном режиме",
+  "playerStyleLinear": "Линейный",
+  "playerStyleCard": "Карточка",
+  "cardBlackBackground": "Black Background",
+  "cardBlackBackgroundDesc": "Plain black behind the player",
+  "cardAccentBackground": "Accent Background Color",
+  "cardAccentBackgroundDesc": "A dark shade of the accent color behind the player",
+  "playerStyleBlurBackground": "Blur Background",
+  "playerStyleBlurBackgroundDesc": "Show blurred album artwork as background",
+  "cardAccentColors": "Accent Colors",
+  "cardAccentColorsDesc": "Color the active lyric line and progress bar with the accent color",
+  "playerStyleTitle": "Стиль {name}",
+  "@playerStyleTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "sectionBackupRestore": "Резервное копирование и восстановление",
+  "sectionClassicLayout": "Классический макет",
+  "sectionPlayerBackground": "Фон плеера",
+  "sectionStorage": "Хранилище",
+  "settingsGroupTitle": "Настройки",
+  "settingsSearchShort": "Поиск настройки",
+  "showPreview": "Показать предпросмотр",
+  "keepScreenAwake": "Не выключать экран",
+  "keepScreenAwakeDesc": "Предотвращает выключение экрана, пока открыт плеер или текст песни",
+  "highRefreshRate": "Высокая частота обновления",
+  "highRefreshRateDesc": "Работает на 90/120 Гц для плавных анимаций; отключите для экономии батареи (60 Гц)",
+  "reshuffleQueue": "Перемешать очередь заново",
+  "reorderQueue": "Изменить порядок",
+  "nextInQueue": "Далее в очереди",
+  "relatedLabel": "Похожие",
+  "noRelatedTracks": "Похожие треки не найдены",
+  "setupStep": "Шаг {step} из 4",
+  "setupBegin": "Начать настройку",
+  "setupContinue": "Продолжить",
+  "setupPermissionsTitle": "Необходимые\nразрешения",
+  "setupPermissionsDesc": "Эти разрешения нужны NOVA Player для правильной работы. Предоставьте их, чтобы продолжить.",
+  "setupNotifications": "Уведомления",
+  "setupMusicAudio": "Музыка и аудио",
+  "setupAllFiles": "Доступ ко всем файлам (РЕКОМЕНДУЕТСЯ)",
+  "setupCommunityTitle": "Присоединяйтесь\nк сообществу",
+  "setupCommunityDesc": "NOVA Player — проект с открытым исходным кодом, который развивается благодаря сообществу. Ваша помощь важна!",
+  "setupStarGithub": "Поставьте звезду на GitHub",
+  "setupStarGithubDesc": "Помогите нам привлечь больше людей — поставьте звезду репозиторию",
+  "setupTelegram": "Telegram",
+  "setupTelegramDesc": "Получайте последние новости и общайтесь с сообществом.",
+  "setupUpi": "Поддержать через UPI",
+  "setupUpiDesc": "Поддержите разработку напрямую через UPI.",
+  "setupKofi": "Угостите нас кофе",
+  "setupKofiDesc": "Поддержите проект через Ko-fi.",
+  "setupDoneTitle": "Всё готово!",
+  "setupDoneDesc": "Ваша медиатека сканируется в фоне. Начинайте слушать.",
+  "setupStartListening": "Начать слушать",
+  "homeTodayMix": "Микс дня",
+  "homeTodayMixDesc": "Идеальный микс, чтобы задать настроение дню",
+  "homeSurpriseMe": "Удиви меня!",
+  "homeSurpriseMeDesc": "Не знаете, что включить? Доверьтесь случаю.",
+  "homeArtistPick": "Исполнитель для вас",
+  "homeWeeklyMix": "Микс недели",
+  "homeWeeklyMixDesc": "Самые прослушиваемые треки за неделю",
+  "homePicksLabel": "Подборка",
+  "homeForYou": "Для вас",
+  "homeYourOwn": "Ваша",
+  "letterSpacing": "Межбуквенный интервал",
+  "letterSpacingDesc": "Сделать текст в приложении плотнее или свободнее",
+  "homeHeroEmptyDesc": "Ваши миксы появятся здесь, как только вы начнёте слушать",
+  "notificationPermissionRequired": "Разрешите уведомления, чтобы продолжить. Они нужны NOVA Player для управления воспроизведением.",
+  "developerLabel": "Разработчик"
+}

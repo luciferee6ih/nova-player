@@ -1,0 +1,8 @@
+app_id: com.theluciferee.novaplayer
+display_name: NOVA Player
+icon: assets/branding/linux_icon.png
+categories:
+  - AudioVideo
+  - Audio
+  - Music
+  - Player

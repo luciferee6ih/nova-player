@@ -1,0 +1,356 @@
+part of 'theme_settings_tiles.dart';
+
+/// On: the lyrics screen draws the Now Playing background and hides its own
+/// background options.
+class LyricsFollowPlayerBackgroundTile extends ConsumerWidget {
+  const LyricsFollowPlayerBackgroundTile({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final settings = ref.watch(settingsProvider);
+    final l10n = AppLocalizations.of(context)!;
+    return SwitchListTile(
+      secondary: const Icon(LucideIcons.layers),
+      title: Text(l10n.lyricsFollowPlayerBackground, style: _tileTitleStyle()),
+      subtitle: Text(
+        l10n.lyricsFollowPlayerBackgroundDesc,
+        style: _tileSubtitleStyle(),
+      ),
+      value: !settings.lyricsOwnBackground,
+      onChanged: (value) => ref
+          .read(settingsProvider.notifier)
+          .updateLyricsFollowPlayerBackground(value),
+    );
+  }
+}
+
+class EnableLyricsGradientTile extends ConsumerWidget {
+  const EnableLyricsGradientTile({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final settings = ref.watch(settingsProvider);
+    final l10n = AppLocalizations.of(context)!;
+    return SwitchListTile(
+      secondary: const Icon(LucideIcons.sparkles),
+      title: Text(l10n.enableLyricsGradient, style: _tileTitleStyle()),
+      subtitle: Text(
+        l10n.enableLyricsGradientDesc,
+        style: _tileSubtitleStyle(),
+      ),
+      value: settings.enableLyricsGradient,
+      onChanged: (value) {
+        ref.read(settingsProvider.notifier).updateEnableLyricsGradient(value);
+      },
+    );
+  }
+}
+
+class AmbientLyricsBgTile extends ConsumerWidget {
+  const AmbientLyricsBgTile({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final settings = ref.watch(settingsProvider);
+    final l10n = AppLocalizations.of(context)!;
+    return SwitchListTile(
+      secondary: const Icon(LucideIcons.music),
+      title: Text(l10n.ambientColorBackground, style: _tileTitleStyle()),
+      subtitle: Text(
+        l10n.ambientColorBackgroundDesc,
+        style: _tileSubtitleStyle(),
+      ),
+      value: settings.ambientColorBackground,
+      onChanged: (value) {
+        ref.read(settingsProvider.notifier).updateAmbientColorBackground(value);
+      },
+    );
+  }
+}
+
+class BlurredArtworkLyricsTile extends ConsumerWidget {
+  const BlurredArtworkLyricsTile({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
+    final settings = ref.watch(settingsProvider);
+    return SwitchListTile(
+      secondary: const Icon(LucideIcons.image),
+      title: Text(l10n.blurredArtworkForLyrics, style: _tileTitleStyle()),
+      subtitle: Text(
+        l10n.blurredArtworkForLyricsDesc,
+        style: _tileSubtitleStyle(),
+      ),
+      value: settings.blurredArtworkForLyrics,
+      onChanged: (value) {
+        ref
+            .read(settingsProvider.notifier)
+            .updateBlurredArtworkForLyrics(value);
+      },
+    );
+  }
+}
+
+class DynamicColorActiveLyricsTile extends ConsumerWidget {
+  const DynamicColorActiveLyricsTile({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final settings = ref.watch(settingsProvider);
+    final l10n = AppLocalizations.of(context)!;
+    return SwitchListTile(
+      secondary: const Icon(LucideIcons.palette),
+      title: Text(l10n.dynamicColorActiveLyrics, style: _tileTitleStyle()),
+      subtitle: Text(
+        l10n.dynamicColorActiveLyricsDesc,
+        style: _tileSubtitleStyle(),
+      ),
+      value: settings.dynamicColorActiveLyrics,
+      onChanged: (value) {
+        ref
+            .read(settingsProvider.notifier)
+            .updateDynamicColorActiveLyrics(value);
+      },
+    );
+  }
+}
+
+/// Whether two lyric lines sung in one breath are shown together.
+class LyricsLineGroupingTile extends ConsumerWidget {
+  const LyricsLineGroupingTile({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final settings = ref.watch(settingsProvider);
+    final l10n = AppLocalizations.of(context)!;
+    return SwitchListTile(
+      secondary: const Icon(LucideIcons.listCollapse),
+      title: Text(l10n.lyricsLineGrouping, style: _tileTitleStyle()),
+      subtitle: Text(l10n.lyricsLineGroupingDesc, style: _tileSubtitleStyle()),
+      value: !settings.lyricsNoLineGrouping,
+      onChanged: (value) {
+        ref.read(settingsProvider.notifier).updateLyricsLineGrouping(value);
+      },
+    );
+  }
+}
+
+/// Slider for how see-through the lyric lines around the playing one are,
+/// from solid to faint.
+class InactiveLyricsOpacityTile extends ConsumerWidget {
+  const InactiveLyricsOpacityTile({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final settings = ref.watch(settingsProvider);
+    final l10n = AppLocalizations.of(context)!;
+    return SettingsSliderTile(
+      icon: LucideIcons.contrast,
+      title: l10n.inactiveLyricsOpacity,
+      subtitle: l10n.inactiveLyricsOpacityDesc,
+      value: inactiveLyricsOpacity(settings) * 100,
+      min: AdvancedLyricLine.minInactiveOpacity * 100,
+      max: AdvancedLyricLine.maxInactiveOpacity * 100,
+      divisions: 90,
+      suffix: '%',
+      onChanged: (val) => ref
+          .read(settingsProvider.notifier)
+          .updateInactiveLyricsOpacity(val / 100.0),
+    );
+  }
+}
+
+/// Slider for how vibrant the active lyric line is drawn, with a preview of
+/// the current song's active color next to an inactive line.
+class ActiveLyricsIntensityTile extends ConsumerWidget {
+  const ActiveLyricsIntensityTile({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final settings = ref.watch(settingsProvider);
+    final l10n = AppLocalizations.of(context)!;
+    final intensity = settings.activeLyricsIntensity.isNaN
+        ? 0.35
+        : settings.activeLyricsIntensity;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        SettingsSliderTile(
+          icon: LucideIcons.sunMedium,
+          title: l10n.activeLyricsIntensity,
+          subtitle: l10n.activeLyricsIntensityDesc,
+          value: intensity * 100,
+          min: 0.0,
+          max: 100.0,
+          divisions: 100,
+          suffix: '%',
+          onChanged: (val) {
+            ref
+                .read(settingsProvider.notifier)
+                .updateActiveLyricsIntensity(val / 100.0);
+          },
+        ),
+        const ActiveLyricsPreview(),
+      ],
+    );
+  }
+}
+
+/// An inactive and an active lyric line drawn as the lyrics screen draws
+/// them (white active line while Dynamic Color Active Line is off).
+class ActiveLyricsPreview extends ConsumerWidget {
+  const ActiveLyricsPreview({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final settings = ref.watch(settingsProvider);
+    final l10n = AppLocalizations.of(context)!;
+    // Same color the lyrics screen uses.
+    final previewColor = activeLyricsColor(
+      settings,
+      accent: Theme.of(context).colorScheme.primary,
+    );
+    final previewStyle = AppFonts.getLyricsStyle(
+      useNewFontLyrics: settings.useNewFontLyrics,
+      family: settings.customFontFamilyLyrics,
+      weightDelta: settings.customFontWeightLyricsDelta,
+      activeWeightDelta: settings.activeLyricsFontWeightDelta,
+      isActive: true,
+      fontSize: 18,
+      height: 1.2,
+    );
+    return Container(
+      margin: const EdgeInsets.fromLTRB(20, 0, 20, 12),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      decoration: BoxDecoration(
+        color: Colors.black.withValues(alpha: 0.45),
+        borderRadius: BorderRadius.circular(14),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            l10n.activeLyricsIntensityPreviewInactive,
+            style: previewStyle.copyWith(
+              color: Colors.white.withValues(
+                alpha: inactiveLyricsOpacity(settings),
+              ),
+            ),
+          ),
+          const SizedBox(height: 6),
+          Text(
+            l10n.activeLyricsIntensityPreviewActive,
+            style: previewStyle.copyWith(
+              color: previewColor,
+              shadows: [
+                Shadow(
+                  color: previewColor.withValues(alpha: 0.3),
+                  blurRadius: 20,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class LyricsAlignmentTile extends ConsumerWidget {
+  const LyricsAlignmentTile({super.key});
+
+  Widget _buildAlignmentButton({
+    required BuildContext context,
+    required WidgetRef ref,
+    required String alignment,
+    required IconData icon,
+    required String currentAlignment,
+    required Color accentColor,
+  }) {
+    final isSelected = currentAlignment == alignment;
+    return GestureDetector(
+      onTap: () {
+        AppHaptics.light();
+        ref.read(settingsProvider.notifier).updateLyricsAlignment(alignment);
+      },
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 250),
+        curve: Curves.easeInOut,
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        decoration: BoxDecoration(
+          color: isSelected ? accentColor : Colors.transparent,
+          borderRadius: BorderRadius.circular(18),
+        ),
+        child: Icon(
+          icon,
+          size: 16,
+          color: isSelected ? Colors.black : Colors.white70,
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final settings = ref.watch(settingsProvider);
+    final l10n = AppLocalizations.of(context)!;
+    final tile = ListTile(
+      leading: const Icon(LucideIcons.alignCenter),
+      title: Text(l10n.lyricsAlignment, style: _tileTitleStyle()),
+      subtitle: Text(l10n.lyricsAlignmentDesc, style: _tileSubtitleStyle()),
+      trailing: Container(
+        decoration: BoxDecoration(
+          color: Colors.white.withValues(alpha: 0.05),
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: Colors.white10, width: 0.5),
+        ),
+        padding: const EdgeInsets.all(2),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _buildAlignmentButton(
+              context: context,
+              ref: ref,
+              alignment: 'left',
+              icon: LucideIcons.alignLeft,
+              currentAlignment: settings.lyricsAlignment,
+              accentColor: settings.accent,
+            ),
+            _buildAlignmentButton(
+              context: context,
+              ref: ref,
+              alignment: 'center',
+              icon: LucideIcons.alignCenter,
+              currentAlignment: settings.lyricsAlignment,
+              accentColor: settings.accent,
+            ),
+            _buildAlignmentButton(
+              context: context,
+              ref: ref,
+              alignment: 'right',
+              icon: LucideIcons.alignRight,
+              currentAlignment: settings.lyricsAlignment,
+              accentColor: settings.accent,
+            ),
+          ],
+        ),
+      ),
+    );
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        tile,
+        Padding(
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 12),
+          child: LyricsAlignmentPreview(
+            alignment: settings.lyricsAlignment,
+            accent: settings.accent,
+          ),
+        ),
+      ],
+    );
+  }
+}

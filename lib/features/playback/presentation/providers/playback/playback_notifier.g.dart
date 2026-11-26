@@ -1,0 +1,62 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'playback_notifier.dart';
+
+// **************************************************************************
+// RiverpodGenerator
+// **************************************************************************
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(Playback)
+final playbackProvider = PlaybackProvider._();
+
+final class PlaybackProvider
+    extends $NotifierProvider<Playback, PlaybackState> {
+  PlaybackProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'playbackProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$playbackHash();
+
+  @$internal
+  @override
+  Playback create() => Playback();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(PlaybackState value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<PlaybackState>(value),
+    );
+  }
+}
+
+String _$playbackHash() => r'30579cdc9cf16a011035770ac58d021b715cfd68';
+
+abstract class _$Playback extends $Notifier<PlaybackState> {
+  PlaybackState build();
+  @$mustCallSuper
+  @override
+  WhenComplete runBuild() {
+    final ref = this.ref as $Ref<PlaybackState, PlaybackState>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<PlaybackState, PlaybackState>,
+              PlaybackState,
+              Object?,
+              Object?
+            >;
+    return element.handleCreate(ref, build);
+  }
+}

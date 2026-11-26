@@ -1,0 +1,67 @@
+name: CI
+
+# Checks every push and pull request: dependencies resolve, generated code
+# is up to date, the analyzer is clean and the unit tests pass.
+on:
+  push:
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Keep in step with release.yml.
+  FLUTTER_VERSION: '3.47.7'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        run: |
+          git clone --quiet --depth 1 --branch "$FLUTTER_VERSION" https://github.com/flutter/flutter.git "$RUNNER_TEMP/flutter"
+          echo "$RUNNER_TEMP/flutter/bin" >> "$GITHUB_PATH"
+
+      - name: Flutter version
+        run: |
+          flutter config --no-analytics
+          flutter --version
+
+      - name: Cache pub packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.pub-cache
+          key: pub-${{ runner.os }}-${{ env.FLUTTER_VERSION }}-${{ hashFiles('pubspec.lock') }}
+          restore-keys: pub-${{ runner.os }}-${{ env.FLUTTER_VERSION }}-
+
+      # appambit_sdk_flutter 1.2.x ships AppambitSdkFlutterPlugin.kt (wrong
+      # case); flutter pub get rejects it on Linux. Same fix as release.yml.
+      - name: flutter pub get
+        run: |
+          dart pub get --enforce-lockfile
+          find "${PUB_CACHE:-$HOME/.pub-cache}/hosted" \
+            -path '*/appambit_sdk_flutter-*/android/src/main/kotlin/*/AppambitSdkFlutterPlugin.kt' |
+          while read -r f; do
+            mv -v "$f" "$(dirname "$f")/AppAmbitSdkFlutterPlugin.kt"
+          done
+          flutter pub get --enforce-lockfile
+
+      - name: build_runner
+        run: dart run build_runner build --delete-conflicting-outputs
+
+      - name: Generated code is committed
+        run: |
+          if ! git diff --exit-code -- '*.g.dart'; then
+            echo "::error::Generated *.g.dart files are out of date. Run 'dart run build_runner build --delete-conflicting-outputs' and commit the result."
+            exit 1
+          fi
+
+      - name: flutter analyze
+        run: flutter analyze
+
+      - name: flutter test
+        run: flutter test

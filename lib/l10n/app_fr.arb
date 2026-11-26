@@ -1,0 +1,1945 @@
+{
+  "headerProfilePhoto": "Photo dans les barres du haut",
+  "headerProfilePhotoDesc": "Afficher votre photo de profil sur Accueil, Titres et Bibliothèque au lieu de l'icône de personne",
+  "customizeLibraryDesc": "Épinglez des playlists ou les favoris en haut de la bibliothèque et faites-les glisser pour les ordonner.",
+  "lyricsMenuSync": "Synchronisation",
+  "lyricsMenuSource": "Source",
+  "lyricsMenuLook": "Apparence",
+  "lyricsMenuYourLyrics": "Vos paroles",
+  "eqScopeAllSongs": "Tous les titres",
+  "eqScopeThisSong": "Ce titre",
+  "eqScopeAllNote": "Les modifications s'appliquent à chaque titre sans égaliseur propre.",
+  "eqScopeSongNote": "Les modifications s'appliquent au titre en cours.",
+  "eqUseAllSongsForThis": "Utiliser Tous les titres pour ce titre",
+  "eqCopyToAllSongs": "Copier ce son vers Tous les titres",
+  "eqPresetsLabel": "Préréglages",
+  "eqBands": "18 bandes",
+  "eqTone": "Tonalité",
+  "eqEffects": "Effets",
+  "eqSpeedPitch": "Vitesse et hauteur",
+  "eqMore": "Plus",
+  "eqLofiDesc": "Bit crush et atténuation des aigus",
+  "eqReverbDesc": "Petite salle de studio",
+  "eqSurroundDesc": "Une scène plus large",
+  "eqMonoDesc": "Les deux oreilles entendent la même chose",
+  "eqDeviceAudio": "Audio de l'appareil",
+  "eqDeviceAudioDesc": "Formats de sortie et fréquences d'échantillonnage",
+  "eqRawFilterDesc": "Votre propre chaîne de filtres FFmpeg",
+  "removeFromQueue": "Retirer de la file d'attente",
+  "importLabel": "Importer",
+  "restoreSettingsTitle": "Restaurer aussi les paramètres ?",
+  "restoreSettingsDesc": "Cette sauvegarde contient vos paramètres : thème, lecteur, égaliseur et épingles de la bibliothèque. La restaurer remplace vos paramètres actuels.",
+  "restoreSettings": "Restaurer",
+  "keepMySettings": "Garder les miens",
+  "pinToLibrary": "Épingler à la bibliothèque",
+  "unpinFromLibrary": "Désépingler de la bibliothèque",
+  "pinned": "Épinglé",
+  "customizeLibrary": "Personnaliser la bibliothèque",
+  "lyricsFollowPlayerBackground": "Suivre le fond de la lecture en cours",
+  "lyricsFollowPlayerBackgroundDesc": "Utiliser le même fond que l'écran de lecture en cours",
+  "frostedMusicBar": "Barre musicale givrée",
+  "frostedMusicBarDesc": "Flou uniquement derrière la barre musicale",
+  "frostedNavbar": "Barre de navigation givrée",
+  "frostedNavbarDesc": "Flou uniquement derrière la barre de navigation",
+  "allSongsEyebrow": "Tous",
+  "yourLibraryEyebrow": "Votre",
+  "about": "À propos",
+  "aboutAndMaintainers": "À propos & Développeurs",
+  "aboutApp": "À propos de l'application",
+  "aboutNovaPlayer": "À PROPOS DE NOVA PLAYER",
+  "accentColor": "Couleur d'accentuation",
+  "accentColorDesc": "Sélectionner manuellement la couleur d'accentuation",
+  "acousticSpectralAnalysis": "ANALYSE ACOUSTIQUE & SPECTRALE",
+  "activeCallCannotPlay": "Lecture bloquée : Impossible de lire de la musique pendant un appel actif",
+  "adaptColorsArtwork": "Adapter les couleurs de l'application à la pochette de l'album",
+  "addedTo": "Ajouté à {name}",
+  "@addedTo": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "addedToQueue": "Ajouté à la file d'attente",
+  "addFolder": "Ajouter un dossier",
+  "addToFavorites": "Ajouter aux favoris",
+  "addSongsToPlaylistTitle": "Ajouter des titres",
+  "addSongsToPlaylistHint": "Pour ajouter un titre ici, touchez ⋮ sur n’importe quel titre et choisissez « Ajouter aux playlists ».",
+  "addSongsToPlaylistHintDesktop": "Pour ajouter un titre ici, faites un clic droit sur n’importe quel titre et choisissez « Ajouter aux playlists ».",
+  "addToPlaylists": "Ajouter aux playlists",
+  "addToQueue": "Ajouter à la file d'attente",
+  "album": "Album",
+  "albums": "Albums",
+  "albumsRowDesc": "Étagère horizontale d'albums",
+  "allFilesAccess": "ACCÈS À TOUS LES FICHIERS (RECOMMANDÉ)",
+  "allSongs": "Toutes les chansons",
+  "appDetailsCreator": "Détails de l'application, créateur et équipe de conception",
+  "appearance": "Apparence",
+  "appInfoPrivacy": "INFOS APP & CONFIDENTIALITÉ",
+  "appTitle": "NOVA Player",
+  "artist": "Artiste",
+  "artists": "Artistes",
+  "artistsRowDesc": "Étagère horizontale d'artistes",
+  "ascending": "Ascendant",
+  "audioCrossfade": "Fondu enchaîné audio",
+  "audioCrossfadeDesc": "Superposer les pistes en douceur lors du changement de chanson",
+  "crossfadeDuration": "Durée du fondu enchaîné",
+  "crossfadeDurationDesc": "Durée de la transition superposée entre les chansons",
+  "smartTransitions": "Transitions intelligentes",
+  "smartTransitionsDesc": "Aligne les transitions sur les points clés, ignore les silences et préserve les paroles",
+  "beatMixing": "Mixage des temps (Expérimental)",
+  "beatMixingDesc": "Harmonise les tempos et aligne les mesures pour un fondu DJ fluide",
+  "audioFocusDenied": "Lecture mise en pause : focus audio refusé par le système",
+  "audioPlayback": "Audio & lecture",
+  "audioPlaybackDesc": "Paramètres de fondu enchaîné, de silence et d'atténuation",
+  "autoCrossfadeDuration": "Durée du fondu enchaîné automatique",
+  "autoCrossfadeDurationDesc": "Durée de superposition lors des transitions automatiques",
+  "backToMainView": "RETOUR À LA VUE PRINCIPALE",
+  "cancel": "Annuler",
+  "categories": "Catégories",
+  "center": "Centre",
+  "clear": "Effacer",
+  "clearQueue": "Effacer",
+  "connectDevice": "CONNECTER L'APPAREIL",
+  "corePurpose": "Objectif principal",
+  "corePurposeDesc": "NOVA Player est un lecteur audio haute fidélité hors ligne par défaut, conçu pour les passionnés de musique qui souhaitent un contrôle absolu sur leur bibliothèque locale, une lecture sans blanc et un défilement fluide des paroles synchronisées.",
+  "create": "Créer",
+  "createPlaylist": "Créer une playlist",
+  "creatorAndMaintainer": "Créateur et développeur",
+  "customAccentColor": "Couleur d'accent personnalisée",
+  "customizeColorsTheme": "Personnalisez les couleurs, le thème et les arrière-plans des paroles",
+  "dateAdded": "Date d'ajout",
+  "deepStorageScanProgress": "ANALYSE APPROFONDIE DU STOCKAGE...",
+  "delete": "Supprimer",
+  "deleteFile": "Supprimer le fichier",
+  "deletePlaylist": "Supprimer la playlist",
+  "deletePlaylistConfirm": "Êtes-vous sûr de vouloir supprimer \"{name}\" ?",
+  "@deletePlaylistConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteSong": "Supprimer la chanson",
+  "deleteSongConfirm": "Êtes-vous sûr de vouloir supprimer cette chanson du disque ?",
+  "descending": "Descendant",
+  "designerAndMaintainer": "Concepteur et développeur",
+  "disableBlurEffects": "Désactiver les effets de flou",
+  "disableSquigglyProgressBar": "Désactiver l'animation ondulée de la barre de progression",
+  "downloadAudioDirectly": "TÉLÉCHARGER L'AUDIO DIRECTEMENT",
+  "downloadingLyricsOffline": "Téléchargement des paroles pour une utilisation hors ligne...",
+  "downloadMissingArtwork": "Télécharger l'art manquant",
+  "downloadMissingArtworkDesc": "Télécharger automatiquement les pochettes haute résolution depuis iTunes",
+  "duration": "Durée",
+  "dynamicAccentColor": "Couleur d'accentuation dynamique",
+  "dynamicAccentColorDesc": "Mettre à jour dynamiquement la couleur d'accentuation selon la pochette",
+  "dynamicBgOnlyLyrics": "Fond dynamique uniquement pour les paroles",
+  "dynamicColorActiveLyrics": "Couleur dynamique de la ligne active",
+  "dynamicColorActiveLyricsDesc": "Colore la ligne de paroles en cours ; désactivé, elle reste blanche",
+  "activeLyricsIntensity": "Intensité de la ligne active",
+  "activeLyricsIntensityDesc": "Quantité de couleur affichée sur la ligne de paroles en cours",
+  "activeLyricsIntensityPreviewInactive": "Ligne inactive",
+  "activeLyricsIntensityPreviewActive": "Ligne active",
+  "inactiveLyricsOpacity": "Opacité des lignes inactives",
+  "inactiveLyricsOpacityDesc": "Opacité des lignes autour de celle en cours ; plus bas est plus transparent",
+  "lyricsLineGrouping": "Grouper les lignes enchaînées",
+  "lyricsLineGroupingDesc": "Affiche ensemble deux lignes chantées d’un seul souffle, sans défiler entre elles",
+  "dynamicLyricsBg": "Fond de paroles dynamique",
+  "dynamicLyricsBgDesc": "Appliquer le flou de la pochette à l'écran des paroles",
+  "dynamicTheming": "Thème dynamique",
+  "emptyLibraryDesc": "Aucun fichier musical pris en charge n'a été trouvé dans votre bibliothèque. Ajoutez des dossiers ou lancez une analyse.",
+  "enableNetworkLyricsArt": "Activer l'utilisation du réseau pour les paroles en ligne & l'art de l'artiste",
+  "enablePlayerGradient": "Dégradé de l'écran de lecture",
+  "enablePlayerGradientDesc": "Activer le fond en dégradé radial d'accent sur l'écran de lecture en cours",
+  "enableLyricsGradient": "Dégradé de l'écran des paroles",
+  "enableLyricsGradientDesc": "Activer le fond en dégradé radial d'accent sur l'écran des paroles",
+  "fadeDuration": "Durée du fondu",
+  "fadeDurationDesc": "Durée de l'effet de fondu lecture/pause/arrêt",
+  "fadeOnSeek": "Fondu lors de la recherche",
+  "fadeOnSeekDesc": "Atténuer doucement le volume lors de la recherche dans un morceau",
+  "fadePlayPauseStop": "Fondu Lecture/Pause/Arrêt",
+  "fadePlayPauseStopDesc": "Atténuer doucement le volume lors de la lecture, pause ou arrêt",
+  "favorites": "Favoris",
+  "fileInformation": "Informations sur le fichier",
+  "flatProgressBar": "Barre de progression plate",
+  "folders": "Dossiers",
+  "genre": "Genre",
+  "genres": "Genres",
+  "genresRowDesc": "Étagère horizontale de genres musicaux",
+  "goStart": "COMMENCER",
+  "grant": "AUTORISER",
+  "granted": "AUTORISÉ",
+  "history": "Historique",
+  "home": "Accueil",
+  "homeDarkness": "Assombrissement de l'écran d'accueil",
+  "homeDarknessDesc": "Ajuster l'assombrissement du fond pour l'écran d'accueil",
+  "homeDashboardSettings": "Paramètres du tableau de bord",
+  "homeDashboardSettingsDesc": "Personnaliser les lignes horizontales de votre écran d'accueil",
+  "internetMode": "Mode Internet",
+  "keepBackgroundGradient": "Garder le dégradé de fond",
+  "keepBackgroundGradientDesc": "Garder le dégradé de fond sur tous les écrans de l'application",
+  "animatePlayerGradient": "Dégradé animé",
+  "animatePlayerGradientDesc": "Fait bouger lentement les couleurs primaire et tertiaire avec un grain doux, au rythme de la musique",
+  "animateBackgroundGradient": "Arrière-plan animé",
+  "animateBackgroundGradientDesc": "Utilise le dégradé animé en arrière-plan de l'Accueil, des Titres et de la Bibliothèque",
+  "language": "Langue",
+  "left": "Gauche",
+  "library": "Bibliothèque",
+  "libraryDarkness": "Assombrissement de l'écran de bibliothèque",
+  "libraryDarknessDesc": "Ajuster l'assombrissement du fond pour l'écran de bibliothèque",
+  "libraryFoldersSync": "Dossiers, déclencheurs d'analyse, réinitialisation de la base de données et synchro hors ligne",
+  "librarySettings": "Paramètres de la bibliothèque",
+  "loadingMusicLibrary": "CHARGEMENT DE LA BIBLIOTHÈQUE MUSICALE",
+  "loadingMusicLibraryDesc": "Construction des index premium, configuration des écouteurs matériels et optimisation des caches visuels.",
+  "loadingPhase1": "INTERROGATION DE L'AUDIO...",
+  "loadingPhase2": "RAFRAÎCHISSEMENT DU MOTEUR...",
+  "loadingPhase3": "EXTRACTION DES DONNÉES ACOUSTIQUES...",
+  "loadingPhase4": "OPTIMISATION DE LA MÉMOIRE...",
+  "@@locale": "fr",
+  "lyrics": "Paroles",
+  "lyricsAlignment": "Alignement des paroles",
+  "lyricsAlignmentDesc": "Aligner la position du texte pour les paroles défilantes",
+  "lyricsDarkness": "Assombrissement de l'écran des paroles",
+  "lyricsDarknessDesc": "Ajuster l'assombrissement du fond pour l'écran des paroles",
+  "lyricsProvider": "Fournisseur de paroles",
+  "lyricsProviderDesc": "Paroles en ligne depuis lrc.red, LyricsPlus, LRCLIB et plus",
+  "maintainersAndDesigners": "Développeurs & designers",
+  "manageAudioFocus": "Gérer le focus audio",
+  "manageAudioFocusDesc": "Demander et répondre aux changements de focus audio du système",
+  "manageAudioFocusTitle": "Gérer le focus audio",
+  "manageLanguageAndFocus": "Gérer les préférences de langue et l'état de focus des appels",
+  "manualCrossfadeDuration": "Durée du fondu enchaîné manuel",
+  "manualCrossfadeDurationDesc": "Durée de superposition lors des transitions manuelles",
+  "matchingLyrics": "PAROLES CORRESPONDANTES",
+  "metadataDetails": "Détails des métadonnées",
+  "mostPlayed": "Plus écoutés",
+  "musicAudioAccess": "ACCÈS MUSIQUE & AUDIO",
+  "musicDarkness": "Assombrissement du lecteur de musique",
+  "musicDarknessDesc": "Ajuster l'assombrissement du fond pour l'écran du lecteur de musique",
+  "musicLibrary": "Bibliothèque musicale",
+  "muteOrPauseCalls": "Couper le son ou mettre en pause pendant les appels et autres activités audio",
+  "newPlaylist": "Nouvelle playlist",
+  "newTitle": "Nouveau titre",
+  "noAlbumsFound": "Aucun album trouvé",
+  "noArtistsFound": "Aucun artiste trouvé",
+  "noFavoritesYet": "Aucun favori pour le moment",
+  "noHistoryYet": "Aucun historique",
+  "noLyrics": "Aucune parole trouvée",
+  "noMusicDetected": "AUCUNE MUSIQUE DÉTECTÉE",
+  "noPlaylistsCreated": "Aucune playlist créée pour le moment.",
+  "noPlaylistsYet": "Aucune playlist pour le moment",
+  "noResultsFound": "Aucun résultat trouvé",
+  "noSongsFound": "Aucune chanson trouvée",
+  "notificationAccess": "ACCÈS AUX NOTIFICATIONS",
+  "nowPlaying": "Lecture en cours",
+  "performanceOptimizerDashboard": "Tableau de bord de l'optimiseur de performances",
+  "performanceOptimizerDashboardDesc": "Afficher les statistiques de l'optimiseur en temps réel",
+  "permanentFocusChangePause": "Pause sur perte de focus permanente",
+  "permanentFocusChangePauseDesc": "Mettre en pause automatiquement lors de la perte définitive du focus audio",
+  "plainTimestamps": "Horodatages simples",
+  "scrollToEnd": "Aller à la fin",
+  "scrollToTop": "Revenir en haut",
+  "play": "Lire",
+  "playAll": "Tout lire",
+  "playbackAudio": "Lecture & Langue",
+  "playlists": "Playlists",
+  "playNext": "Lire ensuite",
+  "playQueue": "File d'attente",
+  "pressBackExit": "Appuyez à nouveau sur retour pour quitter",
+  "privacySafety": "Confidentialité & Sécurité",
+  "privacySafetyDesc": "100% privé et hors ligne en priorité. Vos morceaux, votre historique de lecture, vos favoris et votre configuration restent strictement dans une base de données Isar sécurisée sur votre appareil local. Nous ne suivons, ne collectons et ne partageons pas vos données d'utilisation.",
+  "pureBlackOled": "Noir pur (OLED)",
+  "pureBlackOledDesc": "Utiliser le noir absolu pour les arrière-plans",
+  "queue": "File d'attente",
+  "queueIsEmpty": "La file d'attente est vide",
+  "quickPicks": "Sélections rapides",
+  "quickPicksRowDesc": "Votre grille de chansons les plus écoutées",
+  "readyToScan": "Prêt à analyser",
+  "recentlyAddedSongsRowDesc": "Une liste de vos dernières importations",
+  "recentlyPlayed": "Récemment écoutés",
+  "recentPlayed": "Écoutés récemment",
+  "recentRowDesc": "Étagère horizontale des titres écoutés récemment",
+  "removedFromPlaylist": "Retiré de la playlist",
+  "removeFromFavorites": "Retirer des favoris",
+  "removeFromPlaylist": "Retirer de la playlist",
+  "rename": "Renommer",
+  "renameFile": "Renommer le fichier",
+  "renamePlaylist": "Renommer la playlist",
+  "changePlaylistCover": "Changer la couverture",
+  "removePlaylistCover": "Supprimer la couverture",
+  "renameSong": "Renommer la chanson",
+  "reorderDashboardSections": "Réorganiser les sections du tableau de bord",
+  "reorderDashboardSectionsDesc": "Glisser-déposer pour définir l'ordre préféré",
+  "includeOtherDeviceAudioTitle": "Inclure les autres audios de l'appareil",
+  "includeOtherDeviceAudioDesc": "Analyser les sonneries, notifications, alarmes et l'audio de WhatsApp et Telegram",
+  "rescanLibrary": "Analyser à nouveau la bibliothèque",
+  "rescanStorage": "ANALYSER À NOUVEAU LE STOCKAGE",
+  "reset": "Réinitialiser",
+  "resetLibrary": "Réinitialiser & Analyser",
+  "resetLibraryConfirm": "Cela effacera toutes les chansons, albums et artistes et effectuera une analyse complète de vos dossiers.",
+  "resetLibraryConfirmNew": "Cela retirera toutes les chansons de votre bibliothèque. Vos fichiers musicaux ne seront pas supprimés.",
+  "resetLibraryDesc": "Retirer toutes les chansons de votre bibliothèque indexée",
+  "resumeAfterCallDesc": "Reprendre la lecture automatiquement à la fin de l'appel (si mis en pause par l'appel)",
+  "resumeAfterCallTitle": "Reprendre après un appel",
+  "resumeOnStartDesc": "Reprendre la lecture automatiquement au démarrage de NOVA Player",
+  "resumeOnStartTitle": "Reprendre au démarrage",
+  "right": "Droite",
+  "scanCompleteSongsDetected": "ANALYSE TERMINÉE : {count} CHANSONS DÉTECTÉES !",
+  "@scanCompleteSongsDetected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "scanForMusic": "RECHERCHER DE LA MUSIQUE",
+  "scanIndexLocalDesc": "Analyser & indexer les fichiers locaux",
+  "scanLibrary": "Analyser la bibliothèque",
+  "scanningInBackground": "Analyse en arrière-plan...",
+  "scanningLibrary": "Analyse de la bibliothèque en cours...",
+  "scanningStorage": "ANALYSE DU STOCKAGE EN COURS...",
+  "scanningStorageDesc": "Parcours des dossiers pour découvrir des morceaux audio. Veuillez patienter...",
+  "search": "Rechercher",
+  "searchLibraryHint": "Rechercher dans toute votre bibliothèque",
+  "searchSongsHint": "Rechercher des chansons",
+  "seekFadeDuration": "Durée du fondu de recherche",
+  "seekFadeDurationDesc": "Durée de l'effet de fondu lors de la recherche",
+  "selectAppLanguage": "Sélectionner la langue de l'application",
+  "selectCustomColor": "Choisir une couleur personnalisée",
+  "selectCustomFolder": "CHOISIR UN DOSSIER PERSONNALISÉ",
+  "selectFolderIndex": "Sélectionner un dossier pour indexer les fichiers musicaux",
+  "selectSpecificFolder": "SÉLECTIONNER UN DOSSIER SPÉCIPIQUE",
+  "settings": "Paramètres",
+  "share": "Partager",
+  "shareFile": "Partager le fichier",
+  "showAlbumsRow": "Afficher la ligne Albums",
+  "showAlbumsRowDesc": "Afficher une liste horizontale d'albums sur votre écran d'accueil",
+  "showArtistsRow": "Afficher la ligne Artistes",
+  "showArtistsRowDesc": "Afficher une liste horizontale d'artistes sur votre écran d'accueil",
+  "showGenresRow": "Afficher la ligne Genres",
+  "showGenresRowDesc": "Afficher une liste horizontale de genres sur votre écran d'accueil",
+  "showLess": "Afficher moins",
+  "showMore": "Afficher plus",
+  "segmentedUtilityButtons": "Boutons du lecteur segmentés",
+  "segmentedUtilityButtonsDesc": "Affiche lecture aléatoire, répétition, à suivre et paroles sous forme de quatre tuiles d'icônes au style des commandes de lecture",
+  "playerLyricLine": "Ligne de paroles sous la pochette",
+  "playerLyricLineDesc": "Affiche la ligne de paroles actuelle sous la pochette, synchronisée mot par mot comme l'écran des paroles",
+  "playerLyricLineTransition": "Animation de changement de ligne",
+  "lyricLineTransitionCube": "Cube",
+  "lyricLineTransitionRoll": "Défilement",
+  "lyricLineTransitionFlip": "Retournement",
+  "lyricLineTransitionBlur": "Flou",
+  "accentVibrancy": "Éclat de la couleur d'accent",
+  "accentVibrancyDesc": "Rend la couleur d'accent plus vive sans changer sa luminosité",
+  "appearanceSettingsDesc": "Couleurs, arrière-plans, assombrissement et polices",
+  "nowPlayingSettingsDesc": "Disposition du lecteur, barre de progression, badge et ligne de paroles",
+  "lyricsSettingsDesc": "Aspect de la ligne active, arrière-plan et sources des paroles",
+  "homeAndLibrary": "Accueil et bibliothèque",
+  "homeAndLibraryDesc": "Rangées d'accueil, affichage de la bibliothèque et dossiers",
+  "playbackAndAudio": "Lecture et audio",
+  "playbackAudioSettingsDesc": "Égaliseur, fondus, file d'attente et interruptions",
+  "general": "Général",
+  "generalSettingsDesc": "Langue, vibrations, internet et profil",
+  "sectionPlayer": "Lecteur",
+  "sectionSeekBarVisuals": "Barre de progression et effets",
+  "sectionTrackInfo": "Infos du titre",
+  "sectionLyricLine": "Ligne de paroles",
+  "sectionLook": "Aspect",
+  "sectionBackground": "Arrière-plan",
+  "sectionSources": "Sources",
+  "sectionHomeRows": "Rangées d'accueil",
+  "sectionDisplay": "Affichage",
+  "sectionFolders": "Dossiers et analyse",
+  "sectionSound": "Son",
+  "sectionInterruptions": "Interruptions",
+  "sectionApp": "App",
+  "sectionInternet": "Internet",
+  "showAlbumNextToArtist": "Afficher l'album à côté de l'artiste",
+  "showAlbumNextToArtistDesc": "Affiche « Artiste • Album » sous les titres au lieu de l'artiste seul",
+  "showAlbumInQuickPicks": "Album dans Sélections rapides",
+  "showAlbumInQuickPicksDesc": "Affiche aussi l'album dans Sélections rapides de l'accueil",
+  "reorderSongsHint": "Appuyez longuement sur un titre, puis faites-le glisser pour réorganiser",
+  "qualityBadgeStyle": "Style du badge de qualité",
+  "qualityBadgeStyleDesc": "Apparence, icône, couleurs et détails du badge de qualité audio",
+  "qualityBadgeLook": "Apparence",
+  "qualityBadgeLookPill": "Plein",
+  "qualityBadgeLookOutlined": "Contour",
+  "qualityBadgeLookText": "Texte",
+  "qualityBadgeIcon": "Icône",
+  "qualityBadgeColorsByQuality": "Selon la qualité",
+  "qualityBadgeSeparator": "Séparateur",
+  "qualityBadgeDetails": "Détails",
+  "qualityBadgeLevel": "Niveau de qualité",
+  "qualityBadgeLayout": "Contenu",
+  "qualityBadgeLayoutName": "Nom seul",
+  "qualityBadgeShape": "Forme",
+  "qualityBadgeShapePill": "Pilule",
+  "qualityBadgeShapeRounded": "Arrondi",
+  "qualityBadgeShapeSquare": "Carré",
+  "showQualityBadge": "Afficher le badge de qualité",
+  "showQualityBadgeDesc": "Afficher un badge d'information sur la qualité audio sur l'écran de lecture en cours",
+  "showPlaylistsRow": "Afficher les playlists",
+  "showPlaylistsRowDesc": "Afficher une liste horizontale de playlists sur votre écran d’accueil",
+  "playlistsRowDesc": "Vos playlists, les plus récemment écoutées en premier",
+  "showRecentRow": "Afficher la ligne Écoutés récemment",
+  "showRecentRowDesc": "Afficher une liste horizontale des titres écoutés récemment sur votre écran d'accueil",
+  "silenceBetweenTracksDesc": "Ajouter un silence entre les pistes (0ms pour le sans blanc)",
+  "silenceBetweenTracksTitle": "Silence entre les pistes",
+  "songDeletedDbOnly": "Chanson retirée de la bibliothèque (fichier physique en lecture seule)",
+  "songDeletedSuccess": "Chanson supprimée avec succès",
+  "songDeleteFailed": "Échec de la suppression de la chanson",
+  "songDetails": "Détails de la chanson",
+  "songDetailsAndFrequency": "Détails & Fréquence de la chanson",
+  "songRenamedDbOnly": "Chanson renommée dans la bibliothèque (fichier physique en lecture seule)",
+  "songRenamedSuccess": "Chanson renommée avec succès",
+  "songRenameFailed": "Échec du renommage de la chanson",
+  "songs": "Chansons",
+  "songsDarkness": "Assombrissement de l'écran des morceaux",
+  "songsDarknessDesc": "Ajuster l'assombrissement du fond pour l'écran des morceaux",
+  "sortBy": "Trier par",
+  "sortOrder": "Ordre de tri",
+  "sourceCode": "Code source",
+  "stopServiceOnAppDismissal": "Arrêter le service à la fermeture de l'application",
+  "stopServiceOnAppDismissalDesc": "Arrête le service en arrière-plan et ferme l'application lorsqu'elle est balayée",
+  "storagePermissionRequired": "Les autorisations de stockage sont requises pour analyser la mémoire de l'appareil.",
+  "syncLyricsOffline": "Synchroniser les paroles (Hors ligne)",
+  "systemDefault": "Système par défaut",
+  "systemPermissionChecklist": "LISTE DE CONTRÔLE DES AUTORISATIONS",
+  "technicalInfoFrequency": "Infos techniques & Fréquence",
+  "theme": "Thème",
+  "title": "Titre",
+  "todayMixForYou": "Mix du jour pour vous",
+  "toggleFavorite": "Ajouter/Retirer des favoris",
+  "topResult": "Meilleur résultat",
+  "transferMusicFiles": "TRANSFÉRER LES FICHIERS MUSICAUX",
+  "turnOffBlursOptimize": "Désactiver les flous intenses pour optimiser les performances",
+  "unknown": "Inconnu",
+  "unknownAlbum": "Album inconnu",
+  "unknownArtist": "Artiste inconnu",
+  "updateLibraryIndexing": "Mettre à jour l'indexation des fichiers de la bibliothèque",
+  "useAbsoluteBlackBg": "Utiliser un fond noir absolu",
+  "useStaticTextTimestamps": "Utiliser du texte statique au lieu d'une animation pour la progression",
+  "fluidPlayer": "Lecteur fluide",
+  "fluidPlayerDesc": "Faites glisser le mini-lecteur vers le haut pour le transformer en lecteur complet",
+  "hapticFeedback": "Retour haptique",
+  "hapticFeedbackDesc": "Vibrer lors des appuis, bascules et gestes",
+  "hapticStrength": "Intensité",
+  "hapticStrengthLow": "Faible",
+  "hapticStrengthMedium": "Moyenne",
+  "hapticStrengthHigh": "Forte",
+  "viewAll": "Voir tout",
+  "visitOfficialRepository": "Visiter le dépôt officiel sur GitHub",
+  "welcomeAboutDesc": "NOVA Player est un système Music-OS de nouvelle génération conçu pour une lecture audio hors ligne de qualité supérieure. Il intègre des paroles synchronisées en temps réel, une gestion avancée des sessions audio avec mise en pause automatique lors des appels, des thèmes d'arrière-plan adaptatifs et la prise en charge de nombreux formats de fichiers. Optimisé pour économiser au maximum la batterie.",
+  "welcomeAllFilesDesc": "Fortement recommandé pour une analyse professionnelle afin de localiser des chansons dans des dossiers non standard (Téléchargements, Telegram, dossiers personnalisés).",
+  "welcomeInstructionConnectDesc": "Branchez votre téléphone ou appareil à un ordinateur personnel à l'aide d'un câble de données USB standard.",
+  "welcomeInstructionDownloadDesc": "Alternativement, téléchargez les fichiers directement à l'aide d'un navigateur web ou d'un autre utilitaire de téléchargement sur l'appareil lui-même.",
+  "welcomeInstructionTransferDesc": "Copiez vos fichiers musicaux (formats pris en charge : .mp3, .flac, .m4a, .wav) directement dans le dossier standard 'Music' ou 'Download' de votre appareil.",
+  "welcomeMusicAudioDesc": "Requeri pour découvrir et lire les pistes audio standard stockées dans la mémoire de votre appareil.",
+  "welcomeNoSongsDesc": "Nous n'avons trouvé aucun fichier audio pris en charge (MP3, FLAC, WAV, M4A, OGG) dans la mémoire de votre appareil.",
+  "welcomeNotificationDesc": "Requis pour afficher les commandes de lecture et les widgets de notification active dans votre barre système.",
+  "welcomeScanningFoldersDesc": "Analyse de tous les dossiers et sous-dossiers pour trouver des fichiers audio.",
+  "whyInternetUsed": "Pourquoi Internet est utilisé",
+  "whyInternetUsedDesc": "• Paroles : récupère les paroles synchronisées depuis lrc.red, LyricsPlus, LRCLIB ou le fournisseur choisi. Seuls le titre, l’artiste, l’album et la durée du morceau sont envoyés pour la recherche. Aucune donnée personnelle, aucun réglage ni fichier multimédia n’est jamais envoyé ou partagé.",
+  "whyPermissionsUsed": "Pourquoi les autorisations sont utilisées",
+  "whyPermissionsUsedDesc": "• Accès stockage / médias : Requis pour découvrir, lire et indexer les pistes audio locales stockées sur votre appareil.\n• Notifications : Requis pour afficher les widgets de contrôle de lecture dans la barre d'état et le tiroir système.",
+  "willPlayNext": "Sera lu ensuite",
+  "year": "Année",
+  "activeFont": "Police active : {fontName}",
+  "activeLyricsFont": "Police de paroles active : {fontName}",
+  "currentWeight": "Graisse actuelle",
+  "fontWeightAdjustment": "Ajustement de la graisse de police",
+  "giveStarOnGithub": "Donner une étoile sur GitHub",
+  "lyricsFontFamily": "Famille de polices des paroles",
+  "lyricsFontWeightAdjustment": "Ajustement de la graisse des paroles",
+  "persistQueueDesc": "Sauvegarder le dernier morceau et la file d'attente lors du redémarrage",
+  "persistQueueTitle": "Conserver la dernière file",
+  "selectFontFamily": "Sélectionner la famille de polices",
+  "sortAlbumAsc": "Album (A-Z)",
+  "sortAlphabeticalAZ": "Alphabétique (A-Z)",
+  "sortAlphabeticalZA": "Alphabétique (Z-A)",
+  "sortArtistAsc": "Artiste (A-Z)",
+  "sortDefault": "Par défaut",
+  "sortDuration": "Durée",
+  "sortLeastSongs": "Moins de chansons",
+  "sortMostSongs": "Plus de chansons",
+  "sortOldestAdded": "Ajouts les plus anciens",
+  "sortRecentlyAdded": "Récemment ajoutés",
+  "sortYearNewest": "Année (Plus récente)",
+  "sortYearOldest": "Année (Plus ancienne)",
+  "supportDevelopment": "Soutenir le développement",
+  "supportDevelopmentDesc": "NOVA Player est 100% gratuit et open-source. Si vous aimez l'utiliser, pensez à soutenir le créateur par un don. Chaque contribution aide à maintenir le projet actif !",
+  "supportProjectLove": "Soutenez le projet et montrez votre intérêt !",
+  "supportPromptMessage": "Vous aimez NOVA Player ? Aidez-nous à le garder gratuit en nous soutenant sur Ko-fi.",
+  "supportPromptAction": "Soutenir",
+  "supportUs": "Nous soutenir",
+  "supportUsDesc": "Aider à garder NOVA Player vivant et open-source",
+  "useCustomFont": "Utiliser une police personnalisée",
+  "useCustomFontDesc": "Utiliser Jost ou d'autres polices personnalisées. Sinon, DM Sans est utilisée.",
+  "useCustomFontLyrics": "Police personnalisée pour les paroles",
+  "useCustomFontLyricsDesc": "Utiliser une police et graisse personnalisées pour les paroles synchronisées",
+  "audioFocusGetFocus": "Obtenir le focus",
+  "audioFocusGetFocusDesc": "Demander le focus audio au début de la lecture.",
+  "audioFocusReleaseFocus": "Libérer le focus",
+  "audioFocusReleaseFocusDesc": "Libérer le focus audio quand la lecture est mise en pause ou arrêtée.",
+  "audioFocusStopOnOtherSession": "Arrêter la musique lors d'une autre session musicale",
+  "audioFocusStopOnOtherSessionDesc": "Mettre la lecture en pause quand une autre application commence à jouer de l'audio.",
+  "audioFocusRestartOnGain": "Reprendre la musique au regain du focus",
+  "audioFocusRestartOnGainDesc": "Reprendre automatiquement la lecture quand le focus audio revient, uniquement si la lecture avait été interrompue par une perte de focus.",
+  "pauseOnDuckTitle": "Pause en cas d'atténuation",
+  "pauseOnDuckDesc": "Mettre la lecture en pause au lieu de baisser le volume quand une autre application joue un son bref (ex. notifications, indications de navigation).",
+  "resumeOnBluetoothConnectTitle": "Reprendre à la connexion Bluetooth",
+  "resumeOnBluetoothConnectDesc": "Reprendre automatiquement la lecture quand un appareil audio Bluetooth (écouteurs, kit voiture) se reconnecte.",
+  "shuffleTitle": "Lecture aléatoire",
+  "shuffleDisabledDesc": "Lire les morceaux dans leur ordre de file d'attente original. Désactiver la lecture aléatoire laisse le morceau en cours continuer et restaure le reste de la file dans son ordre d'origine, sans affecter la lecture ni son historique.",
+  "shuffleEnabledDesc": "Mélanger les morceaux restants tout en laissant le morceau en cours inchangé. L'ordre aléatoire généré reste le même jusqu'à ce que la file change ou qu'un nouveau mélange soit demandé, évitant les morceaux répétés ou sautés.",
+  "shuffleSwitchingDesc": "Activer ou désactiver la lecture aléatoire ne redémarre jamais le morceau en cours. Cela change uniquement l'ordre des morceaux à venir — aléatoire si activé, et restauré à l'ordre d'origine de la file si désactivé.",
+  "myAlbums": "Mes albums",
+  "featuredArtists": "Artistes à la une",
+  "noSongPlaying": "Aucun morceau en cours de lecture",
+  "nextLabel": "Suivant",
+  "previousLabel": "Précédent",
+  "resync": "Resynchroniser",
+  "equalizer": "Égaliseur",
+  "presets": "PRÉRÉGLAGES",
+  "preAmpGain": "Gain de préamplification",
+  "outputVolume": "Volume de sortie",
+  "customFilterHint": "Saisissez directement des paramètres de filtre audio libavfilter personnalisés (ex. volume=3dB, aecho=0.8:0.88:60:0.4) :",
+  "flowGlobalActions": "Flux et actions globales",
+  "equalizerModeLabel": "Mode de l'égaliseur :",
+  "currentGainsAppliedGlobal": "Réglages actuels appliqués comme paramètres globaux par défaut.",
+  "applyToGlobal": "Appliquer au global",
+  "songSpecificResetGlobal": "Paramètres spécifiques au morceau réinitialisés aux valeurs globales par défaut.",
+  "resetToGlobal": "Réinitialiser au global",
+  "resetAllSongsEq": "Réinitialiser l'égaliseur de tous les morceaux",
+  "resetAllSongsEqConfirm": "Voulez-vous vraiment effacer les réglages d'égaliseur personnalisés de tous les morceaux de votre bibliothèque ?",
+  "allSongsEqDataReset": "Toutes les données d'égaliseur spécifiques aux morceaux ont été réinitialisées.",
+  "resetAllSongsEqData": "Réinitialiser les données d'égaliseur de tous les morceaux",
+  "equalizerTargetMode": "Mode cible de l'égaliseur",
+  "equalizerTargetModeDesc": "Choisissez comment les réglages de l'égaliseur s'appliquent à votre bibliothèque musicale.",
+  "globalMode": "Mode global",
+  "globalModeDesc": "Applique les effets à tous les morceaux de façon universelle. Les réglages de l'égaliseur restent identiques lors du changement de morceau.",
+  "songSpecificMode": "Mode par morceau",
+  "songSpecificModeDesc": "Enregistre des réglages personnalisés pour le morceau actuel uniquement. Le morceau suivant utilise par défaut un égaliseur neutre/désactivé, sauf s'il possède son propre profil.",
+  "viewDeviceAudioCapabilities": "Voir les capacités audio de l'appareil",
+  "deviceAudioCapabilities": "Capacités audio de l'appareil",
+  "noPlaybackActiveCapabilities": "Aucune lecture en cours ou informations sur les capacités indisponibles.",
+  "changeLyricsProvider": "Changer de fournisseur de paroles",
+  "autoFallbackProviders": "Fournisseurs de secours automatiques",
+  "autoFallbackProvidersDesc": "Essayer automatiquement les autres fournisseurs si le principal n'a pas de paroles",
+  "ambientColorBackground": "Fond couleur ambiante",
+  "ambientColorBackgroundDesc": "Dégradés ambiants doux et subtils dérivés de la pochette du morceau",
+  "exportLyricsLrc": "Exporter les paroles (fichier .lrc)",
+  "saveLyricsToDevice": "Enregistrer les paroles actuelles sur l'appareil",
+  "noLyricsToExport": "Aucune parole disponible à exporter",
+  "useCustomLyricsLrc": "Utiliser des paroles personnalisées (fichier LRC)",
+  "selectLocalLrcFile": "Sélectionner un fichier .lrc ou .txt local pour ce morceau",
+  "customLyricsAppliedSuccess": "Paroles personnalisées appliquées avec succès !",
+  "noRecentlyPlayedTracks": "Aucun morceau récemment écouté",
+  "close": "Fermer",
+  "audioQualityAnalysis": "Analyse de la qualité audio",
+  "audioQualityAnalysisDesc": "Effectuer une analyse spectrale et de format audio approfondie",
+  "audioStreamDetails": "Détails du flux audio",
+  "perChannelMetrics": "Mesures par canal",
+  "sleepTimer": "Minuterie de veille",
+  "stopByTime": "ARRÊT PAR DURÉE",
+  "start": "Démarrer",
+  "stopBySongCount": "ARRÊT PAR NOMBRE DE MORCEAUX",
+  "cancelSleepTimer": "Annuler la minuterie de veille",
+  "nowPlayingAllCaps": "LECTURE EN COURS",
+  "settingsAndBackups": "Paramètres et sauvegardes",
+  "managePreferencesLibraryData": "Gérer les préférences et les données de la bibliothèque",
+  "logsClearedSuccess": "Journaux effacés avec succès",
+  "editSongInfo": "Modifier les infos du morceau",
+  "editAlbumInfo": "Modifier les infos de l'album",
+  "editArtistPicture": "Modifier la photo de l'artiste",
+  "artistPictureUpdated": "Photo de l'artiste mise à jour",
+  "fetchArtistPictureOnline": "Récupérer sur Internet",
+  "artistPictureNotFound": "Aucune photo correspondante trouvée en ligne",
+  "tapFieldToEdit": "Appuyez sur un champ pour le modifier",
+  "removeArtwork": "Supprimer la pochette",
+  "saveChangesBtn": "Enregistrer les modifications",
+  "enterFolderPathManually": "Saisir le chemin du dossier manuellement",
+  "folderPickerManualHint": "Si le sélecteur de répertoire système ne s'ouvre pas, saisissez ou collez le chemin complet du répertoire ci-dessous :",
+  "noSupportedSongsFoundFolder": "Aucun morceau pris en charge trouvé dans le dossier sélectionné",
+  "add": "Ajouter",
+  "folderPickerClosed": "Sélecteur de dossier fermé",
+  "supportOnKofi": "Soutenir sur Ko-fi",
+  "typeToSearchSettings": "Rechercher dans les paramètres…",
+  "maintainersLabel": "Mainteneurs",
+  "personBehindNovaPlayer": "La personne derrière NOVA Player",
+  "blurredArtworkForLyrics": "Pochette floutée pour les paroles",
+  "blurredArtworkForLyricsDesc": "Afficher la pochette floutée en fond au lieu d'un dégradé dynamique/statique",
+  "lyricsFontWeight": "Graisse de police des paroles",
+  "openSourceLicenses": "Licences open source",
+  "openSourceLicensesDesc": "Bibliothèques tierces utilisées dans cette application",
+  "done": "Terminé",
+  "lyricsNotAvailable": "Paroles non disponibles.",
+  "approximatedSyncNoWordTimings": "Synchronisation approximative (sans minutage par mot)",
+  "lyricsSyncHelp": "Aide à la synchronisation des paroles",
+  "simpleModeLabel": "Mode simple",
+  "advancedModeLabel": "Mode avancé",
+  "tips": "Astuces",
+  "gotIt": "Compris",
+  "lyricsSyncStudio": "Studio de synchronisation des paroles",
+  "lyricsTextLabel": "Texte des paroles",
+  "lyricsTextHelperDesc": "Une ligne par vers. Les outils de synchronisation ci-dessous associent des horodatages à ces lignes.",
+  "quickSync": "Synchronisation rapide",
+  "autoAdvanceAfterStamping": "Avancer automatiquement après l'horodatage",
+  "advancedSync": "Synchronisation avancée",
+  "useCurrentTime": "Utiliser l'heure actuelle",
+  "playbackAssist": "Assistant de lecture",
+  "timeShift": "Décalage temporel",
+  "timeShiftDesc": "Décale toutes les paroles horodatées en avant ou en arrière, ensemble.",
+  "lyricsSaveLrcExplain": "L'enregistrement crée si possible un fichier « .lrc » associé à côté du fichier audio du morceau, et l'enregistre aussi dans la base de données locale du lecteur. Les lignes non horodatées seront interpolées automatiquement.",
+  "back": "Retour",
+  "appSettingsLabel": "Paramètres de l'application",
+  "exportBackupJson": "Exporter la sauvegarde (JSON)",
+  "importBackupJson": "Importer la sauvegarde (JSON)",
+  "exportDiagnosticsLogs": "Exporter les journaux de diagnostic",
+  "clearDiagnosticsLogs": "Effacer les journaux de diagnostic",
+  "lyricsPlainTextOrLrc": "Paroles (texte brut ou LRC)",
+  "syncModeLine": "LIGNE",
+  "syncModeWord": "MOT",
+  "syncModeChar": "CARACTÈRE",
+  "enterManually": "Saisir manuellement",
+  "rawFilterParametersHint": "Paramètres de filtre bruts...",
+  "searchSettingsHint": "Rechercher dans les paramètres...",
+  "repeatTooltip": "Répéter",
+  "favoriteTooltip": "Favori",
+  "instructionsTooltip": "Instructions",
+  "pasteLyricsHint": "Collez ou saisissez les paroles ici",
+  "timestampMmSsHint": "Horodatage (mm:ss.xx)",
+  "nowLabel": "Maintenant",
+  "playlistNameHint": "Nom de la playlist",
+  "songInfoUpdated": "Infos du morceau mises à jour !",
+  "albumInfoUpdated": "Infos de l'album mises à jour !",
+  "failedToSaveChanges": "Échec de l'enregistrement des modifications.",
+  "sleepTimerStoppingIn": "Actif : Arrêt dans {time}",
+  "sleepTimerStoppingAfter": "Actif : Arrêt après {time}",
+  "selectWhenToPause": "Choisissez quand mettre la musique en pause",
+  "alwaysBlurSheets": "Toujours flouter les fiches",
+  "alwaysBlurSheetsDesc": "Floute les fiches contextuelles même quand le thème dynamique est désactivé",
+  "statusBarBlur": "Flou de la barre d'état",
+  "statusBarBlurDesc": "Floute la page derrière la barre d'état pendant le défilement",
+  "artworkResetToDefault": "Pochette réinitialisée par défaut",
+  "backupsAndLogs": "Sauvegardes et journaux",
+  "backupsAndLogsDesc": "Exporter, importer et gérer les données de l'application",
+  "clearDiagnosticsLogsDesc": "Efface définitivement le fichier journal de diagnostic stocké sur cet appareil. Cette action est irréversible.",
+  "exportBackupJsonDesc": "Enregistre vos morceaux aimés et vos playlists dans un fichier JSON que vous pouvez conserver ou partager. Rien d'autre n'est inclus.",
+  "exportDiagnosticsLogsDesc": "Partage le fichier journal de diagnostic de l'application afin qu'il puisse être examiné en cas de problème.",
+  "importBackupJsonDesc": "Fusionne les morceaux aimés et les playlists d'un fichier de sauvegarde avec votre bibliothèque. Les données existantes ne sont jamais écrasées ni supprimées.",
+  "importLyricsFile": "Importer un fichier de paroles",
+  "keepSongProgressDesc": "Mémorise la position de lecture de chaque morceau séparément. Passez à un autre morceau en cours de route et revenez plus tard — même après avoir écouté d'autres morceaux entre-temps — la lecture reprendra exactement là où vous l'aviez laissée au lieu de recommencer depuis le début.",
+  "keepSongProgressTitle": "Conserver la progression du morceau",
+  "lyricsNotAvailableHint": "Importez un fichier .lrc ou .txt pour ajouter les paroles de ce morceau",
+  "nextUp": "À suivre",
+  "noEmbeddedArtworkFound": "Aucune pochette intégrée trouvée pour cet album",
+  "resetArtworkToDefault": "Réinitialiser par défaut",
+  "selectAvatars": "Choisir l'avatar",
+  "selectAvatarsDesc": "Choisissez l'avatar affiché sur votre écran d'accueil",
+  "dynamicAvatarColor": "Couleur dynamique de l'avatar",
+  "dynamicAvatarColorDesc": "Adapte la couleur d'accent de l'avatar à votre thème actuel",
+  "enrichingSongs": "Enrichissement de {count} morceaux…",
+  "noListeningHistoryYet": "Aucun historique d'écoute pour l'instant",
+  "noListeningHistoryYetDesc": "Écoutez quelques titres et votre bilan personnel — titres, artistes, albums et genres favoris — prendra vie ici.",
+  "novaAnalyze": "NOVA Analyze",
+  "totalPlays": "Écoutes totales",
+  "listeningTime": "Temps d'écoute",
+  "currentStreakDays": "Série actuelle (jours)",
+  "longestStreakDays": "Plus longue série (jours)",
+  "analyzePlaysAndSongs": "{plays} écoutes • {songs} titres",
+  "dayPartMorningShort": "Mat.",
+  "dayPartAfternoonShort": "A-m",
+  "dayPartEveningShort": "Soir",
+  "dayPartNightShort": "Nuit",
+  "activityPattern": "Rythme d'activité",
+  "whenYouListenMost": "Quand vous écoutez le plus",
+  "genreBreakdown": "Répartition par genre",
+  "otherGenre": "Autres",
+  "topAlbums": "Albums favoris",
+  "topArtists": "Artistes favoris",
+  "topSongs": "Titres favoris",
+  "playsCount": "{count, plural, =1{1 écoute} other{{count} écoutes}}",
+  "songsPlayedCount": "{count, plural, =1{1 titre écouté} other{{count} titres écoutés}}",
+  "listeningTrend": "Tendance d'écoute",
+  "last30Days": "30 derniers jours",
+  "errorWithDetails": "Erreur : {error}",
+  "selectAll": "Tout sélectionner",
+  "playlist": "Playlist",
+  "songsCount": "{count, plural, =1{1 titre} other{{count} titres}}",
+  "recentSearches": "Recherches récentes",
+  "lyricsSourceLocalFile": "Fichier local",
+  "lyricsSourceEmbedded": "Métadonnées intégrées",
+  "lyricsProvidedBy": "Paroles fournies par {source}",
+  "failedToImportLyrics": "Échec de l'importation des paroles : {error}",
+  "lyricsEditorLines": "Lignes",
+  "lyricsEditorStamped": "Horodatées",
+  "lyricsEditorLineNumber": "Ligne {number}",
+  "lyricsEditorEmptyLine": "(Ligne vide)",
+  "lyricsEditorNotStamped": "Pas encore horodatée",
+  "pause": "Pause",
+  "lyricsEditorAddLineFirst": "Ajoutez d'abord au moins une ligne de paroles.",
+  "lyricsEditorSavedWithSidecar": "Paroles enregistrées dans la base de données et à côté du fichier du titre.",
+  "lyricsEditorSavedDbOnly": "Paroles enregistrées dans la base de données du lecteur.",
+  "lyricsEditorSaveFailed": "Impossible d'enregistrer les paroles.",
+  "saving": "Enregistrement...",
+  "saveLrc": "Enregistrer le LRC",
+  "lyricsEditorSelectedLine": "Ligne sélectionnée {index} sur {total}",
+  "lyricsEditorPickLine": "Choisissez une ligne dans la liste ci-dessous.",
+  "stampAndNext": "Horodater et suivant",
+  "stampNow": "Horodater",
+  "lyricsEditorSimpleSteps": "1. Collez ou saisissez une ligne de paroles par rangée.\n2. Lancez le titre.\n3. Sélectionnez la ligne en cours.\n4. Appuyez sur « Horodater et suivant » quand vous entendez cette ligne.\n5. Enregistrez une fois terminé.",
+  "lyricsEditorAdvancedSteps": "1. Modifiez directement l'horodatage de chaque ligne.\n2. Utilisez « Utiliser l'heure actuelle » pour capturer le temps de lecture.\n3. Utilisez les commandes de décalage pour déplacer ensemble toutes les lignes horodatées.\n4. Enregistrez pour générer le fichier `.lrc` final.",
+  "lyricsEditorTipsText": "- Si certaines lignes ne sont pas horodatées, le moteur de Flick remplit leurs temps automatiquement.\n- L'enregistrement se fait à côté du titre si possible, sinon une copie liée est stockée dans la base de données.",
+  "fileNotFoundOrInaccessible": "Fichier introuvable ou inaccessible : {title}",
+  "playbackFailedCorrupted": "Échec de la lecture : impossible de charger ou de lire « {title} ». Vérifiez que le fichier n'est pas corrompu.",
+  "shareSongText": "Écoute ce titre : {title}",
+  "shareSongsText": "Écoute ces {count} titres",
+  "noSettingsFoundFor": "Aucun paramètre trouvé pour « {query} »",
+  "chooseQuickAccentColors": "Choisir une couleur d'accent rapide",
+  "fontWeight": "Graisse de police",
+  "changeBaseFontWeight": "Modifier la graisse de base de la police personnalisée",
+  "lyricsFontWeightValue": "Graisse de police des paroles : {weight}",
+  "equalizerSearchDesc": "Régler l'égaliseur 18 bandes et les préréglages audio",
+  "stopServiceSearchDesc": "Arrêter la lecture et fermer l'app lorsqu'elle est balayée hors des apps récentes",
+  "scanNewFolderDesc": "Analyser un nouveau dossier à la recherche de fichiers audio",
+  "includeOtherDeviceAudioShortDesc": "Sonneries, notifications et audio des messageries",
+  "excludedFolders": "Dossiers exclus",
+  "excludedFoldersSearchDesc": "Ignorer certains dossiers lors de l'analyse",
+  "clearLibraryData": "Effacer les données de la bibliothèque",
+  "novaPlayerVersion": "Version de NOVA Player",
+  "versionLabel": "Version {version}",
+  "none": "Aucun",
+  "foldersSkippedCount": "{count, plural, =1{1 dossier ignoré lors de l'analyse} other{{count} dossiers ignorés lors de l'analyse}}",
+  "excludedFoldersDesc": "Les titres de ces dossiers sont ignorés lors de l'analyse, même s'ils se trouvent dans un dossier que vous avez ajouté.",
+  "noExcludedFoldersYet": "Aucun dossier exclu pour l'instant.",
+  "excludeAFolder": "Exclure un dossier",
+  "equalizerEnabled18Band": "Activé (égaliseur MPV 18 bandes)",
+  "disabled": "Désactivé",
+  "noIndexedFoldersYet": "Aucun dossier indexé pour l'instant",
+  "noIndexedFoldersYetDesc": "Utilisez « Analyser à nouveau la bibliothèque » pour découvrir les dossiers du stockage.",
+  "eqDynamicRangeCompressor": "Compresseur de dynamique",
+  "eqThreshold": "Seuil",
+  "eqRatio": "Ratio",
+  "eqAttack": "Attaque",
+  "eqRelease": "Relâchement",
+  "eqHeadphoneCrossfeedWidth": "Crossfeed et largeur pour casque",
+  "eqBinauralCrossfeed": "Crossfeed binaural",
+  "eqCrossfeedStrength": "Intensité du crossfeed",
+  "eqStereoWidening": "Élargissement stéréo",
+  "eqWideningFactor": "Facteur d'élargissement",
+  "eqLoudnessNormalization": "Normalisation du volume",
+  "eqTargetLoudness": "Volume cible",
+  "eqToneShelving": "Correction de tonalité (graves / aigus)",
+  "eqBassShelf": "Shelf des graves",
+  "eqTrebleShelf": "Shelf des aigus",
+  "eqTempoPitchControls": "Réglages du tempo et de la hauteur",
+  "eqPitchShift": "Décalage de hauteur",
+  "eqTempoSpeed": "Vitesse du tempo",
+  "eqVoiceSilenceControls": "Réglages de la voix et des silences",
+  "eqSilenceTrimming": "Suppression des silences",
+  "eqSilenceThreshold": "Seuil de silence",
+  "eqSpeechEnhancementFilter": "Filtre d'amélioration de la voix",
+  "eqHighpassCutoff": "Coupure passe-haut",
+  "eqLowpassCutoff": "Coupure passe-bas",
+  "eqRetroRoomEffects": "Effets rétro et de salle",
+  "eqLofiEffect": "Effet lo-fi (bitcrusher 8 bits)",
+  "eqStudioRoomReverb": "Réverbération de studio (écho)",
+  "eqVirtualSurround": "Son surround virtuel 5.1",
+  "eqRawFilterConsole": "Console de filtres FFmpeg bruts",
+  "eqSwitchToSliders": "Passer aux curseurs",
+  "eqSwitchToGraph": "Passer au graphique",
+  "on": "Activé",
+  "off": "Désactivé",
+  "eqSongSpecificActive": "Réglages propres au titre actifs",
+  "eqUsingGlobalDefault": "Réglages globaux par défaut utilisés",
+  "eqInteractiveGraphHint": "GRAPHIQUE INTERACTIF (FAITES GLISSER LES POINTS VERTICALEMENT)",
+  "eq18BandHint": "ÉGALISEUR 18 BANDES (FAITES DÉFILER HORIZONTALEMENT)",
+  "eqSongSpecific": "Propre au titre",
+  "eqGlobalDefault": "Global par défaut",
+  "eqEditScopeNote": "Les modifications faites pendant la lecture d'un titre ne s'appliquent qu'à ce titre. Pour définir le réglage global, modifiez sans titre en lecture ou utilisez l'action « Appliquer au global ».",
+  "presetFlat": "Neutre",
+  "presetBassBooster": "Renfort des graves",
+  "presetTrebleBooster": "Renfort des aigus",
+  "presetVocalBooster": "Renfort vocal",
+  "presetElectronic": "Électronique",
+  "presetRock": "Rock",
+  "presetPop": "Pop",
+  "presetJazz": "Jazz",
+  "save": "Enregistrer",
+  "savePreset": "Enregistrer le préréglage",
+  "presetName": "Nom du préréglage",
+  "deletePreset": "Supprimer le préréglage",
+  "deletePresetConfirm": "Supprimer le préréglage « {name} » ?",
+  "noLyricsSource": "Aucune source de paroles",
+  "lyricsSourceLabel": "Source : {source}",
+  "lyricsSourceLocalSidecar": "Fichier local associé (.lrc)",
+  "lyricsSourceCustomFile": "Fichier LRC personnalisé",
+  "lyricsSourceNotFoundOnline": "Introuvables en ligne",
+  "lyricsProviderLocal": "Local",
+  "checkingLocalLyrics": "Recherche de paroles locales/intégrées...",
+  "fetchingLyricsFrom": "Récupération des paroles depuis {provider}...",
+  "loadedLocalLyrics": "Paroles locales/intégrées chargées !",
+  "noLocalLyricsFound": "Aucune parole locale ou intégrée trouvée",
+  "lyricsUpdatedFrom": "Paroles mises à jour depuis {provider} !",
+  "noLyricsFoundOn": "Aucune parole trouvée sur {provider}",
+  "gestureTips": "Astuces paroles",
+  "gestureTipsDesc": "Gestes, synchro mot à mot, décalage et plus",
+  "exportLyrics": "Exporter les paroles",
+  "lyricsExportedTo": "Paroles exportées vers : {path}",
+  "failedToExportLyrics": "Échec de l'exportation des paroles : {error}",
+  "gestureTapLine": "Appuyez sur une ligne",
+  "gestureTapLineDesc": "Passe directement à ce passage des paroles.",
+  "gestureLongPressLine": "Appuyez longuement sur une ligne",
+  "gestureLongPressLineDesc": "Sélectionnez des lignes à partager en carte de paroles.",
+  "gesturePinch": "Pincez avec deux doigts",
+  "gesturePinchDesc": "Ajustez la taille du texte des paroles à votre goût.",
+  "gestureSwipeDown": "Balayez vers le bas",
+  "gestureSwipeDownDesc": "Ferme l'écran des paroles et revient au lecteur.",
+  "lyricsGestures": "Astuces paroles",
+  "lyricsGesturesIntro": "Quelques fonctions de cet écran qui ne sont pas toujours évidentes :",
+  "linesSelected": "{count, plural, =1{1 ligne sélectionnée} other{{count} lignes sélectionnées}}",
+  "couldNotGenerateShareImage": "Impossible de générer l'image à partager.",
+  "couldNotGenerateImage": "Impossible de générer l'image.",
+  "savedToGallery": "Enregistrée dans la galerie.",
+  "galleryPermissionDenied": "L'autorisation d'accès à la galerie a été refusée.",
+  "couldNotSaveToGallery": "Impossible d'enregistrer l'image dans la galerie.",
+  "shareLyrics": "Partager les paroles",
+  "backgroundColor": "Couleur d'arrière-plan",
+  "lyricsTextColor": "Couleur du texte des paroles",
+  "saveToGallery": "Enregistrer dans la galerie",
+  "preparing": "Préparation...",
+  "trackTitle": "Titre du morceau",
+  "composer": "Compositeur",
+  "unknownGenre": "Genre inconnu",
+  "releaseYear": "Année de sortie",
+  "notAvailable": "N/D",
+  "recordLabel": "Label",
+  "copyright": "Copyright",
+  "encoder": "Encodeur",
+  "fileName": "Nom du fichier",
+  "fileFormat": "Format du fichier",
+  "fileSize": "Taille du fichier",
+  "absolutePath": "Chemin absolu",
+  "playCount": "Nombre d'écoutes",
+  "playCountTimes": "{count, plural, =1{1 fois} other{{count} fois}}",
+  "lastPlayed": "Dernière écoute",
+  "filePath": "Chemin du fichier",
+  "rescan": "Réanalyser",
+  "codec": "Codec",
+  "container": "Conteneur",
+  "sampleRate": "Fréquence d'échantillonnage",
+  "bitDepth": "Profondeur de bits",
+  "decodedFormat": "Format décodé",
+  "bitrate": "Débit binaire",
+  "channels": "Canaux",
+  "nyquist": "Nyquist",
+  "dynamicRange": "Plage dynamique",
+  "peak": "Crête",
+  "truePeak": "Crête réelle",
+  "clipping": "Écrêtage",
+  "cutoff": "Coupure",
+  "samples": "Échantillons",
+  "channelShort": "Can. {channel}",
+  "noneClean": "Aucun (propre)",
+  "reanalyzingAudio": "Nouvelle analyse du flux audio...",
+  "analyzingAudio": "Analyse du flux audio...",
+  "sampleRateHz": "Fréquence d'échantillonnage : {rate} Hz",
+  "nyquistKhz": "Nyquist : {khz} kHz",
+  "qualityHiRes": "Hi-Res sans perte",
+  "qualityMono": "Mono",
+  "qualityStereo": "Stéréo",
+  "qualitySignalPath": "Chemin du signal",
+  "qualityStageSource": "Source",
+  "qualityStageDecoder": "Décodeur",
+  "qualityStageOutput": "Sortie",
+  "qualityStageDevice": "Appareil",
+  "qualityNativeEndToEnd": "Lu à la fréquence d'échantillonnage d'origine du fichier de bout en bout",
+  "qualityResampledBy": "Rééchantillonné de {from} à {to} en sortie",
+  "qualitySectionSource": "Fichier source",
+  "qualitySectionEngine": "Moteur de lecture",
+  "qualitySectionDevice": "Périphérique de sortie",
+  "qualitySectionPhone": "Ce téléphone",
+  "qualityOutputFormat": "Format de sortie",
+  "qualityOutputRate": "Fréquence de sortie",
+  "qualityOutputChannels": "Canaux de sortie",
+  "qualityLiveBitrate": "Débit en direct",
+  "qualityGapless": "Lecture sans blanc",
+  "qualityReplayGain": "ReplayGain",
+  "qualityReplayGainTrack": "Piste",
+  "qualityReplayGainAlbum": "Album",
+  "qualitySpeed": "Vitesse",
+  "qualityDeviceName": "Nom",
+  "qualityDeviceType": "Type",
+  "qualityDeviceSpeaker": "Haut-parleur du téléphone",
+  "qualityDeviceWired": "Écouteurs filaires",
+  "qualityDeviceBluetooth": "Bluetooth",
+  "qualityDeviceUsb": "Audio USB",
+  "qualityDeviceHdmi": "HDMI",
+  "qualityDeviceHearingAid": "Aide auditive",
+  "qualityDeviceDock": "Station d'accueil",
+  "qualitySupportedRates": "Fréquences prises en charge",
+  "qualityAnyRate": "Toutes",
+  "qualityMaxBitDepth": "Profondeur max.",
+  "qualityMaxChannels": "Canaux max.",
+  "qualityBitPerfect": "Mode bit-perfect",
+  "qualitySupported": "Pris en charge",
+  "qualityNotSupported": "Non pris en charge",
+  "qualitySpatialAudio": "Audio spatial",
+  "qualityDeviceNote": "Android n'indique pas aux applis vers quelle sortie un lecteur est dirigé ; voici l'appareil vers lequel la musique va normalement.",
+  "qualityPhoneModel": "Modèle",
+  "qualityAndroidVersion": "Version d'Android",
+  "qualityMixerRate": "Fréquence du mixeur",
+  "qualityMixerBuffer": "Tampon du mixeur",
+  "qualityLowLatency": "Audio à faible latence",
+  "qualityProAudio": "Audio pro",
+  "qualityDeviceUnavailable": "Les détails de l'appareil ne sont disponibles que sur Android.",
+  "qualityLossless": "Sans perte",
+  "qualityHigh": "Haute qualité",
+  "qualityStandard": "Qualité standard",
+  "qualityAudio": "Audio",
+  "addCustomFolder": "Ajouter un dossier personnalisé",
+  "addCustomFolderDesc": "Si votre musique se trouve dans un dossier au nom différent ou sur une carte SD, ajoutez-le directement.",
+  "welcomeStep": "ÉTAPE {step} : {title}",
+  "includeOtherDeviceAudioAlarmsDesc": "Sonneries, notifications, alarmes et audio des messageries",
+  "version": "Version",
+  "noIndexedFoldersDesktopDesc": "Utilisez « Analyser à nouveau la bibliothèque » pour découvrir les dossiers de stockage",
+  "playedLabel": "Écoutés",
+  "minutesShort": "{count, plural, =1{1 min} other{{count} min}}",
+  "minuteChip": "{count} min",
+  "songsCountTitle": "{count, plural, =1{1 titre} other{{count} titres}}",
+  "songsLeft": "{count, plural, =1{1 titre restant} other{{count} titres restants}}",
+  "sleepTimerWithRemaining": "Minuterie de veille ({remaining})",
+  "trackInfoSection": "INFOS DU MORCEAU",
+  "detailsSection": "DÉTAILS",
+  "lyricsSection": "PAROLES",
+  "editLyricsHint": "Saisissez les paroles en texte brut ou au format LRC synchronisé [00:00.00]...",
+  "addedSongsCount": "{count, plural, =1{1 titre ajouté} other{{count} titres ajoutés}}",
+  "chooseInternalStorageFolder": "Veuillez choisir un dossier du stockage interne ou de la carte SD de cet appareil.",
+  "appCrashedTitle": "NOVA Player a planté",
+  "appCrashedDesc": "Une erreur inattendue s'est produite au démarrage. Un rapport de diagnostic a été généré.",
+  "appCrashedDetails": "Une erreur s'est produite lors de l'initialisation de la base de données ou des services de l'app. Cela peut arriver si l'accès au stockage est restreint ou si les fichiers de la base de données sont corrompus.",
+  "crashReportSaved": "Rapport de diagnostic enregistré dans le dossier de support de l'application.",
+  "shareLog": "Partager le journal",
+  "restartApp": "Redémarrer l'app",
+  "updateAvailableOnPlay": "Une nouvelle version est disponible sur Google Play.",
+  "updateAvailableOnGithub": "La version {version} est disponible sur GitHub.",
+  "updateAvailable": "Mise à jour disponible",
+  "updateAvailableTitle": "Mise à jour disponible !",
+  "visit": "OUVRIR",
+  "updateDownloaded": "Mise à jour téléchargée",
+  "restartToInstallUpdate": "Redémarrez NOVA Player pour l'installer.",
+  "restart": "REDÉMARRER",
+  "backupImportedSummary": "Sauvegarde importée : {favorites} favoris et {stats} statistiques d'écoute fusionnés, {playlists} playlists synchronisées",
+  "backupExportFailed": "Échec de l'exportation de la sauvegarde : une erreur interne s'est produite lors de l'enregistrement du fichier.",
+  "backupImportFailed": "Échec de l'importation de la sauvegarde : le fichier est illisible ou son format n'est pas valide.",
+  "stereo": "Stéréo",
+  "mono": "Mono",
+  "progressBarStyle": "Style de la barre de progression",
+  "progressBarStyleDesc": "Vague, épaisseur, curseur et plus",
+  "progressBarPreview": "Aperçu",
+  "progressWave": "Vague",
+  "progressWaveDesc": "Dessiner la partie lue de la barre comme une vague en mouvement",
+  "progressWaveHeight": "Hauteur de la vague",
+  "progressWaveLength": "Longueur d'onde",
+  "progressWaveLengthDesc": "Distance entre deux vagues",
+  "progressWaveSpeed": "Vitesse de la vague",
+  "progressWaveFromStart": "Vague dès le début",
+  "progressWaveFromStartDesc": "Afficher la vague immédiatement plutôt qu'après le début du morceau",
+  "progressKeepWavePaused": "Garder la vague en pause",
+  "progressKeepWavePausedDesc": "Figer la vague au lieu de l'aplatir",
+  "progressBarThickness": "Épaisseur de la barre",
+  "progressThumb": "Curseur",
+  "progressThumbPill": "Pilule",
+  "progressThumbRound": "Rond",
+  "progressThumbWidth": "Largeur du curseur",
+  "progressThumbHeight": "Hauteur du curseur",
+  "progressThumbSize": "Taille du curseur",
+  "progressThumbGap": "Espace autour du curseur",
+  "progressTrackOpacity": "Opacité de la partie non lue",
+  "progressGrowThumb": "Agrandir le curseur pendant le glissement",
+  "resetToDefaults": "Réinitialiser par défaut",
+  "artworkVisualizer": "Visualiseur sur la pochette",
+  "artworkVisualizerDesc": "Un effet réactif à la musique sur la pochette en cours",
+  "visualizerEffect": "Effet",
+  "visualizerAura": "Halo lumineux",
+  "visualizerRing": "Anneau spectral",
+  "visualizerWave": "Vague en bas",
+  "visualizerBars": "Barres",
+  "visualizerBreathing": "Respiration",
+  "visualizerIntensity": "Intensité",
+  "visualizerSubtle": "Subtil",
+  "visualizerNormal": "Normal",
+  "visualizerStrong": "Fort",
+  "visualizerColors": "Couleurs",
+  "visualizerColorsArtwork": "Pochette",
+  "visualizerColorsTheme": "Thème",
+  "visualizerColorsWhite": "Blanc",
+  "progressTrack": "Piste",
+  "visualizerSync": "Synchronisation audio",
+  "visualizerSyncDesc": "Retarde l'effet pour qu'il colle à ce que vous entendez. Augmentez-le avec un casque Bluetooth.",
+  "visualizerSyncHint": "Lancez un morceau pour le régler à l'oreille",
+  "lyricsHighlightStyle": "Style de surlignage",
+  "lyricsStyleLine": "Ligne",
+  "lyricsStyleWord": "Mot par mot",
+  "lyricsStyleCharacter": "Lettre par lettre",
+  "lyricsWordSynced": "Synchronisé mot à mot",
+  "lyricsLineSynced": "Synchronisé par ligne",
+  "findWordSyncedLyrics": "Chercher des paroles synchronisées mot à mot",
+  "searchingWordSyncedLyrics": "Recherche sur lrc.red et LyricsPlus…",
+  "wordSyncedLyricsLoaded": "Paroles synchronisées mot à mot chargées",
+  "noWordSyncedLyricsFound": "Aucunes paroles synchronisées mot à mot trouvées pour ce titre",
+  "lyricsNotSynced": "Non synchronisées",
+  "findSyncedLyrics": "Rechercher des paroles synchronisées",
+  "searchingSyncedLyrics": "Recherche de paroles synchronisées…",
+  "syncedLyricsLoaded": "Paroles synchronisées chargées",
+  "noSyncedLyricsFound": "Aucune parole synchronisée trouvée pour ce morceau",
+  "tipFindSyncedDesc": "Si les paroles n'ont pas de minutage, cherche une version qui suit le morceau.",
+  "lyricsTiming": "Synchronisation des paroles",
+  "lyricsTimingDesc": "Une valeur positive affiche les paroles plus tôt, une valeur négative plus tard. Si les paroles sont en avance sur la chanson (courant en Bluetooth), baissez-la. Enregistré pour ce titre uniquement.",
+  "lyricsTimingEarlier": "Plus tôt",
+  "lyricsTimingLater": "Plus tard",
+  "lyricsTimingReset": "Réinitialiser",
+  "themeGroupColors": "Couleurs",
+  "themeGroupBlurBackgrounds": "Flou et arrière-plans",
+  "themeGroupDarkness": "Assombrissement",
+  "themeGroupFonts": "Polices",
+  "themeGroupProfile": "Profil",
+  "lyricsTipsGestures": "Gestes",
+  "lyricsTipsMenu": "Dans le menu ⋮",
+  "gestureScroll": "Défilez librement",
+  "gestureScrollDesc": "Le suivi se met en pause pendant que vous parcourez. Touchez Resynchroniser pour revenir.",
+  "tipFindWordSyncDesc": "Récupère le minutage mot à mot depuis lrc.red et LyricsPlus.",
+  "tipHighlightStyleDesc": "Ligne, mot à mot ou lettre par lettre, pour les paroles synchronisées mot à mot.",
+  "tipLyricsTimingDesc": "Décalez les paroles plus tôt ou plus tard, pratique en Bluetooth.",
+  "tipChangeProviderDesc": "Paroles fausses ou absentes ? Essayez une autre source.",
+  "tipOwnLyrics": "Vos propres paroles",
+  "tipOwnLyricsDesc": "Chargez un fichier .lrc ou exportez ces paroles sur l’appareil.",
+  "lyricsSources": "Sources des paroles",
+  "creditLrcRedDesc": "Paroles synchronisées mot à mot (fournisseur par défaut)",
+  "creditLyricsPlusDesc": "Paroles synchronisées mot à mot · serveur open source par ibratabian17 (Apache-2.0), hébergé par binimum",
+  "creditLrclibDesc": "Paroles synchronisées ligne par ligne · base de paroles libre et ouverte",
+  "creditMusicBrainzDesc": "Trouve l'ISRC de chaque titre pour que lrc.red le reconnaisse · base de données musicale ouverte (données CC0)",
+  "creditAmLyricsDesc": "A inspiré nos paroles synchronisées mot à mot · par binimum (MPL-2.0)",
+  "lyricsCopyrightNote": "Les paroles appartiennent à leurs artistes et ayants droit. NOVA Player les récupère uniquement pour un affichage personnel et les conserve sur votre appareil.",
+  "clearLyricsCache": "Vider le cache des paroles",
+  "clearLyricsCacheDesc": "Les paroles téléchargées sont conservées jusqu'à ce que vous les effaciez. Vos fichiers et .lrc choisis restent.",
+  "clearLyricsCacheConfirm": "Effacer toutes les paroles téléchargées ? Les titres les rechercheront en ligne à leur prochaine lecture.",
+  "lyricsCacheCleared": "Cache des paroles vidé",
+  "analyzeYourTopSong": "Votre titre n° 1",
+  "analyzeHighlights": "Faits marquants",
+  "analyzePeakTime": "Heure de pointe",
+  "analyzeBusiestDay": "Jour le plus actif",
+  "analyzeTopGenre": "Genre favori",
+  "analyzeLibraryExplored": "Bibliothèque explorée",
+  "analyzeSongsOfTotal": "{played} sur {total} titres",
+  "analyzeCurrentStreak": "Série actuelle",
+  "analyzeLongestStreak": "Plus longue série",
+  "daysCount": "{count, plural, =1{1 jour} other{{count} jours}}",
+  "durationHoursMinutes": "{hours} h {minutes} min",
+  "durationMinutesOnly": "{minutes} min",
+  "analyzeAvgPerDay": "{avg} par jour en moyenne",
+  "dayPartMorning": "Matin",
+  "dayPartAfternoon": "Après-midi",
+  "dayPartEvening": "Soir",
+  "dayPartNight": "Nuit",
+  "updateNow": "Mettre à jour",
+  "updateLater": "Plus tard",
+  "updateInstall": "Installer",
+  "retry": "Réessayer",
+  "updateWhatsNew": "Nouveautés",
+  "updateDownloading": "Téléchargement de la mise à jour",
+  "updateVerifying": "Vérification du téléchargement…",
+  "updateWaitingForInstaller": "En attente du programme d'installation…",
+  "updateReadyToInstall": "Téléchargée et prête à être installée.",
+  "updateErrorNetwork": "Échec du téléchargement. Vérifiez votre connexion et réessayez.",
+  "updateErrorChecksum": "Le téléchargement est corrompu. Veuillez réessayer.",
+  "updateErrorStorage": "Espace de stockage insuffisant pour la mise à jour.",
+  "updateErrorInstall": "Impossible d'installer la mise à jour.",
+  "checkForUpdates": "Rechercher des mises à jour",
+  "updateUpToDate": "Vous avez la dernière version.",
+  "updateCheckFailed": "Impossible de rechercher des mises à jour.",
+  "updateAlreadyLatest": "Déjà à jour",
+  "updateWhatChangedOn": "Quoi de neuf dans {version}",
+  "updateInstallHere": "Installer ici.",
+  "updateOpenInWeb": "Ouvrir sur le web",
+  "updateNoThanks": "Non merci",
+  "uiScale": "Échelle de l'interface",
+  "uiScaleDesc": "Rendre tout dans l'application plus petit ou plus grand",
+  "lyricsSize": "Taille des paroles",
+  "lyricsSizeDesc": "Taille du texte sur l'écran des paroles",
+  "lyricsSizeSmaller": "Paroles plus petites",
+  "lyricsSizeLarger": "Paroles plus grandes",
+  "lyricsOptions": "Options des paroles",
+  "lyricsFullscreen": "Paroles en plein écran",
+  "lyricsExitFullscreen": "Quitter le plein écran",
+  "importM3uPlaylist": "Importer une playlist (M3U)",
+  "importM3uPlaylistDesc": "Crée une playlist à partir d'un fichier .m3u ou .m3u8 en associant ses pistes aux titres de votre bibliothèque.",
+  "m3uImportedSummary": "« {name} » importée : {found} titres trouvés sur {total}",
+  "m3uImportedMany": "{playlists} playlists importées : {found} titres trouvés sur {total}",
+  "m3uImportNoSongs": "Aucun titre de cette playlist n'a été trouvé dans votre bibliothèque.",
+  "m3uImportFailed": "Échec de l'importation : le fichier est illisible ou n'est pas une playlist M3U.",
+  "mostFullyPlayed": "Les plus écoutées en entier",
+  "lyricsServices": "Services de paroles",
+  "lyricsServicesDesc": "Faites glisser pour définir l'ordre de recherche des paroles. Les services désactivés sont ignorés.",
+  "creditWordSyncedDesc": "Paroles synchronisées mot à mot",
+  "creditMorpheDesc": "Référence pour les recherches NetEase, KuGou, Musixmatch et Lyricify · GPL-3.0",
+  "searchFilterAll": "Tout",
+  "noResultsFor": "Aucun résultat pour « {query} »",
+  "searchTryDifferent": "Vérifiez l'orthographe ou essayez un autre mot.",
+  "searchScopeHint": "Titres, artistes, albums, paroles, playlists et genres",
+  "selectedCount": "{count} sélectionnés",
+  "desktopWelcomeTagline": "Votre musique hors ligne, joliment jouée.",
+  "desktopWelcomeGetStarted": "COMMENCER",
+  "desktopWelcomeSetupTitle": "Configurez votre bibliothèque",
+  "desktopWelcomeSetupDesc": "NOVA Player lit les fichiers musicaux de cet ordinateur. Commencez par votre dossier Musique ou choisissez n'importe quel dossier contenant vos morceaux.",
+  "desktopWelcomeMusicFolder": "Votre dossier Musique",
+  "desktopWelcomeFolderReady": "Prêt",
+  "desktopWelcomeFolderMissing": "Introuvable",
+  "desktopWelcomeScanMusicFolder": "Analyser le dossier Musique",
+  "desktopWelcomeChooseFolder": "Choisir un autre dossier",
+  "desktopWelcomeFormats": "Prend en charge MP3, FLAC, M4A, WAV, OGG et plus",
+  "desktopWelcomeAddLater": "Vous pouvez ajouter d'autres dossiers à tout moment dans les Paramètres.",
+  "desktopWelcomeFeaturesLabel": "AU PROGRAMME",
+  "desktopWelcomeFeaturesTitle": "Conçu pour l'écoute",
+  "desktopWelcomeLyricsTitle": "Paroles synchronisées",
+  "desktopWelcomeLyricsDesc": "Des paroles synchronisées ligne par ligne et mot par mot qui suivent votre écoute.",
+  "desktopWelcomeEqTitle": "Égaliseur",
+  "desktopWelcomeEqDesc": "Façonnez le son avec des préréglages ou votre propre courbe.",
+  "desktopWelcomeLibraryTitle": "Bibliothèque intelligente",
+  "desktopWelcomeLibraryDesc": "Albums, artistes, genres et dossiers, classés d'après vos tags.",
+  "desktopWelcomeNoAccountTitle": "Aucun compte requis",
+  "desktopWelcomeNoAccountDesc": "Ni inscription ni configuration. NOVA Player lit directement vos fichiers.",
+  "desktopWelcomeScanningFolder": "Recherche de musique dans {folder}",
+  "desktopWelcomeNoSongsDesc": "Aucun fichier audio pris en charge n'a été trouvé dans {folder}.",
+  "desktopWelcomeNoSongsTip": "Copiez vos fichiers musicaux dans ce dossier ou choisissez le dossier où ils se trouvent déjà.",
+  "desktopWelcomeScanAgain": "Analyser à nouveau",
+  "desktopWelcomeFloatingTitle": "Paroles flottantes",
+  "desktopWelcomeFloatingDesc": "Gardez les paroles au-dessus des autres fenêtres pendant que vous travaillez.",
+  "desktopWelcomeInsightsTitle": "Statistiques d'écoute",
+  "desktopWelcomeInsightsDesc": "Retrouvez vos titres et artistes préférés et votre temps d'écoute dans NOVA Analyze.",
+  "groupByAlbum": "Regrouper par album",
+  "groupByAlbumDesc": "Sur les pages d'artistes, afficher les titres sous leurs albums",
+  "onlineMusic": "Musique en ligne",
+  "onlineSettingsDesc": "Streaming, qualité, cache et suggestions",
+  "onlineForYou": "Pour vous",
+  "onlineDiscover": "Découvrir",
+  "onlineRefresh": "Actualiser",
+  "onlineRefreshDesc": "Réinitialiser la connexion en ligne si les titres ne se chargent plus",
+  "onlineRefreshed": "Musique en ligne actualisée",
+  "onlineLoadFailed": "Impossible de charger la musique en ligne. Appuyez sur Actualiser pour réessayer.",
+  "onlineNoResults": "Aucun résultat en ligne",
+  "onlineLoadMore": "Charger plus",
+  "onlinePersonalizeTitle": "Personnalisez",
+  "onlinePersonalizeBody": "Choisissez des genres et des artistes que vous aimez pour de meilleures suggestions.",
+  "onlineFollow": "Suivre",
+  "onlineFollowing": "Abonné",
+  "artistsForYou": "Artistes pour vous",
+  "tasteGenresTitle": "Qu'écoutez-vous ?",
+  "tasteArtistsTitle": "Choisissez des artistes que vous aimez",
+  "tasteSearchArtists": "Rechercher des artistes",
+  "tasteSkip": "Passer",
+  "onlineEnabledDesc": "Rechercher, streamer et recevoir des suggestions depuis YouTube Music",
+  "onlineNeedsInternet": "Nécessite le Mode Internet (Paramètres > Général)",
+  "onlineYourTaste": "Vos goûts",
+  "onlineYourTasteDesc": "Genres et artistes utilisés pour les suggestions",
+  "onlinePreferLocal": "Préférer les fichiers locaux",
+  "onlinePreferLocalDesc": "Lire votre propre copie d'un titre quand vous l'avez",
+  "onlineStreaming": "Streaming",
+  "onlineQualityWifi": "Qualité en Wi-Fi",
+  "onlineQualityMobile": "Qualité en données mobiles",
+  "onlineQualityHigh": "Haute",
+  "onlineQualityNormal": "Normale",
+  "onlineQualityLow": "Basse",
+  "onlinePreload": "Précharger les titres suivants",
+  "onlinePreloadDesc": "Télécharger les prochains titres à l'avance pour que les sauts soient immédiats et qu'ils soient lisibles hors ligne",
+  "onlinePreloadMobile": "Précharger aussi en données mobiles",
+  "onlineCache": "Cache",
+  "onlineCachePlayed": "Enregistrer les titres écoutés",
+  "onlineCachePlayedDesc": "Conserver les titres streamés pour les réécouter hors ligne sans nouveau chargement",
+  "onlineCachePlayedMobile": "Enregistrer aussi en données mobiles",
+  "onlineCachePlayedMobileDesc": "Utilise des données mobiles supplémentaires à la première écoute pour enregistrer le titre en vue d'une réécoute hors ligne",
+  "onlineCacheLimit": "Taille maximale du cache",
+  "onlineCacheLimitDesc": "Les titres écoutés le moins récemment sont supprimés en premier",
+  "onlineClearCache": "Vider le cache en ligne",
+  "onlineClearCacheDesc": "Audio uniquement ; les paroles sont conservées",
+  "onlineCacheUsed": "{size} utilisés",
+  "onlineSongSkipped": "{title} ignoré : {reason}",
+  "onlinePlaybackStopped": "Lecture en ligne arrêtée : {reason}",
+  "onlineDisclaimerTitle": "Activer la musique en ligne ?",
+  "onlineDisclaimerBody": "La musique en ligne diffuse et recherche des titres directement depuis YouTube Music. Elle utilise des données réseau et dépend d'un service tiers susceptible de changer ou de cesser de fonctionner à tout moment.",
+  "onlineTurnOn": "Activer",
+  "onlineNotNow": "Pas maintenant",
+  "onlineStatusOn": "Musique en ligne : activée",
+  "onlineStatusLimited": "Musique en ligne : limitée",
+  "onlineStatusOffline": "Musique en ligne : hors ligne",
+  "notInterested": "Pas intéressé",
+  "notInterestedSongHidden": "Titre masqué des recommandations",
+  "blockArtist": "Ne plus recommander {artist}",
+  "artistBlocked": "Artiste bloqué des recommandations",
+  "detectedProfiles": "Mix de goûts détectés",
+  "detectedProfilesDesc": "Mix créés automatiquement à partir de votre bibliothèque et de vos habitudes d'écoute",
+  "hiddenProfiles": "Mix masqués",
+  "hiddenSongs": "Titres masqués",
+  "blockedArtists": "Artistes bloqués",
+  "noHiddenItems": "Aucun titre masqué ni artiste bloqué",
+  "undo": "Annuler",
+  "download": "Télécharger",
+  "downloaded": "Téléchargé",
+  "downloadAll": "Tout télécharger",
+  "downloadingSong": "Téléchargement de {title}…",
+  "downloadQueued": "{count} titres en file d'attente de téléchargement",
+  "downloadFolder": "Dossier de téléchargement",
+  "downloadQuality": "Qualité de téléchargement",
+  "onlineDownloads": "Téléchargements",
+  "onlineCreditsTitle": "Streaming en ligne",
+  "creditYouTubeMusicDesc": "Les titres, pochettes et suggestions proviennent de YouTube Music. NOVA Player n'est ni affilié à YouTube ou Google, ni approuvé par eux.",
+  "creditKodaDesc": "Sa conception documentée et ses correctifs pour le streaming YouTube Music ont guidé celui-ci (voir le README de cette documentation).",
+  "creditYtDlpDesc": "Utilisé sur ordinateur, s'il est installé, comme solution de secours pour charger les flux. Unlicense.",
+  "wrongLyrics": "Paroles incorrectes",
+  "wrongLyricsDesc": "Ignorer {provider} pour ce titre et chercher d'autres paroles",
+  "noOtherLyricsFound": "Aucunes autres paroles trouvées",
+  "downloads": "Téléchargements",
+  "accountTitle": "Compte Google",
+  "accountSignedOutDesc": "Connecte-toi pour ta bibliothèque et tes mix YouTube Music",
+  "accountSignedInAs": "Connecté en tant que {name}",
+  "accountSignedIn": "Connecté",
+  "accountSignInMicrog": "Se connecter avec microG",
+  "accountSignInMicrogDesc": "Utiliser le compte Google déjà présent dans GmsCore",
+  "accountSignInWeb": "Se connecter avec Google",
+  "accountSignInWebDesc": "La page de connexion de Google",
+  "accountPasteCookies": "Coller des cookies",
+  "accountPasteCookiesDesc": "Utiliser la session d'un navigateur où tu es connecté",
+  "accountPasteHelp": "Ouvre music.youtube.com dans une fenêtre de navigation privée et connecte-toi. Dans les outils de développement (onglet Réseau), copie l'en-tête Cookie d'une requête vers music.youtube.com, colle-le ici, puis ferme cette fenêtre.",
+  "accountCookieHeader": "En-tête Cookie",
+  "accountNoSapisid": "Aucun cookie SAPISID dans ce texte. Copie-le depuis une requête music.youtube.com connectée.",
+  "accountSignOut": "Se déconnecter",
+  "accountSignOutDesc": "Oublier ce compte sur cet appareil",
+  "accountExpired": "Ta session a expiré. Reconnecte-toi.",
+  "accountSignInFailed": "Échec de la connexion : {error}",
+  "accountRisk": "Connecter une app tierce à YouTube enfreint les conditions de YouTube et peut entraîner une vérification du compte. Un compte secondaire est plus sûr. Les titres sont diffusés sans ton compte dans tous les cas.",
+  "reorderHome": "Réorganiser l'accueil",
+  "reorderHomeDragHint": "Maintenez et faites glisser une ligne",
+  "reorderHomeHint": "Ou maintenez un espace vide de l'accueil pendant 5 secondes, puis faites glisser les lignes.",
+  "onlineFeedRow": "Sélection en ligne",
+  "onlineFeedRowDesc": "Humeurs et premières étagères en ligne",
+  "onlineMoreRow": "Plus en ligne",
+  "onlineMoreRowDesc": "Les autres étagères en ligne",
+  "artistsForYouRowDesc": "Artistes en ligne choisis selon vos goûts",
+  "reorderMoveUp": "Monter",
+  "reorderMoveDown": "Descendre",
+  "reorderRowA11yHint": "Touchez deux fois et maintenez pour déplacer",
+  "bluetoothCodec": "Bluetooth Codec",
+  "qualityBlockersTitle": "Active Blockers",
+  "qualityTurnBlockersOff": "Turn these off",
+  "qualityTurnBlockersOn": "Turn these back on",
+  "eqMono": "Mono Audio (Single Earbud)",
+  "eqReplayGainTitle": "Volume Normalization (ReplayGain)",
+  "eqReplayGainPreamp": "Normalization Preamp",
+  "@hapticStrength": {
+    "description": "Label of the haptic strength slider under the Haptic feedback switch"
+  },
+  "@activeFont": {
+    "placeholders": {
+      "fontName": {
+        "type": "String"
+      }
+    }
+  },
+  "@activeLyricsFont": {
+    "placeholders": {
+      "fontName": {
+        "type": "String"
+      }
+    }
+  },
+  "@sleepTimerStoppingIn": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@sleepTimerStoppingAfter": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@enrichingSongs": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@analyzePlaysAndSongs": {
+    "placeholders": {
+      "plays": {
+        "type": "int"
+      },
+      "songs": {
+        "type": "int"
+      }
+    }
+  },
+  "@playsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@songsPlayedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@errorWithDetails": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@songsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@lyricsProvidedBy": {
+    "placeholders": {
+      "source": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToImportLyrics": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@lyricsEditorLineNumber": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "@lyricsEditorSelectedLine": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@fileNotFoundOrInaccessible": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "@playbackFailedCorrupted": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "@shareSongText": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "@shareSongsText": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@noSettingsFoundFor": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      }
+    }
+  },
+  "@lyricsFontWeightValue": {
+    "placeholders": {
+      "weight": {
+        "type": "int"
+      }
+    }
+  },
+  "@versionLabel": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@foldersSkippedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@deletePresetConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@lyricsSourceLabel": {
+    "placeholders": {
+      "source": {
+        "type": "String"
+      }
+    }
+  },
+  "@fetchingLyricsFrom": {
+    "placeholders": {
+      "provider": {
+        "type": "String"
+      }
+    }
+  },
+  "@lyricsUpdatedFrom": {
+    "placeholders": {
+      "provider": {
+        "type": "String"
+      }
+    }
+  },
+  "@noLyricsFoundOn": {
+    "placeholders": {
+      "provider": {
+        "type": "String"
+      }
+    }
+  },
+  "@lyricsExportedTo": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToExportLyrics": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@linesSelected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@playCountTimes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@channelShort": {
+    "placeholders": {
+      "channel": {
+        "type": "int"
+      }
+    }
+  },
+  "@sampleRateHz": {
+    "placeholders": {
+      "rate": {
+        "type": "int"
+      }
+    }
+  },
+  "@nyquistKhz": {
+    "placeholders": {
+      "khz": {
+        "type": "String"
+      }
+    }
+  },
+  "@qualityResampledBy": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "@welcomeStep": {
+    "placeholders": {
+      "step": {
+        "type": "String"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "@minutesShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@minuteChip": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@songsCountTitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@songsLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@sleepTimerWithRemaining": {
+    "placeholders": {
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@addedSongsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@updateAvailableOnGithub": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@backupImportedSummary": {
+    "placeholders": {
+      "favorites": {
+        "type": "int"
+      },
+      "stats": {
+        "type": "int"
+      },
+      "playlists": {
+        "type": "int"
+      }
+    }
+  },
+  "@analyzeSongsOfTotal": {
+    "placeholders": {
+      "played": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@daysCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@durationHoursMinutes": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@durationMinutesOnly": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@analyzeAvgPerDay": {
+    "placeholders": {
+      "avg": {
+        "type": "String"
+      }
+    }
+  },
+  "@m3uImportedSummary": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "found": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@m3uImportedMany": {
+    "placeholders": {
+      "playlists": {
+        "type": "int"
+      },
+      "found": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@noResultsFor": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      }
+    }
+  },
+  "@selectedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@desktopWelcomeScanningFolder": {
+    "placeholders": {
+      "folder": {
+        "type": "String"
+      }
+    }
+  },
+  "@desktopWelcomeNoSongsDesc": {
+    "placeholders": {
+      "folder": {
+        "type": "String"
+      }
+    }
+  },
+  "@onlineCacheUsed": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@onlineSongSkipped": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "@onlinePlaybackStopped": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "@blockArtist": {
+    "placeholders": {
+      "artist": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadingSong": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadQueued": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@wrongLyricsDesc": {
+    "placeholders": {
+      "provider": {
+        "type": "String"
+      }
+    }
+  },
+  "@accountSignedInAs": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@accountSignInFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "animatedArtworks": "Animated artworks",
+  "animatedArtworksDesc": "Motion album covers, playlist motion, and artist banners",
+  "animatedArtworksAlways": "Always",
+  "animatedArtworksWifiOnly": "Wi-Fi only",
+  "animatedArtworksNever": "Never",
+  "immersivePlayerBackground": "Immersive motion background",
+  "immersivePlayerBackgroundDesc": "Use motion artwork as full player backdrop",
+  "customArtworkServer": "Motion artwork server",
+  "customArtworkServerDesc": "Self-hosted m8tec server URL or direct Apple Music",
+  "animatedArtworkCacheLimit": "Motion artwork cache limit",
+  "clearAnimatedArtworkCache": "Clear motion artwork cache",
+  "animatedArtworkCacheCleared": "Motion artwork cache cleared",
+  "linkAnimatedArtwork": "Link animated artwork",
+  "linkAnimatedArtworkPrompt": "Enter Apple Music album or playlist URL",
+  "onlineRadioStation": "Radio station",
+  "onlineMixSongRadio": "Radio based on this song",
+  "onlineMixArtistRadio": "Artist radio",
+  "onlineMixPersonal": "Made for you",
+  "onlineMixPlaylistRadio": "Radio based on this playlist",
+  "onlineGuestPrivacyNote": "Guest mode uses a few of your most played song names to search YouTube Music. Nothing else leaves your phone.",
+  "onlineGuestQuickPicks": "Quick picks from your library",
+  "onlineGuestRadio": "Radio: based on {song}",
+  "@onlineGuestRadio": {
+    "placeholders": {
+      "song": {
+        "type": "String"
+      }
+    }
+  },
+  "onlineGuestBecause": "Because you listen to {artist}",
+  "@onlineGuestBecause": {
+    "placeholders": {
+      "artist": {
+        "type": "String"
+      }
+    }
+  },
+  "onlineGuestSimilar": "Similar to {artist}",
+  "@onlineGuestSimilar": {
+    "placeholders": {
+      "artist": {
+        "type": "String"
+      }
+    }
+  },
+  "onlineGuestMoreFrom": "More from {artist}",
+  "@onlineGuestMoreFrom": {
+    "placeholders": {
+      "artist": {
+        "type": "String"
+      }
+    }
+  },
+  "onlineGuestTrending": "Trending in {genre}",
+  "@onlineGuestTrending": {
+    "placeholders": {
+      "genre": {
+        "type": "String"
+      }
+    }
+  },
+  "onlineContentRegion": "Content region",
+  "onlineContentRegionDesc": "Changes charts, trending and suggestions. Song availability still depends on where you are.",
+  "onlineContentRegionAuto": "Auto ({country})",
+  "@onlineContentRegionAuto": {
+    "placeholders": {
+      "country": {
+        "type": "String"
+      }
+    }
+  },
+  "onlineContentRegionSearch": "Search country or region",
+  "ambientGlow": "Ambient glow",
+  "ambientGlowDesc": "Soft moving reflection of the cover around the player",
+  "headphoneCorrection": "Headphone correction",
+  "headphoneCorrectionDesc": "AutoEQ parametric headphone correction profiles",
+  "autoEqBass": "Bass",
+  "autoEqTilt": "Tilt",
+  "autoEqChooseHeadphones": "Choose headphones…",
+  "autoEqUseForDevice": "Use for this device",
+  "autoEqSavedDevices": "Saved devices",
+  "autoEqSearchHeadphones": "Search headphone models",
+  "autoEqDownloadIndex": "Download headphone profiles index",
+  "autoEqNoProfile": "None",
+  "autoEqSpeakerDisabled": "Disabled on phone speaker",
+  "autoEqForget": "Forget",
+  "autoEqCredit": "Profiles: AutoEQ by Jaakko Pasanen (MIT)",
+  "autoEqNoSavedDevices": "No saved devices",
+  "autoEqIndexDownloading": "Downloading index…",
+  "account": "Compte",
+  "accountDefaultName": "Auditeur",
+  "accountEditName": "Votre nom",
+  "accountEditNameDesc": "Affiché sur l'écran de votre compte",
+  "accountHello": "Bonjour,",
+  "accountNovaTag": "NOVA Player de {name}",
+  "@accountNovaTag": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "accountNameHint": "Entrez votre nom",
+  "accountOpenSettings": "Ouvrir les paramètres",
+  "accountPhoto": "Photo de profil",
+  "accountPhotoDesc": "Choisissez une image depuis votre appareil",
+  "accountPhotoRemove": "Supprimer la photo",
+  "accountProfile": "Profil",
+  "accountSettings": "Paramètres du compte",
+  "accountSettingsDesc": "Nom, avatar et comptes associés",
+  "accountTodayListening": "Temps d'écoute aujourd'hui",
+  "accountVersionAbout": "Version et à propos de l'application",
+  "accountViewStats": "Voir les statistiques",
+  "catAbout": "À propos",
+  "catAboutDesc": "Infos sur l'application, version et crédits",
+  "catBehavior": "Comportement",
+  "catBehaviorDesc": "Gestes, retour haptique, langue",
+  "catMisc": "Divers",
+  "catMiscDesc": "Stockage, haptique, sauvegarde et restauration",
+  "catMusicManagement": "Gestion de la musique",
+  "catMusicManagementDesc": "Téléchargements, dossiers et bibliothèque",
+  "catNetwork": "Réseau et Internet",
+  "catNetworkDesc": "Mode Internet, musique en ligne, sources des paroles",
+  "catPlayerInterface": "Interface du lecteur",
+  "catPlayerInterfaceDesc": "Thème, disposition et styles visuels",
+  "nowPlayingArtworkMotion": "Animation de la pochette en cours de lecture",
+  "nowPlayingArtworkMotionDesc": "Animer la pochette de l'album sur l'écran de lecture si disponible",
+  "onlineSetupDoneTitle": "Vous êtes prêt",
+  "onlineSetupLastOneDesc": "Désactivez ce que vous ne souhaitez pas. Vous pourrez modifier ces paramètres plus tard.",
+  "onlineSetupLastOneTitle": "Dernière étape",
+  "onlineSetupNext": "SUIVANT",
+  "onlineSetupNoSongsTitle": "Aucune musique trouvée ? Écoutez en streaming",
+  "onlineSetupSkip": "IGNORER POUR LE MOMENT",
+  "onlineSetupStreamInstead": "ÉCOUTER EN STREAMING",
+  "onlineSetupTitle": "Écouter de la musique en ligne aussi ?",
+  "onlineSetupYes": "OUI, ACTIVER",
+  "otherMenu": "Autre menu",
+  "playerDynamicBackground": "Arrière-plan dynamique du lecteur",
+  "playerDynamicBackgroundDesc": "Utiliser l'arrière-plan flouté de la pochette uniquement sur l'écran du lecteur",
+  "playerStyle": "Style du lecteur",
+  "playerStyleAccent": "Utiliser la couleur d'accentuation",
+  "playerStyleAccentDesc": "Colorer la ligne de paroles active et la barre de progression avec la couleur d'accentuation",
+  "playerStyleArc": "Arc",
+  "playerStyleClassic": "Classique",
+  "playerStyleDesc": "Disposition de l'écran de lecture en mode portrait",
+  "playerStyleLinear": "Linéaire",
+  "playerStyleCard": "Carte",
+  "cardBlackBackground": "Black Background",
+  "cardBlackBackgroundDesc": "Plain black behind the player",
+  "cardAccentBackground": "Accent Background Color",
+  "cardAccentBackgroundDesc": "A dark shade of the accent color behind the player",
+  "playerStyleBlurBackground": "Blur Background",
+  "playerStyleBlurBackgroundDesc": "Show blurred album artwork as background",
+  "cardAccentColors": "Accent Colors",
+  "cardAccentColorsDesc": "Color the active lyric line and progress bar with the accent color",
+  "playerStyleTitle": "Style {name}",
+  "@playerStyleTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "sectionBackupRestore": "Sauvegarde et restauration",
+  "sectionClassicLayout": "Disposition classique",
+  "sectionPlayerBackground": "Arrière-plan du lecteur",
+  "sectionStorage": "Stockage",
+  "settingsGroupTitle": "Paramètres",
+  "settingsSearchShort": "Rechercher un paramètre",
+  "showPreview": "Afficher l'aperçu",
+  "keepScreenAwake": "Garder l'écran allumé",
+  "keepScreenAwakeDesc": "Empêche l'écran de s'éteindre lorsque le lecteur ou les paroles sont affichés",
+  "highRefreshRate": "Taux de rafraîchissement élevé",
+  "highRefreshRateDesc": "Utilise 90/120 Hz pour des animations plus fluides ; désactiver pour économiser la batterie à 60 Hz",
+  "reshuffleQueue": "Remélanger la file d'attente",
+  "reorderQueue": "Réorganiser",
+  "nextInQueue": "Suivant dans la file",
+  "relatedLabel": "Similaires",
+  "noRelatedTracks": "Aucun titre similaire trouvé",
+  "setupStep": "Étape {step} sur 4",
+  "setupBegin": "Commencer la configuration",
+  "setupContinue": "Continuer",
+  "setupPermissionsTitle": "Autorisations\nrequises",
+  "setupPermissionsDesc": "NOVA Player a besoin de ces autorisations pour fonctionner correctement. Accordez-les pour continuer.",
+  "setupNotifications": "Notifications",
+  "setupMusicAudio": "Musique et audio",
+  "setupAllFiles": "Accès à tous les fichiers (RECOMMANDÉ)",
+  "setupCommunityTitle": "Rejoignez notre\ncommunauté",
+  "setupCommunityDesc": "NOVA Player est open source et grandit grâce au soutien de la communauté. Votre aide compte !",
+  "setupStarGithub": "Une étoile sur GitHub",
+  "setupStarGithubDesc": "Aidez-nous à toucher plus de monde en ajoutant une étoile au dépôt",
+  "setupTelegram": "Telegram",
+  "setupTelegramDesc": "Recevez les dernières nouvelles et discutez avec la communauté.",
+  "setupUpi": "Soutenir via UPI",
+  "setupUpiDesc": "Soutenez directement le développement via UPI.",
+  "setupKofi": "Offrez-nous un café",
+  "setupKofiDesc": "Soutenez le projet via Ko-fi.",
+  "setupDoneTitle": "Tout est prêt !",
+  "setupDoneDesc": "Votre bibliothèque est analysée en arrière-plan. Lancez-vous et commencez l’écoute.",
+  "setupStartListening": "Commencer l’écoute",
+  "homeTodayMix": "Mix du jour",
+  "homeTodayMixDesc": "Le mix parfait pour donner le ton à ta journée",
+  "homeSurpriseMe": "Surprends-moi !",
+  "homeSurpriseMeDesc": "Tu ne sais pas quoi écouter ? Laisse faire le hasard.",
+  "homeArtistPick": "Artiste choisi pour toi",
+  "homeWeeklyMix": "Mix de la semaine",
+  "homeWeeklyMixDesc": "Tes titres les plus écoutés cette semaine",
+  "homePicksLabel": "Sélection",
+  "homeForYou": "Pour toi",
+  "homeYourOwn": "Ta propre",
+  "letterSpacing": "Espacement des lettres",
+  "letterSpacingDesc": "Resserre ou espace le texte dans toute l'app",
+  "homeHeroEmptyDesc": "Vos mix apparaîtront ici dès que vous commencerez à écouter",
+  "notificationPermissionRequired": "Autorisez les notifications pour continuer. NOVA Player en a besoin pour les commandes de lecture.",
+  "developerLabel": "Développeur"
+}

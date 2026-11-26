@@ -1,90 +1,98 @@
-group = "com.alesdrnz.mpv_audio_kit"
-version = "0.8.0"
-
-// AGP and the Kotlin Gradle Plugin are supplied by the consuming app's build
-// (and by flutter_tools), so this module declares no buildscript classpath of
-// its own — pinning them here would force versions onto the app and, on AGP 9,
-// would clash with Built-in Kotlin by holding KGP below the required 2.2.10.
-plugins {
-    id("com.android.library")
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
 }
 
-// ── Built-in Kotlin migration ───────────────────────────────────────────────
-// Flutter 3.44+/AGP 9 provide Kotlin out of the box, and applying the Kotlin
-// Gradle Plugin (KGP) ourselves there breaks the build. On AGP < 9 (current
-// Flutter) KGP is still required, so apply it conditionally on the AGP major
-// version. See: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-plugin-authors
-val agpMajor = com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION.substringBefore('.').toInt()
-if (agpMajor < 9) {
-    apply(plugin = "org.jetbrains.kotlin.android")
+val newBuildDir: Directory =
+    rootProject.layout.buildDirectory
+        .dir("../../build")
+        .get()
+rootProject.layout.buildDirectory.value(newBuildDir)
+
+subprojects {
+    val newSubprojectBuildDir: Directory = newBuildDir.dir(project.name)
+    project.layout.buildDirectory.value(newSubprojectBuildDir)
+}
+subprojects {
+    project.evaluationDependsOn(":app")
 }
 
-android {
-    namespace = "com.alesdrnz.mpv_audio_kit"
-
-    compileSdk = 36
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-
-    sourceSets {
-        getByName("main") {
-            java.srcDirs("src/main/kotlin")
-        }
-        getByName("test") {
-            java.srcDirs("src/test/kotlin")
-        }
-    }
-
-    defaultConfig {
-        minSdk = 24
-
-        // libmpv is not packaged by this module: the package's build hook
-        // (hook/build.dart) provides libmpv_audio_kit.so for each ABI the app
-        // builds, and Flutter puts it in the APK.
-    }
-
-    testOptions {
-        unitTests {
-            isIncludeAndroidResources = true
-            all {
-                it.useJUnitPlatform()
-
-                it.outputs.upToDateWhen { false }
-
-                it.testLogging {
-                    events("passed", "skipped", "failed", "standardOut", "standardError")
-                    showStandardStreams = true
-                }
+subprojects {
+    project.configurations.all {
+        resolutionStrategy.eachDependency {
+            if (requested.group == "com.android.support" && !requested.name.startsWith("multidex")) {
+                useVersion("28.0.0")
             }
         }
     }
 }
 
-// Replaces the deprecated `android.kotlinOptions {}` DSL; works identically
-// whether KGP is applied by us (AGP < 9) or built in (AGP 9+).
-project.extensions.configure(org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension::class.java) {
-    compilerOptions {
-        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
+subprojects {
+    val forceCompileSdk = {
+        val android = project.extensions.findByName("android")
+        if (android != null) {
+            val sdkVersion = 36
+            try {
+                // Try setCompileSdk (AGP 7.0+)
+                val method = android.javaClass.getMethod("setCompileSdk", Int::class.javaPrimitiveType)
+                method.invoke(android, sdkVersion)
+            } catch (e: Exception) {
+                try {
+                    // Try setCompileSdkVersion (Older AGP)
+                    val method = android.javaClass.getMethod("setCompileSdkVersion", Int::class.javaPrimitiveType)
+                    method.invoke(android, sdkVersion)
+                } catch (e2: Exception) {
+                    // Ignore
+                }
+            }
+        }
+    }
+    if (project.state.executed) {
+        forceCompileSdk()
+    } else {
+        project.afterEvaluate { forceCompileSdk() }
     }
 }
 
-dependencies {
-    // Media3 drives the OS media session (now-playing notification,
-    // lock-screen / Android-11+ media controls, hardware & Bluetooth
-    // media keys). The custom SimpleBasePlayer adapter is a controller
-    // only — libmpv decodes in-process; Media3 never touches audio.
-    val media3Version = "1.11.1"
-    implementation("androidx.media3:media3-session:$media3Version")
-    implementation("androidx.media3:media3-common:$media3Version")
+subprojects {
+    val applyNamespace = {
+        val android = project.extensions.findByName("android")
+        if (android != null) {
+            try {
+                // Check if namespace is already set
+                val getNamespace = android.javaClass.getMethod("getNamespace")
+                val namespace = getNamespace.invoke(android) as? String
+                if (namespace == null || namespace.isEmpty()) {
+                    val newNamespace = when (project.name) {
+                        "isar_flutter_libs" -> "dev.isar.isar_flutter_libs"
+                        "metadata_god" -> "com.shinayser.metadata_god"
+                        else -> "com.theluciferee.novaplayer.${project.name.replace("-", "_")}"
+                    }
+                    android.javaClass.getMethod("setNamespace", String::class.java).invoke(android, newNamespace)
+                }
+            } catch (e: Exception) {
+                // Ignore errors
+            }
+        }
+    }
+    if (project.state.executed) {
+        applyNamespace()
+    } else {
+        project.afterEvaluate { applyNamespace() }
+    }
+}
 
-    testImplementation("org.jetbrains.kotlin:kotlin-test")
-    testImplementation("org.mockito:mockito-core:5.24.0")
-    // JUnit Jupiter engine for the `useJUnitPlatform()` runner above.
-    testImplementation("org.junit.jupiter:junit-jupiter:6.1.3")
-    // Gradle 9 no longer brings its own JUnit Platform launcher: the test
-    // run needs it on its classpath, at the platform version of Jupiter.
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher:6.1.3")
+// appambit_sdk_flutter 1.2.1 ships the same class twice, in two files whose
+// names differ only by case, which is a Kotlin redeclaration error.
+project(":appambit_sdk_flutter").tasks
+    .matching { it.name.startsWith("compile") && it.name.endsWith("Kotlin") }
+    .configureEach {
+        (this as org.gradle.api.tasks.util.PatternFilterable)
+            .exclude("**/AppambitSdkFlutterPlugin.kt")
+    }
+
+tasks.register<Delete>("clean") {
+    delete(rootProject.layout.buildDirectory)
 }

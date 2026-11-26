@@ -1,0 +1,99 @@
+import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:nova_player/core/theme/app_assets.dart';
+import 'package:nova_player/core/utils/motion.dart';
+
+class SongPlaybackOverlay extends StatelessWidget {
+  const SongPlaybackOverlay({
+    super.key,
+    required this.isPlaying,
+    this.indicatorSize = 24,
+  });
+
+  final bool isPlaying;
+  final double indicatorSize;
+
+  /// Darkening behind the playing bars on artwork. Shared by the classic
+  /// mini bar and the Fluid Player's artwork so both always match.
+  static const double dimAlpha = 0.18;
+
+  @override
+  Widget build(BuildContext context) => ColoredBox(
+    color: Colors.black.withValues(alpha: dimAlpha),
+    child: Center(
+      child: SongPlaybackIndicator(isPlaying: isPlaying, size: indicatorSize),
+    ),
+  );
+}
+
+class SongPlaybackIndicator extends StatelessWidget {
+  const SongPlaybackIndicator({
+    super.key,
+    required this.isPlaying,
+    this.size = 24,
+  });
+
+  final bool isPlaying;
+  final double size;
+
+  @override
+  Widget build(BuildContext context) {
+    // Play/pause cross-fades between the playing animation and the still
+    // dots instead of snapping. Keyed on isPlaying only: the GIF also gives
+    // way to the dots while tickers are off (e.g. the mini bar under the
+    // classic player), and that swap must be instant - cross-fading it made
+    // the mini bar art flicker right as the closing player's artwork landed.
+    // Isolated in a RepaintBoundary so animated GIF frame ticks and fade
+    // transitions never dirty parent cards or backdrop blur layers.
+    return RepaintBoundary(
+      child: AnimatedSwitcher(
+        duration: Duration(milliseconds: Motion.reducedOf(context) ? 0 : 250),
+        child: KeyedSubtree(
+          key: ValueKey<bool>(isPlaying),
+          child: _content(context),
+        ),
+      ),
+    );
+  }
+
+  Widget _content(BuildContext context) =>
+      // Android shows the playing GIF, only while visible and playing (GIF
+      // decoding keeps running offstage and while paused). Desktop always
+      // shows the still dots, so the current song never forces redraws.
+      Platform.isAndroid &&
+          isPlaying &&
+          TickerMode.of(context) &&
+          !Motion.reducedOf(context)
+      ? Image.asset(
+          AppAssets.playingGif,
+          width: size,
+          height: size,
+          color: Colors.white,
+        )
+      : FittedBox(
+          fit: BoxFit.scaleDown,
+          child: SizedBox(
+            width: size,
+            height: size,
+            // Match the GIF's four columns and baseline, flattened while paused.
+            child: Padding(
+              padding: EdgeInsets.only(top: size * 5.2 / 24),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                spacing: size * 0.8 / 24,
+                children: [
+                  for (var i = 0; i < 4; i++)
+                    Container(
+                      width: size * 2.2 / 24,
+                      height: size * 2.2 / 24,
+                      decoration: BoxDecoration(
+                        color: Colors.white.withValues(alpha: 0.5),
+                        borderRadius: BorderRadius.circular(size * 1.1 / 24),
+                      ),
+                    ),
+                ],
+              ),
+            ),
+          ),
+        );
+}
