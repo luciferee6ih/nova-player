@@ -23,6 +23,7 @@ for f in music/*.mp3; do adb push "$f" /sdcard/Music/ >/dev/null || echo "push f
 adb shell am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d file:///sdcard/Music >/dev/null 2>&1
 adb shell content call --method scan_volume --uri content://media --arg external_primary >/dev/null 2>&1 || true
 
+adb logcat -c; adb logcat -v time '*:W' > shots/logcat.txt 2>/dev/null &
 adb install -r -g app.apk
 adb shell appops set $PKG MANAGE_EXTERNAL_STORAGE allow 2>/dev/null || true
 adb shell pm grant $PKG android.permission.READ_MEDIA_AUDIO 2>/dev/null || true
