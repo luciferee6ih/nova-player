@@ -123,6 +123,7 @@ class SettingsCategoryScreen extends ConsumerWidget {
             if (Platform.isAndroid) const HighRefreshRateTile(),
             if (!UiUtils.isDesktop) ...[
               const NavbarStyleTile(),
+              const AppIconTile(),
               const ReduceEffectsTile(),
             ],
             const GroupArtistByAlbumTile(),

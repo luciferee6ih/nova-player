@@ -24,6 +24,7 @@ import 'package:nova_player/features/settings/domain/artwork_visualizer_style.da
 import 'package:nova_player/core/services/haptics/app_haptics.dart';
 import 'package:nova_player/ui/android/player/expanded/player_style_picker.dart';
 import 'package:nova_player/features/settings/data/nova_feature_settings.dart';
+import 'package:nova_player/core/services/app_icon_service.dart';
 export 'darkness_sliders.dart';
 export 'package:nova_player/features/playback/presentation/widgets/lyrics/advanced_lyric_line/advanced_lyric_line.dart'
     show activeLyricsIsWhite, AdvancedLyricLine, inactiveLyricsOpacity;

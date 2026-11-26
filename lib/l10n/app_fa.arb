@@ -1390,5 +1390,10 @@
   "harmonicQueueShort": "هارمونیک",
   "bpmValue": "{bpm} BPM",
   "harmonicTempoLabel": "تمپو {bpm} ضرب در دقیقه",
-  "harmonicKeyLabel": "گام {key}، {name}"
+  "harmonicKeyLabel": "گام {key}، {name}",
+  "appIcon": "آرم برنامه",
+  "appIconDesc": "آیکون صفحهٔ اصلی گوشی را انتخاب کنید. ممکن است لانچر چند لحظه طول بکشد تا به‌روز شود.",
+  "appIconBlack": "مشکی",
+  "appIconWhite": "سفید",
+  "appIconAurora": "رنگی"
 }

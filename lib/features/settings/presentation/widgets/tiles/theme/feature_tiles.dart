@@ -130,3 +130,48 @@ class PlayerBackgroundStyleTile extends ConsumerWidget {
     );
   }
 }
+
+/// Appearance > App icon: Black (default), White or Colorful launcher icon.
+class AppIconTile extends StatefulWidget {
+  const AppIconTile({super.key});
+
+  @override
+  State<AppIconTile> createState() => _AppIconTileState();
+}
+
+class _AppIconTileState extends State<AppIconTile> {
+  AppIconChoice _current = AppIconChoice.black;
+
+  @override
+  void initState() {
+    super.initState();
+    AppIconService.current().then((c) {
+      if (mounted) setState(() => _current = c);
+    });
+  }
+
+  Future<void> _select(AppIconChoice choice) async {
+    final previous = _current;
+    setState(() => _current = choice);
+    final ok = await AppIconService.set(choice);
+    if (!ok && mounted) setState(() => _current = previous);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (!AppIconService.isSupported) return const SizedBox.shrink();
+    final l10n = AppLocalizations.of(context)!;
+    return _ChoiceTile<AppIconChoice>(
+      icon: LucideIcons.appWindow,
+      title: l10n.appIcon,
+      subtitle: l10n.appIconDesc,
+      current: _current,
+      options: [
+        (AppIconChoice.black, l10n.appIconBlack),
+        (AppIconChoice.white, l10n.appIconWhite),
+        (AppIconChoice.aurora, l10n.appIconAurora),
+      ],
+      onSelected: _select,
+    );
+  }
+}

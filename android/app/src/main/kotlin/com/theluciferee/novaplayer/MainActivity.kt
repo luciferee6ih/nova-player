@@ -34,6 +34,12 @@ class MainActivity : FlutterActivity() {
     private val PCM_DECODE_CHANNEL = "com.theluciferee.novaplayer/pcm_decode"
     private val SYSTEM_UI_CHANNEL = "com.theluciferee.novaplayer/system_ui"
     private val HAPTICS_CHANNEL = "com.theluciferee.novaplayer/haptics"
+    private val APP_ICON_CHANNEL = "com.theluciferee.novaplayer/app_icon"
+    private val APP_ICON_ALIASES = mapOf(
+        "black" to "com.theluciferee.novaplayer.IconBlack",
+        "white" to "com.theluciferee.novaplayer.IconWhite",
+        "aurora" to "com.theluciferee.novaplayer.IconAurora",
+    )
     private val SAF_PICK_FOLDER_REQUEST_CODE = 9273
     private val MEDIA_WRITE_REQUEST_CODE = 9274
     private val MEDIA_BATCH_DELETE_REQUEST_CODE = 9275
@@ -445,6 +451,42 @@ class MainActivity : FlutterActivity() {
                 result.success(null)
             } else {
                 result.notImplemented()
+            }
+        }
+
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, APP_ICON_CHANNEL).setMethodCallHandler { call, result ->
+            val pm = packageManager
+            when (call.method) {
+                "getIcon" -> {
+                    val current = APP_ICON_ALIASES.entries.firstOrNull { (_, cls) ->
+                        val state = pm.getComponentEnabledSetting(android.content.ComponentName(this, cls))
+                        state == android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_ENABLED ||
+                            (state == android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DEFAULT && cls.endsWith("IconBlack"))
+                    }?.key ?: "black"
+                    result.success(current)
+                }
+                "setIcon" -> {
+                    val wanted = call.argument<String>("icon")
+                    if (wanted == null || !APP_ICON_ALIASES.containsKey(wanted)) {
+                        result.error("bad_icon", "Unknown icon", null)
+                    } else {
+                        try {
+                            // Enable the new alias first so the launcher never sees zero entries.
+                            APP_ICON_ALIASES.entries.sortedBy { if (it.key == wanted) 0 else 1 }.forEach { (key, cls) ->
+                                pm.setComponentEnabledSetting(
+                                    android.content.ComponentName(this, cls),
+                                    if (key == wanted) android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+                                    else android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                                    android.content.pm.PackageManager.DONT_KILL_APP,
+                                )
+                            }
+                            result.success(true)
+                        } catch (e: Exception) {
+                            result.error("set_icon_failed", e.message, null)
+                        }
+                    }
+                }
+                else -> result.notImplemented()
             }
         }
 

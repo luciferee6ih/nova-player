@@ -2046,5 +2046,15 @@
         "type": "String"
       }
     }
-  }
+  },
+  "appIcon": "App icon",
+  "@appIcon": {"description": "Settings tile title: choose the launcher icon."},
+  "appIconDesc": "Choose the icon on your home screen. Your launcher may take a moment to update.",
+  "@appIconDesc": {"description": "Subtitle of the app icon setting."},
+  "appIconBlack": "Black",
+  "@appIconBlack": {"description": "App icon option."},
+  "appIconWhite": "White",
+  "@appIconWhite": {"description": "App icon option."},
+  "appIconAurora": "Colorful",
+  "@appIconAurora": {"description": "App icon option."}
 }
