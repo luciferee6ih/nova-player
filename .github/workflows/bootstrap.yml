@@ -20,7 +20,7 @@ jobs:
         run: |
           curl -fsSL \
             -o /tmp/nova-player-src.zip \
-            "https://github.com/${GITHUB_REPOSITORY}/releases/download/source/nova-player-src.zip"
+            "https://github.com/user-attachments/files/35438242/nova-player-src.zip"
           unzip -l /tmp/nova-player-src.zip | head -20
 
       - name: Unpack archive and copy source into the repository
