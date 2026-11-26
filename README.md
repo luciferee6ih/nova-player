@@ -5,54 +5,62 @@
 <h1 align="center">NOVA Player</h1>
 
 <p align="center">
-  <b>An offline-first music player for Android, Linux and Windows.</b><br />
+  <b>An offline music player for Android with a Liquid Glass look.</b><br />
   Word-synced lyrics, album-coloured themes, a deep equalizer, and your own music library.
 </p>
 
+<p align="center" dir="rtl">
+  <b>پخش‌کننده‌ی آفلاین موسیقی برای اندروید، با طراحی شیشه‌ای (Liquid Glass).</b><br />
+  متن همگام کلمه‌به‌کلمه، رنگ‌بندی از روی کاور آلبوم، اکولایزر کامل، و کتابخانه‌ی موسیقی خودتان.
+</p>
+
 <p align="center">
-  <img height="20" src="https://img.shields.io/github/v/release/luciferee6ih/nova-player?include_prereleases&style=flat-square&color=7c3aed" />
-  <img height="20" src="https://img.shields.io/badge/platform-Android%20%7C%20Linux%20%7C%20Windows-blueviolet?style=flat-square" />
+  <a href="https://github.com/luciferee6ih/nova-player/releases/latest"><img height="20" src="https://img.shields.io/github/v/release/luciferee6ih/nova-player?style=flat-square&color=7c3aed" /></a>
+  <img height="20" src="https://img.shields.io/badge/platform-Android-blueviolet?style=flat-square" />
   <img height="20" src="https://img.shields.io/badge/license-GPL--3.0-green?style=flat-square" />
 </p>
 
-> **Beta.** NOVA Player 1.0.0-beta is the first release. Expect rough edges and please report bugs.
+<p align="center">
+  <a href="#english">English</a> · <a href="#فارسی">فارسی</a>
+</p>
 
-## What it is
+<p align="center">
+  <a href="https://github.com/luciferee6ih/nova-player/releases/latest"><b>⬇ Download / دانلود</b></a>
+</p>
+
+---
+
+## English
+
+### Download
+
+Get the latest APK from the [Releases page](https://github.com/luciferee6ih/nova-player/releases/latest). One universal APK works on every Android phone (Android 10 or newer).
+
+### What it is
 
 NOVA Player plays the music files you already own:
 
+- Floating Liquid Glass navigation bar (classic style available in Settings)
+- Beat Glass: a glass visualizer that moves with the music (optional)
+- Harmonic Queue: BPM and musical key for each track, with smooth key-matched ordering (optional)
 - Local library with albums, artists, genres, folders, playlists and smart views
 - Line- and word-synced lyrics (local `.lrc`, embedded tags, or online sources), with a lyrics editor
 - 18-band equalizer, AutoEQ headphone correction, ReplayGain, crossfade and gapless playback
-- Several Now Playing styles, dynamic colours from the artwork, and many personalisation options
-- Interface in 15 languages, including Persian (فارسی) with right-to-left layout
+- Several Now Playing styles and dynamic colours from the artwork
+- Full Persian and English interface with right-to-left layout
+- "Reduce effects" turns on automatically on slower phones for smooth scrolling
 
-## Build from source
+### Build from source
 
-Requirements: Flutter **3.47.7** (the version used in `.github/workflows/release.yml`), Git.
+Requirements: Flutter **3.47.7**, Git.
 
 ```bash
 git clone https://github.com/luciferee6ih/nova-player.git
 cd nova-player
 flutter pub get
-dart run build_runner build --delete-conflicting-outputs   # only after changing Riverpod providers or Isar models
 flutter analyze
 flutter test
-```
-
-Run or build per platform:
-
-```bash
-# Android (GitHub flavor: updates come from GitHub releases)
-flutter run --flavor github
-flutter build apk --flavor github --release --split-per-abi
-
-# Linux. Needs: clang cmake ninja-build pkg-config libgtk-3-dev libmpv-dev
-flutter run -d linux
-./package.sh --help        # .deb / .rpm / .AppImage / .tar.gz packaging
-
-# Windows. Needs Visual Studio 2022+ with "Desktop development with C++"
-flutter run -d windows
+flutter build apk --flavor github --release
 ```
 
 Release builds are signed with `android/key.properties` when present, otherwise with the debug key.
@@ -60,16 +68,58 @@ Release builds are signed with `android/key.properties` when present, otherwise 
 > Note: `appambit_sdk_flutter` 1.2.x ships a file with the wrong case
 > (`AppambitSdkFlutterPlugin.kt`). On Linux/macOS hosts, rename it in your pub cache to
 > `AppAmbitSdkFlutterPlugin.kt` after `flutter pub get` (the CI workflows do this automatically).
-> Crash reporting through it is **off** by default; enable it only with your own key:
-> `--dart-define=APPAMBIT_ENABLED=true --dart-define=APPAMBIT_APP_KEY=...`.
+> Crash reporting through it is **off** by default.
 
-## Contact
+### Contact
 
 - Telegram: [@theluciferee](https://t.me/theluciferee)
 - Channel: [@theacproject](https://t.me/theacproject)
 - Bugs and ideas: [GitHub issues](https://github.com/luciferee6ih/nova-player/issues)
-- Source and releases: [github.com/luciferee6ih/nova-player](https://github.com/luciferee6ih/nova-player)
 
-## License
+---
+
+<div dir="rtl">
+
+## فارسی
+
+### دانلود
+
+آخرین نسخه‌ی APK را از [صفحه‌ی انتشارها](https://github.com/luciferee6ih/nova-player/releases/latest) دانلود کنید. یک فایل یونیورسال روی همه‌ی گوشی‌های اندرویدی (اندروید ۱۰ به بالا) نصب می‌شود.
+
+### NOVA Player چیست؟
+
+NOVA Player فایل‌های موسیقی‌ای را که روی گوشی دارید پخش می‌کند:
+
+- نوار ناوبری شناور شیشه‌ای (Liquid Glass)؛ حالت کلاسیک هم در تنظیمات هست
+- Beat Glass: نمایشگر شیشه‌ای که با ریتم آهنگ حرکت می‌کند (اختیاری)
+- صف هارمونیک: نمایش BPM و گام هر آهنگ و چیدن نرم آهنگ‌ها بر اساس گام (اختیاری)
+- کتابخانه‌ی محلی با آلبوم، خواننده، ژانر، پوشه، پلی‌لیست و نماهای هوشمند
+- متن آهنگ همگام خط‌به‌خط و کلمه‌به‌کلمه (فایل ‎`.lrc`‎، تگ داخلی یا منابع آنلاین) همراه با ویرایشگر متن
+- اکولایزر ۱۸ باند، اصلاح صدای هدفون (AutoEQ)، ReplayGain، کراس‌فید و پخش بدون فاصله
+- چند سبک صفحه‌ی پخش و رنگ‌بندی خودکار از روی کاور
+- رابط کامل فارسی و انگلیسی با چینش راست‌به‌چپ
+- حالت «کاهش افکت‌ها» روی گوشی‌های ضعیف‌تر خودکار روشن می‌شود تا اسکرول روان بماند
+
+### ساخت از سورس
+
+نیازمندی‌ها: Flutter نسخه‌ی **3.47.7** و Git. دستورها مثل بخش انگلیسی است.
+
+### ارتباط
+
+- تلگرام: [‎@theluciferee](https://t.me/theluciferee)
+- کانال: [‎@theacproject](https://t.me/theacproject)
+- گزارش باگ و پیشنهاد: [GitHub issues](https://github.com/luciferee6ih/nova-player/issues)
+
+</div>
+
+---
+
+## License / مجوز
 
 NOVA Player is free software under the **GNU General Public License v3.0**. See [LICENSE](LICENSE).
+
+<div dir="rtl">
+
+NOVA Player نرم‌افزار آزاد تحت مجوز **GPL-3.0** است. جزئیات در [LICENSE](LICENSE).
+
+</div>
