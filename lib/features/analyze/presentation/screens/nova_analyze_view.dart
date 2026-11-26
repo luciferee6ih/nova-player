@@ -244,9 +244,7 @@ class _AnalyzeBody extends ConsumerWidget {
 
     return SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(16, 4, 16, 160),
-      physics: const NovaScrollPhysics(
-        parent: AlwaysScrollableScrollPhysics(),
-      ),
+      physics: const NovaScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
       child: twoColumns
           ? Row(
               crossAxisAlignment: CrossAxisAlignment.start,

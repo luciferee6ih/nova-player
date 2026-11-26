@@ -95,7 +95,7 @@ class SongTile extends ConsumerWidget {
     // The ListTile subtitle fills its column. Loosen those constraints so the
     // link only covers the smaller text, leaving row taps around it for Play.
     final subtitle = Align(
-      alignment: Alignment.centerLeft,
+      alignment: AlignmentDirectional.centerStart,
       heightFactor: 1,
       child: InkWell(
         onTap: !selectionMode && song.artist?.trim().isNotEmpty == true
@@ -170,9 +170,9 @@ class SongTile extends ConsumerWidget {
         // there's nowhere else in this list a batch action could live.
         onLongPress: selectionMode ? null : onEnterSelection,
         child: ListTile(
-          contentPadding: EdgeInsets.only(
-            left: collectionIndex != null ? 8 : 24,
-            right: 4,
+          contentPadding: EdgeInsetsDirectional.only(
+            start: collectionIndex != null ? 8 : 24,
+            end: 4,
             top: 0,
             bottom: 0,
           ),
@@ -279,12 +279,14 @@ class SongTile extends ConsumerWidget {
                         vertical: 6,
                       ),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.primary
-                            .withValues(alpha: 0.06),
+                        color: Theme.of(
+                          context,
+                        ).colorScheme.primary.withValues(alpha: 0.06),
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(
-                          color: Theme.of(context).colorScheme.primary
-                              .withValues(alpha: 0.12),
+                          color: Theme.of(
+                            context,
+                          ).colorScheme.primary.withValues(alpha: 0.12),
                           width: 0.8,
                         ),
                       ),

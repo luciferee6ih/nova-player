@@ -49,7 +49,8 @@ const developers = [
   GithubContributor(
     login: AppLinks.developerName,
     profileUrl: AppLinks.developerTelegram,
-    avatarUrl: 'https://avatars.githubusercontent.com/luciferee6ih?v=4',
+    // Bundled: the About screen shows it offline too.
+    avatarAsset: 'assets/images/about/developer.jpg',
   ),
 ];
 

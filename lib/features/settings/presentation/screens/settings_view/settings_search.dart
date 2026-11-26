@@ -319,6 +319,26 @@ extension _SettingsSearch on _SettingsViewState {
           category: '${l10n.catPlayerInterface} · ${l10n.sectionDisplay}',
           widget: const HighRefreshRateTile(),
         ),
+      if (!UiUtils.isDesktop) ...[
+        SettingsSearchItem(
+          title: l10n.playerBackgroundStyle,
+          subtitle: l10n.playerBackgroundStyleDesc,
+          category: '${l10n.nowPlaying} · ${l10n.sectionPlayerBackground}',
+          widget: const PlayerBackgroundStyleTile(),
+        ),
+        SettingsSearchItem(
+          title: l10n.navbarStyle,
+          subtitle: l10n.navbarStyleDesc,
+          category: '${l10n.catPlayerInterface} · ${l10n.sectionDisplay}',
+          widget: const NavbarStyleTile(),
+        ),
+        SettingsSearchItem(
+          title: l10n.reduceEffects,
+          subtitle: l10n.reduceEffectsDesc,
+          category: '${l10n.catPlayerInterface} · ${l10n.sectionDisplay}',
+          widget: const ReduceEffectsTile(),
+        ),
+      ],
       SettingsSearchItem(
         title: l10n.groupByAlbum,
         subtitle: l10n.groupByAlbumDesc,
@@ -587,6 +607,12 @@ extension _SettingsSearch on _SettingsViewState {
         subtitle: l10n.shuffleSwitchingDesc,
         category: '${l10n.playbackAndAudio} · ${l10n.queue}',
         widget: const ShuffleTile(),
+      ),
+      SettingsSearchItem(
+        title: l10n.harmonicQueue,
+        subtitle: l10n.harmonicQueueDesc,
+        category: '${l10n.playbackAndAudio} · ${l10n.queue}',
+        widget: const HarmonicQueueTile(),
       ),
       SettingsSearchItem(
         title: l10n.persistQueueTitle,

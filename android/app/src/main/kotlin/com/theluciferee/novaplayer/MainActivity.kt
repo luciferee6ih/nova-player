@@ -31,6 +31,7 @@ class MainActivity : FlutterActivity() {
     private val UPDATE_CHANNEL = "com.theluciferee.novaplayer/updates"
     private val AUDIO_FOCUS_CHANNEL = "com.theluciferee.novaplayer/audio_focus"
     private val AUDIO_INFO_CHANNEL = "com.theluciferee.novaplayer/audio_info"
+    private val PCM_DECODE_CHANNEL = "com.theluciferee.novaplayer/pcm_decode"
     private val SYSTEM_UI_CHANNEL = "com.theluciferee.novaplayer/system_ui"
     private val HAPTICS_CHANNEL = "com.theluciferee.novaplayer/haptics"
     private val SAF_PICK_FOLDER_REQUEST_CODE = 9273
@@ -455,6 +456,26 @@ class MainActivity : FlutterActivity() {
                     result.success(null)
                 } catch (e: Exception) {
                     result.error("HAPTICS_ERROR", e.message, null)
+                }
+            } else {
+                result.notImplemented()
+            }
+        }
+
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, PCM_DECODE_CHANNEL).setMethodCallHandler { call, result ->
+            if (call.method == "decodeForAnalysis") {
+                val path = call.argument<String>("path")
+                if (path == null) {
+                    result.error("BAD_ARGS", "path missing", null)
+                } else {
+                    PcmDecoder.decode(
+                        applicationContext,
+                        path,
+                        (call.argument<Number>("startMs") ?: 0).toLong(),
+                        (call.argument<Number>("durationMs") ?: 120000).toLong(),
+                        (call.argument<Number>("sampleRate") ?: 11025).toInt(),
+                        result,
+                    )
                 }
             } else {
                 result.notImplemented()

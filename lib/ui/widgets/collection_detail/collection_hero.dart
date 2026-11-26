@@ -229,7 +229,7 @@ class CollectionHeroBar extends StatelessWidget {
                     // Follow actually arrives.
                     ClipRect(
                       child: Align(
-                        alignment: Alignment.centerLeft,
+                        alignment: AlignmentDirectional.centerStart,
                         widthFactor: follow,
                         child: IgnorePointer(
                           ignoring: follow < 1,

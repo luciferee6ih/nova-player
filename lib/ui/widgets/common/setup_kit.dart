@@ -241,7 +241,7 @@ class SetupPage extends StatelessWidget {
             SizedBox(
               height: 52,
               child: Align(
-                alignment: Alignment.centerRight,
+                alignment: AlignmentDirectional.centerEnd,
                 child: step == null
                     ? null
                     : Text(

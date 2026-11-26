@@ -1,3 +1,4 @@
+import 'package:nova_player/features/settings/data/nova_feature_settings.dart';
 import 'package:nova_player/core/motion/nova_scroll_physics.dart';
 import 'dart:io';
 import 'package:nova_player/core/utils/ui_utils.dart';
@@ -50,6 +51,9 @@ class SettingsCategoryScreen extends ConsumerWidget {
     final crossmix = ref.watch(crossmixSettingsProvider);
     final l10n = AppLocalizations.of(context)!;
     final useBlur = settings.enableDynamicTheming && !settings.disableBlur;
+    final navbarStyle = ref.watch(
+      novaFeatureSettingsProvider.select((s) => s.navbarStyle),
+    );
 
     List<Widget> children = [];
     // Theme is split into titled cards; other categories use one card.
@@ -89,7 +93,8 @@ class SettingsCategoryScreen extends ConsumerWidget {
             else ...[
               const AlwaysBlurSheetsTile(),
               const FrostedMusicBarTile(),
-              const FrostedNavbarTile(),
+              // The glass bar always has its own glass.
+              if (navbarStyle == NavbarStyle.classic) const FrostedNavbarTile(),
             ],
             const StatusBarBlurTile(),
             // Dynamic theming paints its own background.
@@ -116,6 +121,10 @@ class SettingsCategoryScreen extends ConsumerWidget {
           title: l10n.sectionDisplay,
           tiles: [
             if (Platform.isAndroid) const HighRefreshRateTile(),
+            if (!UiUtils.isDesktop) ...[
+              const NavbarStyleTile(),
+              const ReduceEffectsTile(),
+            ],
             const GroupArtistByAlbumTile(),
             const ShowAlbumNextToArtistTile(),
             sub(settings.showAlbumNextToArtist, const [
@@ -164,6 +173,10 @@ class SettingsCategoryScreen extends ConsumerWidget {
       // apply there. Dynamic background and the gradient are alternatives:
       // while one is on, the other is hidden.
       final dynamicBg = settings.playerDynamicBackground;
+      // Beat Glass replaces the classic background (phones only).
+      final beatGlass =
+          !UiUtils.isDesktop &&
+          ref.watch(novaFeatureSettingsProvider.select((s) => s.beatGlass));
       final gradient = settings.enablePlayerGradient;
       sections = [
         (
@@ -172,7 +185,9 @@ class SettingsCategoryScreen extends ConsumerWidget {
             if (!UiUtils.isDesktop) const FluidPlayerTile(),
             if (!UiUtils.isDesktop) const PlayerStyleTile(),
             if (classic) ...[
-              if (!settings.enableDynamicTheming && (dynamicBg || !gradient))
+              if (!beatGlass &&
+                  !settings.enableDynamicTheming &&
+                  (dynamicBg || !gradient))
                 const PlayerDynamicBackgroundTile(),
               demo(SettingsDemoKind.lyricLine, const PlayerLyricLineTile()),
               sub(settings.playerLyricLine, const [
@@ -198,10 +213,20 @@ class SettingsCategoryScreen extends ConsumerWidget {
               sub(settings.showQualityBadge, const [QualityBadgeStyleTile()]),
             ],
           ),
-          if (settings.enableDynamicTheming || !dynamicBg)
+          if (beatGlass)
+            (
+              title: l10n.sectionPlayerBackground,
+              tiles: const [
+                PlayerBackgroundStyleTile(),
+                ReduceEffectsTile(),
+                MusicDarknessSlider(),
+              ],
+            )
+          else if (settings.enableDynamicTheming || !dynamicBg)
             (
               title: l10n.sectionPlayerBackground,
               tiles: [
+                if (!UiUtils.isDesktop) const PlayerBackgroundStyleTile(),
                 demo(
                   SettingsDemoKind.gradient,
                   const EnablePlayerGradientTile(),
@@ -210,6 +235,11 @@ class SettingsCategoryScreen extends ConsumerWidget {
                 if (settings.enableDynamicTheming || gradient)
                   const MusicDarknessSlider(),
               ],
+            )
+          else if (!UiUtils.isDesktop)
+            (
+              title: l10n.sectionPlayerBackground,
+              tiles: const [PlayerBackgroundStyleTile()],
             ),
         ],
       ];
@@ -300,6 +330,7 @@ class SettingsCategoryScreen extends ConsumerWidget {
           title: l10n.queue,
           tiles: [
             const ShuffleTile(),
+            const HarmonicQueueTile(),
             const PersistQueueTile(),
             const KeepSongProgressTile(),
             if (!Platform.isAndroid) const ResumeOnStartTile(),
@@ -551,6 +582,9 @@ const _androidOnlyTiles = <Type>{
   AlwaysBlurSheetsTile,
   FrostedMusicBarTile,
   FrostedNavbarTile,
+  NavbarStyleTile,
+  ReduceEffectsTile,
+  PlayerBackgroundStyleTile,
   StatusBarBlurTile,
   AnimateBackgroundGradientTile,
   HomeDarknessSlider,

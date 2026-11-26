@@ -1,3 +1,5 @@
+import 'package:nova_player/features/settings/data/nova_feature_settings.dart';
+import 'floating_glass_navbar.dart';
 import 'package:nova_player/core/utils/motion.dart';
 import 'package:nova_player/ui/welcome/setup_exit_transition.dart';
 
@@ -475,9 +477,44 @@ class _AndroidMainScreenState extends ConsumerState<AndroidMainScreen>
     // phone) window, so the mini player's resting offset and the navbar's
     // off-screen slide distance both still match its real height exactly.
     final bool isShortWindow = Responsive.isShort(MediaQuery.sizeOf(context));
-    final double navbarHeight =
-        (isShortWindow ? 56.0 + 10.0 : 72.0 + 18.0) +
-        MediaQuery.of(context).padding.bottom;
+    final NavbarStyle navbarStyle = ref.watch(
+      novaFeatureSettingsProvider.select((s) => s.navbarStyle),
+    );
+    final bool glassNavbar = navbarStyle == NavbarStyle.floatingGlass;
+    final double navbarHeight = glassNavbar
+        ? FloatingGlassNavbarMetrics.totalHeight(
+            compact: isShortWindow,
+            systemBottom: MediaQuery.of(context).padding.bottom,
+          )
+        : (isShortWindow ? 56.0 + 10.0 : 72.0 + 18.0) +
+              MediaQuery.of(context).padding.bottom;
+    final int navIndex = rootItem == NavItem.home
+        ? 0
+        : (rootItem == NavItem.songs ? 1 : 2);
+    void onNavTap(int index) {
+      final NavItem target = switch (index) {
+        1 => NavItem.songs,
+        2 => NavItem.library,
+        _ => NavItem.home,
+      };
+      ref.read(appNavigationProvider.notifier).setItem(target);
+    }
+
+    // Built once per real change; the slots below only move/fade it.
+    final Widget navbar = glassNavbar
+        ? FloatingGlassNavbar(
+            key: const ValueKey('glass_navbar'),
+            currentIndex: navIndex,
+            onTap: onNavTap,
+            onSearch: () => ref
+                .read(appNavigationProvider.notifier)
+                .setItem(NavItem.search),
+          )
+        : PremiumNavbar(
+            key: const ValueKey('classic_navbar'),
+            currentIndex: navIndex,
+            onTap: onNavTap,
+          );
 
     final baseTheme = Theme.of(context);
     final double systemBottom = MediaQuery.of(context).padding.bottom;
@@ -718,19 +755,29 @@ class _AndroidMainScreenState extends ConsumerState<AndroidMainScreen>
                         opacity: _navAtRoot ? 1.0 : 0.0,
                         duration: const Duration(milliseconds: 250),
                         curve: Curves.easeInOut,
+                        // The glass bar shows the content through itself,
+                        // so its scrim is lighter and shorter.
                         child: Container(
-                          height: 180,
+                          height: glassNavbar ? 120 : 180,
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
-                              colors: [
-                                Colors.transparent,
-                                Colors.black.withValues(alpha: 0.45),
-                                Colors.black.withValues(alpha: 0.8),
-                                Colors.black,
-                              ],
-                              stops: const [0.0, 0.35, 0.7, 1.0],
+                              colors: glassNavbar
+                                  ? [
+                                      Colors.transparent,
+                                      Colors.black.withValues(alpha: 0.18),
+                                      Colors.black.withValues(alpha: 0.45),
+                                    ]
+                                  : [
+                                      Colors.transparent,
+                                      Colors.black.withValues(alpha: 0.45),
+                                      Colors.black.withValues(alpha: 0.8),
+                                      Colors.black,
+                                    ],
+                              stops: glassNavbar
+                                  ? const [0.0, 0.5, 1.0]
+                                  : const [0.0, 0.35, 0.7, 1.0],
                             ),
                           ),
                         ),
@@ -799,31 +846,7 @@ class _AndroidMainScreenState extends ConsumerState<AndroidMainScreen>
                                         ),
                                       );
                                     },
-                                    child: PremiumNavbar(
-                                      currentIndex: rootItem == NavItem.home
-                                          ? 0
-                                          : (rootItem == NavItem.songs ? 1 : 2),
-                                      onTap: (index) {
-                                        NavItem target;
-                                        switch (index) {
-                                          case 1:
-                                            target = NavItem.songs;
-                                            break;
-                                          case 2:
-                                            target = NavItem.library;
-                                            break;
-                                          case 0:
-                                          default:
-                                            target = NavItem.home;
-                                            break;
-                                        }
-                                        ref
-                                            .read(
-                                              appNavigationProvider.notifier,
-                                            )
-                                            .setItem(target);
-                                      },
-                                    ),
+                                    child: navbar,
                                   ),
                                 ),
                               ),
@@ -918,32 +941,7 @@ class _AndroidMainScreenState extends ConsumerState<AndroidMainScreen>
                           duration: const Duration(milliseconds: 200),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const SizedBox(height: 4),
-                              PremiumNavbar(
-                                currentIndex: rootItem == NavItem.home
-                                    ? 0
-                                    : (rootItem == NavItem.songs ? 1 : 2),
-                                onTap: (index) {
-                                  NavItem target;
-                                  switch (index) {
-                                    case 1:
-                                      target = NavItem.songs;
-                                      break;
-                                    case 2:
-                                      target = NavItem.library;
-                                      break;
-                                    case 0:
-                                    default:
-                                      target = NavItem.home;
-                                      break;
-                                  }
-                                  ref
-                                      .read(appNavigationProvider.notifier)
-                                      .setItem(target);
-                                },
-                              ),
-                            ],
+                            children: [const SizedBox(height: 4), navbar],
                           ),
                         ),
                       ),

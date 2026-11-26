@@ -1,3 +1,4 @@
+import 'package:nova_player/core/services/device_performance.dart';
 import 'dart:async';
 import 'package:nova_player/features/settings/presentation/screens/account_view.dart'
     show headerProfilePhoto;
@@ -750,7 +751,7 @@ class HomeTopBar extends StatelessWidget {
   // renderer (it blurs the mask's own empty layer), so the fade is made of
   // bands. Many thin ones keep each step in strength too small to see; as
   // a group they share one read of the page behind.
-  static const _bands = 16;
+  static const _bands = 8;
   static const _topSigma = 14.0;
 
   /// Where band [i] starts, on a whole device pixel: soft clip edges at
@@ -1023,54 +1024,61 @@ class _MixBackground extends StatelessWidget {
       return _BlurredCover(imagePath: covers.first.artPath);
     }
     const tile = _tile, pitch = _pitch, cols = _cols, rows = _rows;
-    return Stack(
-      fit: StackFit.expand,
-      children: [
-        ClipRect(
-          child: OverflowBox(
-            maxWidth: cols * pitch,
-            maxHeight: rows * pitch,
-            child: Transform.rotate(
-              angle: -math.pi / 6,
-              child: Wrap(
-                spacing: pitch - tile,
-                runSpacing: pitch - tile,
-                children: [
-                  for (var i = 0; i < cols * rows; i++)
-                    Container(
-                      width: tile,
-                      height: tile,
-                      foregroundDecoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: const Color(0x0DFFFFFF)),
-                      ),
-                      child: OptimizedImage(
-                        imagePath: covers[i % covers.length].artPath,
+    // 56 rotated covers: keep them in their own layer so scrolling Home
+    // moves the layer instead of re-recording the wall, and skip the
+    // per-tile rounded clips on slower phones.
+    final lowEnd = DevicePerformance.isLowEnd;
+    final radius = lowEnd ? null : BorderRadius.circular(5);
+    return RepaintBoundary(
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          ClipRect(
+            child: OverflowBox(
+              maxWidth: cols * pitch,
+              maxHeight: rows * pitch,
+              child: Transform.rotate(
+                angle: -math.pi / 6,
+                child: Wrap(
+                  spacing: pitch - tile,
+                  runSpacing: pitch - tile,
+                  children: [
+                    for (var i = 0; i < cols * rows; i++)
+                      Container(
                         width: tile,
                         height: tile,
-                        borderRadius: BorderRadius.circular(5),
-                        cacheWidth: 180,
-                        cacheHeight: 180,
+                        foregroundDecoration: BoxDecoration(
+                          borderRadius: radius,
+                          border: Border.all(color: const Color(0x0DFFFFFF)),
+                        ),
+                        child: OptimizedImage(
+                          imagePath: covers[i % covers.length].artPath,
+                          width: tile,
+                          height: tile,
+                          borderRadius: radius,
+                          cacheWidth: 180,
+                          cacheHeight: 180,
+                        ),
                       ),
-                    ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-        // The design keeps the wall in the background: dimmed, with a grey
-        // wash at the top.
-        const ColoredBox(color: Color(0x8C000000)),
-        const DecoratedBox(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [Color(0x99272727), Color(0x00272727)],
+          // The design keeps the wall in the background: dimmed, with a grey
+          // wash at the top.
+          const ColoredBox(color: Color(0x8C000000)),
+          const DecoratedBox(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Color(0x99272727), Color(0x00272727)],
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

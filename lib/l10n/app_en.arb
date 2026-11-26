@@ -1964,5 +1964,87 @@
   "developerLabel": "Developer",
   "@developerLabel": {
     "description": "About screen card title for the app developer credit."
+  },
+  "navbarStyle": "Navigation bar style",
+  "@navbarStyle": {
+    "description": "Settings tile title: choose the bottom navigation bar look."
+  },
+  "navbarStyleDesc": "A floating glass pill with a round Search button, or the classic bar",
+  "@navbarStyleDesc": {
+    "description": "Subtitle of the navigation bar style setting."
+  },
+  "navbarFloatingGlass": "Floating glass",
+  "@navbarFloatingGlass": {
+    "description": "Navigation bar style option."
+  },
+  "navbarClassic": "Classic",
+  "@navbarClassic": {
+    "description": "Navigation bar style option."
+  },
+  "reduceEffects": "Reduce effects on slower phones",
+  "@reduceEffects": {
+    "description": "Settings toggle that turns glass blur and beat animations into still versions."
+  },
+  "reduceEffectsDesc": "Shows glass effects without blur or motion. On by default on slower phones.",
+  "@reduceEffectsDesc": {
+    "description": "Subtitle of the reduce effects toggle."
+  },
+  "playerBackgroundStyle": "Background style",
+  "@playerBackgroundStyle": {
+    "description": "Settings tile title: how the Now Playing background is drawn."
+  },
+  "playerBackgroundStyleDesc": "Beat Glass: liquid glass tinted from the artwork, with ripples that pulse on the beat",
+  "@playerBackgroundStyleDesc": {
+    "description": "Subtitle of the background style setting, describing Beat Glass."
+  },
+  "playerBackgroundStandard": "Standard",
+  "@playerBackgroundStandard": {
+    "description": "Background style option: the usual background."
+  },
+  "playerBackgroundBeatGlass": "Beat Glass",
+  "@playerBackgroundBeatGlass": {
+    "description": "Background style option name."
+  },
+  "harmonicQueue": "Harmonic Queue",
+  "@harmonicQueue": {
+    "description": "Toggle name: reorder upcoming songs by key and tempo."
+  },
+  "harmonicQueueDesc": "Reorders upcoming songs so keys and tempos flow into each other. Songs are analyzed on the device, a few at a time.",
+  "@harmonicQueueDesc": {
+    "description": "Subtitle of the Harmonic Queue toggle."
+  },
+  "harmonicQueueShort": "Harmonic",
+  "@harmonicQueueShort": {
+    "description": "Short label of the Harmonic Queue toggle in the queue sheet header."
+  },
+  "bpmValue": "{bpm} BPM",
+  "@bpmValue": {
+    "description": "Tempo chip in the queue, beats per minute.",
+    "placeholders": {
+      "bpm": {
+        "type": "String"
+      }
+    }
+  },
+  "harmonicTempoLabel": "Tempo {bpm} beats per minute",
+  "@harmonicTempoLabel": {
+    "description": "Screen reader label of the tempo chip.",
+    "placeholders": {
+      "bpm": {
+        "type": "String"
+      }
+    }
+  },
+  "harmonicKeyLabel": "Key {key}, {name}",
+  "@harmonicKeyLabel": {
+    "description": "Screen reader label of the Camelot key chip; key like 8A, name like Am.",
+    "placeholders": {
+      "key": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
   }
 }

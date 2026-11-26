@@ -1374,5 +1374,21 @@
   "notificationPermissionRequired": "برای ادامه اجازهٔ اعلان بدهید. NOVA Player برای کنترل‌های پخش به آن نیاز دارد.",
   "letterSpacing": "فاصلهٔ حروف",
   "letterSpacingDesc": "فشرده‌تر یا بازتر کردن نوشته‌ها در کل برنامه",
-  "developerLabel": "توسعه‌دهنده"
+  "developerLabel": "توسعه‌دهنده",
+  "navbarStyle": "سبک نوار پیمایش",
+  "navbarStyleDesc": "یک قرص شیشه‌ای شناور با دکمهٔ گرد جست‌وجو، یا نوار کلاسیک",
+  "navbarFloatingGlass": "شیشهٔ شناور",
+  "navbarClassic": "کلاسیک",
+  "reduceEffects": "کاهش جلوه‌ها در گوشی‌های کندتر",
+  "reduceEffectsDesc": "جلوه‌های شیشه‌ای را بدون محوشدگی و حرکت نشان می‌دهد. در گوشی‌های کندتر به‌طور پیش‌فرض روشن است.",
+  "playerBackgroundStyle": "سبک پس‌زمینه",
+  "playerBackgroundStyleDesc": "شیشهٔ ضرب: شیشه‌ای مایع به رنگ کاور آهنگ، با موج‌هایی که با ضرب آهنگ می‌تپند",
+  "playerBackgroundStandard": "استاندارد",
+  "playerBackgroundBeatGlass": "شیشهٔ ضرب",
+  "harmonicQueue": "صف هارمونیک",
+  "harmonicQueueDesc": "آهنگ‌های بعدی را طوری مرتب می‌کند که گام و تمپوی آن‌ها به هم بنشیند. آهنگ‌ها روی خود دستگاه و چندتا چندتا تحلیل می‌شوند.",
+  "harmonicQueueShort": "هارمونیک",
+  "bpmValue": "{bpm} BPM",
+  "harmonicTempoLabel": "تمپو {bpm} ضرب در دقیقه",
+  "harmonicKeyLabel": "گام {key}، {name}"
 }

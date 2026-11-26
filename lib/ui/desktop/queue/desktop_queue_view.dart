@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nova_player/features/harmonic/presentation/harmonic_widgets.dart';
 import 'package:nova_player/core/theme/app_fonts.dart';
 import 'package:nova_player/core/utils/l10n.dart';
 import 'package:nova_player/core/utils/ui_utils.dart';
@@ -55,79 +56,88 @@ class DesktopQueueView extends ConsumerWidget {
     }
 
     final upNext = _UpNextList(queue: queue, currentIndex: currentIndex);
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(24, 12, 24, 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Flexible(
-                child: Text(
-                  l10n.playQueue,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: AppFonts.jostStyle(
-                    color: Colors.white,
-                    fontSize: 28,
-                    fontWeight: FontWeight.w600,
+    return HarmonicQueueInterest(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(24, 12, 24, 16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Flexible(
+                  child: Text(
+                    l10n.playQueue,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: AppFonts.jostStyle(
+                      color: Colors.white,
+                      fontSize: 28,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(width: 12),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 5),
-                child: Text(
-                  l10n.songsCount(queue.length),
-                  style: AppFonts.jostStyle(
-                    color: Colors.white.withValues(alpha: 0.45),
-                    fontSize: 14,
+                const SizedBox(width: 12),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 5),
+                  child: Text(
+                    l10n.songsCount(queue.length),
+                    style: AppFonts.jostStyle(
+                      color: Colors.white.withValues(alpha: 0.45),
+                      fontSize: 14,
+                    ),
                   ),
                 ),
-              ),
-              const Spacer(),
-              TextButton.icon(
-                onPressed: () =>
-                    ref.read(playbackProvider.notifier).clearQueue(),
-                icon: const Icon(LucideIcons.trash2, size: 16),
-                label: Text(l10n.clearQueue),
-                style: TextButton.styleFrom(
-                  foregroundColor: Colors.white.withValues(alpha: 0.7),
+                const Spacer(),
+                HarmonicQueuePill(
+                  accent: Theme.of(context).colorScheme.primary,
                 ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 14),
-          Expanded(
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                if (current == null) return upNext;
-                if (constraints.maxWidth < 760) {
-                  return Column(
+                const SizedBox(width: 12),
+                TextButton.icon(
+                  onPressed: () =>
+                      ref.read(playbackProvider.notifier).clearQueue(),
+                  icon: const Icon(LucideIcons.trash2, size: 16),
+                  label: Text(l10n.clearQueue),
+                  style: TextButton.styleFrom(
+                    foregroundColor: Colors.white.withValues(alpha: 0.7),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 14),
+            Expanded(
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  if (current == null) return upNext;
+                  if (constraints.maxWidth < 760) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        _NowPlayingRow(song: current),
+                        const SizedBox(height: 12),
+                        Expanded(child: upNext),
+                      ],
+                    );
+                  }
+                  return Row(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      _NowPlayingRow(song: current),
-                      const SizedBox(height: 12),
+                      SizedBox(
+                        width: (constraints.maxWidth * 0.32).clamp(
+                          260.0,
+                          360.0,
+                        ),
+                        child: _NowPlayingCard(song: current),
+                      ),
+                      const SizedBox(width: 16),
                       Expanded(child: upNext),
                     ],
                   );
-                }
-                return Row(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    SizedBox(
-                      width: (constraints.maxWidth * 0.32).clamp(260.0, 360.0),
-                      child: _NowPlayingCard(song: current),
-                    ),
-                    const SizedBox(width: 16),
-                    Expanded(child: upNext),
-                  ],
-                );
-              },
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -372,11 +382,14 @@ class _QueueRow extends StatelessWidget {
                       fontSize: 15,
                     ),
                   ),
-                  Text(
-                    song.artist ?? l10n.unknownArtist,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: AppFonts.jostStyle(color: muted, fontSize: 12),
+                  HarmonicSubtitle(
+                    songId: song.id,
+                    child: Text(
+                      song.artist ?? l10n.unknownArtist,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: AppFonts.jostStyle(color: muted, fontSize: 12),
+                    ),
                   ),
                 ],
               ),

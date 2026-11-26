@@ -22,7 +22,9 @@ final androidAudioFocusManagerProvider = Provider<AndroidAudioFocusManager>((
 /// focus from the plugin's listener and pauses playback.
 class AndroidAudioFocusManager {
   final Ref _ref;
-  static const _channel = MethodChannel('com.theluciferee.novaplayer/audio_focus');
+  static const _channel = MethodChannel(
+    'com.theluciferee.novaplayer/audio_focus',
+  );
 
   AndroidAudioFocusManager(this._ref) {
     if (Platform.isAndroid) {

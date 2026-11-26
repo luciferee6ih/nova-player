@@ -441,12 +441,12 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen>
               AppLinks.upi,
             ),
           if (AppLinks.koFi.isNotEmpty)
-          link(
-            l10n.setupKofi,
-            l10n.setupKofiDesc,
-            const Icon(LucideIcons.cupSoda, color: Colors.white, size: 20),
-            AppLinks.koFi,
-          ),
+            link(
+              l10n.setupKofi,
+              l10n.setupKofiDesc,
+              const Icon(LucideIcons.cupSoda, color: Colors.white, size: 20),
+              AppLinks.koFi,
+            ),
         ],
       ),
       bottom: SetupBottomBar(

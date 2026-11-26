@@ -5,9 +5,8 @@ name: Android Beta APK
 # permanent signing key and stores it as repository secrets (needs the
 # NOVA_PAT secret: a token with repo + workflow scopes).
 
+# Manual only, to save Actions minutes; releases go through release.yml.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -90,7 +89,6 @@ jobs:
 
       - name: Build APKs
         run: |
-          flutter build apk --release --flavor github --split-per-abi
           flutter build apk --release --flavor github
 
       - name: Collect APKs

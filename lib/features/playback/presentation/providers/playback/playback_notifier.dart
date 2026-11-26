@@ -307,8 +307,7 @@ class Playback extends _$Playback {
                 ? const Duration(milliseconds: 50)
                 : const Duration(milliseconds: 250);
             if (position != state.position &&
-                (diff >= minStep ||
-                    position == Duration.zero)) {
+                (diff >= minStep || position == Duration.zero)) {
               state = state.copyWith(position: position);
             }
           }
@@ -2010,6 +2009,66 @@ class Playback extends _$Playback {
     }
   }
 
+  /// The part of the queue Harmonic Queue may reorder: after the current
+  /// song and the songs queued with Play Next (the user put those there).
+  /// While a crossfade to the next song is armed or running, that next
+  /// song is already loaded, so it stays put too. Null when fewer than two
+  /// songs could move.
+  ({int start, List<Song> songs})? harmonicTail() {
+    if (_currentIndex < 0 || _currentIndex >= _playlist.length) return null;
+    int start = _currentIndex + 1 + _manualQueueCount;
+    final director = ref.read(audioServiceProvider).transitionDirector;
+    if (director.isArmed ||
+        director.isRunning ||
+        _isTransitionArming ||
+        _isTransitioning) {
+      start = math.max(start, _currentIndex + 2);
+    }
+    if (start >= _playlist.length - 1) return null;
+    return (start: start, songs: List.unmodifiable(_playlist.sublist(start)));
+  }
+
+  /// Puts the songs of [harmonicTail] in [order] (indexes into that tail).
+  /// [expectedPaths] is the tail the order was planned for: if the queue
+  /// changed meanwhile, nothing happens and false is returned, so a plan
+  /// made off the UI isolate can never scramble a newer queue.
+  Future<bool> applyHarmonicOrder({
+    required int start,
+    required List<String> expectedPaths,
+    required List<int> order,
+  }) async {
+    final tail = harmonicTail();
+    if (tail == null || tail.start != start) return false;
+    final songs = tail.songs;
+    if (songs.length != expectedPaths.length || order.length != songs.length) {
+      return false;
+    }
+    for (int i = 0; i < songs.length; i++) {
+      if (songs[i].path != expectedPaths[i]) return false;
+    }
+    final seen = List<bool>.filled(order.length, false);
+    bool identity = true;
+    for (int i = 0; i < order.length; i++) {
+      final o = order[i];
+      if (o < 0 || o >= order.length || seen[o]) return false;
+      seen[o] = true;
+      if (o != i) identity = false;
+    }
+    if (identity) return false;
+    _playlist = [
+      ..._playlist.sublist(0, start),
+      for (final o in order) songs[o],
+    ];
+    if (!state.isShuffle) _originalPlaylist = List.from(_playlist);
+    _publishQueue();
+    try {
+      await _saveQueueState();
+    } catch (_) {
+      // Best-effort, like shuffleUpcomingQueue.
+    }
+    return true;
+  }
+
   @visibleForTesting
   void setQueueForTesting(List<Song> queue, {int currentIndex = 0}) {
     _playlist = List.from(queue);
@@ -2504,7 +2563,9 @@ class Playback extends _$Playback {
     );
   }
 
-  static const _widgetChannel = MethodChannel('com.theluciferee.novaplayer/widget');
+  static const _widgetChannel = MethodChannel(
+    'com.theluciferee.novaplayer/widget',
+  );
   String _lastWidgetLyricLine = '';
 
   void _checkAndUpdateLyrics() {

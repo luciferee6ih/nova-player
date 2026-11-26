@@ -3,6 +3,7 @@ import 'package:path_provider/path_provider.dart';
 import '../../../features/library/domain/models/models.dart';
 export '../../../features/library/domain/models/models.dart';
 import '../../utils/logger_helper.dart';
+import '../../../features/harmonic/domain/track_analysis.dart';
 
 class DbService {
   static late Isar isar;
@@ -28,6 +29,7 @@ class DbService {
         PlaylistSchema,
         AppSettingsSchema,
         PlayEventSchema,
+        TrackAnalysisSchema,
       ], directory: dir.path);
       LoggerHelper.write('DbService: Isar opened successfully.');
     } catch (e, stack) {

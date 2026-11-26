@@ -23,6 +23,7 @@ import '../../quality_badge_sheet.dart';
 import 'package:nova_player/features/settings/domain/artwork_visualizer_style.dart';
 import 'package:nova_player/core/services/haptics/app_haptics.dart';
 import 'package:nova_player/ui/android/player/expanded/player_style_picker.dart';
+import 'package:nova_player/features/settings/data/nova_feature_settings.dart';
 export 'darkness_sliders.dart';
 export 'package:nova_player/features/playback/presentation/widgets/lyrics/advanced_lyric_line/advanced_lyric_line.dart'
     show activeLyricsIsWhite, AdvancedLyricLine, inactiveLyricsOpacity;
@@ -30,6 +31,7 @@ part 'appearance_tiles.dart';
 part 'lyrics_appearance_tiles.dart';
 part 'player_appearance_tiles.dart';
 part 'font_tiles.dart';
+part 'feature_tiles.dart';
 
 TextStyle _tileTitleStyle() =>
     AppFonts.settingsStyle(color: Colors.white, fontWeight: FontWeight.w500);

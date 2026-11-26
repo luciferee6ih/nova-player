@@ -1,6 +1,9 @@
 import 'dart:math' as math;
 import 'dart:ui';
 
+import 'package:nova_player/features/settings/data/nova_feature_settings.dart';
+import 'package:nova_player/ui/widgets/player/beat_glass/beat_glass_background.dart';
+
 import 'package:nova_player/core/utils/song_metadata.dart';
 import 'package:flutter/material.dart' hide RepeatMode;
 import 'package:flutter/physics.dart';
@@ -520,6 +523,13 @@ class PremiumMusicBarState extends ConsumerState<PremiumMusicBar>
     // window) and handed to the per-frame builder unchanged. Flutter skips
     // rebuilding an identical widget instance, and each of these gets fixed
     // constraints, so a frame of motion is just new paint offsets/opacities.
+    // Beat Glass replaces the classic portrait background; the styled and
+    // landscape layouts paint their own.
+    final bool beatGlass =
+        ref.watch(novaFeatureSettingsProvider.select((s) => s.beatGlass)) &&
+        PlayerLayoutStyle.fromSetting(settings.playerStyle) ==
+            PlayerLayoutStyle.classic &&
+        !Responsive.isLandscape(windowSize);
     final Widget expandedBackground = RepaintBoundary(
       // Fades between songs and between art and gradient instead of cutting.
       child: AnimatedSwitcher(
@@ -528,6 +538,16 @@ class PremiumMusicBarState extends ConsumerState<PremiumMusicBar>
           return FadeTransition(opacity: animation, child: child);
         },
         child: () {
+          if (beatGlass) {
+            return SizedBox.expand(
+              key: const ValueKey('beatGlass'),
+              child: BeatGlassBackground(
+                artPath: song.artPath,
+                darkness: musicDarkness,
+                followExpandProgress: true,
+              ),
+            );
+          }
           if (showArtBackground) {
             return Stack(
               key: ValueKey(('art', song.id)),

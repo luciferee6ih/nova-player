@@ -62,6 +62,7 @@ class _ExpressiveSliderState extends ConsumerState<ExpressiveSlider> {
     if (settings.disableAnimatedDuration) {
       return Text(
         durationStr,
+        textDirection: TextDirection.ltr,
         style: AppFonts.jostStyle(
           color: Colors.white,
           fontWeight: UiUtils.isDesktop ? FontWeight.w300 : FontWeight.w600,
@@ -71,47 +72,52 @@ class _ExpressiveSliderState extends ConsumerState<ExpressiveSlider> {
       );
     }
 
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: isRightAligned
-          ? MainAxisAlignment.end
-          : MainAxisAlignment.start,
-      children: durationStr.characters.map((char) {
-        return SizedBox(
-          width: char == ':' ? 5 : 9,
-          child: AnimatedSwitcher(
-            duration: const Duration(milliseconds: 300),
-            transitionBuilder: (Widget child, Animation<double> animation) {
-              final isIn = (child as Text).data == char;
-              // Digits roll through a clip: no fade, because a fading digit
-              // is a GPU save-layer, and the clock changed every second -
-              // most of the player screen's per-frame layers came from here.
-              return ClipRect(
-                child: SlideTransition(
-                  position: Tween<Offset>(
-                    begin: Offset(0.0, isIn ? 1.0 : -1.0),
-                    end: Offset.zero,
-                  ).animate(animation),
-                  child: child,
+    // Timestamps are always laid out left-to-right: in an RTL locale the
+    // per-digit Row would otherwise run backwards ("07:37" read as "73:70").
+    return Directionality(
+      textDirection: TextDirection.ltr,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: isRightAligned
+            ? MainAxisAlignment.end
+            : MainAxisAlignment.start,
+        children: durationStr.characters.map((char) {
+          return SizedBox(
+            width: char == ':' ? 5 : 9,
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 300),
+              transitionBuilder: (Widget child, Animation<double> animation) {
+                final isIn = (child as Text).data == char;
+                // Digits roll through a clip: no fade, because a fading digit
+                // is a GPU save-layer, and the clock changed every second -
+                // most of the player screen's per-frame layers came from here.
+                return ClipRect(
+                  child: SlideTransition(
+                    position: Tween<Offset>(
+                      begin: Offset(0.0, isIn ? 1.0 : -1.0),
+                      end: Offset.zero,
+                    ).animate(animation),
+                    child: child,
+                  ),
+                );
+              },
+              child: Text(
+                char,
+                key: ValueKey(char),
+                style: AppFonts.jostStyle(
+                  color: Colors.white,
+                  fontWeight: UiUtils.isDesktop
+                      ? FontWeight.w300
+                      : FontWeight.w600,
+                  fontSize: 12,
+                  fontFeatures: const [FontFeature.tabularFigures()],
                 ),
-              );
-            },
-            child: Text(
-              char,
-              key: ValueKey(char),
-              style: AppFonts.jostStyle(
-                color: Colors.white,
-                fontWeight: UiUtils.isDesktop
-                    ? FontWeight.w300
-                    : FontWeight.w600,
-                fontSize: 12,
-                fontFeatures: const [FontFeature.tabularFigures()],
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
             ),
-          ),
-        );
-      }).toList(),
+          );
+        }).toList(),
+      ),
     );
   }
 
@@ -248,8 +254,14 @@ class _ExpressiveSliderState extends ConsumerState<ExpressiveSlider> {
     );
   }
 
+  // The timeline always runs left to right, like every media player's.
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) => Directionality(
+    textDirection: TextDirection.ltr,
+    child: Builder(builder: _buildTimeline),
+  );
+
+  Widget _buildTimeline(BuildContext context) {
     final double progress = widget.duration.inMilliseconds > 0
         ? (widget.position.inMilliseconds / widget.duration.inMilliseconds)
               .clamp(0.0, 1.0)

@@ -91,7 +91,7 @@ class AnalyzeActivityHeatmap extends StatelessWidget {
                       for (final part in DayPart.values)
                         Expanded(
                           child: Align(
-                            alignment: Alignment.centerLeft,
+                            alignment: AlignmentDirectional.centerStart,
                             child: Text(
                               dayPartShortName(context, part),
                               style: AppFonts.jostStyle(

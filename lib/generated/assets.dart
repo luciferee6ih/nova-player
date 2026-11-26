@@ -147,7 +147,6 @@ class $AssetsImagesGen {
 
 class $AssetsAboutGen {
   const $AssetsAboutGen();
-
 }
 
 class AssetGenImage {

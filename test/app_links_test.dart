@@ -15,7 +15,7 @@ void main() {
   test('donation links are empty; developer contact is set', () {
     expect(AppLinks.koFi, isEmpty);
     expect(AppLinks.playStoreWeb, isEmpty);
-    expect(AppLinks.socialTelegram, 'https://t.me/theluciferee');
+    expect(AppLinks.socialTelegram, 'https://t.me/theacproject');
     expect(AppLinks.developerName, 'theluciferee');
     expect(AppLinks.developerTelegram, 'https://t.me/theluciferee');
   });

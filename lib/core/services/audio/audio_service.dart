@@ -57,7 +57,9 @@ class AudioService {
   static String? _resolvedResamplerFilter;
   static bool _resamplerProbed = false;
 
-  static const _broadcastChannel = MethodChannel('com.theluciferee.novaplayer/broadcast');
+  static const _broadcastChannel = MethodChannel(
+    'com.theluciferee.novaplayer/broadcast',
+  );
 
   Future<bool> isOnCall() async {
     if (!Platform.isAndroid) return false;

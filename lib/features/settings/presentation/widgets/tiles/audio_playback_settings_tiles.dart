@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:nova_player/core/theme/app_fonts.dart';
 import 'package:nova_player/features/playback/data/crossmix/crossmix_settings.dart';
+import 'package:nova_player/features/settings/data/nova_feature_settings.dart';
 import 'package:nova_player/features/settings/presentation/providers/settings_notifier.dart';
 import 'package:nova_player/l10n/app_localizations.dart';
 import '../settings_widgets.dart';
@@ -305,3 +306,25 @@ TextStyle _tileTitleStyle() =>
 
 TextStyle _tileSubtitleStyle() =>
     AppFonts.settingsStyle(color: Colors.white54, fontSize: 12);
+
+/// Audio & playback > Queue > Harmonic Queue (off by default).
+class HarmonicQueueTile extends ConsumerWidget {
+  const HarmonicQueueTile({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
+    final on = ref.watch(
+      novaFeatureSettingsProvider.select((s) => s.harmonicQueue),
+    );
+    return SwitchListTile(
+      secondary: const Icon(LucideIcons.audioWaveform),
+      title: Text(l10n.harmonicQueue, style: _tileTitleStyle()),
+      subtitle: Text(l10n.harmonicQueueDesc, style: _tileSubtitleStyle()),
+      value: on,
+      onChanged: (value) => ref
+          .read(novaFeatureSettingsProvider.notifier)
+          .setHarmonicQueue(value),
+    );
+  }
+}

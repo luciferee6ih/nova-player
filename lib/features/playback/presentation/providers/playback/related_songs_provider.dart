@@ -47,71 +47,71 @@ class RelatedSongQuery {
 /// Matches local tracks by artist, album and genre.
 final relatedSongsProvider = FutureProvider.autoDispose
     .family<List<Song>, RelatedSongQuery>((ref, query) async {
-  final seenPaths = <String>{query.path};
-  final results = <Song>[];
+      final seenPaths = <String>{query.path};
+      final results = <Song>[];
 
-  // Local database matching
-  try {
-    // A) Match same artist
-    final artist = query.artist?.trim();
-    if (artist != null &&
-        artist.isNotEmpty &&
-        artist.toLowerCase() != 'unknown artist') {
-      final byArtist = await DbService.isar.songs
-          .filter()
-          .artistEqualTo(artist, caseSensitive: false)
-          .findAll();
-      for (final s in byArtist) {
-        if (seenPaths.add(s.path)) {
-          results.add(s);
+      // Local database matching
+      try {
+        // A) Match same artist
+        final artist = query.artist?.trim();
+        if (artist != null &&
+            artist.isNotEmpty &&
+            artist.toLowerCase() != 'unknown artist') {
+          final byArtist = await DbService.isar.songs
+              .filter()
+              .artistEqualTo(artist, caseSensitive: false)
+              .findAll();
+          for (final s in byArtist) {
+            if (seenPaths.add(s.path)) {
+              results.add(s);
+            }
+          }
         }
-      }
-    }
 
-    // B) Match same album
-    final album = query.album?.trim();
-    if (album != null &&
-        album.isNotEmpty &&
-        album.toLowerCase() != 'unknown album') {
-      final byAlbum = await DbService.isar.songs
-          .filter()
-          .albumEqualTo(album, caseSensitive: false)
-          .findAll();
-      for (final s in byAlbum) {
-        if (seenPaths.add(s.path)) {
-          results.add(s);
+        // B) Match same album
+        final album = query.album?.trim();
+        if (album != null &&
+            album.isNotEmpty &&
+            album.toLowerCase() != 'unknown album') {
+          final byAlbum = await DbService.isar.songs
+              .filter()
+              .albumEqualTo(album, caseSensitive: false)
+              .findAll();
+          for (final s in byAlbum) {
+            if (seenPaths.add(s.path)) {
+              results.add(s);
+            }
+          }
         }
-      }
-    }
 
-    // C) Match same genre
-    final genre = query.genre?.trim();
-    if (genre != null && genre.isNotEmpty) {
-      final byGenre = await DbService.isar.songs
-          .filter()
-          .genreEqualTo(genre, caseSensitive: false)
-          .findAll();
-      for (final s in byGenre) {
-        if (seenPaths.add(s.path)) {
-          results.add(s);
+        // C) Match same genre
+        final genre = query.genre?.trim();
+        if (genre != null && genre.isNotEmpty) {
+          final byGenre = await DbService.isar.songs
+              .filter()
+              .genreEqualTo(genre, caseSensitive: false)
+              .findAll();
+          for (final s in byGenre) {
+            if (seenPaths.add(s.path)) {
+              results.add(s);
+            }
+          }
         }
-      }
-    }
 
-    // D) If still few matches, pull other tracks from the local library
-    if (results.length < 5) {
-      final all = await DbService.isar.songs.where().limit(40).findAll();
-      final pool = List<Song>.from(all)..shuffle();
-      for (final s in pool) {
-        if (seenPaths.add(s.path)) {
-          results.add(s);
-          if (results.length >= 20) break;
+        // D) If still few matches, pull other tracks from the local library
+        if (results.length < 5) {
+          final all = await DbService.isar.songs.where().limit(40).findAll();
+          final pool = List<Song>.from(all)..shuffle();
+          for (final s in pool) {
+            if (seenPaths.add(s.path)) {
+              results.add(s);
+              if (results.length >= 20) break;
+            }
+          }
         }
+      } catch (e) {
+        LoggerHelper.write('relatedSongsProvider: local match failed', e);
       }
-    }
-  } catch (e) {
-    LoggerHelper.write('relatedSongsProvider: local match failed', e);
-  }
 
-  return results;
-});
+      return results;
+    });

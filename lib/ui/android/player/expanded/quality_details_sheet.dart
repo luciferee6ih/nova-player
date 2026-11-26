@@ -634,7 +634,10 @@ class _QualityDetailsSheetState extends ConsumerState<_QualityDetailsSheet>
                   ),
                   (l10n.equalizer, eqOn ? l10n.on : l10n.off),
                   if (ps.settings.rate != 1.0)
-                    (l10n.qualitySpeed, '${ps.settings.rate.toStringAsFixed(2)}×'),
+                    (
+                      l10n.qualitySpeed,
+                      '${ps.settings.rate.toStringAsFixed(2)}×',
+                    ),
                   (
                     l10n.qualityBlockersTitle,
                     activeBlockers.isEmpty

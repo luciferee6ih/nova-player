@@ -906,7 +906,7 @@ class AboutMaintainersCard extends ConsumerWidget {
           ],
         ),
         body: Align(
-          alignment: Alignment.centerLeft,
+          alignment: AlignmentDirectional.centerStart,
           child: SizedBox(
             height: 35,
             width: shown.isEmpty ? 0 : 35 + 21.0 * (shown.length - 1),
@@ -963,11 +963,11 @@ const double _dialogRadius = 20;
 /// Social channels shown on the Socials card and in its dialog.
 List<_GridEntry> _socials() => [
   if (AppLinks.socialDiscord.isNotEmpty)
-  (
-    label: 'Discord',
-    url: AppLinks.socialDiscord,
-    icon: SvgPicture.asset(AppAssets.aboutDiscord, width: 48, height: 48),
-  ),
+    (
+      label: 'Discord',
+      url: AppLinks.socialDiscord,
+      icon: SvgPicture.asset(AppAssets.aboutDiscord, width: 48, height: 48),
+    ),
   (
     label: 'GitHub',
     url: AppLinks.socialGithub,

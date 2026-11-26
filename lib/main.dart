@@ -1,3 +1,7 @@
+import 'package:nova_player/features/harmonic/data/harmonic_analysis_service.dart';
+import 'package:nova_player/core/services/ui_activity.dart';
+import 'package:nova_player/core/services/device_performance.dart';
+import 'package:nova_player/features/settings/data/nova_feature_settings.dart';
 import 'package:nova_player/features/settings/domain/app_defaults.dart';
 import 'package:nova_player/core/services/memory_manager.dart';
 import 'package:nova_player/core/motion/nova_scroll_physics.dart';
@@ -187,9 +191,15 @@ void main(List<String> args) async {
   }();
 
   // Preload local JSON cache in parallel for instant, stable startup views
-  final Future<void> storeInit = LocalJsonStore.init().catchError((e, s) {
-    LoggerHelper.write('LocalJsonStore init error', e, s);
-  });
+  final Future<void> storeInit =
+      LocalJsonStore.init(const [
+        NovaFeatureSettingsNotifier.storeKey,
+      ]).catchError((e, s) {
+        LoggerHelper.write('LocalJsonStore init error', e, s);
+      });
+  // Reads two small kernel files (async I/O) alongside the other startup work;
+  // decides whether new effects start in their still form.
+  final Future<void> perfInit = DevicePerformance.init();
 
   // Wait for all boot-up stages concurrently
   await Future.wait([
@@ -199,6 +209,7 @@ void main(List<String> args) async {
     timed('plugins', nativePluginsInit),
     timed('permissions', permissionCheck),
     timed('store', storeInit),
+    timed('perf', perfInit),
     if (AppAmbitReporter.mustStartBeforeUi) reporterInit,
   ]);
   final beforeRunApp = startup.elapsedMilliseconds;
@@ -236,6 +247,10 @@ class MyApp extends ConsumerWidget {
 
     final themeState = isInitialized ? ref.watch(themeProvider) : null;
     final settings = isInitialized ? ref.watch(settingsProvider) : null;
+    // Keeps Harmonic Queue's (idle, mostly dormant) service alive, so a
+    // toggle left on from last time keeps working without the queue open.
+    // A listener, so its updates never rebuild the app.
+    if (isInitialized) ref.listen(harmonicAnalysisProvider, (_, _) {});
 
     Widget buildHome() {
       return dbInit.when(
@@ -342,7 +357,8 @@ class MyApp extends ConsumerWidget {
         supportedLocales: AppLocalizations.supportedLocales,
         builder: (context, child) => DesktopUiScale(
           scale: settings?.desktopUiScale ?? 1.0,
-          child: child!,
+          // Lets background jobs wait out scrolls (see UiActivity).
+          child: UiActivityListener(child: child!),
         ),
         home: buildHome(),
       );

@@ -489,7 +489,7 @@ class AndroidEqualizerScreen extends ConsumerWidget {
           eqState.enabled) ...[
         const SizedBox(height: 10),
         Align(
-          alignment: Alignment.centerLeft,
+          alignment: AlignmentDirectional.centerStart,
           child: pillButton(
             label: l10n.eqUseAllSongsForThis,
             icon: LucideIcons.undo2,

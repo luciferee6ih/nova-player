@@ -108,7 +108,9 @@ class DeviceAudioInfo {
     return frames * 1000 / rate;
   }
 
-  static const _channel = MethodChannel('com.theluciferee.novaplayer/audio_info');
+  static const _channel = MethodChannel(
+    'com.theluciferee.novaplayer/audio_info',
+  );
 
   /// The last successful [fetch], so the quality dialog can open already
   /// laid out at its final size instead of growing when the channel

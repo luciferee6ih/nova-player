@@ -310,7 +310,7 @@ class _LyricsShareSheetContentState
           ),
           const SizedBox(height: 20),
           Align(
-            alignment: Alignment.centerLeft,
+            alignment: AlignmentDirectional.centerStart,
             child: Text(
               context.l10n.backgroundColor,
               style: AppFonts.jostStyle(
@@ -342,7 +342,7 @@ class _LyricsShareSheetContentState
           ),
           const SizedBox(height: 20),
           Align(
-            alignment: Alignment.centerLeft,
+            alignment: AlignmentDirectional.centerStart,
             child: Text(
               context.l10n.lyricsTextColor,
               style: AppFonts.jostStyle(

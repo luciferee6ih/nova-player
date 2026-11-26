@@ -1,3 +1,5 @@
+import 'package:nova_player/features/settings/data/nova_feature_settings.dart';
+import 'package:nova_player/ui/widgets/player/beat_glass/beat_glass_background.dart';
 import 'dart:async';
 import 'dart:math' as math;
 import 'dart:ui' show ImageFilter;
@@ -743,6 +745,13 @@ Widget nowPlayingBackground(
     return _buildStyledBackground(context, ref, song, style);
   }
   final settings = ref.watch(settingsProvider);
+  if (ref.watch(novaFeatureSettingsProvider.select((s) => s.beatGlass))) {
+    return BeatGlassBackground(
+      key: const ValueKey('beatGlass'),
+      artPath: song.artPath,
+      darkness: settings.musicDarkness.isNaN ? 0.62 : settings.musicDarkness,
+    );
+  }
   final double darkness = settings.musicDarkness.isNaN
       ? 0.62
       : settings.musicDarkness;
@@ -2296,7 +2305,7 @@ class _StyledLandscapeLayoutState extends ConsumerState<StyledLandscapeLayout>
                       ? _lyricsBlock(s)
                       : Align(
                           key: ValueKey(('big', song.id)),
-                          alignment: Alignment.centerLeft,
+                          alignment: AlignmentDirectional.centerStart,
                           child: _LandscapeBigTitle(
                             song: song,
                             scale: s,

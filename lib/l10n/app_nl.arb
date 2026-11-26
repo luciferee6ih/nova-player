@@ -1941,5 +1941,21 @@
   "letterSpacingDesc": "Maak tekst in de hele app strakker of ruimer",
   "homeHeroEmptyDesc": "Je mixen verschijnen hier zodra je begint met luisteren",
   "notificationPermissionRequired": "Sta meldingen toe om door te gaan. NOVA Player heeft ze nodig voor de afspeelbediening.",
-  "developerLabel": "Ontwikkelaar"
+  "developerLabel": "Ontwikkelaar",
+  "navbarStyle": "Navigation bar style",
+  "navbarStyleDesc": "A floating glass pill with a round Search button, or the classic bar",
+  "navbarFloatingGlass": "Floating glass",
+  "navbarClassic": "Classic",
+  "reduceEffects": "Reduce effects on slower phones",
+  "reduceEffectsDesc": "Shows glass effects without blur or motion. On by default on slower phones.",
+  "playerBackgroundStyle": "Background style",
+  "playerBackgroundStyleDesc": "Beat Glass: liquid glass tinted from the artwork, with ripples that pulse on the beat",
+  "playerBackgroundStandard": "Standard",
+  "playerBackgroundBeatGlass": "Beat Glass",
+  "harmonicQueue": "Harmonic Queue",
+  "harmonicQueueDesc": "Reorders upcoming songs so keys and tempos flow into each other. Songs are analyzed on the device, a few at a time.",
+  "harmonicQueueShort": "Harmonic",
+  "bpmValue": "{bpm} BPM",
+  "harmonicTempoLabel": "Tempo {bpm} beats per minute",
+  "harmonicKeyLabel": "Key {key}, {name}"
 }

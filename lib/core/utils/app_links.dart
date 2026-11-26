@@ -26,7 +26,7 @@ class AppLinks {
   // About > Socials. Empty links are hidden / do nothing.
   static const String socialDiscord = '';
   static const String socialGithub = githubRepo;
-  static const String socialTelegram = 'https://t.me/theluciferee';
+  static const String socialTelegram = 'https://t.me/theacproject';
 
   // Support & Donation. Empty hides every donation entry point (settings
   // "Support us", the monthly snackbar and the setup row).

@@ -66,6 +66,7 @@ Release builds are signed with `android/key.properties` when present, otherwise 
 ## Contact
 
 - Telegram: [@theluciferee](https://t.me/theluciferee)
+- Channel: [@theacproject](https://t.me/theacproject)
 - Bugs and ideas: [GitHub issues](https://github.com/luciferee6ih/nova-player/issues)
 - Source and releases: [github.com/luciferee6ih/nova-player](https://github.com/luciferee6ih/nova-player)
 

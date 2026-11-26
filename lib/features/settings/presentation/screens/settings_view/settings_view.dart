@@ -167,12 +167,12 @@ class _SettingsViewState extends ConsumerState<SettingsView> {
           SettingsIcons.info,
         ),
         if (AppLinks.koFi.isNotEmpty)
-        entry(
-          'support_us',
-          l10n.supportUs,
-          l10n.supportUsDesc,
-          LucideIcons.heart,
-        ),
+          entry(
+            'support_us',
+            l10n.supportUs,
+            l10n.supportUsDesc,
+            LucideIcons.heart,
+          ),
       ],
     ];
 

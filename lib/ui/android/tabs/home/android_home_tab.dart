@@ -1,3 +1,4 @@
+import 'package:nova_player/features/settings/data/nova_feature_settings.dart';
 import 'package:nova_player/core/motion/nova_scroll_physics.dart';
 import 'package:nova_player/core/providers/collection_navigation.dart';
 import 'dart:async';
@@ -422,7 +423,15 @@ class _AndroidHomeTabState extends ConsumerState<AndroidHomeTab>
 
     // Same rule as sheets: Dynamic Theming's blur toggle, else
     // "Always Blur Sheets & Headers".
-    final useBlur = ref.watch(settingsProvider.select((s) => s.statusBarBlur));
+    // Reduce effects (auto on slower phones such as the Redmi 12) drops the
+    // banded backdrop blur under the header: re-blurring the page on every
+    // scroll frame was the main source of Home's scroll jank there.
+    final reduceEffects = ref.watch(
+      novaFeatureSettingsProvider.select((s) => s.reduceEffectsActive),
+    );
+    final useBlur =
+        ref.watch(settingsProvider.select((s) => s.statusBarBlur)) &&
+        !reduceEffects;
 
     // Switching tabs cancels reorder mode.
     ref.listen(appNavigationProvider.select((s) => s.activeItem), (_, item) {

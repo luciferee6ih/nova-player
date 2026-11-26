@@ -281,9 +281,7 @@ class _SearchResultsBody extends ConsumerWidget {
       // A fresh scroll position per kind, so switching chips starts at the
       // top instead of wherever the previous list was left.
       key: ValueKey(kind),
-      physics: const NovaScrollPhysics(
-        parent: AlwaysScrollableScrollPhysics(),
-      ),
+      physics: const NovaScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
       keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
       slivers: [
         ...slivers,

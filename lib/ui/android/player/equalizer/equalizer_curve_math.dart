@@ -14,9 +14,9 @@ class EqualizerCurveGeometry {
     required int bandCount,
     this.trackTop = 8.0,
     double bottomPadding = 8.0,
-  })  : colWidth = width / bandCount,
-        trackBottom = height - bottomPadding,
-        trackHeight = (height - bottomPadding) - trackTop;
+  }) : colWidth = width / bandCount,
+       trackBottom = height - bottomPadding,
+       trackHeight = (height - bottomPadding) - trackTop;
 
   double mapY(double gain) {
     final percent = ((gain + 20) / 40).clamp(0.0, 1.0);

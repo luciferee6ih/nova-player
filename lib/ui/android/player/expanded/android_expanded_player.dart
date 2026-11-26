@@ -1,4 +1,6 @@
 import 'package:nova_player/core/utils/ui_scale_steps.dart';
+import 'package:nova_player/features/settings/data/nova_feature_settings.dart';
+import 'package:nova_player/ui/widgets/player/beat_glass/beat_glass_background.dart';
 import 'package:nova_player/ui/android/player/lyrics/lyrics_route.dart';
 import 'package:nova_player/core/providers/collection_navigation.dart';
 import 'package:nova_player/ui/widgets/common/song_artist_picker.dart';
@@ -243,6 +245,14 @@ class _AndroidExpandedPlayerState extends ConsumerState<AndroidExpandedPlayer>
     // (StyledLandscapeLayout); portrait keeps the original single column.
     final Size screenSize = MediaQuery.sizeOf(context);
     final bool landscape = Responsive.isLandscape(screenSize);
+    // Beat Glass replaces the classic portrait background (the styled and
+    // landscape layouts paint their own over it). Never in the style
+    // picker's previews.
+    final bool beatGlass =
+        widget.previewStyle == null &&
+        !landscape &&
+        layoutStyle == PlayerLayoutStyle.classic &&
+        ref.watch(novaFeatureSettingsProvider.select((s) => s.beatGlass));
     // Portrait only: at a low display density the top bar and controls are
     // drawn enlarged (scale 1 at the default density; see
     // PlayerPortraitMetrics), and the column is capped on wide windows.
@@ -527,7 +537,7 @@ class _AndroidExpandedPlayerState extends ConsumerState<AndroidExpandedPlayer>
                                 type: MaterialType.transparency,
                                 child: ClipRect(
                                   child: OverflowBox(
-                                    alignment: Alignment.centerLeft,
+                                    alignment: AlignmentDirectional.centerStart,
                                     minWidth: 0,
                                     maxWidth: double.infinity,
                                     child: Text(
@@ -609,7 +619,7 @@ class _AndroidExpandedPlayerState extends ConsumerState<AndroidExpandedPlayer>
                                 // flight would snap away on landing.
                                 child: ClipRect(
                                   child: OverflowBox(
-                                    alignment: Alignment.centerLeft,
+                                    alignment: AlignmentDirectional.centerStart,
                                     minWidth: 0,
                                     maxWidth: double.infinity,
                                     child: Text(
@@ -634,7 +644,7 @@ class _AndroidExpandedPlayerState extends ConsumerState<AndroidExpandedPlayer>
                           );
                         },
                     child: Align(
-                      alignment: Alignment.centerLeft,
+                      alignment: AlignmentDirectional.centerStart,
                       heightFactor: 1,
                       child: Material(
                         color: Colors.transparent,
@@ -755,141 +765,146 @@ class _AndroidExpandedPlayerState extends ConsumerState<AndroidExpandedPlayer>
       required double height,
       required double horizontalPadding,
     }) {
-      return Padding(
-        padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-        child: Row(
-          children: [
-            // Previous
-            PremiumSection(
-              heroTag: 'player_prev_btn',
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(40),
-                bottomLeft: Radius.circular(40),
-                topRight: Radius.circular(12),
-                bottomRight: Radius.circular(12),
-              ),
-              height: height,
-              showShadow: false,
-              useBlur: useBlur,
-              forceNoBlur: true,
-              backgroundColor: Colors.white.withOpacity(0.04),
-              showBorder: false,
-              instantPressFeedback: true,
-              onTap: () {
-                AppHaptics.light();
-                _prevTapPulse.value++;
-                _afterThisFrame(
-                  () => ref.read(playbackProvider.notifier).skipPrevious(),
-                );
-              },
-              child: ValueListenableBuilder<int>(
-                valueListenable: _prevTapPulse,
-                builder: (context, tick, child) {
-                  return AnimatedTransportIcon(
-                    asset: AppIcons.prev,
-                    color: Colors.white,
-                    size: AppIcons.expandedPlayerMainControl.s,
-                    triggerKey: tick,
+      // Media transport is never mirrored (Material bidi guidance): in RTL
+      // the mirrored row put "previous" on the right and "next" on the left.
+      return Directionality(
+        textDirection: TextDirection.ltr,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+          child: Row(
+            children: [
+              // Previous
+              PremiumSection(
+                heroTag: 'player_prev_btn',
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(40),
+                  bottomLeft: Radius.circular(40),
+                  topRight: Radius.circular(12),
+                  bottomRight: Radius.circular(12),
+                ),
+                height: height,
+                showShadow: false,
+                useBlur: useBlur,
+                forceNoBlur: true,
+                backgroundColor: Colors.white.withOpacity(0.04),
+                showBorder: false,
+                instantPressFeedback: true,
+                onTap: () {
+                  AppHaptics.light();
+                  _prevTapPulse.value++;
+                  _afterThisFrame(
+                    () => ref.read(playbackProvider.notifier).skipPrevious(),
                   );
                 },
-              ),
-            ),
-            const SizedBox(width: 6),
-            // Play/Pause
-            Consumer(
-              builder: (context, ref, child) {
-                final isPlaying = ref.watch(
-                  playbackProvider.select((s) => s.isPlaying),
-                );
-                final isBuffering = ref.watch(
-                  playbackProvider.select((s) => s.isBuffering),
-                );
-                return PremiumSection(
-                  heroTag: 'player_play_pause_btn',
-                  borderRadius: BorderRadius.circular(12),
-                  height: height,
-                  showShadow: false,
-                  useBlur: useBlur,
-                  showBorder: false,
-
-                  forceNoBlur: true,
-                  animate: true,
-                  backgroundColor: isPlaying
-                      ? Colors.white.withOpacity(0.04)
-                      : Theme.of(context).colorScheme.primary,
-                  instantPressFeedback: true,
-                  onTap: () {
-                    AppHaptics.medium();
-                    ref.read(playbackProvider.notifier).togglePlay();
+                child: ValueListenableBuilder<int>(
+                  valueListenable: _prevTapPulse,
+                  builder: (context, tick, child) {
+                    return AnimatedTransportIcon(
+                      asset: AppIcons.prev,
+                      color: Colors.white,
+                      size: AppIcons.expandedPlayerMainControl.s,
+                      triggerKey: tick,
+                    );
                   },
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Transform.scale(
-                        scale: 1.1,
-                        child: AnimatedPlayPauseIcon(
-                          isPlaying: isPlaying,
-                          color: isPlaying
-                              ? Colors.white
-                              : HSLColor.fromColor(
-                                  Theme.of(context).colorScheme.primary,
-                                ).withLightness(0.15).toColor(),
-                          size: AppIcons.expandedPlayerPlayPauseIcon.s,
-                        ),
-                      ),
-                      if (isBuffering)
-                        SizedBox(
-                          width: height * 0.7,
-                          height: height * 0.7,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 2.0,
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              Theme.of(context).colorScheme.primary,
-                            ),
+                ),
+              ),
+              const SizedBox(width: 6),
+              // Play/Pause
+              Consumer(
+                builder: (context, ref, child) {
+                  final isPlaying = ref.watch(
+                    playbackProvider.select((s) => s.isPlaying),
+                  );
+                  final isBuffering = ref.watch(
+                    playbackProvider.select((s) => s.isBuffering),
+                  );
+                  return PremiumSection(
+                    heroTag: 'player_play_pause_btn',
+                    borderRadius: BorderRadius.circular(12),
+                    height: height,
+                    showShadow: false,
+                    useBlur: useBlur,
+                    showBorder: false,
+
+                    forceNoBlur: true,
+                    animate: true,
+                    backgroundColor: isPlaying
+                        ? Colors.white.withOpacity(0.04)
+                        : Theme.of(context).colorScheme.primary,
+                    instantPressFeedback: true,
+                    onTap: () {
+                      AppHaptics.medium();
+                      ref.read(playbackProvider.notifier).togglePlay();
+                    },
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Transform.scale(
+                          scale: 1.1,
+                          child: AnimatedPlayPauseIcon(
+                            isPlaying: isPlaying,
+                            color: isPlaying
+                                ? Colors.white
+                                : HSLColor.fromColor(
+                                    Theme.of(context).colorScheme.primary,
+                                  ).withLightness(0.15).toColor(),
+                            size: AppIcons.expandedPlayerPlayPauseIcon.s,
                           ),
                         ),
-                    ],
-                  ),
-                );
-              },
-            ),
-            const SizedBox(width: 6),
-            // Next
-            PremiumSection(
-              heroTag: 'player_next_btn',
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(12),
-                bottomLeft: Radius.circular(12),
-                topRight: Radius.circular(40),
-                bottomRight: Radius.circular(40),
-              ),
-              height: height,
-              useBlur: useBlur,
-              backgroundColor: Colors.white.withOpacity(0.04),
-              showShadow: false,
-              forceNoBlur: true,
-              showBorder: false,
-              instantPressFeedback: true,
-              onTap: () {
-                AppHaptics.light();
-                _nextTapPulse.value++;
-                _afterThisFrame(
-                  () => ref.read(playbackProvider.notifier).skipNext(),
-                );
-              },
-              child: ValueListenableBuilder<int>(
-                valueListenable: _nextTapPulse,
-                builder: (context, tick, child) {
-                  return AnimatedTransportIcon(
-                    asset: AppIcons.next,
-                    color: Colors.white,
-                    size: AppIcons.expandedPlayerMainControl.s,
-                    triggerKey: tick,
+                        if (isBuffering)
+                          SizedBox(
+                            width: height * 0.7,
+                            height: height * 0.7,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2.0,
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                Theme.of(context).colorScheme.primary,
+                              ),
+                            ),
+                          ),
+                      ],
+                    ),
                   );
                 },
               ),
-            ),
-          ],
+              const SizedBox(width: 6),
+              // Next
+              PremiumSection(
+                heroTag: 'player_next_btn',
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(12),
+                  bottomLeft: Radius.circular(12),
+                  topRight: Radius.circular(40),
+                  bottomRight: Radius.circular(40),
+                ),
+                height: height,
+                useBlur: useBlur,
+                backgroundColor: Colors.white.withOpacity(0.04),
+                showShadow: false,
+                forceNoBlur: true,
+                showBorder: false,
+                instantPressFeedback: true,
+                onTap: () {
+                  AppHaptics.light();
+                  _nextTapPulse.value++;
+                  _afterThisFrame(
+                    () => ref.read(playbackProvider.notifier).skipNext(),
+                  );
+                },
+                child: ValueListenableBuilder<int>(
+                  valueListenable: _nextTapPulse,
+                  builder: (context, tick, child) {
+                    return AnimatedTransportIcon(
+                      asset: AppIcons.next,
+                      color: Colors.white,
+                      size: AppIcons.expandedPlayerMainControl.s,
+                      triggerKey: tick,
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
       );
     }
@@ -1209,6 +1224,7 @@ class _AndroidExpandedPlayerState extends ConsumerState<AndroidExpandedPlayer>
           // Skipped with the gradient on: the panel's background is already
           // opaque then, and this fill would paint over the gradient.
           if (enableSlide &&
+              !beatGlass &&
               !showArtBackground &&
               !settings.enablePlayerGradient)
             Positioned.fill(
@@ -1227,7 +1243,15 @@ class _AndroidExpandedPlayerState extends ConsumerState<AndroidExpandedPlayer>
                 transitionBuilder: (child, animation) {
                   return FadeTransition(opacity: animation, child: child);
                 },
-                child: showArtBackground
+                child: beatGlass
+                    ? SizedBox.expand(
+                        key: const ValueKey('beatGlass'),
+                        child: BeatGlassBackground(
+                          artPath: song.artPath,
+                          darkness: musicDarkness,
+                        ),
+                      )
+                    : showArtBackground
                     ? SizedBox.expand(
                         key: ValueKey(('art', song.id)),
                         child: Stack(
