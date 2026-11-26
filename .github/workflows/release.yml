@@ -125,6 +125,7 @@ jobs:
       # appambit_sdk_flutter 1.2.x ships AppambitSdkFlutterPlugin.kt (wrong case); flutter pub get rejects it on Linux.
       - name: Install dependencies
         run: |
+        flutter precache
           dart pub get --enforce-lockfile
           find "${PUB_CACHE:-$HOME/.pub-cache}/hosted" \
             -path '*/appambit_sdk_flutter-*/android/src/main/kotlin/*/AppambitSdkFlutterPlugin.kt' |
@@ -235,6 +236,7 @@ jobs:
       # Same appambit file-name fix as the Android job.
       - name: Install Project Dependencies
         run: |
+        flutter precache
           dart pub get --enforce-lockfile
           find "${PUB_CACHE:-$HOME/.pub-cache}/hosted" \
             -path '*/appambit_sdk_flutter-*/android/src/main/kotlin/*/AppambitSdkFlutterPlugin.kt' |
@@ -297,6 +299,7 @@ jobs:
       # Same appambit file-name fix as the Android job.
       - name: Install Project Dependencies
         run: |
+        flutter precache
           dart pub get --enforce-lockfile
           cache=$(cygpath -u "${PUB_CACHE:-$LOCALAPPDATA\\Pub\\Cache}")
           find "$cache/hosted" \
