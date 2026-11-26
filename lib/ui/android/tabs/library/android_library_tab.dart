@@ -562,7 +562,7 @@ class _LinkRow extends StatelessWidget {
               ),
             ),
             Icon(
-              LucideIcons.chevronRight,
+              LucideIcons.chevronRightDir,
               color: Colors.white.withValues(alpha: 0.5),
               size: 18,
             ),

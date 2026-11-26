@@ -283,7 +283,7 @@ class _SongInfoScreenState extends ConsumerState<SongInfoScreen> {
             height: 44,
             onTap: () => Navigator.pop(context),
             child: const Icon(
-              LucideIcons.chevronLeft,
+              LucideIcons.chevronLeftDir,
               color: Colors.white,
               size: 20,
             ),

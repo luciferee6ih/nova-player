@@ -1415,7 +1415,7 @@ class _LyricsBlockState extends ConsumerState<_LyricsBlock> {
             style: style,
             activeColor: active,
             unsungColor: Colors.white.withValues(alpha: 0.35),
-            textAlign: TextAlign.left,
+            textAlign: TextAlign.start,
             wipe: mode == LyricsSyncMode.char,
           ),
         );
@@ -1817,8 +1817,10 @@ TextStyle _timeStyle(double s) => TextStyle(
 );
 
 /// A time that always stays on one line (long songs, big font scales).
+// Times are always laid out left-to-right, or "07:37" reads "73:70" in RTL.
 Widget _timeText(String text, double s, {TextAlign? align}) => Text(
   text,
+  textDirection: TextDirection.ltr,
   maxLines: 1,
   softWrap: false,
   overflow: TextOverflow.visible,
@@ -2012,58 +2014,64 @@ class _LinearSeekRowState extends ConsumerState<_LinearSeekRow>
         (ms <= 0 ? 0.0 : (position.inMilliseconds / ms).clamp(0.0, 1.0));
     final shown = dragFraction != null ? duration * dragFraction! : position;
 
-    return Row(
-      children: [
-        ConstrainedBox(
-          constraints: BoxConstraints(minWidth: 52 * s),
-          child: _timeText(UiUtils.formatPlaybackDuration(shown), s),
-        ),
-        Expanded(
-          child: LayoutBuilder(
-            builder: (context, box) {
-              double at(Offset p) => (p.dx / box.maxWidth).clamp(0.0, 1.0);
-              return GestureDetector(
-                behavior: HitTestBehavior.opaque,
-                onTapUp: (d) => tapSeek(at(d.localPosition)),
-                onHorizontalDragStart: (d) => scrubStart(at(d.localPosition)),
-                onHorizontalDragUpdate: (d) => scrubUpdate(at(d.localPosition)),
-                onHorizontalDragEnd: (_) => scrubEnd(),
-                onHorizontalDragCancel: scrubEnd,
-                child: Center(
-                  child: Container(
-                    height: 8 * s,
-                    decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: 0.15),
-                      borderRadius: BorderRadius.circular(4 * s),
-                    ),
-                    alignment: Alignment.centerLeft,
-                    child: FractionallySizedBox(
-                      widthFactor: math.max(f, 0.0001),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: ref.watch(_activeColorProvider),
-                          borderRadius: BorderRadius.circular(4 * s),
+    // Elapsed on the left, total on the right in every language, matching
+    // the default player's seek bar.
+    return Directionality(
+      textDirection: TextDirection.ltr,
+      child: Row(
+        children: [
+          ConstrainedBox(
+            constraints: BoxConstraints(minWidth: 52 * s),
+            child: _timeText(UiUtils.formatPlaybackDuration(shown), s),
+          ),
+          Expanded(
+            child: LayoutBuilder(
+              builder: (context, box) {
+                double at(Offset p) => (p.dx / box.maxWidth).clamp(0.0, 1.0);
+                return GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTapUp: (d) => tapSeek(at(d.localPosition)),
+                  onHorizontalDragStart: (d) => scrubStart(at(d.localPosition)),
+                  onHorizontalDragUpdate: (d) =>
+                      scrubUpdate(at(d.localPosition)),
+                  onHorizontalDragEnd: (_) => scrubEnd(),
+                  onHorizontalDragCancel: scrubEnd,
+                  child: Center(
+                    child: Container(
+                      height: 8 * s,
+                      decoration: BoxDecoration(
+                        color: Colors.white.withValues(alpha: 0.15),
+                        borderRadius: BorderRadius.circular(4 * s),
+                      ),
+                      alignment: Alignment.centerLeft,
+                      child: FractionallySizedBox(
+                        widthFactor: math.max(f, 0.0001),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: ref.watch(_activeColorProvider),
+                            borderRadius: BorderRadius.circular(4 * s),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              );
-            },
-          ),
-        ),
-        ConstrainedBox(
-          constraints: BoxConstraints(minWidth: 46 * s),
-          child: Padding(
-            padding: EdgeInsets.only(left: 6 * s),
-            child: _timeText(
-              UiUtils.formatPlaybackDuration(duration),
-              s,
-              align: TextAlign.right,
+                );
+              },
             ),
           ),
-        ),
-      ],
+          ConstrainedBox(
+            constraints: BoxConstraints(minWidth: 46 * s),
+            child: Padding(
+              padding: EdgeInsets.only(left: 6 * s),
+              child: _timeText(
+                UiUtils.formatPlaybackDuration(duration),
+                s,
+                align: TextAlign.right,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -112,7 +112,7 @@ class ReorderDashboardSectionsTile extends ConsumerWidget {
       leading: const Icon(LucideIcons.listOrdered),
       title: Text(l10n.reorderDashboardSections, style: _tileTitleStyle()),
       subtitle: Text(l10n.reorderHomeHint, style: _tileSubtitleStyle()),
-      trailing: const Icon(LucideIcons.chevronRight, color: Colors.white30),
+      trailing: const Icon(LucideIcons.chevronRightDir, color: Colors.white30),
       onTap: () {
         showReorderBottomSheet(context, ref, settings);
       },

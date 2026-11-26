@@ -556,7 +556,7 @@ class SettingsNavRow extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 8),
-            const Icon(LucideIcons.chevronRight, color: Colors.white, size: 18),
+            const Icon(LucideIcons.chevronRightDir, color: Colors.white, size: 18),
           ],
         ),
       ),

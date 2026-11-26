@@ -86,7 +86,7 @@ class LyricsProviderTile extends ConsumerWidget {
         style: AppFonts.settingsStyle(color: Colors.white54, fontSize: 12),
       ),
       trailing: Icon(
-        LucideIcons.chevronRight,
+        LucideIcons.chevronRightDir,
         color: Colors.white.withValues(alpha: 0.4),
         size: 18,
       ),
@@ -120,7 +120,7 @@ class OpenSourceLicensesTile extends ConsumerWidget {
         style: AppFonts.settingsStyle(color: Colors.white54, fontSize: 12),
       ),
       trailing: Icon(
-        LucideIcons.chevronRight,
+        LucideIcons.chevronRightDir,
         color: Colors.white.withValues(alpha: 0.4),
         size: 18,
       ),
@@ -171,7 +171,7 @@ class GitHubStarTile extends StatelessWidget {
         ),
       ),
       trailing: Icon(
-        LucideIcons.chevronRight,
+        LucideIcons.chevronRightDir,
         color: Colors.white.withValues(alpha: 0.4),
         size: 18,
       ),
@@ -300,7 +300,7 @@ class _CheckForUpdatesTileState extends ConsumerState<CheckForUpdatesTile> {
               ),
             )
           : Icon(
-              LucideIcons.chevronRight,
+              LucideIcons.chevronRightDir,
               color: Colors.white.withValues(alpha: 0.4),
               size: 18,
             ),

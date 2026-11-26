@@ -362,7 +362,7 @@ class EqualizerTile extends ConsumerWidget {
         settings.equalizerEnabled ? l10n.equalizerEnabled18Band : l10n.disabled,
         style: _tileSubtitleStyle(),
       ),
-      trailing: const Icon(LucideIcons.chevronRight, color: Colors.white38),
+      trailing: const Icon(LucideIcons.chevronRightDir, color: Colors.white38),
       onTap: () {
         if (UiUtils.isDesktop) {
           showDesktopEqualizer(context);

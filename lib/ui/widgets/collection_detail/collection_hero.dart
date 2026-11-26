@@ -173,7 +173,7 @@ class CollectionHeroBar extends StatelessWidget {
               child: Row(
                 children: [
                   HeroRoundButton(
-                    icon: LucideIcons.arrowLeft,
+                    icon: LucideIcons.arrowLeftDir,
                     size: 40,
                     onTap: onBack,
                   ),

@@ -114,7 +114,7 @@ class _PageBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           IconButton(
-            icon: const Icon(LucideIcons.chevronLeft, size: 20),
+            icon: const Icon(LucideIcons.chevronLeftDir, size: 20),
             tooltip: 'Previous page',
             onPressed: page > 0 ? () => go(page - 1) : null,
           ),
@@ -125,7 +125,7 @@ class _PageBar extends StatelessWidget {
           ),
           const SizedBox(width: 8),
           IconButton(
-            icon: const Icon(LucideIcons.chevronRight, size: 20),
+            icon: const Icon(LucideIcons.chevronRightDir, size: 20),
             tooltip: 'Next page',
             onPressed: page < pageCount - 1 ? () => go(page + 1) : null,
           ),

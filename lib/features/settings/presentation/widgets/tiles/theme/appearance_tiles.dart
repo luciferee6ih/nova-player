@@ -11,7 +11,7 @@ class SelectAvatarsTile extends ConsumerWidget {
       title: Text(l10n.selectAvatars, style: _tileTitleStyle()),
       subtitle: Text(l10n.selectAvatarsDesc, style: _tileSubtitleStyle()),
       trailing: const Icon(
-        LucideIcons.chevronRight,
+        LucideIcons.chevronRightDir,
         color: Colors.white30,
         size: 18,
       ),

@@ -290,7 +290,7 @@ extension _HomeTabSections on _AndroidHomeTabState {
               ),
               child: const Center(
                 child: Icon(
-                  LucideIcons.arrowRight,
+                  LucideIcons.arrowRightDir,
                   color: Colors.white,
                   size: 26,
                 ),

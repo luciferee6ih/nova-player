@@ -26,7 +26,7 @@ class _SearchHeader extends StatelessWidget {
       child: Row(
         children: [
           IconButton(
-            icon: const Icon(LucideIcons.arrowLeft, size: 22),
+            icon: const Icon(LucideIcons.arrowLeftDir, size: 22),
             color: Colors.white,
             tooltip: l10n.back,
             onPressed: onBack,

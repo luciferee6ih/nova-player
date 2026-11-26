@@ -24,7 +24,7 @@ class AddFolderTile extends ConsumerWidget {
       leading: const Icon(LucideIcons.plus),
       title: Text(l10n.addFolder, style: _tileTitleStyle()),
       trailing: const Icon(
-        LucideIcons.chevronRight,
+        LucideIcons.chevronRightDir,
         color: Colors.white30,
         size: 18,
       ),
@@ -53,7 +53,7 @@ class ExcludedFoldersTile extends ConsumerWidget {
         style: _tileSubtitleStyle(),
       ),
       trailing: const Icon(
-        LucideIcons.chevronRight,
+        LucideIcons.chevronRightDir,
         color: Colors.white30,
         size: 18,
       ),
@@ -177,7 +177,7 @@ class SyncLyricsOfflineTile extends ConsumerWidget {
       leading: const Icon(LucideIcons.downloadCloud),
       title: Text(l10n.syncLyricsOffline, style: _tileTitleStyle()),
       trailing: const Icon(
-        LucideIcons.chevronRight,
+        LucideIcons.chevronRightDir,
         color: Colors.white30,
         size: 18,
       ),
@@ -247,7 +247,7 @@ class RescanLibraryTile extends ConsumerWidget {
       leading: const Icon(LucideIcons.refreshCcw),
       title: Text(l10n.rescanLibrary, style: _tileTitleStyle()),
       trailing: const Icon(
-        LucideIcons.chevronRight,
+        LucideIcons.chevronRightDir,
         color: Colors.white30,
         size: 18,
       ),

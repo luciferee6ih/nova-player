@@ -704,7 +704,7 @@ class _AutoEqSearchSheetContentState extends State<_AutoEqSearchSheetContent> {
                                 ),
                               )
                             : Icon(
-                                LucideIcons.chevronRight,
+                                LucideIcons.chevronRightDir,
                                 color: Colors.white24,
                                 size: 16,
                               ),

@@ -117,7 +117,7 @@ class ProfilePhotoTile extends ConsumerWidget {
                 removeProfilePhoto(ref);
               },
             )
-          : const Icon(LucideIcons.chevronRight, size: 18),
+          : const Icon(LucideIcons.chevronRightDir, size: 18),
       onTap: () {
         AppHaptics.light();
         pickProfilePhoto(ref);
@@ -212,7 +212,7 @@ class AccountNameTile extends ConsumerWidget {
       leading: const Icon(LucideIcons.userPen),
       title: Text(l10n.accountEditName),
       subtitle: Text(name.isEmpty ? l10n.accountEditNameDesc : name),
-      trailing: const Icon(LucideIcons.chevronRight, size: 18),
+      trailing: const Icon(LucideIcons.chevronRightDir, size: 18),
       onTap: () {
         AppHaptics.light();
         showEditNameDialog(context, ref);

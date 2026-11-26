@@ -41,7 +41,7 @@ class MenuOptionTile extends StatelessWidget {
               ),
             ),
             Icon(
-              LucideIcons.chevronRight,
+              LucideIcons.chevronRightDir,
               color: Colors.white.withValues(alpha: 0.9),
               size: 18,
             ),

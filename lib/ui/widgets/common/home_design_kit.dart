@@ -118,7 +118,7 @@ class HomeViewAllPill extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 4),
-            const Icon(LucideIcons.arrowRight, size: 16, color: Colors.white),
+            const Icon(LucideIcons.arrowRightDir, size: 16, color: Colors.white),
           ],
         ),
       ),
@@ -299,7 +299,7 @@ class HomeRowArrows extends StatelessWidget {
           semanticLabel: m.previousPageTooltip,
           onTap: () => _page(context, -1),
           child: const Icon(
-            LucideIcons.arrowLeft,
+            LucideIcons.arrowLeftDir,
             size: 18,
             color: Colors.white,
           ),
@@ -309,7 +309,7 @@ class HomeRowArrows extends StatelessWidget {
           semanticLabel: m.nextPageTooltip,
           onTap: () => _page(context, 1),
           child: const Icon(
-            LucideIcons.arrowRight,
+            LucideIcons.arrowRightDir,
             size: 18,
             color: Colors.white,
           ),

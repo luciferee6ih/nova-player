@@ -387,7 +387,7 @@ class _EqLinkRow extends StatelessWidget {
             ),
             trailing ??
                 Icon(
-                  LucideIcons.chevronRight,
+                  LucideIcons.chevronRightDir,
                   size: 18,
                   color: Colors.white.withValues(alpha: 0.5),
                 ),

@@ -14,7 +14,7 @@ class ProgressBarStyleTile extends ConsumerWidget {
       title: Text(l10n.progressBarStyle, style: _tileTitleStyle()),
       subtitle: Text(l10n.progressBarStyleDesc, style: _tileSubtitleStyle()),
       trailing: const Icon(
-        LucideIcons.chevronRight,
+        LucideIcons.chevronRightDir,
         color: Colors.white38,
         size: 20,
       ),
@@ -48,7 +48,7 @@ class ArtworkVisualizerTile extends ConsumerWidget {
         style: _tileSubtitleStyle(),
       ),
       trailing: const Icon(
-        LucideIcons.chevronRight,
+        LucideIcons.chevronRightDir,
         color: Colors.white38,
         size: 20,
       ),
@@ -262,7 +262,7 @@ class QualityBadgeStyleTile extends ConsumerWidget {
       title: Text(l10n.qualityBadgeStyle, style: _tileTitleStyle()),
       subtitle: Text(l10n.qualityBadgeStyleDesc, style: _tileSubtitleStyle()),
       trailing: const Icon(
-        LucideIcons.chevronRight,
+        LucideIcons.chevronRightDir,
         color: Colors.white38,
         size: 20,
       ),
@@ -636,7 +636,7 @@ class _PlayerStylesCard extends StatelessWidget {
                   ),
                   const SizedBox(width: 8),
                   const Icon(
-                    LucideIcons.chevronRight,
+                    LucideIcons.chevronRightDir,
                     color: Colors.white,
                     size: 18,
                   ),

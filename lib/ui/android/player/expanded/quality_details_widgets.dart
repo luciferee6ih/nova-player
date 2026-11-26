@@ -123,7 +123,7 @@ class _SignalPath extends StatelessWidget {
               final double d = (pulse.value * (stages.length) - i).abs();
               final double glow = (1 - d.clamp(0.0, 1.0));
               return Icon(
-                LucideIcons.chevronRight,
+                LucideIcons.chevronRightDir,
                 size: 14,
                 color: Color.lerp(Colors.white24, tint, glow),
               );

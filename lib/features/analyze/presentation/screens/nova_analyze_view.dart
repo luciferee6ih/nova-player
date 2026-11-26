@@ -139,7 +139,7 @@ class _Header extends ConsumerWidget {
               ref.read(appNavigationProvider.notifier).goBack();
             },
             child: const Icon(
-              LucideIcons.arrowLeft,
+              LucideIcons.arrowLeftDir,
               color: Colors.white,
               size: 20,
             ),

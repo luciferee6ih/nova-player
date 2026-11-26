@@ -185,7 +185,7 @@ class _PinnedBarState extends State<_PinnedBar> {
                       useBlur: true,
                       onTap: d.onBack,
                       child: const Icon(
-                        LucideIcons.chevronLeft,
+                        LucideIcons.chevronLeftDir,
                         color: Colors.white,
                         size: 20,
                       ),

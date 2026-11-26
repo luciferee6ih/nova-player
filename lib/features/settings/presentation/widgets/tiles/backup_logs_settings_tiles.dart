@@ -18,7 +18,7 @@ class ExportBackupTile extends ConsumerWidget {
       title: Text(l10n.exportBackupJson, style: _tileTitleStyle()),
       subtitle: Text(l10n.exportBackupJsonDesc, style: _tileSubtitleStyle()),
       trailing: const Icon(
-        LucideIcons.chevronRight,
+        LucideIcons.chevronRightDir,
         color: Colors.white30,
         size: 18,
       ),
@@ -41,7 +41,7 @@ class ImportBackupTile extends ConsumerWidget {
       title: Text(l10n.importBackupJson, style: _tileTitleStyle()),
       subtitle: Text(l10n.importBackupJsonDesc, style: _tileSubtitleStyle()),
       trailing: const Icon(
-        LucideIcons.chevronRight,
+        LucideIcons.chevronRightDir,
         color: Colors.white30,
         size: 18,
       ),
@@ -64,7 +64,7 @@ class ImportM3uPlaylistTile extends ConsumerWidget {
       title: Text(l10n.importM3uPlaylist, style: _tileTitleStyle()),
       subtitle: Text(l10n.importM3uPlaylistDesc, style: _tileSubtitleStyle()),
       trailing: const Icon(
-        LucideIcons.chevronRight,
+        LucideIcons.chevronRightDir,
         color: Colors.white30,
         size: 18,
       ),
@@ -90,7 +90,7 @@ class ExportLogsTile extends ConsumerWidget {
         style: _tileSubtitleStyle(),
       ),
       trailing: const Icon(
-        LucideIcons.chevronRight,
+        LucideIcons.chevronRightDir,
         color: Colors.white30,
         size: 18,
       ),

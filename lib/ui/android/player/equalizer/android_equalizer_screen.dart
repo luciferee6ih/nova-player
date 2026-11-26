@@ -1068,7 +1068,7 @@ class AndroidEqualizerScreen extends ConsumerWidget {
                 child: const SizedBox(
                   width: 48,
                   height: 48,
-                  child: Icon(LucideIcons.arrowLeft, color: Colors.white),
+                  child: Icon(LucideIcons.arrowLeftDir, color: Colors.white),
                 ),
               ),
             ),
@@ -1184,7 +1184,7 @@ class _RawFilterConsoleState extends State<_RawFilterConsole> {
             duration: const Duration(milliseconds: 200),
             turns: _open ? 0.25 : 0,
             child: Icon(
-              LucideIcons.chevronRight,
+              LucideIcons.chevronRightDir,
               size: 18,
               color: Colors.white.withValues(alpha: 0.5),
             ),
