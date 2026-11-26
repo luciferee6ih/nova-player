@@ -28,12 +28,10 @@ jobs:
           set -euo pipefail
           rm -rf /tmp/src && mkdir -p /tmp/src
           unzip -q /tmp/nova-player-src.zip -d /tmp/src
-          ROOT="$(dirname "$(find /tmp/src -name pubspec.yaml -print -quit)")"
-          echo "Source root: ${ROOT}"
-          rm -rf "${ROOT}/.git"
-          shopt -s dotglob nullglob
-          cp -a "${ROOT}/." "${GITHUB_WORKSPACE}/"
-          ls -a
+          ROOT=/tmp/src/nova-player
+          test -f "$ROOT/pubspec.yaml"
+          rsync -a --delete --exclude .git "$ROOT/" "$GITHUB_WORKSPACE/"
+          ls -a "$GITHUB_WORKSPACE" "$GITHUB_WORKSPACE/.github/workflows"
 
       - name: Commit and push source to main
         run: |
